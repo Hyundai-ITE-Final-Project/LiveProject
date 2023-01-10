@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- /**
+ * @author 김나형
+ * @since 2023.01.10
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일              	수정자                   수정내용
+
+ * </pre>
+ */ -->
+<mapper namespace="com.livecommerce.project.mapper.ProductMapper">
+<select id="getListWithPaging" resultType="com.livecommerce.project.vo.ProductVO" >
+  <![CDATA[
+          select pid, pname, price, img1
+          from (
+               select rownum rn, pid, pname, price, img1
+                from product
+                 where rownum <= #{pageNum} * #{amount}
+                 )
+         where rn > ( #{pageNum} - 1 ) * #{amount}
+   ]]>
+</select>
+</mapper>
