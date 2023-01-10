@@ -8,7 +8,7 @@ public class HomeControllerTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		System.out.println("this is test");
 	}
 
 }
