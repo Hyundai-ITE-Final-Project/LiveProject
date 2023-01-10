@@ -1,17 +1,19 @@
 package com.livecommerce.project.vo;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
+import lombok.Data;
+
+@Data
 public class MemberVO {
 	private String mid;
-	private String mpw;
+	private String mpassword;
 	private String mname;
 	private String mtel;
-	private Date mbirth;
+	private LocalDate mbirth;
 	private String memail;
 	private int mgender;
 	private String mnickname;
-	private Date joindate;
-	private String mAddress;
+	private LocalDate mjoindate;
 	private int mpoint;
 }
