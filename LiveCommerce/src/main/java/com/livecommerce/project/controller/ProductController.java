@@ -21,14 +21,15 @@ import lombok.extern.log4j.Log4j;
 public class ProductController {
     @Autowired
 	private ProductService service;
-    
+    //전체상품리스트
     @GetMapping("/list")
     public String list(Criteria cri, Model model) {
     	log.info("list controller 들어옴");
     	log.info("list" + cri);
     	model.addAttribute("list", service.getList(cri));
-    	//임의의 값 지정
-    	model.addAttribute("pageMaker", new PageDTO(cri, 123));
+    	
+    	int total = service.getTotal(cri);
+    	model.addAttribute("pageMaker", new PageDTO(cri, total));
         return "product/productlist";
     }
 }

@@ -8,4 +8,6 @@ import com.livecommerce.project.vo.ProductVO;
 public interface ProductService {
 	// 전체상품
 	public List<ProductVO> getList(Criteria cri);
+	// 전체상품갯수
+	public int getTotal(Criteria cri);
 }

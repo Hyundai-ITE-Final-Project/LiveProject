@@ -19,5 +19,5 @@ public class ProductVO {
 	//상품이미지
 	private String img1;
 	private String img2;
-	private String img3;	
+	private String img3;
 }

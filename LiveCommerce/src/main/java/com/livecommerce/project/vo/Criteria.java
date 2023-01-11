@@ -25,7 +25,7 @@ public class Criteria {
 
     /* Criteria 기본 생성자 */
     public Criteria() {
-        this(1, 10);
+        this(1, 12);
     }
 
     @Override
