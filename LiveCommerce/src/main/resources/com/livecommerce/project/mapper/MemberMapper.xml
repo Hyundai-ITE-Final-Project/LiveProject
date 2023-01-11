@@ -4,22 +4,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- /**
  * @author 신기원
- * @since 2022.10.14
+ * @since 2023.01.11
  * @version 1.0
  * 
  * <pre>
  * 수정일              	수정자                   수정내용
-
+2023.01.11		신기원		최초생성
  * </pre>
  */ -->
 <mapper namespace="com.livecommerce.project.mapper.MemberMapper">
 	
 	
   
-  <select id = "selectMember" resultType = "com.livecommerce.project.vo.MemberVO">
+  <select id = "findById" resultType = "com.livecommerce.project.vo.MemberVO">
   	select * from member where mid = #{mid}
   </select>
   
+  <insert id="join">
+  	insert into member values (#{mid}, #{mpassword}, #{mname}, #{mtel}, #{mbirth}, #{memail}, #{mgender}, #{mjoindate}, 0, #{mrole}, #{maddress1}, #{maddress2})
+  </insert>
   
+  <update id = "changeInfo">
+  	update member set mtel = #{mtel}, memail = #{memail}, maddress1 = #{maddress1}, maddress2 = #{maddress2} where mid = #{mid}
+  </update>
+  
+  <select id = "findMyId" resultType = "String">
+  	select mid from member where mname = #{mname} and mtel = #{mtel}
+  </select>
+  
+  <select id="findMyPassword" resultType ="String">
+  	select mpassword from member where mid = #{mid} and mname = #{mname} and mtel = #{mtel}
+  </select>
 
 </mapper>
