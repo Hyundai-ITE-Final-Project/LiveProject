@@ -13,15 +13,22 @@
  * </pre>
  */ -->
 <mapper namespace="com.livecommerce.project.mapper.ProductMapper">
-<select id="getListWithPaging" resultType="com.livecommerce.project.vo.ProductVO" >
-  <![CDATA[
-          select pid, pname, price, img1
-          from (
-               select rownum rn, pid, pname, price, img1
-                from product
-                 where rownum <= #{pageNum} * #{amount}
-                 )
-         where rn > ( #{pageNum} - 1 ) * #{amount}
-   ]]>
-</select>
+	<!-- 전체상품리스트 -->
+	<select id="getListWithPaging" resultType="com.livecommerce.project.vo.ProductVO" >
+	  <![CDATA[
+	          select pid, pname, price, img1
+	          from (
+	               select rownum rn, pid, pname, price, img1
+	                from product
+	                 where rownum <= #{pageNum} * #{amount}
+	                 )
+	         where rn > ( #{pageNum} - 1 ) * #{amount}
+	   ]]>
+	</select>
+	
+	<!-- 전체상품갯수 -->
+	<select id="getTotalCount" resultType="int">
+		select count(*)
+		from product
+	</select>
 </mapper>

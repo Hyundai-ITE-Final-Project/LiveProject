@@ -44,9 +44,9 @@ public class PageDTO {
 		/* 다음 버튼 값 초기화 */
 		this.next = this.endPage < realEnd;
 	}
-	/*
-	 * @Override public String toString() { return "PageDTO [startPage=" + startPage
-	 * + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next + ", realEnd="
-	 * + realEnd + ", total=" + total + ", cri=" + cri + "]"; }
-	 */
+	
+	 @Override public String toString() { return "PageDTO [startPage=" + startPage
+	 + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next + ", realEnd="
+	 + realEnd + ", total=" + total + ", cri=" + cri + "]"; }
+
 }
