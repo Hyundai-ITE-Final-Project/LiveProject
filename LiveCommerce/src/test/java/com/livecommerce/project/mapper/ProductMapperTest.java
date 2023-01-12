@@ -29,4 +29,10 @@ public class ProductMapperTest {
 		List<ProductVO> list = mapper.getListWithPaging(cri);
 		list.forEach(product -> log.info(product));
 	}
+	
+	@Test
+	public void testDetail() {
+		ProductVO product = mapper.productGetDetail(1);
+		log.info(product);
+	}
 }
