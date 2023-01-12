@@ -15,9 +15,9 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
  * </pre>
  */ -->
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
-	<bean id="customAccessDenied" class="com.kosa.security.CustomAccessDeniedHandler"></bean>
-	<bean id="customLoginSuccess" class="com.kosa.security.CustomLoginSuccessHandler"></bean>
-	<bean id="customUserDetailsService" class="com.kosa.security.CustomUserDetailsService"></bean>
+	<bean id="customAccessDenied" class="com.livecommerce.project.security.CustomAccessDeniedHandler"></bean>
+	<bean id="customLoginSuccess" class="com.livecommerce.project.security.CustomLoginSuccessHandler"></bean>
+	<bean id="customUserDetailsService" class="com.livecommerce.project.security.CustomUserDetailsService"></bean>
 
 	<security:http auto-config="true" use-expressions="true">
 
