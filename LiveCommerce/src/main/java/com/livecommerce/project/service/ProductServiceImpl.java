@@ -32,4 +32,10 @@ public class ProductServiceImpl implements ProductService{
     	log.info("service 전체상품갯수");
     	return mapper.getTotalCount(cri);
     }
+    
+    // 상품 상세 조회
+    @Override
+    public ProductVO productGetDetail(int pid) {
+        return mapper.productGetDetail(pid);
+    }
 }

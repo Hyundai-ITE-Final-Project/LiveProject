@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/shop.css"> 
 <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css">
@@ -21,15 +23,15 @@
                             <c:forEach items="${list}" var="product" varStatus="status">
                                 <div class="infiniteScroll_wrap">
                                     <div class="videoCard_wrap videoVerticalList_item">
-                                        <a href="#" target="self" class="video_link">
-                                            <div class="video_wrap">
+                                        <a href="#" class="video_link">
+                                            <div class="video_wrap" productid="${product.pid}">
                                                 <div class="video_container">
                                                     <img class="video_container_img" draggable="false" src="${product.img1}">
                                                 </div>
                                             </div>
                                         </a>
                                         <span class="video_title">${product.pname}</span>
-                                        <a rel="opener" target="_self" href="javascript:0;" class="video_link_creator">
+                                        <a rel="opener" href="javascript:0;" class="video_link_creator">
                                             ${product.price}
                                         </a>
                                     </div>
@@ -73,7 +75,15 @@
 </form>
 </body>
 <script>
-$(document).ready(function() {		
+
+$(document).ready(function() {
+		const products = document.querySelectorAll(".infiniteScroll_wrap")
+		for(i = 0; i < products.length; i++){
+			var productid = products[i].getElementsByClassName("video_wrap")[0]
+				.getAttribute("productid");
+			products[i].getElementsByClassName("video_link")[0].setAttribute(
+					"href", "/product/productDetail?pid=" + productid);
+		}
 		//페이징 버튼 처리
 		var actionForm = $("#actionForm"); //폼등록
 		$(".pageBtn").on("click",function(e) {
@@ -83,6 +93,11 @@ $(document).ready(function() {
 			actionForm.submit(); //form submit
 		});//end click
 		
+		// 김나형 productDetail 페이지로 이동
+		$(".video_link").on("click", function (e) {
+			console("페이지 이동");
+			location.href = $(this).attr("alt");
+		});
 	});//  end ready
 
 </script>
