@@ -1,58 +1,58 @@
-package com.livecommerce.project.security;
-
-import java.util.ArrayList;
-import java.util.Collection;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
-import com.livecommerce.project.vo.MemberVO;
-import com.livecommerce.project.mapper.MemberMapper;
-import com.livecommerce.project.security.CustomMember;
-
-import lombok.extern.log4j.Log4j;
-/**
- * @author ½Å±â¿ø
- * @since 2022.10.18
- * @version 1.0
- * 
- * <pre>
- * ¼öÁ¤ÀÏ                     ¼öÁ¤ÀÚ                   ¼öÁ¤³»¿ë
- * ----------  --------    ---------------------------
- * 2022.10.18     ½Å±â¿ø              ÃÖÃÊ »ý¼º
- * </pre>
- */
-
-//DB¿¡¼­ VO°´Ã¼ÀÇ Á¤º¸¸¦ °¡Á®¿Í »ç¿ëÀÚ Á¤º¸¸¦ ´ã´Â UserDetails°´Ã¼·Î ¹Ù²Ù´Â ¼­ºñ½º
-@Log4j
-public class CustomUserDetailsService implements UserDetailsService {
-
-	@Autowired
-	private MemberMapper mapper;
-	
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		log.info("Load User" + username);
-		
-		
-		MemberVO vo = mapper.selectMember(username);
-		//VOÀÇ ¾ÆÀÌµð, ÆÐ½º¿öµå, ±ÇÇÑ Á¤º¸¸¦ °¡Á®¿Í UserDetails °´Ã¼·Î ´ã¾ÆÁØ´Ù
-		CustomMember user = new CustomMember(vo.getMid(), vo.getMpassword(), authorities(vo));
-		return user;
-	}
-	
-	// UserDetailsÀÇ ±ÇÇÑÀÇ ¹ÝÈ¯ °ª°ú VOÀÇ mroleÀ» ÀÏÄ¡ ½ÃÅ°±â À§ÇÑ ¸Þ¼Òµå
-	private static Collection authorities(MemberVO memberDTO){
-        Collection authorities = new ArrayList<>();
-        if(memberDTO.getMrole().equals("ADMIN")){
-            authorities.add(new SimpleGrantedAuthority("ADMIN"));
-        }else{
-            authorities.add(new SimpleGrantedAuthority("MEMBER"));
-        }
-        return authorities;
-    }
-
-}
+//package com.livecommerce.project.security;
+//
+//import java.util.ArrayList;
+//import java.util.Collection;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.security.core.authority.SimpleGrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UsernameNotFoundException;
+//
+//import com.livecommerce.project.vo.MemberVO;
+//import com.livecommerce.project.mapper.MemberMapper;
+//import com.livecommerce.project.security.CustomMember;
+//
+//import lombok.extern.log4j.Log4j;
+///**
+// * @author ï¿½Å±ï¿½ï¿½
+// * @since 2022.10.18
+// * @version 1.0
+// * 
+// * <pre>
+// * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                     ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                   ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// * ----------  --------    ---------------------------
+// * 2022.10.18     ï¿½Å±ï¿½ï¿½              ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+// * </pre>
+// */
+//
+////DBï¿½ï¿½ï¿½ï¿½ VOï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ UserDetailsï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ù²Ù´ï¿½ ï¿½ï¿½ï¿½ï¿½
+//@Log4j
+//public class CustomUserDetailsService implements UserDetailsService {
+//
+//	@Autowired
+//	private MemberMapper mapper;
+//	
+//	@Override
+//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//		log.info("Load User" + username);
+//		
+//		
+//		MemberVO vo = mapper.selectMember(username);
+//		//VOï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½, ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ UserDetails ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø´ï¿½
+//		CustomMember user = new CustomMember(vo.getMid(), vo.getMpassword(), authorities(vo));
+//		return user;
+//	}
+//	
+//	// UserDetailsï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½ï¿½ï¿½ VOï¿½ï¿½ mroleï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
+//	private static Collection authorities(MemberVO memberDTO){
+//        Collection authorities = new ArrayList<>();
+//        if(memberDTO.getMrole().equals("ADMIN")){
+//            authorities.add(new SimpleGrantedAuthority("ADMIN"));
+//        }else{
+//            authorities.add(new SimpleGrantedAuthority("MEMBER"));
+//        }
+//        return authorities;
+//    }
+//
+//}

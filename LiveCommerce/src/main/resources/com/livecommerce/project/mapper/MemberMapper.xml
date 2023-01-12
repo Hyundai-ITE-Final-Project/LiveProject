@@ -35,5 +35,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="findMyPassword" resultType ="String">
   	select mpassword from member where mid = #{mid} and mname = #{mname} and mtel = #{mtel}
   </select>
-
+  
+  <!-- 주문자 정보 -->
+  	<select id="getMemberInfo" resultType="com.livecommerce.project.vo.MemberVO">
+  		SELECT mid, mpassword,mname, mtel, mbirth, memail, mgender, mjoindate, mpoint, mrole,
+  		maddress1, maddress2, mzipcode
+  		FROM member 
+  		WHERE mid = #{mid}
+  	</select>
 </mapper>

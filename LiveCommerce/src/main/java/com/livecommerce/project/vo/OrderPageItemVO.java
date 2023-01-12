@@ -1,7 +1,6 @@
 package com.livecommerce.project.vo;
 
-import java.time.LocalDate;
-
+import java.util.*;
 import lombok.Data;
 
 @Data
@@ -14,7 +13,7 @@ public class OrderPageItemVO {
     /* 상품DB로부터 꺼내올 값 */
     private String pname;
     private int price;
-    
+    private String img1; // 상품 이미지 
     //할인률
     //private double pdiscount = 0.01;
     
@@ -25,16 +24,10 @@ public class OrderPageItemVO {
     private int totalprice;
     //총포인트
     private int totalpoint;
-    
+
     public void initSaleTotal() {
+    	this.saleprice = price;
 		this.totalprice = this.saleprice*this.pcount;
 		this.totalpoint = (int)(Math.floor(this.totalprice*0.01));
 	}
-    
-//    @Override
-//	public String toString() {
-//		return "OrderPageItemDTO [pid=" + pid + ", pcount=" + pcount + ", pname=" + pname
-//				+ ", price=" + price + ", saleprice=" + saleprice
-//				+ ", totalprice=" + totalprice + ", totalpoint=" + totalpoint + "]";
-//	}
 }

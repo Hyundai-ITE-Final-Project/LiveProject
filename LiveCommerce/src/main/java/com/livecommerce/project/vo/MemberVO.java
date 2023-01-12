@@ -18,4 +18,5 @@ public class MemberVO {
 	private LocalDate mjoindate;
 	private int mpoint;
 	private String mrole;
+	private String mzipcode;
 }

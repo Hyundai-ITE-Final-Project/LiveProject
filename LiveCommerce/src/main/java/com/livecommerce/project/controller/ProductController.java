@@ -32,4 +32,11 @@ public class ProductController {
     	model.addAttribute("pageMaker", new PageDTO(cri, total));
         return "product/productlist";
     }
+    
+    //전체상품리스트
+    @GetMapping("/detail")
+    public String detail() {
+    	
+    	return "product/goodDetail";
+    }
 }
