@@ -1,6 +1,7 @@
 package com.livecommerce.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,15 +9,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.livecommerce.project.mapper.MemberMapper;
 import com.livecommerce.project.vo.MemberVO;
 
+
 /**
- * @author ½Å±â¿ø
+ * @author ï¿½Å±ï¿½ï¿½
  * @since 2023.01.12
  * @version 1.0
  * 
  * <pre>
- * ¼öÁ¤ÀÏ                    ¼öÁ¤ÀÚ                   ¼öÁ¤³»¿ë
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½                   ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * ----------  --------    ---------------------------
- * 2023.01.12    ½Å±â¿ø                	 ÃÖÃÊ »ý¼º
+ * 2023.01.12    ï¿½Å±ï¿½ï¿½                	 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
  * </pre>
  */
@@ -24,15 +26,23 @@ import com.livecommerce.project.vo.MemberVO;
 @Service
 @Transactional(readOnly=true)
 public class MemberServiceImpl implements MemberService{
-	
+
 	@Autowired
-	private MemberMapper memberMapper;
+	MemberMapper memberMapper;
+	/* ì£¼ë¬¸ìž ì •ë³´ */
+	@Override
+	public MemberVO getMemberInfo(String mid) {
+		
+		return memberMapper.getMemberInfo(mid);
+		
+	}
+	
 	
 	@Autowired
 	private PasswordEncoder encoder;
 	
 	/**
-     * ¸Þ¼­µå ¼³¸í : ÄÁÆ®·Ñ·¯·Î Àü´Þ ¹ÞÀº ÆÐ½º¿öµå ¾ÏÈ£È­
+     * ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£È­
      *
      * @param   memberVO
      * @return  String
@@ -52,10 +62,10 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	/**
-     * ¸Þ¼­µå ¼³¸í : È¸¿ø ÀüÈ­¹øÈ£, ÀÌ¸ÞÀÏ, ÁÖ¼Ò º¯°æ
+     * ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : È¸ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½È£, ï¿½Ì¸ï¿½ï¿½ï¿½, ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½
      *
      * @param   memberVO
-     * @return  int -> 1ÀÌ¸é ¼º°ø
+     * @return  int -> 1ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
      */
 	@Override
 	public int changeInfo(MemberVO memberVO) {
@@ -66,10 +76,10 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	/**
-     * ¸Þ¼­µå ¼³¸í : È¸¿ø ÀÌ¸§°ú ÀüÈ­¹øÈ£·Î ¾ÆÀÌµð Á¶È¸
+     * ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : È¸ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½È¸
      *
-     * @param   ÀÌ¸§, ÀüÈ­¹øÈ£
-     * @return  int -> 1ÀÌ¸é ¼º°ø
+     * @param   ï¿½Ì¸ï¿½, ï¿½ï¿½È­ï¿½ï¿½È£
+     * @return  int -> 1ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
      */
 	@Override
 	public int findID(String mname, String mtel) {
@@ -77,6 +87,5 @@ public class MemberServiceImpl implements MemberService{
 		if(result != null) return 1;
 		return 0;
 	}
-	
 	
 }
