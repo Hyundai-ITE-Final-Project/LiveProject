@@ -38,7 +38,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		log.info("Load User" + username);
 		
 		
-		MemberVO vo = mapper.selectMember(username);
+		MemberVO vo = mapper.findById(username);
 		//VO의 아이디, 패스워드, 권한 정보를 가져와 UserDetails 객체로 담아준다
 		CustomMember user = new CustomMember(vo.getMid(), vo.getMpassword(), authorities(vo));
 		return user;
