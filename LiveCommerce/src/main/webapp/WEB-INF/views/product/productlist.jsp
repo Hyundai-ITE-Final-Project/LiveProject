@@ -20,8 +20,8 @@
                 <div class="menu_tabpanel">
                     <div class="infiniteScroll_wrap">
                         <!-- c:if -->
+                    	<div class="infiniteScroll_wrap">
                             <c:forEach items="${list}" var="product" varStatus="status">
-                                <div class="infiniteScroll_wrap">
                                     <div class="videoCard_wrap videoVerticalList_item">
                                         <a href="#" class="video_link">
                                             <div class="video_wrap" productid="${product.pid}">
@@ -35,8 +35,8 @@
                                             ${product.price}
                                         </a>
                                     </div>
-                                </div>
                             </c:forEach>
+						</div>
                     </div>
                 </div>
             </div>
@@ -77,22 +77,13 @@
 <script>
 
 $(document).ready(function() {
-		const products = document.querySelectorAll(".infiniteScroll_wrap")
+		const products = document.querySelectorAll(".videoCard_wrap")
 		for(i = 0; i < products.length; i++){
 			var productid = products[i].getElementsByClassName("video_wrap")[0]
 				.getAttribute("productid");
 			products[i].getElementsByClassName("video_link")[0].setAttribute(
 					"href", "/product/productDetail?pid=" + productid);
 		}
-		//페이징 버튼 처리
-		var actionForm = $("#actionForm"); //폼등록
-		$(".pageBtn").on("click",function(e) {
-			e.preventDefault(); //<a> 작동 중지
-			console.log('click');
-			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
-			actionForm.submit(); //form submit
-		});//end click
-		
 		// 김나형 productDetail 페이지로 이동
 		$(".video_link").on("click", function (e) {
 			console("페이지 이동");
