@@ -30,9 +30,9 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler{@Override
 			AccessDeniedException accessDeniedException) throws IOException, ServletException {
 		log.error("Access Denied Handler");
 		
-		log.error("Redirect");
+		log.error("이건 토큰이 없거나 권한이 없는거야");
 		
-		response.sendRedirect("/member/accessError");
+		response.sendRedirect("/error");
 	}
 	
 }

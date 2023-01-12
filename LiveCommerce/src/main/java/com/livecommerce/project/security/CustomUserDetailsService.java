@@ -45,12 +45,12 @@ public class CustomUserDetailsService implements UserDetailsService {
 	}
 	
 	// UserDetails의 권한의 반환 값과 VO의 mrole을 일치 시키기 위한 메소드
-	private static Collection authorities(MemberVO memberDTO){
+	private static Collection authorities(MemberVO memebrVO){
         Collection authorities = new ArrayList<>();
-        if(memberDTO.getMrole().equals("ADMIN")){
+        if(memebrVO.getMrole().equals("ADMIN")){
             authorities.add(new SimpleGrantedAuthority("ADMIN"));
         }else{
-            authorities.add(new SimpleGrantedAuthority("MEMBER"));
+            authorities.add(new SimpleGrantedAuthority("USER"));
         }
         return authorities;
     }
