@@ -46,6 +46,7 @@ public class MemberServiceImpl implements MemberService{
 	public String join(MemberVO memberVO) {
 //		memberVO.setMpassword(encoder.encode(memberVO.getMpassword()));
 		memberVO.setMpassword(password(memberVO.getMpassword()));
+//		memberVO.setm
 		memberMapper.join(memberVO);
 		return memberVO.getMid();
 	}

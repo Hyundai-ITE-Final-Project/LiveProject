@@ -15,15 +15,15 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/common.css" >
     <link rel="stylesheet" type="text/css" href="/resources/css/login.css" >
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" src="/js/common.js"></script>
-    <script type="text/javascript" src="/js/login.js"></script>
+    <script type="text/javascript" src="/resources/js/common.js"></script>
+    <script type="text/javascript" src="/resources/js/login.js"></script>
 </head>
 
 <body>
 <div id="sign_in_container">
     <!-- <div class="img_logo" onclick="location.href='/'" style="cursor:pointer"><img src="/img/logo/logo.png"></div> -->
     <div id="sign_in_form">      
-        <form name="loginForm" action="/login" method="POST">
+        <form name="loginForm" action="/loginProcess" method="POST">
             <div class="login_input_area">
                 <div class="login_input">
                     <input type="text" name="userId" id="userId" placeholder="이메일 주소">
@@ -40,6 +40,8 @@
                 <label for="keep_signed"></label>
                 <label class="label_text">로그인 상태 유지</label>
             </div>
+            
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <div id="login_regul" class="regul_div">${requestScope.loginFailMsg}</div>          
             <div id="btn_login">
                 <button type="submit" id="btn_login" class="btn_login btn_point btn_radius_10">로그인</button>

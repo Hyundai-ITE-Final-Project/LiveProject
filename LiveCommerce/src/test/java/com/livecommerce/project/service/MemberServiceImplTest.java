@@ -31,14 +31,13 @@ public class MemberServiceImplTest {
 	@Test
 	public void testjoin() {
 		MemberVO vo = new MemberVO();
-		vo.setMid("3d");
+		vo.setMid("4d");
 		vo.setMpassword("gd");
 		vo.setMname("gd");
 		vo.setMtel("gd");
 		vo.setMbirth(LocalDate.now());
 		vo.setMemail("gd");
 		vo.setMgender("남");
-		vo.setMjoindate(LocalDate.now());
 		vo.setMrole("ADMIN");
 		vo.setMaddress1("서울시");
 		vo.setMaddress2("삼성동");

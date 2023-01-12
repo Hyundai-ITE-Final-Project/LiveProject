@@ -21,16 +21,16 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
 	<security:http auto-config="true" use-expressions="true">
 
-		<security:intercept-url pattern="/" access="permitAll" />
-		<security:intercept-url pattern="/mypage/**" access="hasRole('USER')" />
+		<security:intercept-url pattern="/*" access="permitAll" />
+		<!-- <security:intercept-url pattern="/mypage/**" access="hasRole('USER')" />
 		<security:intercept-url pattern="/cartAjax/**" access="hasRole('USER')" />
 		<security:intercept-url pattern="/cart/**" access="hasRole('USER')" />
 		<security:intercept-url pattern="/member/admin" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/magazine/makecoupon" access="hasRole('USER')" />
+		<security:intercept-url pattern="/magazine/makecoupon" access="hasRole('USER')" /> -->
 		
 		<security:form-login 
 			login-page="/login"
-			login-processing-url="/login"
+			login-processing-url="/loginProcess"
 			username-parameter="userId"
 			password-parameter="userPw"
 			authentication-failure-url="/login"
