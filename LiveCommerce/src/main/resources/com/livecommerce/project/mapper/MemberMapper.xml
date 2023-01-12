@@ -21,11 +21,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </select>
   
   <insert id="join">
-  	insert into member values (#{mid}, #{mpassword}, #{mname}, #{mtel}, #{mbirth}, #{memail}, #{mgender}, #{mjoindate}, 0, #{mrole}, #{maddress1}, #{maddress2})
+  	insert into member values (#{mid}, #{mpassword}, #{mname}, #{mtel}, #{mbirth}, #{memail}, #{mgender}, sysdate, 0, #{mrole}, #{maddress1}, #{maddress2}, #{mzipcode})
   </insert>
   
   <update id = "changeInfo">
-  	update member set mtel = #{mtel}, memail = #{memail}, maddress1 = #{maddress1}, maddress2 = #{maddress2} where mid = #{mid}
+  	update member set mtel = #{mtel}, memail = #{memail}, mzipcode = #{mzipcode}, maddress1 = #{maddress1}, maddress2 = #{maddress2} where mid = #{mid}
   </update>
   
   <select id = "findMyId" resultType = "String">

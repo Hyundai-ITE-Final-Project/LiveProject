@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.livecommerce.project.mapper.InquiryMapper">
+ 
+	 <select id="getList" resultType="com.livecommerce.project.vo.InquiryVO">
+	 <![CDATA[
+	 select * from inquiry where inq_id > 0
+	 ]]>
+	 </select>
+	 
+	 <insert id="insert">
+		insert into inquiry (inq_id, inq_type, inq_title, inq_content, member_mid)
+	 	values (seq_inquiry.nextval, #{inq_type}, #{inq_title}, #{inq_content}, #{member_mid})
+	 </insert>
+	 
+	 <insert id="insertSelectKey">
+	 	<selectKey keyProperty="inq_id" order="BEFORE"
+	 	resultType="long">
+	 	select seq_inquiry.nextval from dual
+	 	</selectKey>
+	 	
+	 	insert into inquiry (inq_id, inq_type, inq_title, inq_content, member_mid)
+	 	values (#{inq_id}, #{inq_type}, #{inq_title}, #{inq_content}, #{member_mid})
+	 </insert>
+	 
+	 <select id="read" resultType="com.livecommerce.project.vo.InquiryVO">
+	 	select * from inquiry where inq_id = #{inq_no}
+	 </select>
+	 
+	 
+	 <delete id="delete">
+	 	delete from inquiry where inq_id = #{inq_id}
+	 </delete>
+	 
+	 
+	 <update id="update">
+	 	update inquiry
+	 	set inq_type = #{inq_type},
+	 	inq_title = #{inq_title},
+	 	inq_content = #{inq_content},
+	 	member_mid = #{member_mid},
+	 	inq_updatedate = sysdate
+	 	where inq_id = #{inq_id}
+	 	
+	 </update>
+	 
+	 
+	 
+ 
+ 
+ 
+ </mapper>
+  

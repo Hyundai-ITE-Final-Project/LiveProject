@@ -13,6 +13,7 @@
  * </pre>
  */ -->
 <mapper namespace="com.livecommerce.project.mapper.ProductMapper">
+
 	<!-- 전체상품리스트 -->
 	<select id="getListWithPaging" resultType="com.livecommerce.project.vo.ProductVO" >
 	  <![CDATA[
@@ -30,5 +31,13 @@
 	<select id="getTotalCount" resultType="int">
 		select count(*)
 		from product
+	</select>
+	
+	<!-- 상품 상세조회 -->
+		<select id="productGetDetail"
+		resultType="com.livecommerce.project.vo.ProductVO">
+		select *
+		from product p
+		where p.pid=#{pid}
 	</select>
 </mapper>

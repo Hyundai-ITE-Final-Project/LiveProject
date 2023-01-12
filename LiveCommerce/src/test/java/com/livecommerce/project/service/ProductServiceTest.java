@@ -24,4 +24,9 @@ public class ProductServiceTest {
 		service.getList(new Criteria(2,10)).forEach(product -> log.info(product));
 	}
 	
+	@Test
+	public void testGetDetail() {
+		service.productGetDetail(1);
+	}
+	
 }

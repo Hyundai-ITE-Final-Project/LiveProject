@@ -12,27 +12,27 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 import lombok.extern.log4j.Log4j;
 /**
  * CustomAccessDeniedHandler
- * @author ½Å±â¿ø
+ * @author ì‹ ê¸°ì›
  * @since 2022.10.17
  * @version 1.0
  * 
  * <pre>
- * ¼öÁ¤ÀÏ              ¼öÁ¤ÀÚ                   ¼öÁ¤³»¿ë
+ * ìˆ˜ì •ì¼              ìˆ˜ì •ì                   ìˆ˜ì •ë‚´ìš©
  * ----------  --------    ---------------------------
- * 2022.10.17   ½Å±â¿ø              ÃÖÃÊ »ı¼º
+ * 2022.10.17   ì‹ ê¸°ì›              ìµœì´ˆ ìƒì„±
  * </pre>
  */
 
-//Á¢¼ÓÇÏ·Á´Â ÆäÀÌÁö¿¡ ±ÇÇÑÀÌ ¾øÀ¸¸é µ¿ÀÛÇÏ´Â ÀÌº¥Æ® ÇÚµé·¯
+//ì ‘ì†í•˜ë ¤ëŠ” í˜ì´ì§€ì— ê¶Œí•œì´ ì—†ìœ¼ë©´ ë™ì‘í•˜ëŠ” ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬
 @Log4j
 public class CustomAccessDeniedHandler implements AccessDeniedHandler{@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response,
 			AccessDeniedException accessDeniedException) throws IOException, ServletException {
 		log.error("Access Denied Handler");
 		
-		log.error("Redirect");
+		log.error("ÀÌ°Ç ÅäÅ«ÀÌ ¾ø°Å³ª ±ÇÇÑÀÌ ¾ø´Â°Å¾ß");
 		
-		response.sendRedirect("/member/accessError");
+		response.sendRedirect("/error");
 	}
 	
 }

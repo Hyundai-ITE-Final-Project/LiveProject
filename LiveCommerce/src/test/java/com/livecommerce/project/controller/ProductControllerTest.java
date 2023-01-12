@@ -39,4 +39,12 @@ public class ProductControllerTest {
     			.param("amount", "50"))
     			.andReturn().getModelAndView().getModelMap());
     }
+    
+    @Test
+    public void testProductDetail() throws Exception{
+    	log.info(mockMvc.perform(
+    			MockMvcRequestBuilders.get("/product/productDetail")
+    			.param("pid", "1"))
+    			.andReturn().getModelAndView().getModelMap());
+    }
 }

@@ -10,4 +10,6 @@ public interface ProductService {
 	public List<ProductVO> getList(Criteria cri);
 	// 전체상품갯수
 	public int getTotal(Criteria cri);
+	// 상품 상세보기
+    public ProductVO productGetDetail(int pid);
 }

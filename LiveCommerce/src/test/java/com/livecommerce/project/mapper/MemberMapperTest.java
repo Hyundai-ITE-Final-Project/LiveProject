@@ -16,7 +16,8 @@ import com.livecommerce.project.vo.MemberVO;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
+"file:src/main/webapp/WEB-INF/spring/security-context.xml" })
 @Log4j
 public class MemberMapperTest {
 
@@ -31,14 +32,13 @@ public class MemberMapperTest {
 	@Test
 	public void testJoin() {
 		MemberVO vo = new MemberVO();
-		vo.setMid("2d");
+		vo.setMid("8d");
 		vo.setMpassword("gd");
 		vo.setMname("gd");
 		vo.setMtel("gd");
 		vo.setMbirth(LocalDate.now());
 		vo.setMemail("gd");
 		vo.setMgender("남");
-		vo.setMjoindate(LocalDate.now());
 		vo.setMrole("ADMIN");
 		vo.setMaddress1("서울시");
 		vo.setMaddress2("삼성동");

@@ -8,7 +8,9 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>/WEB-INF/spring/root-context.xml
+					/WEB-INF/spring/security-context.xml
+					</param-value>
 	</context-param>
 	
 	<filter>
@@ -41,6 +43,8 @@
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		
+		
 		<multipart-config>
          <location>C:\\upload\\temp</location>
          <max-file-size>20971520</max-file-size><!-- 개당 파일 최대 크기 -->
@@ -50,7 +54,18 @@
 		
 		
 	</servlet>
-		
+	<!-- 시큐리티가 스프링 MVC에서 사용되기위한 필터 -->
+ 	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
