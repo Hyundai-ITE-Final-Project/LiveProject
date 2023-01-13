@@ -271,6 +271,10 @@
                                 data-montelena-goodscode="1552234801" onclick="">
                                 <em>구매하기</em>
                             </button>
+                            <form action="/order/gd" method="get" class="order_form">
+								<input type ="hidden" name = "orders[0].pid" value = "${productInfo.pid}">
+								<input type ="hidden" name = "orders[0].pcount" value = "">
+							</form>
                         </div>
                         <div class="tooltip_priceguide tooltip_layer">
                             <div class="arrowtop_tooltip">
@@ -511,7 +515,17 @@
             </div>
         </div>
     </div>
-
+    
+    <script>
+    /* 바로구매 버튼 */
+	$("#coreInsOrderBtn").on("click", function(){
+		let pCount = $(".num").val();
+		console.log(pCount)
+		$(".order_form").find("input[name='orders[0].pcount']").val(pCount);
+		$(".order_form").submit();
+	});
+    </script>
+    
     <script type="text/javascript" src="http://script.gmarket.co.kr/js/common/RviPdsService.js"></script>
     <!-- //footer -->
 
@@ -559,5 +573,7 @@
 
     <script type="text/javascript" src="http://script.gmarket.co.kr/pc/js/common/kr/ui/common.js" charset="UTF-8">
     </script>
+
+    
 </body>
 </html>
