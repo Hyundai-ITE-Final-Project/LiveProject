@@ -42,6 +42,45 @@
 
 <body class="vip-smiledelivery">
     <script type="text/javascript" src="http://script.gmarket.co.kr/js/common/rpm.js"></script>
+    <script>
+		// 제품 수량 변경
+		function change_qty(button){
+			console.log("버튼클릭");
+			 var min_qty = 1;
+			 var this_qty = $(".num").val()*1;
+			 var this_price = $("#price").val()*1;
+			 var max_qty = 10;
+			 if(button=='left'){
+				 console.log("수량감소");
+				 console.log("가격" + this_price);
+				 this_qty -= 1;
+				 if(this_qty < min_qty){
+					 this_qty = 1;
+				 }
+				 console.log(this_qty);
+			 }
+			 
+			 else if(button=='right'){
+				 console.log("수량증가");
+				 console.log("가격" + this_price);
+
+				 this_qty += 1;
+				 if(this_qty > max_qty){
+					 alert("재고가 부족합니다.");
+					 return;
+				 }
+				 console.log(this_qty);
+			 }
+			 
+			 var show_total_amount = this_price * this_qty;
+			 $(".num").val(this_qty);
+			 $("#coreTotalPrice").html(show_total_amount + "원");
+			 $("#wingTotalPrice").html(show_total_amount + "원");
+			 $(".sumPrice").html(show_total_amount + "원");
+	
+			 $("#pamount").val(this_qty);
+		}
+    </script>
     <div class="location-navi">
         <ul>
             <li>
@@ -230,16 +269,18 @@
                                     </div>
                                     <div class="choose_calc">
                                         <span class="num-ctrl uxequnatity-ctrl">
-                                            <button data-montelena-acode="200000509" class="bt_increase"><span
-                                                    class="blind">수량증가</span></button>
-                                            <button data-montelena-acode="200000509" class="bt_decrease"><span
-                                                    class="blind">수량감소</span></button>
-                                            <input data-montelena-acode="200000509" class="num" type="text" maxlength="3" title="수량"
-                                                value="1">
+                                        	<input type="hidden" id="pamount" name="pamount" value="1" />
+                                            <button data-montelena-acode="200000509" class="bt_increase" onclick="change_qty('right');">
+                                            	<span class="blind">수량증가</span>
+                                            </button>
+                                            <button data-montelena-acode="200000509" class="bt_decrease" onclick="change_qty('left');">
+                                            	<span class="blind">수량감소</span>
+                                            </button>
+                                            <input data-montelena-acode="200000509" id="txtqty" class="num" type="text" maxlength="3" title="수량" value="1">
                                         </span>
                                     </div>
                                     <div class="choose_result">
-                                        <strong class="price" data-goodscode="1552234801" data-index="0" data-originprice="32900"
+                                        <strong id="sumPrice" class="price sumPrice" data-goodscode="1552234801" data-index="0" data-originprice="32900"
                                             data-baseprice="27970" data-count="6" data-price="167820" data-std-price="32900"
                                             data-addprice="0" data-couponprice="0" data-hascoupon="false" data-free-count="0"
                                             data-bundle-discount-price="0">${productInfo.price}<span>원</span></strong>
@@ -449,16 +490,16 @@
                                         </div>
                                         <div class="choose_calc">
                                             <span class="num-ctrl uxequnatity-ctrl">
-                                                <button data-montelena-acode="200000531" class="bt_increase"><span
+                                                <button data-montelena-acode="200000531" class="bt_increase" onclick="change_qty('right');"><span
                                                         class="blind">수량증가</span></button>
-                                                <button data-montelena-acode="200000531" class="bt_decrease"><span
+                                                <button data-montelena-acode="200000531" class="bt_decrease" onclick="change_qty('left');"><span
                                                         class="blind">수량감소</span></button>
-                                                <input data-montelena-acode="200000531" class="num" type="text" maxlength="3" title="수량"
-                                                    value="1">
+                                                <input data-montelena-acode="200000531" class="num" id="txtqty" type="text" maxlength="3" title="수량" value="1">
                                             </span>                
                                         </div>
                                         <div class="choose_result">
-                                            <strong class="price" data-goodscode="1552234801" data-index="0" data-originprice="32900"
+                                        	<input  type="hidden" name="price" id="price" value="${productInfo.price}" readonly="readonly">
+                                            <strong id="sumPrice" class="price sumPrice" data-goodscode="1552234801" data-index="0" data-originprice="32900"
                                                 data-baseprice="27970" data-count="6" data-price="167820" data-std-price="32900"
                                                 data-addprice="0" data-couponprice="0" data-hascoupon="false" data-free-count="0"
                                                 data-bundle-discount-price="0">${productInfo.price}<span>원</span></strong>
