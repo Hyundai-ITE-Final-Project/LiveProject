@@ -8,10 +8,20 @@
 <meta charset="UTF-8">
 <title>Welcome BookMall</title>
 <link rel="stylesheet" href="/resources/css/order.css">
-<script
+<!-- <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script> -->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.js" 
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" 
+            crossorigin="anonymous"></script>
+            <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
+            <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+  
   <!-- 다음주소 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> 
 </head>
@@ -276,7 +286,7 @@
 					</div>
 					<!-- 버튼 영역 -->
 					<div class="total_info_btn_div">
-						<a class="order_btn">결제하기</a>
+						<a class="order_btn" onClick="requestPay()">결제하기</a>
 					</div>
 				</div>				
 				
@@ -302,6 +312,36 @@
 </div>	<!-- class="wrapper" -->
 
 <script>
+/*결제 api*/
+var IMP = window.IMP; 
+IMP.init("imp71146844");
+
+function requestPay() {
+     IMP.request_pay({
+        pg: "html5_inicis",
+        pay_method : 'card',
+        merchant_uid:'merchant_' + new Date().getTime(),
+        name : '당근 10kg',
+        amount : 100,
+        buyer_email : 'Iamport@chai.finance',
+        buyer_name : "${memberInfo.mid}",
+        buyer_tel : '010-1234-5678',
+        buyer_addr : '서울특별시 강남구 삼성동',
+        buyer_postcode : '123-456'
+    }, function (rsp) { // callback
+        if (rsp.success) {
+            alert(rsp.paid_amount+"결제 완료");
+            console.log(rsp);
+
+            
+        } else {
+            alert("실패");
+            console.log(rsp);
+            console.log(rsp.name);
+        }
+    }); 
+}
+
 $(document).ready(function(){
 	
 	/* 주문 조합정보란 최신화 */
