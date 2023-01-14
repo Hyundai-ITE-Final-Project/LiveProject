@@ -20,4 +20,7 @@ public class ProductVO {
 	private String img1;
 	private String img2;
 	private String img3;
+	//상품카테고리
+	private String lcategory;
+	private String scategory;
 }

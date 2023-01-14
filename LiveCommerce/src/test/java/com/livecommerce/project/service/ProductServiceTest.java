@@ -29,4 +29,9 @@ public class ProductServiceTest {
 		service.productGetDetail(1);
 	}
 	
+	@Test
+	public void testGetCategory() {
+        int result = service.getCategoryTotal("과일과채소", "산들내음");
+        log.info("페이징 시 필요한 총 상품 개수 : " + result);
+	}
 }
