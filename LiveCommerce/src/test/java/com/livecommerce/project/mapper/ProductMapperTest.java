@@ -35,4 +35,19 @@ public class ProductMapperTest {
 		ProductVO product = mapper.productGetDetail(1);
 		log.info(product);
 	}
+	
+	@Test
+	public void testCategory() {
+		Criteria cri = new Criteria();
+		cri.setPageNum(1);
+		cri.setAmount(10);
+		String lcategory = "과일과채소";
+		String scategory = "계절과일";
+		
+		List<ProductVO> result = mapper.getListWithCategory(cri, lcategory, scategory);
+		
+		for(ProductVO vo : result) {
+			log.info("브랜드별 상품리스트 : " + vo);
+		}
+	}
 }
