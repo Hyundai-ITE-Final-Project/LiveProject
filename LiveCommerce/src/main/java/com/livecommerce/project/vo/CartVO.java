@@ -21,17 +21,20 @@ public class CartVO {
 	    //상품가격
 	    private int price;
 	    
-	    private double pdiscount;
+	    //private double pdiscount;
 	    
 	    
 	    //장바구니에서 주문페이지로 넘겨줄 값들
 	    //상품판매가격
 	    private int saleprice;
-	    //총 상품가격??
+	    //총 상품가격
 	    private int totalprice;
+	    //총 포인트
+	    private int totalpoint;
 	    
 	    public void initSaleTotal() {
 			this.saleprice = price;
 			this.totalprice = this.saleprice*this.p_quantity;
+			this.totalpoint = (int)(Math.floor(this.totalprice *0.01)); 
 		}
 }
