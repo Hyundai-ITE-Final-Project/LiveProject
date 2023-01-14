@@ -565,6 +565,38 @@
 		$(".order_form").find("input[name='orders[0].pcount']").val(pCount);
 		$(".order_form").submit();
 	});
+    
+	// 서버로 전송할 데이터(상품상세페이지 -> 장바구니)
+	// 밑에 form data에다가 member_mid : '${member.mid}'로 바꿔줘야함 밑에는 테스트
+	const form = {
+			member_mid : 'gd',
+			product_pid : '${productInfo.pid}',
+			p_quantity : ''
+	}
+	//장바구니 추가 버튼
+	$("#coreAddCartBtn").on("click", function(e){
+		form.p_quantity = $(".num").val();
+		$.ajax({
+			url: '/cart/add',
+			type: 'POST',
+			data: form,
+			success: function(result){
+				cartAlert(result);
+			}
+		})
+	});
+	
+	function cartAlert(result){
+		if(result == '0'){
+			alert("장바구니에 추가를 하지 못하였습니다.");
+		} else if(result == '1'){
+			alert("장바구니에 추가되었습니다.");
+		} else if(result == '2'){
+			alert("장바구니에 이미 추가되어져 있습니다.");
+		} else if(result == '5'){
+			alert("로그인이 필요합니다.");	
+		}
+	}
     </script>
     
     <script type="text/javascript" src="http://script.gmarket.co.kr/js/common/RviPdsService.js"></script>
