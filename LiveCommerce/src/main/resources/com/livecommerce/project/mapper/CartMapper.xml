@@ -30,7 +30,7 @@
 	<!-- 카트 목록 -->
 	<select id="getCart" resultType="com.livecommerce.project.vo.CartVO">
 	
-		select a.cart_id, a.member_mid, a.product_pid, a.p_quantity, b.pname, b.price
+		select a.cart_id, a.member_mid, a.product_pid, a.p_quantity, b.pname, b.price, b.img1
   		from cart a left outer join product b on a.product_pid = b.pid
 		where member_mid = #{member_mid}
         

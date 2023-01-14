@@ -46,4 +46,23 @@ public class CartController {
 		
 		return "/cart";
 	}
+	
+	// 장바구니 수량 수정 
+	@PostMapping("/cart/update")
+	public String updateCartPOST(CartVO cart) {
+		
+		cartService.modifyCount(cart);
+		
+		return "redirect:/cart/" + cart.getMember_mid();
+		
+	}
+	
+	//장바구니 삭제
+	@PostMapping("cart/delete")
+	public String deleteCartPOST(CartVO cart) {
+		cartService.deleteCart(cart.getCart_id());
+		
+		return "redirect:/cart/" + cart.getMember_mid();
+	}
+	
 }
