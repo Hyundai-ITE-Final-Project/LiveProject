@@ -245,10 +245,10 @@
 				<input type="hidden" name="cart_id" class="delete_cartId">
 				<input type="hidden" name="member_mid" value="gd">
 			</form>		
-<%--			<!-- 주문 form -->
-			<form action="/order/${member.memberId}" method="get" class="order_form">
+			<!-- 주문 form -->
+			<form action="/order/gd" method="get" class="order_form">
 
-			</form>		 --%>		
+			</form>		 		
 						
 			
 		</div>
@@ -362,7 +362,7 @@ $(".delete_btn").on("click", function(e){
 });
 	
 // 주문 페이지 이동 
-/* $(".order_btn").on("click", function(){
+ $(".order_btn").on("click", function(){
 	
 	let form_contents ='';
 	let orderNumber = 0;
@@ -371,14 +371,14 @@ $(".delete_btn").on("click", function(e){
 		
 		if($(element).find(".individual_cart_checkbox").is(":checked") === true){	//체크여부
 			
-			let bookId = $(element).find(".individual_bookId_input").val();
-			let bookCount = $(element).find(".individual_bookCount_input").val();
+			let pid = $(element).find(".individual_product_pid_input").val();
+			let pcount = $(element).find(".individual_p_quantity_input").val();
 			
-			let bookId_input = "<input name='orders[" + orderNumber + "].bookId' type='hidden' value='" + bookId + "'>";
-			form_contents += bookId_input;
+			let pid_input = "<input name='orders[" + orderNumber + "].pid' type='hidden' value='" + pid + "'>";
+			form_contents += pid_input;
 			
-			let bookCount_input = "<input name='orders[" + orderNumber + "].bookCount' type='hidden' value='" + bookCount + "'>";
-			form_contents += bookCount_input;
+			let pcount_input = "<input name='orders[" + orderNumber + "].pcount' type='hidden' value='" + pcount + "'>";
+			form_contents += pcount_input;
 			
 			orderNumber += 1;
 			
@@ -388,7 +388,7 @@ $(".delete_btn").on("click", function(e){
 	$(".order_form").html(form_contents);
 	$(".order_form").submit();
 	
-}); */
+}); 
 		
 
 </script>
