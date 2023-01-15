@@ -87,35 +87,24 @@
                 <a href="#" data-montelena-acode="200000474" onclick="">홈</a>
             </li>
             <li>
-                <a href="#" data-montelena-acode="200000475" onclick="#">
-                    1번카테고리
-                </a>
+                <a href="#" data-montelena-acode="200000475" onclick=""> ${productInfo.lcategory}</a>
                 <div class="loc-catewrap uxerollover">
-                    <a href="#loc-cate1" aria-haspopup="menu" aria-expanded="false" aria-controls="loc-cate1" class="bt_view-ctrl">
-                        열기
-                    </a>
+                    <a href="#loc-cate1" aria-haspopup="menu" aria-expanded="false" aria-controls="loc-cate1" class="bt_view-ctrl">열기</a>
                     <span id="loc-cate1" class="layer_loc-cate" role="menu">
-                        /*c태그 사용해서 대분류 카테고리*/
-                        <a href="#"
-                            data-montelena-acode="200000475"
-                            onclick="">
-                            빠른장보기
-                        </a>
-                    </span>
-                </div>
-            </li>
-            <li class="on">
-                <a href="#" data-montelena-acode="200000476" onclick="">
-                    2번 카테고리
-                </a>
-                <div class="loc-catewrap uxerollover">
-                    <a href="#loc-cate2" aria-haspopup="menu" aria-expanded="false" aria-controls="loc-cate2"
-                        class="bt_view-ctrl">열기</a>
-                    <span id="loc-cate2" class="layer_loc-cate" role="menu">
-                        /*c태그 사용해서 중분류 카테고리*/
-                        <a href="#"
-                            data-montelena-acode="200000476"
-                            onclick="">즉석/간편식품</a>
+                        <a href="/product/listCategory?lcategory=과일과채소&scategory=" data-montelena-acode="200000475" onclick=""> 과일과 채소</a>
+                        <a href="/product/listCategory?lcategory=곡물과견과&scategory=" data-montelena-acode="200000475" onclick=""> 곡물과 견과</a>
+                        <a href="/product/listCategory?lcategory=생선과해산물,건어물&scategory=" data-montelena-acode="200000475" onclick=""> 생선과 해산물,건어물</a>
+                        <a href="/product/listCategory?lcategory=육류와달걀&scategory=" data-montelena-acode="200000475" onclick=""> 육류와 달걀</a>
+                        <a href="/product/listCategory?lcategory=밥과국,면&scategory=" data-montelena-acode="200000475" onclick=""> 밥과 국,면</a>
+                        <a href="/product/listCategory?lcategory=밑반찬과간식&scategory=" data-montelena-acode="200000475" onclick=""> 밑반찬과 간식</a>
+                        <a href="/product/listCategory?lcategory=양념과오일,통조림&scategory=" data-montelena-acode="200000475" onclick=""> 양념과 오일,통조림</a>
+                        <a href="/product/listCategory?lcategory=베이커리와치즈&scategory=" data-montelena-acode="200000475" onclick=""> 베이커리와 치즈</a>
+                        <a href="/product/listCategory?lcategory=과자와초콜릿,캔디&scategory=" data-montelena-acode="200000475" onclick=""> 과자와 초콜릿,캔디</a>
+                        <a href="/product/listCategory?lcategory=물과우유,커피,음료&scategory=" data-montelena-acode="200000475" onclick=""> 물과 우유,커피,음료</a>
+                        <a href="/product/listCategory?lcategory=홍삼과비타민,영양제&scategory=" data-montelena-acode="200000475" onclick=""> 홍삼과 비타민,영양제</a>
+                        <a href="/product/listCategory?lcategory=생활용품&scategory=" data-montelena-acode="200000475" onclick=""> 생활용품</a>
+                        <a href="/product/listCategory?lcategory=리빙,라이프스타일&scategory=" data-montelena-acode="200000475" onclick=""> 리빙,라이프스타일</a>
+                        <a href="/product/listCategory?lcategory=반려동물사료와간식&scategory=" data-montelena-acode="200000475" onclick=""> 반려동물 사료와 간식</a>
                     </span>
                 </div>
             </li>
@@ -357,86 +346,62 @@
                         <div class="box__detail-view js-toggle-content">
                             <!-- 상품 상세 -->
                             <div class="vip-detailarea_seller" id="skip-item-detail">
-                                <iframe id="detail1" src="${productInfo.img2}" onload="" frameborder="0" width="860" height="8054" scrolling="NO"></iframe>
-                            </div>
-                            <div class="box__detail-more">
-                                <button type="button" class="button__detail-more js-toggle-button"
-                                    data-montelena-acode="200003594">상세정보 <span>더보기</span></button>
+                                <iframe id="detail1" src="${productInfo.img2}" onload="" frameborder="0" width="860" height="700" scrolling="NO"></iframe>
+                                <iframe id="detail1" src="${productInfo.img3}" onload="" frameborder="0" width="860" height="700" scrolling="NO"></iframe>
                             </div>
                         </div>
                     </div>
                     <div id="vip-tab_exchange" class="vip-tabcontent vip-tabcontent_lt">
                         <div class="box__exchange-guide">
-                            <p class="sprite__vip2x--before text__message">전자상거래 등에서의 소비자보호에 관한 법률에 의한 반품 규정이 판매자가 지정한
-                                반품 조건보다 우선합니다.</p>
                             <div class="box__inner">
-                                <h3 class="text__exchange-title">교환/반품 정보</h3>
+                                <h3 class="text__exchange-title">주문취소 안내</h3>
                                 <ul class="list__exchange-data">
-                                    <li class="list-item"><span class="text__strong">반품배송비(편도)</span> : 2,500원 (최초 배송비
-                                        미결제시 5,000원 부과)</li>
-                                    <li class="list-item"><span class="text__strong">교환배송비(왕복)</span> : 5,000원</li>
-                                    <li class="list-item"><span class="text__strong">보내실곳</span> : 18465 경기도 화성시 동탄물류로
-                                        48 (신동) 화성동탄물류단지 B블럭 3층 3L 구역 통합반품센터</li>
-                                    <li class="list-item">단, 교환/반품 비용은 상품 및 교환/반품 사유에 따라 변경될 수 있으므로 교환/반품 신청 화면 확인
-                                        부탁드립니다.</li>
-                                </ul>
-                            </div>
-                            <div class="box__inner">
-                                <h3 class="text__exchange-title">교환/반품 사유에 따른 요청 가능 기간</h3>
-                                <ul class="list__exchange-data">
-                                    <li class="list-item">구매자 단순 변심 : 상품 수령 후 7일 이내(구매자 반품 배송비 부담)</li>
-                                    <li class="list-item">표시/광고와 상이, 계약 내용과 다르게 이행된 경우 :<br>상품 수령 후 3개월 이내 혹은 표시/광고와 다른
-                                        사실을 안 날로부터 30일 이내(판매자 반품 배송비 부담)</li>
-                                </ul>
-                            </div>
-                            <div class="box__inner">
-                                <h3 class="text__exchange-title">교환/반품 불가한 경우</h3>
-                                <ul class="list__exchange-data list__numbering">
-                                    <li class="list-item">교환/반품 요청이 기간이 지난 경우</li>
-                                    <li class="list-item">소비자의 책임 있는 사유로 상품 등이 분실/파손/훼손된 경우 (단, 확인을 위한 포장 훼손 제외)</li>
-                                    <li class="list-item">소비자의 사용/소비에 의해 상품 등의 가치가 현저히 감소한 경우 (예 : 식품, 화장품, 향수, 음반)</li>
-                                    <li class="list-item">제품을 설치 또는 장착하였거나 개통한 경우 (예 : 전자제품, 컴퓨터, 휴대폰 등)</li>
-                                    <li class="list-item">시간의 경과에 의해 재판매가 곤란할 정도로 상품 등의 가치가 현저히 감소한 경우 (신선식품과 같이 유통기한이
-                                        정해져 있는 상품)</li>
-                                    <li class="list-item">복제가 가능한 상품 등의 포장을 훼손한 경우 (CD/DVD/GAME/BOOK의 경우 포장 개봉 시)</li>
-                                    <li class="list-item">주문제작 상품 중 상품제작에 들어간 경우 (주문접수 후 개별생산, 맞춤 제작 등)</li>
-                                </ul>
-                            </div>
-                            <div class="box__inner">
-                                <h3 class="text__exchange-title">거래 조건에 대한 정보</h3>
-                                <ul class="list__exchange-data list__numbering">
-                                    <li class="list-item">소화물 택배의 배송은 발송일로부터 1~2 영업일이 소요되나,<br>지역/대형 화물/설치/예약/발송지체 등의
-                                        특이사항에 따라 배송기간은 달라질 수 있습니다.</li>
-                                    <li class="list-item">‘전자상거래등에서의소비자보호에관한법률’이 정하는 바에 따라 소비자의 청약철회 후 판매자가 재화 등을 반환 받은
-                                        날로부터<br>3영업일 이내에&nbsp;지급받은 대금의 환급을 정당한 사유없이 지연하는 때에는 소비자는 지연기간에 대해서 전상법 시행령으로
-                                        정하는 이율을<br>곱하여 산정한 지연이자(지연배상금)을 신청할 수 있습니다.</li>
-                                </ul>
-                            </div>
-                            <div class="box__inner">
-                                <h3 class="text__exchange-title">판매자 정보</h3>
-                                <ul class="list__exchange-data">
-                                    <li class="list-item">상호명 : <span class="text__deco">로지트코리아 유한회사</span></li>
-                                    <li class="list-item">대표자 : <span class="text__deco">김성종</span></li>
-                                    <li class="list-item">연락처 : <span class="text__deco">070-4077-4646</span></li>
-                                    <li class="list-item">통신판매업자번호 : <span class="text__deco">2021-서울강남-05667</span>
+                                    <li class="list-item">
+                                    	결제완료 이후 주문의 상태가 "상품준비중"으로 변경될 경우, 취소가 제한됩니다.
                                     </li>
-                                    <li class="list-item">사업자 등록번호 : <span class="text__deco">649-86-00449</span></li>
-                                    <li class="list-item">사업장소재지 : <span class="text__deco">서울특별시 강남구 테헤란로13길 18,
-                                            4층(역삼동, 우진빌딩)</span></li>
-                                    <li class="list-item">E-mail : <span
-                                            class="text__deco">secondbox@logitkorea.com</span></li>
-
+                                    <li class="list-item">
+                                    	비회원은 로그인>비회원주문조회에서 주문을 취소하실 수 있습니다.
+                                    </li>
+                                    <li class="list-item">
+                                    	일부 예약배송, 정기배송, 정기구독 등의 예약상품은 배송 3~4일 전까지만 취소하실 수 있습니다.
+                                    </li>
+                                    <li class="list-item">
+                                    	주문상품의 부분취소는 불가능합니다.
+                                    </li>
+                                    <li class="list-item">
+                                    	카드환불은 카드사 정책에 따르며, 취소 시 사용하신 H.Point, H.Bonus, 쿠폰 등은 모두 복원됩니다. 단, 취소시 사용기한이 지난 혜택은 복원되지 않습니다.
+                                    </li>
                                 </ul>
                             </div>
                             <div class="box__inner">
-                                <h3 class="text__exchange-title">구매 안전 서비스<span class="text__title-sub-info">결제대금예치업 등록
-                                        02-006-00008</span><a
-                                        href="http://www.fss.or.kr/kr/bbs/iframe/view.jsp?bbsid=1207404527596&amp;idx=400000000336&amp;num=1"
-                                        target="_black" class="link__sign-check">서비스 가입사실 확인</a></h3>
+                                <h3 class="text__exchange-title">교환/반품안내</h3>
                                 <ul class="list__exchange-data">
-                                    <li class="list-item">㈜지마켓은 전자금융거래법에 따라 결제대금예치업을 운영할 수 있는 전자금융업자로 금융위원회에
-                                        등록되었으며,<br>본 판매자는 구매금액, 결제수단에 관계없이 모든 거래에 대해 자동적으로 ㈜지마켓이 제공하는 구매안전서비스를 적용하고
-                                        있습니다.</li>
+                                    <li class="list-item"><strong>#상품설명에 배송/교확/반품/취소 관련 안내가 기재된 경우 다음 안내사항보다 우선적용됩니다.</strong></li>
+                                    <li class="list-item">
+                                    	상품에 문제가 있는 경우<br>
+                                    	: 냉장/냉동상품은 제품수령 후 최대 2일(48시간) 내,<br>
+                                    	상품을 촬용한 사진과 함꼐 1:1문의 게시판에 등록하시면,<br>
+                                    	담당자 확인 후 교환/반품이 진행됩니다.<br>
+                                    	이때 발생하는 모든 배송비는 현대식품관 투홈이 부담합니다.
+                                    </li>
+                                    <li class="list-item">
+                                    	단순변심/주문착오의 경우<br>
+                                    	: 냉장.냉동상품은 교환/반품이 불가능합니다.<br>
+                                    	: 상온상품(유통기한 30일 이상)및 기타상품은 제품수령 후<br>
+                                    	최대 7일 이내에 사진과 함께 1:1문의 게시판에 등록하시면, 담당자 확인 후 교환/반품이 진행됩니다.<br>
+                                    	(교환:왕복,반품:편도)는 고객님께서 부담하셔야 합니다.
+                                    </li>
+                                    <li class="list-item">
+                                    	교환/반품이 불가한 경우<br>
+                                    	: 교환/반품 가능기간을 초과하였을 경우<br>
+                                    	: 상품 및 구성품을 사용하였거나 부주의로 인하여 상품이 훼손(파손/고장/오염 등) 된 경우<br>
+                                    	: 상품 사용 시 상품설명에 기재된 주의사항을 지키지 않는 경우<br>
+                                    	: 상품택을 파손하였거나 분실했을 경우<br>
+                                    	: 배송 후 설치완료된 상품인 경우<br>
+                                    	: 기타'전자상거래 등에서의 소비자보호에 관한 법률'이<br>
+                                    	정하는 청약철회 제한사유에 해당되는 경우
+                                    	<br><br>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

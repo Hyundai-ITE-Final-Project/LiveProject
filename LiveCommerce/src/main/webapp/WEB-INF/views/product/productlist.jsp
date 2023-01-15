@@ -25,9 +25,6 @@
 				        	var cate = '/product/listCategory?lcategory='+lcategory+'&scategory='+scategory;
 				        	
 				        	location.href = cate;
-				        	console.log(cate);
-				        	$('input[name=lcategory]').attr('value',lcategory);
-				        	$('input[name=scategory]').attr('value',scategory);
 				        }
 				        
 				        $(document).ready(
