@@ -14,6 +14,7 @@ import com.livecommerce.project.service.MemberService;
 import com.livecommerce.project.service.OrderService;
 import com.livecommerce.project.vo.MemberVO;
 import com.livecommerce.project.vo.OrderPageVO;
+import com.livecommerce.project.vo.OrderVO;
 
 
 
@@ -34,11 +35,11 @@ public class OrderController {
 		return "/order";
 	}	
 	
-//	@PostMapping("/order")
-//	public String orderPagePost(OrderVO ov, HttpServletRequest request) {
-//		
-//		System.out.println(ov);		
-//		
+	@PostMapping("/order")
+	public void orderPagePost(OrderVO ov, HttpServletRequest request) {
+		
+		System.out.println(ov);		
+		
 //		orderService.order(ov);
 //		
 //		MemberVO member = new MemberVO();
@@ -57,6 +58,6 @@ public class OrderController {
 //		}
 //		
 //		return "redirect:/main";
-//	}	
+	}	
 	
 }

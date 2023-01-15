@@ -286,25 +286,25 @@
 					</div>
 					<!-- 버튼 영역 -->
 					<div class="total_info_btn_div">
-						<a class="order_btn" onClick="requestPay()">결제하기</a>
+						<a class="order_btn">결제하기</a>
 					</div>
 				</div>				
 				
 			</div>			
 
-<%--			<!-- 주문 요청 form -->
-			<form class="order_form" action="/order" method="post">
+			<!-- 주문 요청 form -->
+ 			<form class="order_form" action="/order" method="post">
 				<!-- 주문자 회원번호 -->
-				<input name="memberId" value="${memberInfo.memberId}" type="hidden">
+				<input name="member_mid" value="${memberInfo.mid}" type="hidden">
 				<!-- 주소록 & 받는이-->
-				<input name="addressee" type="hidden">
-				<input name="memberAddr1" type="hidden">
-				<input name="memberAddr2" type="hidden">
-				<input name="memberAddr3" type="hidden">
+				<input name="orderer" type="hidden">
+				<input name="mzipcode" type="hidden">
+				<input name="maddress1" type="hidden">
+				<input name="maddress2" type="hidden">
 				<!-- 사용 포인트 -->
 				<input name="usePoint" type="hidden">
 				<!-- 상품 정보 -->
-			</form>--%>
+			</form> 
 			
 		</div> <!-- class="content_area" -->
 		
@@ -312,53 +312,6 @@
 </div>	<!-- class="wrapper" -->
 
 <script>
-let oid = "${member.mid}" + "_" + year + month + day + hour + minites + seconds;
-let ozipcode = parseInt($("#zipcode").val());
-let oaddress1 = $("#address1").val();
-let oaddress2 = $("#address2").val();
-let oreceiver = $("#receiver").val();
-let hp_num1 = $("select[id='hp']").val();
-let hp_num2 = $("#hp_num2").val();
-let hp_num3 = $("#hp_num3").val();
-let ph_num1 = $("select[id='ph']").val();
-let ph_num2 = $("#ph_num2").val();
-let ph_num3 = $("#ph_num3").val();
-let omessage = $("#omessage").val();
-let strpayment = "inicis";
-let omilege = parseInt("${realMilege}");
-let odiscounted = 0;
-let ousedcoupondetail = "";
-/*결제 api*/
-var IMP = window.IMP; 
-IMP.init("imp71146844");
-
-function requestPay() {
-     IMP.request_pay({
-        pg: "html5_inicis", //이니시스 결제 시스템을 하기 위한 부분 고정시켜야합니다
-        pay_method : 'card', //주문 아이템 oid값
-        merchant_uid:'merchant_' + new Date().getTime(),	//주문테이블id //주문 아이템 oid값
-        name : '당근 10kg',	//주문한거 이름
-        amount : '', //가격
-        buyer_email : '${memberInfo.email}', //산사람 이메일 
-        buyer_name : '${memberInfo.mid}', //산사람 이름
-        buyer_tel : '${memberInfo.mtel}', //산사람 번호
-        buyer_addr : '서울특별시 강남구 삼성동', //산사람 주소
-        buyer_postcode : '123-456' //산사람 주소코드
-    }, function (rsp) { // callback
-        if (rsp.success) {
-        	//결제 성공에 대한 부분
-            alert(rsp.paid_amount+"결제 완료");
-            console.log(rsp);
-
-            
-        } else {
-        	//결제 실패에 대한 부분
-            alert("실패");
-            console.log(rsp);
-            console.log(rsp.name);
-        }
-    }); 
-}
 
 $(document).ready(function(){
 	
@@ -547,6 +500,37 @@ function setTotalInfo(){
 	
 }
 
+/* 주문 요청 */
+ $(".order_btn").on("click", function(){
+	/* 주소 정보 & 받는이*/
+	$(".addressInfo_input_div").each(function(i, obj){
+		if($(obj).find(".selectAddress").val() === 'T'){
+			$("input[name='member_mid']").val($(obj).find(".addressee_input").val());
+			$("input[name='mzipcode']").val($(obj).find(".zipcode_input").val());
+			$("input[name='maddress1']").val($(obj).find(".address1_input").val());
+			$("input[name='maddress2']").val($(obj).find(".address2_input").val());
+		}
+	});	
+	
+	/* 사용 포인트 */
+	$("input[name='usePoint']").val($(".order_point_input").val());	
+	
+	/* 상품정보 */
+	let form_contents = ''; 
+	$(".goods_table_price_td").each(function(index, element){
+		let pid = $(element).find(".individual_pid_input").val();
+		let pcount = $(element).find(".individual_pcount_input").val();
+		let pid_input = "<input name='orders[" + index + "].pid' type='hidden' value='" + pid + "'>";
+		form_contents += pid_input;
+		let pcount_input = "<input name='orders[" + index + "].olquantity' type='hidden' value='" + pcount + "'>";
+		form_contents += pcount_input;
+	});	
+	$(".order_form").append(form_contents);	
+	
+	/* 서버 전송 */
+	$(".order_form").submit();	
+	
+});
 </script>
 
 </body>
