@@ -312,29 +312,47 @@
 </div>	<!-- class="wrapper" -->
 
 <script>
+let oid = "${member.mid}" + "_" + year + month + day + hour + minites + seconds;
+let ozipcode = parseInt($("#zipcode").val());
+let oaddress1 = $("#address1").val();
+let oaddress2 = $("#address2").val();
+let oreceiver = $("#receiver").val();
+let hp_num1 = $("select[id='hp']").val();
+let hp_num2 = $("#hp_num2").val();
+let hp_num3 = $("#hp_num3").val();
+let ph_num1 = $("select[id='ph']").val();
+let ph_num2 = $("#ph_num2").val();
+let ph_num3 = $("#ph_num3").val();
+let omessage = $("#omessage").val();
+let strpayment = "inicis";
+let omilege = parseInt("${realMilege}");
+let odiscounted = 0;
+let ousedcoupondetail = "";
 /*결제 api*/
 var IMP = window.IMP; 
 IMP.init("imp71146844");
 
 function requestPay() {
      IMP.request_pay({
-        pg: "html5_inicis",
-        pay_method : 'card',
-        merchant_uid:'merchant_' + new Date().getTime(),
-        name : '당근 10kg',
-        amount : 100,
-        buyer_email : 'Iamport@chai.finance',
-        buyer_name : "${memberInfo.mid}",
-        buyer_tel : '010-1234-5678',
-        buyer_addr : '서울특별시 강남구 삼성동',
-        buyer_postcode : '123-456'
+        pg: "html5_inicis", //이니시스 결제 시스템을 하기 위한 부분 고정시켜야합니다
+        pay_method : 'card', //주문 아이템 oid값
+        merchant_uid:'merchant_' + new Date().getTime(),	//주문테이블id //주문 아이템 oid값
+        name : '당근 10kg',	//주문한거 이름
+        amount : '', //가격
+        buyer_email : '${memberInfo.email}', //산사람 이메일 
+        buyer_name : '${memberInfo.mid}', //산사람 이름
+        buyer_tel : '${memberInfo.mtel}', //산사람 번호
+        buyer_addr : '서울특별시 강남구 삼성동', //산사람 주소
+        buyer_postcode : '123-456' //산사람 주소코드
     }, function (rsp) { // callback
         if (rsp.success) {
+        	//결제 성공에 대한 부분
             alert(rsp.paid_amount+"결제 완료");
             console.log(rsp);
 
             
         } else {
+        	//결제 실패에 대한 부분
             alert("실패");
             console.log(rsp);
             console.log(rsp.name);
