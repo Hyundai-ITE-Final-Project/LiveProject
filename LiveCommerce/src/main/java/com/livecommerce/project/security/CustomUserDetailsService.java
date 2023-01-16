@@ -15,18 +15,18 @@ import com.livecommerce.project.security.CustomMember;
 
 import lombok.extern.log4j.Log4j;
 /**
- * @author ½Å±â¿ø
+ * @author ì‹ ê¸°ì›
  * @since 2022.10.18
  * @version 1.0
  * 
  * <pre>
- * ¼öÁ¤ÀÏ                     ¼öÁ¤ÀÚ                   ¼öÁ¤³»¿ë
+ * ìˆ˜ì •ì¼                     ìˆ˜ì •ì                   ìˆ˜ì •ë‚´ìš©
  * ----------  --------    ---------------------------
- * 2022.10.18     ½Å±â¿ø              ÃÖÃÊ »ı¼º
+ * 2022.10.18     ì‹ ê¸°ì›              ìµœì´ˆ ìƒì„±
  * </pre>
  */
 
-//DB¿¡¼­ VO°´Ã¼ÀÇ Á¤º¸¸¦ °¡Á®¿Í »ç¿ëÀÚ Á¤º¸¸¦ ´ã´Â UserDetails°´Ã¼·Î ¹Ù²Ù´Â ¼­ºñ½º
+//DBì—ì„œ VOê°ì²´ì˜ ì •ë³´ë¥¼ ê°€ì ¸ì™€ ì‚¬ìš©ì ì •ë³´ë¥¼ ë‹´ëŠ” UserDetailsê°ì²´ë¡œ ë°”ê¾¸ëŠ” ì„œë¹„ìŠ¤
 @Log4j
 public class CustomUserDetailsService implements UserDetailsService {
 
@@ -39,12 +39,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 		
 		
 		MemberVO vo = mapper.findById(username);
-		//VOÀÇ ¾ÆÀÌµğ, ÆĞ½º¿öµå, ±ÇÇÑ Á¤º¸¸¦ °¡Á®¿Í UserDetails °´Ã¼·Î ´ã¾ÆÁØ´Ù
 		CustomMember user = new CustomMember(vo.getMid(), vo.getMpassword(), authorities(vo));
 		return user;
 	}
 	
-	// UserDetailsÀÇ ±ÇÇÑÀÇ ¹İÈ¯ °ª°ú VOÀÇ mroleÀ» ÀÏÄ¡ ½ÃÅ°±â À§ÇÑ ¸Ş¼Òµå
+	// UserDetailsì˜ ê¶Œí•œì˜ ë°˜í™˜ ê°’ê³¼ VOì˜ mroleì„ ì¼ì¹˜ ì‹œí‚¤ê¸° ìœ„í•œ ë©”ì†Œë“œ
 	private static Collection authorities(MemberVO memebrVO){
         Collection authorities = new ArrayList<>();
         if(memebrVO.getMrole().equals("ADMIN")){
