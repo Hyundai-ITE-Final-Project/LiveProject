@@ -5,31 +5,34 @@ import org.apache.ibatis.annotations.Param;
 
 import com.livecommerce.project.vo.MemberVO;
 /**
- * @author ½Å±â¿ø
+ * @author ì‹ ê¸°ì›
  * @since 2023.01.11
  * @version 1.0
  * 
  * <pre>
- * ¼öÁ¤ÀÏ              	¼öÁ¤ÀÚ                   ¼öÁ¤³»¿ë
+ * ìˆ˜ì •ì¼              	ìˆ˜ì •ì                   ìˆ˜ì •ë‚´ìš©
  * ----------  --------    ---------------------------
- * 2023.01.11	½Å±â¿ø		ÃÖÃÊ »ı¼º, Á¤º¸Á¶È¸, ·Î±×ÀÎ, Á¤º¸ ¼öÁ¤
+ * 2023.01.11	ì‹ ê¸°ì›		ìµœì´ˆ ìƒì„±, ì •ë³´ì¡°íšŒ, ë¡œê·¸ì¸, ì •ë³´ ìˆ˜ì •
  * </pre>
  */
 @Mapper
 public interface MemberMapper {
 	
-	//ID·Î È¸¿ø Á¤º¸ Á¶È¸
+	//IDë¡œ íšŒì› ì •ë³´ ì¡°íšŒ
 	public MemberVO findById(String mid);
 	
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	public int join(MemberVO memberVO);
 	
-	//È¸¿ø Á¤º¸ º¯°æ
+	//íšŒì› ì •ë³´ ë³€ê²½
 	public int changeInfo(MemberVO memberVO);
 	
-	//¾ÆÀÌµğ Ã£±â
+	//ì•„ì´ë”” ì°¾ê¸°
 	public String findMyId(@Param("mname") String mname, @Param("mtel") String mtel);
 	
-	//ºñ¹Ğ¹øÈ£ Ã£±â
+	//ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°
 	public String findMyPassword(@Param("mid") String mid, @Param("mname") String mname, @Param("mtel") String mtel);
+	
+	/* ì£¼ë¬¸ì ì£¼ì†Œ ì •ë³´ */
+	public MemberVO getMemberInfo(String mid);
 }

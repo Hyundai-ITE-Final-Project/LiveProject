@@ -3,26 +3,29 @@ package com.livecommerce.project.service;
 import com.livecommerce.project.vo.MemberVO;
 
 /**
- * @author ½Å±â¿ø
+ * @author ì‹ ê¸°ì›
  * @since 2023.01.12
  * @version 1.0
  * 
  * <pre>
- * ¼öÁ¤ÀÏ              ¼öÁ¤ÀÚ                   ¼öÁ¤³»¿ë
+ * ìˆ˜ì •ì¼              ìˆ˜ì •ì                   ìˆ˜ì •ë‚´ìš©
  * ----------  --------    ---------------------------
- * 2023.01.12     ½Å±â¿ø              ÃÖÃÊ »ı¼º
+ * 2023.01.12     ì‹ ê¸°ì›              ìµœì´ˆ ìƒì„±
  * </pre>
  */
 public interface MemberService {
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	public String join(MemberVO memberVO);
 	
-	//È¸¿ø Á¤º¸ ¼öÁ¤
+	//íšŒì› ì •ë³´ ìˆ˜ì •
 	public int changeInfo(MemberVO memberVO);
 	
-	//¾ÆÀÌµğ Ã£±â
+	//ì•„ì´ë”” ì°¾ê¸°
 	public int findID(String mname, String mtel);
+	
+	/* ì£¼ë¬¸ì ì •ë³´ */
+	public MemberVO getMemberInfo(String mid);
 	
 	
 }

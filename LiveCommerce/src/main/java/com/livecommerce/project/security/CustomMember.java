@@ -6,18 +6,18 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 /**
- * @author ½Å±â¿ø
+ * @author ì‹ ê¸°ì›
  * @since 2022.10.18
  * @version 1.0
  * 
  * <pre>
- * ¼öÁ¤ÀÏ                     ¼öÁ¤ÀÚ                   ¼öÁ¤³»¿ë
+ * ìˆ˜ì •ì¼                     ìˆ˜ì •ì                   ìˆ˜ì •ë‚´ìš©
  * ----------  --------    ---------------------------
- * 2022.10.18     ½Å±â¿ø              ÃÖÃÊ »ı¼º
+ * 2022.10.18     ì‹ ê¸°ì›              ìµœì´ˆ ìƒì„±
  * </pre>
  */
 
-//UserDetails °´Ã¼¸¦ ±¸ÇöÇÏ´Â User ±¸ÇöÃ¼¸¦ »ó¼ÓÇÏ´Â Å¬·¡½º(»ç¿ëÀÚ Á¤º¸¸¦ ´ã´Â ¿ªÇÒ)
+//UserDetails ê°ì²´ë¥¼ êµ¬í˜„í•˜ëŠ” User êµ¬í˜„ì²´ë¥¼ ìƒì†í•˜ëŠ” í´ë˜ìŠ¤(ì‚¬ìš©ì ì •ë³´ë¥¼ ë‹´ëŠ” ì—­í• )
 public class CustomMember extends User{
 	
 
