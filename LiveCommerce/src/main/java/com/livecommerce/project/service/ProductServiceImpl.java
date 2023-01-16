@@ -1,4 +1,13 @@
 package com.livecommerce.project.service;
+/**
+ * @author 김나형
+ * @since 2023.01.11
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일              	수정자                   수정내용
+ * 230116		박소은		테이블 변경 (재고, 상태, regdate)
+*/
 
 import java.util.List;
 
@@ -15,7 +24,6 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Service
 @AllArgsConstructor
-
 public class ProductServiceImpl implements ProductService{
 
     @Autowired
@@ -51,4 +59,59 @@ public class ProductServiceImpl implements ProductService{
     public int getCategoryTotal(String lcategory, String scategory) {
     	return mapper.getCategoryTotal(lcategory, scategory);
     }
+    
+    
+    
+    
+    
+    
+    // 박소은 작성
+    
+	@Override
+	public void registerProduct(ProductVO product) {
+		
+		log.info("register product...." + product);
+		
+		mapper.insertProductSelectKey(product);
+	}
+	
+	
+	@Override
+	public List<ProductVO> getProductList() {
+		
+		log.info("get Product List.....");
+		
+		return mapper.getProductList();
+	}
+	
+	
+	@Override
+	public ProductVO getProduct(Long pid) {
+		
+		log.info("get product....." + pid);
+		
+		return mapper.readProduct(pid);
+	}
+	
+	
+	
+	@Override
+	public boolean modifyProduct(ProductVO product) {
+		
+		log.info("modify Product ... " + product);
+		return mapper.updateProduct(product) == 1;
+	}
+	
+	
+	@Override
+	public boolean removeProduct(Long pid) {
+		
+		log.info("remove product.... " + pid);
+		return mapper.deleteProduct(pid) == 1;
+	}
+	
+    
+    
+    
+
 }

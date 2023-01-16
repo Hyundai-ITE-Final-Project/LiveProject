@@ -1,8 +1,20 @@
 package com.livecommerce.project.mapper;
 
+/**
+ * @author 김나형
+ * @since 2023.01.11
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일              	수정자                   수정내용
+ * 230116		박소은		관리자상품관리
+*/
+
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import com.livecommerce.project.vo.Criteria;
 import com.livecommerce.project.vo.ProductVO;
@@ -18,4 +30,19 @@ public interface ProductMapper {
 	public List<ProductVO> getListWithCategory(Criteria cri, @Param("lcategory")String lcategory, @Param("scategory")String scategory);
 	//카테고리별 총 상품개수
 	public int getCategoryTotal(@Param("lcategory")String lcategory, @Param("scategory")String scategory);
+	
+	
+	// 박소은 작성
+//	@Select("select * from product")
+	public List<ProductVO> getProductList();
+	
+	public void insertProduct(ProductVO product);
+	
+	public void insertProductSelectKey(ProductVO product);
+	
+	public ProductVO readProduct(Long pid);
+	
+	public int deleteProduct(Long pid);
+	
+	public int updateProduct(ProductVO product);
 }
