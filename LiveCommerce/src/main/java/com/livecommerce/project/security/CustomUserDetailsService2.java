@@ -28,7 +28,7 @@ import lombok.extern.log4j.Log4j;
 
 //DB에서 VO객체의 정보를 가져와 사용자 정보를 담는 UserDetails객체로 바꾸는 서비스
 @Log4j
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsService2 implements UserDetailsService {
 
 	@Autowired
 	private MemberMapper mapper;
@@ -38,18 +38,20 @@ public class CustomUserDetailsService implements UserDetailsService {
 		log.info("Load User" + username);
 		
 		
-		MemberVO vo = mapper.findById(username);
-		CustomMember user = new CustomMember(vo.getMid(), vo.getMpassword(), authorities(vo));
-		return user;
+		 MemberVO user = mapper.findById(username);
+	      if(user == null) {
+	         return null;
+	      }else {
+	         return new CustomUserDetail(user);
+	      }
 	}
-	
 	// UserDetails의 권한의 반환 값과 VO의 mrole을 일치 시키기 위한 메소드
-	private static Collection authorities(MemberVO memebrVO){
+	private static Collection authorities(MemberVO memberDTO){
         Collection authorities = new ArrayList<>();
-        if(memebrVO.getMrole().equals("ADMIN")){
+        if(memberDTO.getMrole().equals("ADMIN")){
             authorities.add(new SimpleGrantedAuthority("ADMIN"));
         }else{
-            authorities.add(new SimpleGrantedAuthority("USER"));
+            authorities.add(new SimpleGrantedAuthority("MEMBER"));
         }
         return authorities;
     }
