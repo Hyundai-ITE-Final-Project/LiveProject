@@ -15,18 +15,18 @@ import com.livecommerce.project.security.CustomMember;
 
 import lombok.extern.log4j.Log4j;
 /**
- * @author �ű��
+ * @author 신기원
  * @since 2022.10.18
  * @version 1.0
  * 
  * <pre>
- * ������                     ������                   ��������
+ * 수정일                     수정자                   수정내용
  * ----------  --------    ---------------------------
- * 2022.10.18     �ű��              ���� ����
+ * 2022.10.18     신기원              최초 생성
  * </pre>
  */
 
-//DB���� VO��ü�� ������ ������ ����� ������ ��� UserDetails��ü�� �ٲٴ� ����
+//DB에서 VO객체의 정보를 가져와 사용자 정보를 담는 UserDetails객체로 바꾸는 서비스
 @Log4j
 public class CustomUserDetailsService implements UserDetailsService {
 
@@ -39,12 +39,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 		
 		
 		MemberVO vo = mapper.findById(username);
-		//VO�� ���̵�, �н�����, ���� ������ ������ UserDetails ��ü�� ����ش�
 		CustomMember user = new CustomMember(vo.getMid(), vo.getMpassword(), authorities(vo));
 		return user;
 	}
 	
-	// UserDetails�� ������ ��ȯ ���� VO�� mrole�� ��ġ ��Ű�� ���� �޼ҵ�
+	// UserDetails의 권한의 반환 값과 VO의 mrole을 일치 시키기 위한 메소드
 	private static Collection authorities(MemberVO memebrVO){
         Collection authorities = new ArrayList<>();
         if(memebrVO.getMrole().equals("ADMIN")){

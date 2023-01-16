@@ -14,19 +14,19 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import lombok.extern.log4j.Log4j;
 /**
  * CustomLoginSuccessHandler
- * @author ½Å±â¿ø
+ * @author ì‹ ê¸°ì›
  * @since 2022.10.18
  * @version 1.0
  * 
  * <pre>
- * ¼öÁ¤ÀÏ              ¼öÁ¤ÀÚ                   ¼öÁ¤³»¿ë
+ * ìˆ˜ì •ì¼              ìˆ˜ì •ì                   ìˆ˜ì •ë‚´ìš©
  * ----------  --------    ---------------------------
- * 2022.10.18   ½Å±â¿ø              ÃÖÃÊ »ı¼º
- * 2022.10.25	½Å±â¿ø	   USER_MEMBER ¸®´ÙÀÌ·ºÆ® À§Ä¡ ÁöÁ¤
+ * 2022.10.18   ì‹ ê¸°ì›              ìµœì´ˆ ìƒì„±
+ * 2022.10.25	ì‹ ê¸°ì›	   USER_MEMBER ë¦¬ë‹¤ì´ë ‰íŠ¸ ìœ„ì¹˜ ì§€ì •
  * </pre>
  */
 
-//·Î±×ÀÎ ¼º°ø½Ã µ¿ÀÛÇÏ´Â ÀÌº¥Æ® ÇÚµé·¯
+//ë¡œê·¸ì¸ ì„±ê³µì‹œ ë™ì‘í•˜ëŠ” ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬
 @Log4j
 public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -36,13 +36,13 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		
 		List<String> roleNames = new ArrayList<>();
 		
-		//°èÁ¤ÀÇ ±ÇÇÑ ¸ñ·ÏÀ» °¡Á®¿Í¼­ ¸®½ºÆ®¿¡ ´ã´Â´Ù
+		//ê³„ì •ì˜ ê¶Œí•œ ëª©ë¡ì„ ê°€ì ¸ì™€ì„œ ë¦¬ìŠ¤íŠ¸ì— ë‹´ëŠ”ë‹¤
 		auth.getAuthorities().forEach(authority -> {
 			roleNames.add(authority.getAuthority());
 		});
 		log.info("success");
 		
-		//±ÇÇÑÀÌ °ü¸®ÀÚ¸é °ü¸®ÀÚ ÆäÀÌÁö ±× ¿Ü´Â ¸ŞÀÎÆäÀÌÁö·Î Àü¼Û
+		//ê¶Œí•œì´ ê´€ë¦¬ìë©´ ê´€ë¦¬ì í˜ì´ì§€ ê·¸ ì™¸ëŠ” ë©”ì¸í˜ì´ì§€ë¡œ ì „ì†¡
 		if(roleNames.contains("ADMIN")) {
 			response.sendRedirect("/member/admin");
 			return;
