@@ -30,8 +30,8 @@
 /* shop_mainPage ----------------------------------------------*/   
 .shop_wrap{position: relative;display: flex;flex-direction: column;max-width: 1280px;min-height: 100%;margin: 0 auto;background-color: #fff;}    
 .shop_content{position: relative;flex: 1 1 auto;padding-top: 70px;min-height: 100vh;}  
-.shop_menulist{position: fixed;top: 68px;z-index: 100;width: 100%;overflow: hidden;max-width: 1280px;height: 40px;background-color: #fff;border-bottom: 1px solid #ededed;}
-.shop_tablist{position: absolute;top: 0;left: 0;    padding: 0 10px 0 11px;white-space: nowrap;will-change: transform;
+.shop_menulist{position: fixed;top: 68px;z-index: 2000;width: 100%;max-width: 1280px;height: 40px;background-color: #fff;border-bottom: 1px solid #ededed;}
+.shop_tablist{position: absolute;z-index: 2000;top: 0;left: 0;    padding: 0 10px 0 11px;white-space: nowrap;will-change: transform;
 transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .main_tab[aria-selected='true']{font-weight: 700;color: #f4361e;}
