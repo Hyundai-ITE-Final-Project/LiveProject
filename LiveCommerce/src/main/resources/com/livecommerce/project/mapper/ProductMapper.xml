@@ -34,10 +34,39 @@
 	</select>
 	
 	<!-- 상품 상세조회 -->
-		<select id="productGetDetail"
+	<select id="productGetDetail"
 		resultType="com.livecommerce.project.vo.ProductVO">
 		select *
 		from product p
 		where p.pid=#{pid}
+	</select>
+	
+	<!-- 카테고리별 상품조회 -->
+	<select id="getListWithCategory" resultType="com.livecommerce.project.vo.ProductVO">
+		SELECT p.*
+		FROM
+		(select rownum rn, pid, pname, price, img1
+		 from
+		 	(select *
+		 	 from product
+			 where lcategory = #{lcategory}
+				<if test="scategory !='' ">
+					and scategory =#{scategory}
+				</if>
+			 )
+		 ) p
+			<![CDATA[
+			WHERE p.rn > (#{param1.pageNum} -1) * #{param1.amount} and p.rn <= #{param1.pageNum} * #{param1.amount}
+    		]]>
+	</select>
+	
+	<!-- 카테고리별 상품 총 개수 -->
+	<select id="getCategoryTotal" resultType="int">
+		select count(*)
+		from product
+		where lcategory = #{lcategory}
+			<if test="scategory !='' ">
+				and scategory =#{scategory}
+			</if>
 	</select>
 </mapper>

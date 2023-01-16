@@ -38,4 +38,17 @@ public class ProductServiceImpl implements ProductService{
     public ProductVO productGetDetail(int pid) {
         return mapper.productGetDetail(pid);
     }
+    
+    // 카테고리별 상품 조회
+    @Override
+    public List<ProductVO> getCategoryList(Criteria cri, String lcategory, String scategory){
+    	log.info("카테고리별 리스트");
+    	return mapper.getListWithCategory(cri, lcategory, scategory);
+    }
+    
+    // 카테고리별 상품 개수
+    @Override
+    public int getCategoryTotal(String lcategory, String scategory) {
+    	return mapper.getCategoryTotal(lcategory, scategory);
+    }
 }
