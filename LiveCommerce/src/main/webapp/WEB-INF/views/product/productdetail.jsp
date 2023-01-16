@@ -80,6 +80,13 @@
 	
 			 $("#pamount").val(this_qty);
 		}
+		
+        function category(lcategory, scategory){
+            console.log(lcategory + " " + scategory);
+            var cate = '/product/listCategory?lcategory='+lcategory+'&scategory='+scategory;
+            
+            location.href = cate;
+        }
     </script>
     <div class="location-navi">
         <ul>
