@@ -253,11 +253,11 @@
 			
 		</div>
 
-		
+	
 	</div>	<!-- class="wrap" -->
 </div>	<!-- class="wrapper" -->
-
 <script>
+
 $(document).ready(function(){
 	
 	 //종합 정보 섹션 정보 삽입 
@@ -394,4 +394,6 @@ $(".delete_btn").on("click", function(e){
 </script>
 
 </body>
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%> 
 </html>
+
