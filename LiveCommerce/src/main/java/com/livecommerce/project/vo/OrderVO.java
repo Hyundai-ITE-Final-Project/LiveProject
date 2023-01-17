@@ -17,13 +17,13 @@ public class OrderVO {
 	private String member_mid;
 	
 	/* 우편번호 */
-	private String mzipcode;
+	private String ozipcode;
 	
 	/* 회원 주소 */
-	private String maddress1;
+	private String oaddress1;
 	
 	/* 회원 상세주소 */
-	private String maddress2;
+	private String oaddress2;
 	
 	/* 주문 상태 */
 	private String ostate;
@@ -55,6 +55,6 @@ public class OrderVO {
 				ordersavepoint += order.getTotalsavepoint();
 			}
 		/* 최종 비용(상품 비용 + 배송비 - 사용 포인트) */
-			orderfinalsaleprice = ordersaleprice - usePoint;
+			this.orderfinalsaleprice = ordersaleprice - usePoint;
 	}
 }

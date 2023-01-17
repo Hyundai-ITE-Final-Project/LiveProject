@@ -298,9 +298,9 @@
 				<input name="member_mid" value="${memberInfo.mid}" type="hidden">
 				<!-- 주소록 & 받는이-->
 				<input name="orderer" type="hidden">
-				<input name="mzipcode" type="hidden">
-				<input name="maddress1" type="hidden">
-				<input name="maddress2" type="hidden">
+				<input name="ozipcode" type="hidden">
+				<input name="oaddress1" type="hidden">
+				<input name="oaddress2" type="hidden">
 				<!-- 사용 포인트 -->
 				<input name="usePoint" type="hidden">
 				<!-- 상품 정보 -->
@@ -446,15 +446,18 @@ $(".order_point_input_btn").on("click", function(){
 
 });
 
+let totalCount = 0;				// 총 갯수
+let totalKind = 0;				// 총 종류
+let finalTotalPrice = 0;		//최종 가격(총 가격 + 배송비)	
 /* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
 function setTotalInfo(){
 	let totalPrice = 0;				// 총 가격
-	let totalCount = 0;				// 총 갯수
-	let totalKind = 0;				// 총 종류
+	    totalCount = 0;				// 총 갯수
+	    totalKind = 0;				// 총 종류
 	let totalPoint = 0;				// 총 마일리지
 	let deliveryPrice = 0;			// 배송비
 	let usePoint = 0;				// 사용 포인트(할인가격)
-	let finalTotalPrice = 0; 		// 최종 가격(총 가격 + 배송비)	
+	    finalTotalPrice = 0; 		// 최종 가격(총 가격 + 배송비)	
 	
 	$(".goods_table_price_td").each(function(index, element){
 		// 총 가격
@@ -499,38 +502,86 @@ function setTotalInfo(){
 	$(".usePoint_span").text(usePoint.toLocaleString());
 	
 }
+var date = new Date();
+var year = date.getFullYear().toString();
+var month = date.getMonth() + 1;
+month = month < 10 ? '0' + month.toString() : month.toString();
+var day = date.getDate();
+day = day < 10 ? '0' + day.toString() : day.toString();
+var hour = date.getHours();
+hour = hour < 10 ? '0' + hour.toString() : hour.toString();
+var minites = date.getMinutes();
+minites = minites < 10 ? '0' + minites.toString() : minites.toString();
+var seconds = date.getSeconds();
+seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
 
-/* 주문 요청 */
- $(".order_btn").on("click", function(){
-	/* 주소 정보 & 받는이*/
-	$(".addressInfo_input_div").each(function(i, obj){
-		if($(obj).find(".selectAddress").val() === 'T'){
-			$("input[name='member_mid']").val($(obj).find(".addressee_input").val());
-			$("input[name='mzipcode']").val($(obj).find(".zipcode_input").val());
-			$("input[name='maddress1']").val($(obj).find(".address1_input").val());
-			$("input[name='maddress2']").val($(obj).find(".address2_input").val());
-		}
-	});	
-	
-	/* 사용 포인트 */
-	$("input[name='usePoint']").val($(".order_point_input").val());	
-	
-	/* 상품정보 */
-	let form_contents = ''; 
-	$(".goods_table_price_td").each(function(index, element){
-		let pid = $(element).find(".individual_pid_input").val();
-		let pcount = $(element).find(".individual_pcount_input").val();
-		let pid_input = "<input name='orders[" + index + "].pid' type='hidden' value='" + pid + "'>";
-		form_contents += pid_input;
-		let pcount_input = "<input name='orders[" + index + "].olquantity' type='hidden' value='" + pcount + "'>";
-		form_contents += pcount_input;
-	});	
-	$(".order_form").append(form_contents);	
-	
-	/* 서버 전송 */
-	$(".order_form").submit();	
-	
-});
+let oid="${memberInfo.mid}"+"_"+year + month + day + hour + minites + seconds;
+// 주문 요청 
+  $(".order_btn").on("click", function(){
+	  console.log(totalKind + '종' + totalCount + '개');
+	  console.log("${orderList[0].pname}");
+		//결제 코드 받아오기
+		var IMP = window.IMP;
+		IMP.init("imp71146844");
+		console.log(oid);
+		
+	 	//결제 부분 시작
+	  IMP.request_pay({
+		        pg : 'html5_inicis',//이니시스 결제 시스템을 하기 위한 부분 고정시켜야합니다
+		        pay_method : 'card',
+		        merchant_uid: oid,  //주문 아이템 oid값
+		        name : '${orderList[0].pname}', //주문한거 이름
+		        //amount : finalTotalPrice, //가격
+		        amount : 100, //가격
+		        buyer_email : '${memberInfo.memail}', //산사람 이메일 
+		        buyer_name : '${memberInfo.mname}',//산사람 이름
+		        buyer_tel : '${memberInfo.mtel}',//산사람 번호
+		        buyer_addr : '${memberInfo.maddress1}',//산사람 주소
+		        buyer_postcode : '${memberInfo.mzipcode}'//산사람 주소코드
+		
+		    }, function (rsp) { // callback
+		        if (rsp.success) {
+		        	
+		        	//결제 성공에 대한 부분
+		            console.log(rsp);
+		        	// 주소 정보 & 받는이
+		        	$(".addressInfo_input_div").each(function(i, obj){
+		        		if($(obj).find(".selectAddress").val() === 'T'){
+		        			$("input[name='member_mid']").val("${memberInfo.mid}");
+		        			$("input[name='orderer']").val($(obj).find(".addressee_input").val());
+		        			$("input[name='ozipcode']").val($(obj).find(".zipcode_input").val());
+		        			$("input[name='oaddress1']").val($(obj).find(".address1_input").val());
+		        			$("input[name='oaddress2']").val($(obj).find(".address2_input").val());
+		        			
+		        		}
+		        	});	
+		        	
+		        	// 사용 포인트 
+		        	$("input[name='usePoint']").val($(".order_point_input").val());	
+		        	
+		        	// 상품정보 
+		        	let form_contents = ''; 
+		        	$(".goods_table_price_td").each(function(index, element){
+		        		let pid = $(element).find(".individual_pid_input").val();
+		        		let pcount = $(element).find(".individual_pcount_input").val();
+		        		let pid_input = "<input name='orders[" + index + "].pid' type='hidden' value='" + pid + "'>";
+		        		form_contents += pid_input;
+		        		let pcount_input = "<input name='orders[" + index + "].olquantity' type='hidden' value='" + pcount + "'>";
+		        		form_contents += pcount_input;
+		        	});	
+		        	$(".order_form").append(form_contents);	
+		        	
+		        	// 서버 전송 
+		        	$(".order_form").submit();	
+	  	
+		    } else {
+		    	//결제 실패에 대한 부분
+		        console.log(rsp);
+		    }
+		}); 
+}); 
+
+
 </script>
 
 </body>

@@ -38,7 +38,7 @@ public class CartController {
 		return result + "";	//addCart 반환타입이 int여서 빈 문자열을 더함
 	}
 	
-	//장바구니 리스트 
+	//장바구니 페이지 이동 
 	@GetMapping("/cart/{member_mid}")
 	public String cartPageGET(@PathVariable("member_mid") String member_mid, Model model) {
 		
