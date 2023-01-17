@@ -44,7 +44,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		
 		//권한이 관리자면 관리자 페이지 그 외는 메인페이지로 전송
 		if(roleNames.contains("ADMIN")) {
-			response.sendRedirect("/member/admin");
+			response.sendRedirect("/manage/productpost");
 			return;
 		} else if(roleNames.contains("USER")) {
 			response.sendRedirect("/");

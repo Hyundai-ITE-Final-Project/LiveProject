@@ -22,41 +22,30 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class MemberServiceImplTest {
 
-	@Autowired
-	public MemberService memberService;
-	
-	@Autowired
-	public MemberMapper memberMapper;
-	
-	@Test
-	public void testjoin() {
-		MemberVO vo = new MemberVO();
-		vo.setMid("4d");
-		vo.setMpassword("gd");
-		vo.setMname("gd");
-		vo.setMtel("gd");
-		vo.setMbirth(LocalDate.now());
-		vo.setMemail("gd");
-		vo.setMgender("³²");
-		vo.setMrole("ADMIN");
-		vo.setMaddress1("¼­¿ï½Ã");
-		vo.setMaddress2("»ï¼ºµ¿");
-		log.info(memberService.join(vo));
-	}
-	
-	@Test
-	public void testChangeInfo() {
-		MemberVO vo = memberMapper.findById("3d");
-		vo.setMtel("010");
-		vo.setMemail("naver.com");
-		vo.setMaddress1("°æ±âµµ");
-		vo.setMaddress2("ÀÌÃµ½Ã");
-		log.info(memberService.changeInfo(vo));
-	}
-	
-	@Test
-	public void testID() {
-		log.info(memberMapper.findMyId("gd", "010"));
-	}
+	 @Autowired public MemberService memberService;
+	  
+	 @Autowired public MemberMapper memberMapper;
+	 
+	 @Test public void testjoin() {
+		 MemberVO vo = new MemberVO(); vo.setMid("4d");
+		 vo.setMpassword("gd");
+		 vo.setMname("gd");
+		 vo.setMtel("gd");
+		 vo.setMbirth(LocalDate.now());
+		 vo.setMemail("gd");
+		 vo.setMgender("ï¿½ï¿½");
+		 vo.setMrole("ADMIN");
+		 vo.setMaddress1("ï¿½ï¿½ï¿½ï¿½ï¿½");
+		 vo.setMaddress2("ï¿½ï¼ºï¿½ï¿½");
+		 log.info(memberService.join(vo)); 
+	 }
+	  
+	 @Test public void testChangeInfo() {
+		 MemberVO vo = memberMapper.findById("3d"); vo.setMtel("010"); vo.setMemail("naver.com");
+	 vo.setMaddress1("ï¿½ï¿½âµµ"); vo.setMaddress2("ï¿½ï¿½Ãµï¿½ï¿½");
+	 log.info(memberService.changeInfo(vo)); }
+	  
+	 @Test public void testID() { log.info(memberMapper.findMyId("gd", "010")); }
+	 
 
 }
