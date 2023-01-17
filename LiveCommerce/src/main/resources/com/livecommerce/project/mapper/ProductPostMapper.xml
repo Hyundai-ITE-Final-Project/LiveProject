@@ -30,7 +30,7 @@
 		delete product_post
 		where
 			<foreach collection="list" item="value" separator="OR">
-				ps_index = #{value};
+				ps_index = #{value}
 			</foreach>
 	</delete>
 </mapper>
