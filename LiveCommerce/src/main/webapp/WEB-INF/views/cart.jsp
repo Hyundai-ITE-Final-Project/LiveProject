@@ -347,7 +347,6 @@ $(".quantity_modify_btn").on("click", function(){
 	$(".update_cart_id").val(cartid);
 	$(".update_p_quantity").val(p_quantity);
 	$(".quantity_update_form").submit();
-	console.log("시발 왜 안되");
 	console.log(cartid);
 	console.log(p_quantity);
 });

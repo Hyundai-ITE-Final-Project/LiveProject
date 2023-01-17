@@ -1,15 +1,13 @@
 package com.livecommerce.project.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /* 
  * 작성자 : 김민석
- * 작성일 : 2022.10.17.월
- * QnaMapperTests : QnaMapper.xml을 test 자바소스
+ * 작성일 : 2023.01.16.월
+ * OrderMapperTests : OrderMapper.xml test 자바소스
  */
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,72 +15,116 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.livecommerce.project.vo.CartVO;
+import com.livecommerce.project.vo.MemberVO;
+import com.livecommerce.project.vo.OrderListVO;
+import com.livecommerce.project.vo.OrderVO;
+import com.livecommerce.project.vo.ProductVO;
+
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
+"file:src/main/webapp/WEB-INF/spring/security-context.xml" })
 public class OrderMapperTests {
 
 	@Autowired
-	private OrderMapper ordermapper;			//MemberMapper.java �������̽� ������ ����
+	private OrderMapper mapper;			
+	@Autowired
+	private CartMapper cartMapper;			
 	
-//	//���� �Է� �׽�Ʈ �޼ҵ�
-//	@Test
-//	public void qnaInsert() throws Exception{
-//		QnaVO qna = new QnaVO();
-//		
-////		qna.setMId("bansongs");
-//		qna.setQTitle("test");			//��������
-//		qna.setQContent("test");		//���ǳ���
-//		qna.setQDate(new Timestamp(System.currentTimeMillis()));		//���ǳ�¥
-//		qna.setQReplyDate(new Timestamp(System.currentTimeMillis()));		//����ȸ�ų�¥
-////		qna.setQReplyTitle("test");		//����ȸ������
-////		qna.setQReplyContent("test");	//����ȸ�ų���
-////		qna.setQManager("bansongs");
-////		qna.setMNo(1);
-//		qnamapper.qnaInsert(qna);
-//		
-//		log.info(qna);
-//		
-//	}
+	// 상품 정보(주문 처리) 
+	@Test
+	public void getOrderInfoTest() {
+		
+		 OrderListVO orderInfo = mapper.getOrderInfo(61);
+		 System.out.println("result : " + orderInfo);
+	}
 	
-//	@Test
-//	public void orderSelect() throws Exception{	
-//		
-//		int pid= 1;
-//		List<QnaDTO> list = qnamapper.qnaSelect(qna);
-//	    System.out.println(list);
-//	}
+	// vam_order 테이블 등록 
+	@Test
+	public void enrollOrderTest() {
+		
+		OrderVO ord = new OrderVO();
+		List<OrderListVO> orders = new ArrayList<OrderListVO>();
+		
+		OrderListVO order1 = new OrderListVO();
+		
+		order1.setPid(61);
+		order1.setOlquantity(5);
+		order1.setOlprice(70000);
+		order1.initSaleTotal();
+		
+		
+		
+		ord.setOrders(orders);
+		
+		ord.setOid("2021_test1");
+		ord.setOrderer("test");
+		ord.setMember_mid("gd");
+		ord.setOzipcode("test");
+		ord.setOaddress1("test1");
+		ord.setOaddress2("test2");
+		ord.setOstate("배송중비");
+		ord.getOrderPriceInfo();
+		ord.setUsePoint(1000);
+		
+		mapper.enrollOrder(ord);		
+		
+	}
 	
-//	@Test
-//	public void qnaDelete() throws Exception {
-//		int qid = 26;
-//		qnamapper.qnaDelete(qid);
-//		System.out.println("삭제성공");
-//	}
+	// vam_itemorder 테이블 등록 
+	@Test
+	public void enrollOrderItemTest() {
+		
+		OrderListVO oid = new OrderListVO();
+		
+		oid.setOid("2021_test1");
+		oid.setPid(61);
+		oid.setOlquantity(1);
+		oid.setOlprice(70000);
+				
+		oid.initSaleTotal();
+		
+		mapper.enrollOrderList(oid);
+		
+	}	
 	
-//	@Test
-//	public void memberIdChk() throws Exception {
-//		String id = "test3";
-//		String id2 = "test123";
-//		membermapper.idCheck(id);
-//		membermapper.idCheck(id2);
-//		System.out.println(membermapper.idCheck(id));
-//		System.out.println(membermapper.idCheck(id2));
-//	}
+	// 회원 돈, 포인트 정보 변경 
+	@Test
+	public void deductPointTest() {
+		
+		MemberVO member = new MemberVO();
+		
+		member.setMid("gd");
+		member.setMpoint(1000);
+		
+		mapper.deductPoint(member);
+	}
 	
-//	 /* �α��� ���� mapper �޼��� �׽�Ʈ */
-//	@Test
-//	public void memberLogin() throws Exception {
-//		MemberVO member = new MemberVO();
-//		
-//		member.setMemberId("test3");
-//		member.setMemberPw("test3");
-//		membermapper.memberLogin(member);
-//		System.out.println("��� �� : " + membermapper.memberLogin(member));
-//	}
+	// 상품 재고 변경 
+	@Test
+	public void deductStockTest() {
+		ProductVO product = new ProductVO();
+		
+		product.setPid(61);
+		product.setPstock(77);
+		
+		mapper.deductStock(product);
+	}
 	
-	
-	
+	// 장바구니 제거(주문 처리) 
+	@Test
+	public void deleteOrderCart() {
+		String member_mid = "gd";
+		int product_pid = 4;
+		
+		CartVO vo = new CartVO();
+		vo.setMember_mid(member_mid);
+		vo.setProduct_pid(product_pid);
+		
+		cartMapper.deleteOrderCart(vo);
+		
+	}
 }

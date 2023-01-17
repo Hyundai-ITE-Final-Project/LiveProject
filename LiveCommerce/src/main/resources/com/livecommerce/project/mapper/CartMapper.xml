@@ -43,4 +43,10 @@
 		where member_mid = #{member_mid} and product_pid = #{product_pid}
 	
 	</select>
+	<!-- 주문 후 카트 삭제 -->
+		<delete id="deleteOrderCart">
+	
+		delete from cart where member_mid = #{member_mid} and product_pid = #{product_pid}
+	
+		</delete>
   </mapper>

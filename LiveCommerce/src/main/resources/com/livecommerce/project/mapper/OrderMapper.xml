@@ -8,5 +8,40 @@
 		select pid, pname, price, img1
           from product where pid = #{pid}	
 	</select>
-
+	
+	<select id="getOrderInfo" resultType="com.livecommerce.project.vo.OrderListVO">
+	
+		select pid, price as olprice
+		from product where pid= #{pid}
+	
+	</select>
+	
+	<!-- 주문 테이블 등록 -->
+	<insert id="enrollOrder">
+	
+		insert into orders(oid, orderer, member_mid, ozipcode, oaddress1, oaddress2, ostate, usePoint)
+   		values(#{oid},#{orderer}, #{member_mid}, #{ozipcode}, #{oaddress1}, #{oaddress2}, '배송준비', #{usePoint})
+	</insert>
+	
+	<!-- 주문 리스트 테이블 등록 -->
+	<insert id="enrollOrderList">
+	
+   		insert into OrderList(oid, pid, olquantity, olprice, savepoint)
+		values(#{oid}, #{pid}, #{olquantity}, #{olprice}, #{savepoint})
+        
+	</insert>
+	
+	<!-- 주문 금액 차감 -->
+	<update id="deductPoint">
+	
+	  update member set mpoint = #{mpoint} where mid = #{mid}
+    
+	</update>
+	
+	<!-- 주문 재고 차감 -->
+	<update id="deductStock">
+	
+		  update product set pstock = #{pstock} where pid = #{pid}
+	
+	</update>
   </mapper>

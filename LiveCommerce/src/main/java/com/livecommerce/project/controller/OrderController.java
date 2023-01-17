@@ -40,11 +40,11 @@ public class OrderController {
 		
 		System.out.println(ov);		
 		
-//		orderService.order(ov);
-//		
-//		MemberVO member = new MemberVO();
-//		member.setMemberId(ov.getMemberId());
-//		
+		orderService.order(ov);
+		
+		MemberVO member = new MemberVO();
+		member.setMid(ov.getMember_mid());
+		
 //		HttpSession session = request.getSession();
 //		
 //		try {
@@ -58,6 +58,7 @@ public class OrderController {
 //		}
 //		
 //		return "redirect:/main";
+		
 	}	
 	
 }
