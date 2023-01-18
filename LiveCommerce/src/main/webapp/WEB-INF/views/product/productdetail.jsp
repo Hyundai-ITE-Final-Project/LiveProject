@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,6 +90,12 @@
         }
     </script>
     <div class="location-navi">
+로그인ID : <sec:authentication property="name"/><br>
+로그인 Auth : <sec:authentication property="authorities"/><br>
+로그인 Detail : <sec:authentication property="Details"/><br>
+로그인 Credentials : <sec:authentication property="Credentials"/>
+로그인 Principal : <sec:authentication property="Principal"/><br>
+
         <ul>
             <li>
                 <a href="#" data-montelena-acode="200000474" onclick="">홈</a>
@@ -308,7 +315,7 @@
                                 data-montelena-goodscode="1552234801" onclick="">
                                 <em>구매하기</em>
                             </button>
-                            <form action="/order/gd" method="get" class="order_form">
+                            <form action="/order/<sec:authentication property="name"/>" method="get" class="order_form">
 								<input type ="hidden" name = "orders[0].pid" value = "${productInfo.pid}">
 								<input type ="hidden" name = "orders[0].pcount" value = "">
 							</form>
@@ -547,6 +554,8 @@
 	}
 	//장바구니 추가 버튼
 	$("#coreAddCartBtn").on("click", function(e){
+		console.log('<sec:authentication property="name"/>');
+		if('<sec:authentication property="name"/>'== "anonymousUser") location.href = "/login";
 		form.p_quantity = $(".num").val();
 		$.ajax({
 			url: '/cart/add',
@@ -563,7 +572,6 @@
 			alert("장바구니에 추가를 하지 못하였습니다.");
 		} else if(result == '1'){
 			alert("장바구니에 추가되었습니다.");
-			location.href = "/cart/gd";
 		} else if(result == '2'){
 			alert("장바구니에 이미 추가되어져 있습니다.");
 		} else if(result == '5'){
