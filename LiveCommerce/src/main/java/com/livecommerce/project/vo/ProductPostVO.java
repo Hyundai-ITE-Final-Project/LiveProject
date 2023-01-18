@@ -24,14 +24,6 @@ public class ProductPostVO {
 	private Date ps_date;
 	//삭제여부
 	private int ps_delete;
-	
-	// 상품목록
-	private List<ProductPostAddVO> ProductPostAddVO;
-	
-	@Data
-	public static class ProductPostAddVO{
-		private int ps_index;
-		private int pid;
-		private String img1;
-	}
+	//상품아이디
+	private int pid;
 }

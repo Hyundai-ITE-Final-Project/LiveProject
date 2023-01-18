@@ -4,12 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.livecommerce.project.mapper.ProductPostMapper">
+
 	<!-- 아이디당 post 갯수구하기 -->
 	<select id="postGetTotal" resultType="int">
 		select count(*)
 		from product_post
 		where mid = #{mid}
 	</select>
+	
 	<!-- post 리스트 -->
 	<select id="getProductPost"
 			resultType="com.livecommerce.project.vo.ProductPostVO">
@@ -24,7 +26,24 @@
              rownum <= #{cri.pageNum}*#{cri.amount} and rn > (#{cri.pageNum} - 1) * #{cri.amount}
       	]]>
 	</select>
-
+	
+	<!-- post 등록 -->
+	<insert id="postAdd">
+		insert into product_post
+		(mid, ps_title, ps_price, ps_post_status)
+		values
+		(#{mid}, #{ps_title}, #{ps_price}, #{ps_post_status})
+	</insert>
+	
+	<!-- post add 등록 -->
+	<insert id="postproductAdd">
+		insert into product_post_add
+		(ps_index, pid)
+		values
+		<foreach collection="ProductPostVO" item="item" separator=",">
+			(#{ps_index}, #{pid})
+		</foreach>
+	</insert>
 	<!-- post선택삭제 -->
 	<delete id="postDelete" parameterType="java.util.List">
 		delete product_post

@@ -29,12 +29,15 @@ public class ProductPostServiceImpl implements ProductPostService{
 		return postMapper.getProductPost(cri, mid);
 	}
 	
-	/*
-	 * // post 삭제
-	 * 
-	 * @Override public int postDelete(String pindex) throws Exception { return
-	 * postMapper.postDelete(pindex); }
-	 */
+	@Override
+	public void postAdd(ProductPostVO post) throws Exception{
+		postMapper.postAdd(post);
+	}
+	
+	@Override
+	public void postproductAdd(ProductPostVO productpost) throws Exception{
+		postMapper.postproductAdd(productpost);
+	}
 	
 	@Override
 	public void postDelete(List<Integer> pindexList) throws Exception{

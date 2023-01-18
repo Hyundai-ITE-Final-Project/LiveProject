@@ -14,11 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.livecommerce.project.service.MemberService;
 import com.livecommerce.project.service.ProductPostService;
 import com.livecommerce.project.vo.Criteria;
 import com.livecommerce.project.vo.PageDTO;
+import com.livecommerce.project.vo.ProductPostVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -49,6 +50,24 @@ public class ProductPostController {
 		log.info("total : " + total);
 	}
 	
+	// 입력페이지로 이동
+	@GetMapping("/productpostadd")
+	public void PostAddGET(Model model, Principal prin) throws Exception{
+		String memid = prin.getName();
+		model.addAttribute("member", memid);
+		log.info(memid);
+	}
+	
+	@PostMapping("/productpostadd")
+	public String PostAddPOST(HttpServletRequest request, Model model, Principal prin, ProductPostVO post, RedirectAttributes rttr) throws Exception{
+		postService.postAdd(post);
+		String memid = prin.getName();
+		model.addAttribute("member", memid);
+		rttr.addFlashAttribute("enroll_result", post);
+		//postService.postproductAdd(post);
+		return "redirect:/manage/productpost";
+	}
+	
 	@ResponseBody
 	@PostMapping("/delete")
 	public String deletePost(HttpServletRequest request, @RequestParam(value="chbox[]") List<String> chArr) throws Exception{
@@ -57,6 +76,6 @@ public class ProductPostController {
 			pindexList.add(Integer.parseInt(s));
 		}
 		postService.postDelete(pindexList);
-		return "manage/productpost";
+		return "redirect:/manage/productpost";
 	}
 }
