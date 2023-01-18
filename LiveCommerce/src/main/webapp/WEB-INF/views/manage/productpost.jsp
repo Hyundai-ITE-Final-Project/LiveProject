@@ -33,7 +33,7 @@
                 <div class="admin_tool_inner">
                     <div class="admin_tool_top">
                         <div class="chk_deletePost chk_del" onclick="select('remove');">선택 삭제</div>
-                        <a href="/tool/pdpost/create" class="btn_post_create_move btn_move">판매글 등록</a>
+                        <a href="/manage/productpostadd" class="btn_post_create_move btn_move">판매글 등록</a>
                     </div>
                     <div class="admin_tool_content">
                         <div class="admin_list_body">
