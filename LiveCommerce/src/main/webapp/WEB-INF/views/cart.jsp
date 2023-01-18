@@ -393,6 +393,5 @@ $(".delete_btn").on("click", function(e){
 </script>
 
 </body>
-<%@ include file="/WEB-INF/views/footer/footer.jsp"%> 
 </html>
 
