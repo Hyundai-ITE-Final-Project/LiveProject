@@ -303,7 +303,8 @@
 				<input name="oaddress2" type="hidden">
 				<!-- 사용 포인트 -->
 				<input name="usePoint" type="hidden">
-				<!-- 상품 정보 -->
+				<!-- 주문한 KG이니시스 imp_uid -->
+				<input name="imp_uid" type="hidden">
 			</form> 
 			
 		</div> <!-- class="content_area" -->
@@ -541,7 +542,8 @@ let oid="${memberInfo.mid}"+"_"+year + month + day + hour + minites + seconds;
 		
 		    }, function (rsp) { // callback
 		        if (rsp.success) {
-		        	
+		        	//db에 컬럼만들어서 넣어줘야됨 이게 service에 들어가면됨
+		        	let imp_uid = rsp.imp_uid;
 		        	//결제 성공에 대한 부분
 		            console.log(rsp);
 		        	// 주소 정보 & 받는이
@@ -551,14 +553,14 @@ let oid="${memberInfo.mid}"+"_"+year + month + day + hour + minites + seconds;
 		        			$("input[name='orderer']").val($(obj).find(".addressee_input").val());
 		        			$("input[name='ozipcode']").val($(obj).find(".zipcode_input").val());
 		        			$("input[name='oaddress1']").val($(obj).find(".address1_input").val());
-		        			$("input[name='oaddress2']").val($(obj).find(".address2_input").val());
-		        			
+		        			$("input[name='oaddress2']").val($(obj).find(".address2_input").val());	
 		        		}
 		        	});	
 		        	
 		        	// 사용 포인트 
 		        	$("input[name='usePoint']").val($(".order_point_input").val());	
-		        	
+		        	// 주문한 imp_uid
+		        	$("input[name='imp_uid']").val(imp_uid);
 		        	// 상품정보 
 		        	let form_contents = ''; 
 		        	$(".goods_table_price_td").each(function(index, element){

@@ -10,5 +10,6 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+<button type="button" onclick="location.href='/ordercancel'">회원가입</button>
 </body>
 </html>

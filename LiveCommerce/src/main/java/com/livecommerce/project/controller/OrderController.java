@@ -67,6 +67,11 @@ public class OrderController {
 //		
 //		return "redirect:/main";
 		
-	}	
+	}
+	
+	@GetMapping("/ordercancel")
+	public void orderCancel() {
+		orderService.OrderCancel("imp_890790832007");
+	}
 	
 }

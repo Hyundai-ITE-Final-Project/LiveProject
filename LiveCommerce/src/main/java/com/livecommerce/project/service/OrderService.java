@@ -17,4 +17,6 @@ public interface OrderService {
 	public List<OrderPageItemVO> getGoodsInfo(List<OrderPageItemVO> orders);
 	/* 주문 */
 	public void order(OrderVO ordervo);
+	//결제취소
+	public void OrderCancel(String imp_uid);	//주문번호
 }

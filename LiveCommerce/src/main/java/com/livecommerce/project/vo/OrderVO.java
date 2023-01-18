@@ -56,6 +56,9 @@ public class OrderVO {
 	/* 최종 판매 비용 */
 	private int orderfinalsaleprice;
 	
+	/* 주문한 imp_uid*/
+	private String imp_uid;
+	
 	public void getOrderPriceInfo() {
 		/* 상품 비용 & 적립포인트 */
 			for(OrderListVO order : orders) {
