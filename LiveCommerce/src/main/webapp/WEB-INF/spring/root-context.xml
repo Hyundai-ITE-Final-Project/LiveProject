@@ -10,14 +10,15 @@
 
    
    <!-- Root Context: defines shared resources visible to all other web components -->
+	<context:property-placeholder location="classpath:/application.properties" /> 
 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
       <property name="driverClassName"
          value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
       <property name="jdbcUrl"
          value="jdbc:log4jdbc:oracle:thin:@edudb_high?TNS_ADMIN=C:/dev/OracleWallet/Wallet_edudb"></property>
-      <property name="username" value="giwon"></property>
-      <property name="password" value="xxxxxxAt21cc"></property>
+      <property name="username" value="${oracle.username}"></property>
+      <property name="password" value="${oracle.userpassword}"></property>
    </bean>   
    
    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
