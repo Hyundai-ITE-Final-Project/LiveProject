@@ -37,40 +37,38 @@
                                 <input type="text" id="psPrice" class="layout_input" name="ps_price" value="" maxlength='11' oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
                             <div class="create_layout">
-                                <div class="layout_subject _asterisk">판매 상품 추가</div>
-                                <div class="layout_memo">상품 체크/체크 해제 후 등록하면 상품이 새로 등록됩니다.</div>
-                                <div>
-                                    <div class="pdAddList_area">
-                                        <div class="pdAddList_header">
-                                            <div class="pdAddList_h_viewport">
-                                                <div class="pdAddList_h_check">
-                                                    <input type="checkbox" class="isChek">
-                                                </div>
-                                                <div class="pdAddList_cell_1">상품명</div>
-                                                <div class="pdAddList_cell_2">상품금액</div>
-                                            </div>
-                                        </div>
-<%--                                         <div class="pdAddList_content">
-                                            <c:forEach items="${pdList}" var="pd">
-                                                <div class="pdAddList_content_area">
-                                                    <div class="pdAddList_h_check">
-                                                        <div>
-                                                            <input type="checkbox" id="addPdVal" class="iChek" value="${pd.pdId}"
-                                                            <c:forEach items="${postInfo.pdPostAddVo}" var="post">
-                                                                <c:if test="${post.pdId eq pd.pdId}"> checked </c:if>
-                                                            </c:forEach>>
-                                                        </div>
-                                                    </div>
-                                                    <div class="pdAddList_cell_1">${pd.pdName} ${post.pdId}</div>
-                                                    <div class="pdAddList_cell_2">
-                                                        <fmt:formatNumber value="${pd.pdPrice}" pattern="#,###" />
-                                                    </div>
-                                                </div>
-                                            </c:forEach>
-                                        </div> --%>
-                                    </div>
-                                </div>
-                            </div>
+						    	<div class="layout_subject _asterisk">판매 상품 추가</div>
+						    	<div class="layout_memo">상품 체크/체크 해제 후 등록하면 상품이 새로 등록됩니다.</div>
+							    <div>
+							        <div class="pdAddList_area">
+							            <div class="pdAddList_header">
+							                <div class="pdAddList_h_viewport">
+							                    <div class="pdAddList_h_check">
+							                        <input type="checkbox" class="isChek">
+							                    </div>
+							                    <div class="pdAddList_cell_1">상품명</div>
+							                    <div class="pdAddList_cell_2">상품금액</div>
+							                </div>
+							            </div>
+							            <input type="hidden" id="productlist" name="productlist"/>
+							            <div class="pdAddList_content">
+							                <c:forEach items="${pd}" var="pd">
+							                    <div class="pdAddList_content_area">
+							                        <div class="pdAddList_h_check">
+							                            <div>
+							                                <input type="checkbox" id="addPdVal" class="iChek" data-pk="${pd.pid}" name="postlist" value="${pd.pid}">
+							                            </div>
+							                        </div>
+							                        <div class="pdAddList_cell_1">${pd.pname}</div>
+							                        <div class="pdAddList_cell_2">
+							                            <fmt:formatNumber value="${pd.price}" pattern="#,###" />
+							                        </div>
+							                    </div>
+							                </c:forEach>
+							            </div>
+							        </div>
+							    </div>
+							</div>
                             <div class="create_layout">
                                 <div class="layout_subject _asterisk">판매 상태</div>
                                 <select name="ps_post_status" id="pdPostOnOff" class="_filter">
@@ -80,8 +78,8 @@
                                 </select>
                             </div>
                             <div class="create_layout">
-                                <button class="btn_post_create btn_pp" onclick="go_save()">판매글 등록하기</button>
-                            </div>
+                    			<button class="btn_post_create btn_pp" onclick="go_save()">판매글 등록하기</button>
+                    		</div>
                         </div>
                     </form>
                 </div>
@@ -109,7 +107,20 @@
         } else if(document.formm.ps_post_status.value ==""){
             alert("판매상태를 설정해주세요");
         } else{
+    		var valueArr = new Array();
+    		var list = $("input[name='postlist']");
+    		for(var i=0; i<list.length; i++){
+    			if(list[i].checked){
+    				valueArr.push(list[i].value);
+    			}
+    		}
+    		if(valueArr.length == 0){
+    			alert("선택된 글이 없습니다.");
+    		}
+    		$("#productlist").val(valueArr);
+    		
             document.formm.submit();
+            //document.formm2.submit();
         }
     }
 </script>

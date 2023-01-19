@@ -33,17 +33,19 @@
 		(mid, ps_title, ps_price, ps_post_status)
 		values
 		(#{mid}, #{ps_title}, #{ps_price}, #{ps_post_status})
+		<selectKey keyProperty="ps_index" order="AFTER" resultType="int">
+			select ps_index
+			from product_post
+			where mid = #{mid} and ps_title = #{ps_title} and ps_price = #{ps_price}
+		</selectKey>
 	</insert>
 	
 	<!-- post add 등록 -->
 	<insert id="postproductAdd">
 		insert into product_post_add
-		(ps_index, pid)
-		values
-		<foreach collection="ProductPostVO" item="item" separator=",">
-			(#{ps_index}, #{pid})
-		</foreach>
+		values(#{ps_index}, #{pid})
 	</insert>
+	
 	<!-- post선택삭제 -->
 	<delete id="postDelete" parameterType="java.util.List">
 		delete product_post
@@ -52,4 +54,10 @@
 				ps_index = #{value}
 			</foreach>
 	</delete>
+	<!-- 판매상품리스트 -->
+	<select id="getpdlist" resultType="com.livecommerce.project.vo.ProductVO">
+		select pid, pname, price
+		from product
+		where pstatus = 1
+	</select>
 </mapper>

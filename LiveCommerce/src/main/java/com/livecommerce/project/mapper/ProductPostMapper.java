@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.livecommerce.project.vo.Criteria;
-import com.livecommerce.project.vo.ProductPostAddVO;
 import com.livecommerce.project.vo.ProductPostVO;
+import com.livecommerce.project.vo.ProductVO;
 
 public interface ProductPostMapper {
 	//모든 판매글 출력
@@ -17,9 +17,11 @@ public interface ProductPostMapper {
 	// (post테이블) 판매글 등록
 	public void postAdd(ProductPostVO post) throws Exception;
 	// (post_add테이블) 판매글 등록에 상품들
-	public void postproductAdd(ProductPostVO productpost) throws Exception;
+	public void postproductAdd(@Param("ps_index") int ps_index, @Param("pid") int pid) throws Exception;
 	//판매글 수정
 	//public int postModify(ProductPostVO post) throws Exception;
 	//판매글 삭제
 	public void postDelete(List<Integer> pindexList);
+	//판매 상품 리스트
+	public List<ProductVO> getpdlist();
 }
