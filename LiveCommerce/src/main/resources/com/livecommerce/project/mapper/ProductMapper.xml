@@ -2,21 +2,13 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- /**
- * @author 김나형
- * @since 2023.01.10
- * @version 1.0
- * 
- * <pre>
- * 수정일              	수정자                   수정내용
- * 230116		박소은		관리자 상품 관리
-
- * </pre>
- */ -->
+<!-- /** * @author 김나형 * @since 2023.01.10 * @version 1.0 * * <pre> * 수정일 
+	수정자 수정내용 * 230116 박소은 관리자 상품 관리 * </pre> */ -->
 <mapper namespace="com.livecommerce.project.mapper.ProductMapper">
 
 	<!-- 전체상품리스트 -->
-	<select id="getListWithPaging" resultType="com.livecommerce.project.vo.ProductVO" >
+	<select id="getListWithPaging"
+		resultType="com.livecommerce.project.vo.ProductVO">
 	  <![CDATA[
 	          select pid, pname, price, img1
 	          from (
@@ -27,13 +19,14 @@
 	         where rn > ( #{pageNum} - 1 ) * #{amount}
 	   ]]>
 	</select>
-	
+
 	<!-- 전체상품갯수 -->
 	<select id="getTotalCount" resultType="int">
 		select count(*)
-		from product
+		from
+		product
 	</select>
-	
+
 	<!-- 상품 상세조회 -->
 	<select id="productGetDetail"
 		resultType="com.livecommerce.project.vo.ProductVO">
@@ -41,87 +34,121 @@
 		from product p
 		where p.pid=#{pid}
 	</select>
-	
+
 	<!-- 카테고리별 상품조회 -->
-	<select id="getListWithCategory" resultType="com.livecommerce.project.vo.ProductVO">
+	<select id="getListWithCategory"
+		resultType="com.livecommerce.project.vo.ProductVO">
 		SELECT p.*
 		FROM
 		(select rownum rn, pid, pname, price, img1
-		 from
-		 	(select *
-		 	 from product
-			 where lcategory = #{lcategory}
-				<if test="scategory !='' ">
-					and scategory =#{scategory}
-				</if>
-			 )
-		 ) p
+		from
+		(select *
+		from product
+		where lcategory = #{lcategory}
+		<if test="scategory !='' ">
+			and scategory =#{scategory}
+		</if>
+		)
+		) p
 			<![CDATA[
 			WHERE p.rn > (#{param1.pageNum} -1) * #{param1.amount} and p.rn <= #{param1.pageNum} * #{param1.amount}
     		]]>
 	</select>
-	
+
 	<!-- 카테고리별 상품 총 개수 -->
 	<select id="getCategoryTotal" resultType="int">
 		select count(*)
 		from product
 		where lcategory = #{lcategory}
-			<if test="scategory !='' ">
-				and scategory =#{scategory}
-			</if>
+		<if test="scategory !='' ">
+			and scategory =#{scategory}
+		</if>
 	</select>
-	
-	
-	
-	
+
+
+
+
 	<!-- 박소은 작성 부분 -->
-	
-	<select id="getProductList" resultType="com.livecommerce.project.vo.ProductVO">
-		select pid, pname, pstatus, price, pstock, pregdate from product
+
+	<select id="getProductList"
+		resultType="com.livecommerce.project.vo.ProductVO">
+		select pid, pname, pstatus, price, pstock, pregdate from
+		product
 	</select>
-	
-	
+
+	<select id="getListWithPagingProduct"
+		resultType="com.livecommerce.project.vo.ProductVO">
+	<![CDATA[
+	select pid, pname, pstatus, price, pstock, pregdate 
+	from
+		(
+		select /*INDEX_DESC(product pid)*/
+			rownum rn, pid, pname, pstatus, price, pstock, pregdate
+		from
+			product
+		where rownum <= #{pageNum} * #{amount}
+		)
+		where rn > (#{pageNum} - 1) * #{amount}
+		
+		]]>
+
+	</select>
+
+
+
 	<insert id="insertProduct">
-		insert into product(pid, pname, lcategory, scategory, price, detail, pstock, img1, pstatus, pregdate)
-		values (seq_pid.nextval, #{pname}, #{lcategory}, #{scategory}, #{price}, #{detail}, #{pstock}, #{img1}, #{pstatus}, sysdate)
+		insert into product(pid, pname, lcategory, scategory,
+		price, detail, pstock, img1, pstatus, pregdate)
+		values
+		(seq_pid.nextval, #{pname}, #{lcategory}, #{scategory}, #{price},
+		#{detail}, #{pstock}, #{img1}, #{pstatus}, sysdate)
 	</insert>
-	
-	
+
+
 	<insert id="insertProductSelectKey">
-	
+
 		<selectKey keyProperty="pid" order="BEFORE" resultType="int">
 			select seq_pid.nextval from dual
-		
+
 		</selectKey>
-		
-		insert into product(pid, pname, lcategory, scategory, price, detail, pstock, img1, pstatus, pregdate)
-		values (#{pid}, #{pname}, #{lcategory}, #{scategory}, #{price}, #{detail}, #{pstock}, #{img1}, #{pstatus}, sysdate)
+
+		insert into product(pid, pname, lcategory, scategory, price, detail,
+		pstock, img1, pstatus, pregdate)
+		values (#{pid}, #{pname},
+		#{lcategory}, #{scategory}, #{price}, #{detail}, #{pstock}, #{img1},
+		#{pstatus}, sysdate)
 	</insert>
-	
-	
-	<select id="readProduct" resultType="com.livecommerce.project.vo.ProductVO">
+
+
+
+	<select id="readProduct"
+		resultType="com.livecommerce.project.vo.ProductVO">
 		select * from product where pid = #{pid}
 	</select>
-	
-	
+
+
 	<delete id="deleteProduct">
 		delete from product where pid = #{pid}
 	</delete>
-	
-	
+
+
 	<update id="updateProduct">
 		update product
 		set pname = #{pname},
-		lcategory = #{lcategory},
+		lcategory =
+		#{lcategory},
 		scategory = #{scategory},
 		price = #{price},
-	 	detail = #{detail},
+		detail =
+		#{detail},
 		pstock = #{pstock},
 		img1 = #{img1},
 		pstatus = #{pstatus},
 		pregdate = sysdate
 		where pid = #{pid}
-		
+
 	</update>
-	
+
+
+
 </mapper>

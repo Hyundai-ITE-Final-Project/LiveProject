@@ -2,6 +2,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+
+<link rel="stylesheet" type="text/css" href="/resources/css/common.css" >
+<link rel="stylesheet" type="text/css" href="/resources/css/admin.css"> 
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="/resources/js/common.js"></script>
+<script type="text/javascript" src="/resources/js/login.js"></script>
 <sec:authentication var="user" property="principal"/>
 <header class="admin_header">
     <form:form action="/logout" method="POST" id="logoutForm"></form:form>

@@ -76,14 +76,22 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	
-	@Override
-	public List<ProductVO> getProductList() {
-		
-		log.info("get Product List.....");
-		
-		return mapper.getProductList();
-	}
+//	@Override
+//	public List<ProductVO> getProductList() {
+//		
+//		log.info("get Product List.....");
+//		
+//		return mapper.getProductList();
+//	}
+//	
 	
+	@Override
+	public List<ProductVO> getProductList(Criteria cri){
+		
+		log.info("get list with criteria: " + cri);
+		
+		return mapper.getListWithPagingProduct(cri);
+	}
 	
 	@Override
 	public ProductVO getProduct(Long pid) {

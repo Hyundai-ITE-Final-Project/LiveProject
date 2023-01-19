@@ -50,7 +50,7 @@ public class ManageControllerTests {
 	@Test
 	public void testRegisterProduct() throws Exception{
 		
-		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/manage/register")
+		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/manage/registerProduct")
 				.param("pname", "상품 이름")
 				.param("lcategory", "상품 대분류")
 				.param("scategory", "상품 소분류")

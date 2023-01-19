@@ -37,5 +37,7 @@ public interface ProductService {
     
     public boolean removeProduct(Long pid);
     
-    public List<ProductVO> getProductList();
+//    public List<ProductVO> getProductList();
+    
+    public List<ProductVO> getProductList(Criteria cri);
 }

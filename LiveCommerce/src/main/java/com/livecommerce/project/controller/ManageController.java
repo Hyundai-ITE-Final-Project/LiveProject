@@ -10,6 +10,8 @@ package com.livecommerce.project.controller;
  * </pre>
  */ 
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.livecommerce.project.service.ProductService;
+import com.livecommerce.project.vo.Criteria;
+import com.livecommerce.project.vo.PageDTO;
 import com.livecommerce.project.vo.ProductVO;
 
 import lombok.AllArgsConstructor;
@@ -32,19 +36,38 @@ public class ManageController {
 	
 	private ProductService service;
 	
+	@Resource(name="uploadPath")
+	private String uploadPath;
+	
+//	@GetMapping("/products")
+//	public void products(Criteria cri, Model model) {
+//		
+//		log.info("products: " + cri);
+//		model.addAttribute("products", service.getList(cri));
+//		model.addAttribute("pageMaker", new PageDTO(cri, 123));
+//		
+////		model.addAttribute("products", service.getProductList());
+//	}
+	
 	@GetMapping("/products")
-	public void products(Model model) {
+	public void products(Criteria cri, Model model) {
 		
-		log.info("products");
+		log.info("products: " + cri);
+		model.addAttribute("products", service.getProductList(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri, 10000));
+	}
+	
+	@GetMapping("/registerProduct")
+	public void registerProduct() {
 		
-		model.addAttribute("products", service.getProductList());
 	}
 	
 	
-	@PostMapping("/register")
-	public String registerProduct(ProductVO product, RedirectAttributes rttr) {
+	@PostMapping("/registerProduct")
+	public String registerProduct(ProductVO product, RedirectAttributes rttr)  {
 		
-		log.info("register: " + product);
+		
+		log.info("registerProduct: " + product);
 		
 		service.registerProduct(product);
 		
@@ -54,12 +77,14 @@ public class ManageController {
 	}
 	
 	
-	@GetMapping("/get")
+	@GetMapping({"/get", "/modify"})
 	public void getProduct(@RequestParam("pid") Long pid, Model model) {
 		
-		log.info("/get");
+		log.info("/get or modify");
 		model.addAttribute("product", service.getProduct(pid));
 	}
+	
+	
 	
 	
 	@PostMapping("/modify")
@@ -86,6 +111,9 @@ public class ManageController {
 		
 		return "redirect:/manage/products";
 	}
+	
+	
+	
 	
 
 }

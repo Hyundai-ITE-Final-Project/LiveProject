@@ -79,11 +79,11 @@ public class ProductServiceTest {
 	
 	
 	
-	@Test
-	public void testGetProductList() {
-		
-		service.getProductList().forEach(product -> log.info(product));
-	}
+//	@Test
+//	public void testGetProductList() {
+//		
+//		service.getProductList().forEach(product -> log.info(product));
+//	}
 	
 	
 	@Test
