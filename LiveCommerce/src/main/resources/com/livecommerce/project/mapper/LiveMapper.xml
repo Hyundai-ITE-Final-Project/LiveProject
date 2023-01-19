@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.livecommerce.project.mapper.LiveMapper">
+  <resultMap type="com.livecommerce.project.vo.LiveVO" id="LiveMap">
+	<result column="Member_mid"           property="mId" />
+    <result column="live_id"          property="liveId" />
+    <result column="ps_index"         property="psIndex" />
+    <result column="live_title"       property="liveTitle" />
+    <result column="img1"          property="fileImg" />
+    <result column="live_startday"   property="liveStartDay" />
+    <result column="live_start_time"  property="liveStartTime" />
+    <result column="live_end_time"    property="liveEndTime" />
+    <result column="live_view"        property="liveView" />
+    <result column="live_status"       property="liveStatus" />
+    <result column="img"        property="fileImg" />
+    <result column="stream_key" property="streamKey"/>
+	<collection property="videoVO" ofType="com.livecommerce.project.vo.VideoVO" resultMap="VideoMap"/>
+	<collection property="productPostVO" ofType="com.livecommerce.project.vo.ProductPostVO" resultMap="ProductPostMap"/>
+  </resultMap>
+  
+  <resultMap  id="VideoMap"       type="com.livecommerce.project.vo.VideoVO">
+       <result column="video_id"        property="vid" />
+       <result column="video_path"      property="vpath"/>
+       <result column="video_name"      property="vname"/>
+    </resultMap>
+    
+    <resultMap id="ProductPostMap"      type="com.livecommerce.project.vo.ProductPostVO">
+      <result column="ps_index"         property="ps_index" />
+      <result column="ps_title"         property="ps_title" />
+      <result column="ps_price"         property="ps_price" />
+      <result column="ps_post_status"    property="ps_post_status" />
+    </resultMap>
+    
+    
+    <select id="liveList" resultMap="LiveMap">
+    	select li.*, pp.ps_title, pp.ps_price, pp.ps_post_status, m.stream_key
+		from live LI left join product_post pp
+		on li.ps_index = pp.ps_index join member m on li.member_mid = m.mid
+		<![CDATA[ where CONCAT(to_char(LI.LIVE_STARTDAY,'yy-mm-dd'),to_char(LI.LIVE_START_TIME,' HH24:MI')) <=  to_char(sysdate,'yy-mm-dd HH24:MI') 
+		and CONCAT(to_char(LI.LIVE_STARTDAY,'yy-mm-dd'),to_char(LI.LIVE_END_TIME,' HH24:MI')) >=  to_char(sysdate,'yy-mm-dd HH24:MI')]]>
+		and li.live_status = '1'
+    </select>
+  
+  
+  </mapper>
