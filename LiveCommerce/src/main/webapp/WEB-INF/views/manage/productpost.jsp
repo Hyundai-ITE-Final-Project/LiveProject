@@ -96,11 +96,61 @@
                         </div>
                     </div>
                 </div>
+                <div style="height:50px"></div>
+                <div class="paging" style="display: block;">
+					<input type="hidden" class="realEnd" value="${pageMaker.realEnd}">
+					<a class="prev2" href="#"></a>
+					<c:if test="${pageMaker.prev}">
+						<!-- 이전 버튼 -->
+						<a class="prev" href="/manage/productpost?pageNum=${pageMaker.startPage - 1}">Previous</a>
+					</c:if>
+	
+					<!-- 1~10 버튼 -->
+					<span class="num">
+						<c:forEach var="num"
+							begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+							<c:if test="${(pageMaker.startPage+i) <= pageMaker.endPage}">
+								<a href="/manage/productpost?pageNum=${num}" class="pageBtn">${num}</a>
+							</c:if>
+						</c:forEach>
+					</span>  
+					<c:if test="${pageMaker.next}">
+						<!-- 다음 버튼 -->
+						<a href="/manage/productpost?pageNum=${pageMaker.endPage +1}" class="next">Next</a>
+					</c:if>
+					<a class="next2" href="#"></a>
+				</div>
             </div>
         </div>
     </div>
 </div>
 <script>
+	$(document).ready(function(){
+		$("input[name=allCheck]").on('click', function(){
+			var chk = $(this).is(":checked");
+			if(chk){
+				$("input[name='postlist']").each(function(){
+					var checkBoxOpt = $(this).prop("disabled");
+					if(!checkBoxOpt){
+						$(this).attr("checked", true);
+					}
+				});
+			} else{
+				$("input[name='postlist']").attr("checked", false);
+			}
+		});
+		$("input[name=postlist]").click(function(){
+			var total = $("input[name=postlist]").length;
+			var checked = $("input[name=postlist]:checked").length;
+			if(total != checked){
+				$("input[name=allCheck]").prop("checked", false);
+			}
+			else{
+				$("input[name=allCheck]").prop("checked", true);
+			}
+		});
+	});
+
 	function select(msg){
 		var checkArr = new Array();
 		
