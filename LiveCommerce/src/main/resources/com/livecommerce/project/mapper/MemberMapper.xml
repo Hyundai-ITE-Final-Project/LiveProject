@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </select>
   
   <insert id="join">
-  	insert into member values (#{mid}, #{mpassword}, #{mname}, #{mtel}, #{mbirth}, #{memail}, #{mgender}, sysdate, 0, #{mrole}, #{maddress1}, #{maddress2}, #{mzipcode})
+  	insert into member values (#{mid}, #{mpassword}, #{mname}, #{mtel}, #{mbirth}, #{memail}, #{mgender}, sysdate, 0, #{mrole}, #{maddress1}, #{maddress2}, #{mzipcode}, null)
   </insert>
   
   <update id = "changeInfo">
