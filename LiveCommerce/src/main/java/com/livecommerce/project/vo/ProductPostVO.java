@@ -24,6 +24,6 @@ public class ProductPostVO {
 	private Date ps_date;
 	//삭제여부
 	private int ps_delete;
-	//상품아이디
-	private int pid;
+	//상품리스트
+	private List<Integer> productlist;
 }

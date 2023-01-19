@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.livecommerce.project.vo.Criteria;
 import com.livecommerce.project.vo.ProductPostVO;
+import com.livecommerce.project.vo.ProductVO;
 
 public interface ProductPostService {
 	//모든 판매글 출력
@@ -12,7 +13,9 @@ public interface ProductPostService {
 	public List<ProductPostVO> getProductPost(Criteria cri, String mid) throws Exception;
 	//판매글 등록
 	public void postAdd(ProductPostVO post) throws Exception;
-	public void postproductAdd(ProductPostVO productpost) throws Exception;
+	public void postproductAdd(ProductPostVO post) throws Exception;
 	//판매글 삭제
 	public void postDelete(List<Integer> pindexList) throws Exception;
+	//판매 상품
+	public List<ProductVO> getpdlist();
 }

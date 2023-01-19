@@ -44,8 +44,8 @@
                                     </div>
                                     <!-- <div class="post_cell_1">카테고리</div> -->
                                     <div class="post_cell_2">판매글 번호</div>
-                                    <div class="post_cell_3">제목</div>
-                                    <div class="post_cell_4"></div>
+                                    <div class="post_cell_3"></div>
+                                    <div class="post_cell_4">제목</div>
                                     <div class="post_cell_5">판매가</div>
                                     <div class="post_cell_6">배송방법</div>
                                     <div class="post_cell_7">배송비</div>
@@ -64,7 +64,6 @@
                                                 class="text_blue">${list.ps_index}</a>
                                         </div>
                                         <div class="post_cell_3">
-                                            <img src="" class="post_img">
                                         </div>
                                         <div class="post_cell_4">
                                             ${list.ps_title}
