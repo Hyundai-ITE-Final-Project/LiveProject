@@ -30,9 +30,9 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler{@Override
 			AccessDeniedException accessDeniedException) throws IOException, ServletException {
 		log.error("Access Denied Handler");
 		
-		log.error("ÀÌ°Ç ÅäÅ«ÀÌ ¾ø°Å³ª ±ÇÇÑÀÌ ¾ø´Â°Å¾ß");
+		log.error("í•´ë‹¹ í˜ì´ì§€ì˜ ê¶Œí•œì´ ì—†ëŠ” ì˜¤ë¥˜");
 		
-		response.sendRedirect("/error");
+		response.sendRedirect("/login");
 	}
 	
 }
