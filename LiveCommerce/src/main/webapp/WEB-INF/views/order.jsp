@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>          
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>      
 <!DOCTYPE html>
 <html>
 <head>
@@ -294,6 +295,7 @@
 
 			<!-- 주문 요청 form -->
  			<form class="order_form" action="/order" method="post">
+ 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<!-- 주문자 회원번호 -->
 				<input name="member_mid" value="${memberInfo.mid}" type="hidden">
 				<!-- 주소록 & 받는이-->

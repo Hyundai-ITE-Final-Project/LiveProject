@@ -90,11 +90,11 @@
         }
     </script>
     <div class="location-navi">
-로그인ID : <sec:authentication property="name"/><br>
+<%-- 로그인ID : <sec:authentication property="name"/><br>
 로그인 Auth : <sec:authentication property="authorities"/><br>
 로그인 Detail : <sec:authentication property="Details"/><br>
 로그인 Credentials : <sec:authentication property="Credentials"/>
-로그인 Principal : <sec:authentication property="Principal"/><br>
+로그인 Principal : <sec:authentication property="Principal"/><br> --%>
 
         <ul>
             <li>
@@ -537,6 +537,8 @@
     </div>
     
     <script>
+    let csrfHeaderName ="${_csrf.headerName}";
+    let csrfTokenValue="${_csrf.token}";
     /* 바로구매 버튼 */
 	$("#coreInsOrderBtn").on("click", function(){
 		let pCount = $(".num").val();
@@ -557,10 +559,12 @@
 		console.log('<sec:authentication property="name"/>');
 		if('<sec:authentication property="name"/>'== "anonymousUser") location.href = "/login";
 		form.p_quantity = $(".num").val();
+		
 		$.ajax({
 			url: '/cart/add',
 			type: 'POST',
 			data: form,
+			beforeSend: function(xhr) { xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
 			success: function(result){
 				cartAlert(result);
 			}

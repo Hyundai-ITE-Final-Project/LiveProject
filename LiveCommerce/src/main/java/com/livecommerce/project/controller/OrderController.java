@@ -69,9 +69,4 @@ public class OrderController {
 		
 	}
 	
-	@GetMapping("/ordercancel")
-	public void orderCancel() {
-		orderService.OrderCancel("imp_890790832007");
-	}
-	
 }
