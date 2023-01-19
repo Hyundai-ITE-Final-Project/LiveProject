@@ -36,8 +36,6 @@ public class ManageController {
 	
 	private ProductService service;
 	
-	@Resource(name="uploadPath")
-	private String uploadPath;
 	
 //	@GetMapping("/products")
 //	public void products(Criteria cri, Model model) {
