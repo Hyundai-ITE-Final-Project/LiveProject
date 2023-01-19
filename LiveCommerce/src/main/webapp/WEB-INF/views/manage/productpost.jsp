@@ -42,7 +42,6 @@
                                     <div class="pd_h_check">
                                         <input type="checkbox" class="isChek" name="allCheck">
                                     </div>
-                                    <!-- <div class="post_cell_1">카테고리</div> -->
                                     <div class="post_cell_2">판매글 번호</div>
                                     <div class="post_cell_3"></div>
                                     <div class="post_cell_4">제목</div>
@@ -60,7 +59,8 @@
                                             </div>
                                         </div>
                                         <div class="post_cell_2">
-                                            <a href="/tool/pdpost/create?psIndex=${list.ps_index}"
+                                        	<input type="hidden" id="ps_index" name="ps_index" value="${list.ps_index}">
+                                            <a href="/manage/postmodify?ps_index=${list.ps_index}"
                                                 class="text_blue">${list.ps_index}</a>
                                         </div>
                                         <div class="post_cell_3">

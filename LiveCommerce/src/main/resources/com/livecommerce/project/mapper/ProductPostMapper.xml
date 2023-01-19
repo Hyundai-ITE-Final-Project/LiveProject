@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+	<!-- @author 김나형 -->
 <mapper namespace="com.livecommerce.project.mapper.ProductPostMapper">
 
 	<!-- 아이디당 post 갯수구하기 -->
@@ -45,6 +45,29 @@
 		insert into product_post_add
 		values(#{ps_index}, #{pid})
 	</insert>
+	
+	<!-- post 상세정보 -->
+	<select id="getPostDetail" resultType="com.livecommerce.project.vo.ProductPostVO">
+		select * from product_post where ps_index = #{ps_index}
+	</select>
+	
+	<!-- post product 상세정보 -->
+	<select id="getPostProductDetail" resultType="com.livecommerce.project.vo.ProductPostAddVO">
+		select product_pid from product_post_add where ps_index = #{ps_index}
+	</select>
+	
+	<!-- post 수정-->
+	<update id="postModify">
+		update product_post
+		set ps_title = #{ps_title}, ps_price = #{ps_price}, ps_post_status = #{ps_post_status}
+		where ps_index = #{ps_index}
+	</update>
+	
+	<!-- post add 수정 -->
+	<delete id="postproductDelete" parameterType="int">
+		delete product_post_add
+		where ps_index = #{ps_index}
+	</delete>
 	
 	<!-- post선택삭제 -->
 	<delete id="postDelete" parameterType="java.util.List">
