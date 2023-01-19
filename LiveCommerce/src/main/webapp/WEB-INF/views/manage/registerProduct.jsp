@@ -33,6 +33,22 @@
 	});
 	//# sourceURL=pen.js
 </script>
+
+<script id="preview">
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				document.getElementById('preview').src = e.target.result;
+			};
+			reader.readAsDataURL(input.files[0]);
+		} else {
+			document.getElementById('preview').src = "";
+		}
+	}
+</script>
+
+
 <style>
 .select_img img {
 	margin: 20px 0;
@@ -46,11 +62,11 @@
 			<div class="admin_menulist">
 				<div class="admin_tablist">
 					<a href="/tool/live" class="main_tab" aria-selected="false">라이브
-						관리</a> <a href="/manage/products" class="main_tab" aria-selected="true">상품
-						관리</a> <a href="/manage/productpost" class="main_tab" aria-selected="false">판매글
-						관리</a> <a href="/tool/sale" class="main_tab" aria-selected="false">판매
-						내역 관리</a> <a href="/tool/setting" class="main_tab"
-						aria-selected="false">설정</a>
+						관리</a> <a href="/manage/products" class="main_tab"
+						aria-selected="true">상품 관리</a> <a href="/manage/productpost"
+						class="main_tab" aria-selected="false">판매글 관리</a> <a
+						href="/tool/sale" class="main_tab" aria-selected="false">판매 내역
+						관리</a> <a href="/tool/setting" class="main_tab" aria-selected="false">설정</a>
 				</div>
 			</div>
 			<form role="form" action="/manage/registerProduct" method="post">
@@ -83,8 +99,8 @@
 								</div>
 
 								<div class="create_layout">
-								
-									<div class="layout_subject _asterisk" >소분류</div>
+
+									<div class="layout_subject _asterisk">소분류</div>
 									<select class="layout_input update_selected" id="scateSelect"
 										name="scategory" size="1">
 										<option value="0">소분류 선택</option>
@@ -158,21 +174,27 @@
 
 
 								<div class="create_layout form-group">
-									<div class="layout_subject _asterisk">상품명</div> <input class="form-control layout_input"
-										name='pname'>
+									<div class="layout_subject _asterisk">상품명</div>
+									<input class="form-control layout_input" name='pname'>
 								</div>
 
 								<div class="create_layout form-group">
-									<div class="layout_subject _asterisk">상품 가격</div><input class="form-control layout_input"
-										name='price'>
+									<div class="layout_subject _asterisk">상품 가격</div>
+									<input class="form-control layout_input" name='price'>
 								</div>
 
 								<div class="create_layout form-group">
-								<div class="layout_subject _asterisk">상품 상세</div> <input class="form-control layout_input"
-										name='detail'>
+									<div class="layout_subject _asterisk">상품 상세</div>
+									<input class="form-control layout_input" name='detail'>
 								</div>
-
 								
+								
+								<div class="create_layout form-group">
+									<div class="layout_subject _asterisk">이미지</div>
+									<input class="form-control layout_input" name='img1'>
+								</div>
+
+
 
 								<div class="create_layout form-group">
 									<div class="layout_subject _asterisk">판매 상태</div>
@@ -186,21 +208,33 @@
 									</div>
 									<div class="memo">* 미전시 선택 시 판매등록이 불가능합니다.</div>
 								</div>
+
 								
-								
-								
-								<div class="create_layout form-group">
-									<div class="layout_subject _asterisk">이미지</div>
-									<input type='file'
-										name='img1' multiple>
-								</div>
+
+
+
+<!--
+								 <div class="create_layout filebox">
+									<div class="layout_subject _asterisk">판매글 메인 이미지</div>
+									<div class="layout_memo">5MB 크기의 정사각형 이미지를 올려주세요.</div>
+									<input class="uploadName" disabled="disabled"
+										<c:choose>
+                                    <c:when test="${!empty postInfo}">
+                                        value='${postInfo.pdPostFileVo.getFileName()}'
+                                    </c:when>
+                                    <c:otherwise>
+                                        value="파일선택"
+                                    </c:otherwise>
+                                </c:choose>>
+									<label for="img1">업로드</label> <input type='file' name='uploadFile' multiple>
+								</div> -->
 
 
 
 								<button type="submit" class="btn btn-default">Submit</button>
 			</form>
-			</div>
-			</div>
-		
+		</div>
+	</div>
+
 </body>
 </html>

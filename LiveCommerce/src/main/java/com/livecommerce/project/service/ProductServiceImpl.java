@@ -118,6 +118,7 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.deleteProduct(pid) == 1;
 	}
 	
+	
     
     
     
