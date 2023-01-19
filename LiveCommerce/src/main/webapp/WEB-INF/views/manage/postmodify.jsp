@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<link rel="stylesheet" type="text/css" href="/resources/css/common.css" >
-<link rel="stylesheet" type="text/css" href="/resources/css/login.css" >
-<link rel="stylesheet" type="text/css" href="/resources/css/admin.css"> 
+<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/login.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/admin.css">
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <div id="admin_wrap">
@@ -22,19 +23,20 @@
             <div class="product_create_area">
                 <div class="product_create_inner">
                     <div class="_title">
-                        <h1>판매글 등록</h1>
+                        <h1>판매글 수정</h1>
                     </div>
-                    <form id="postadd" name="formm" action="/manage/productpostadd" method="post">
+                    <form id="postadd" name="formm" action="/manage/postmodify" method="post">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                         <input type="hidden" id="mid" name="mid" value="${member}">
+                        <input type="hidden" name="ps_index" value="${ps_index}">
                         <div class="product_create_content">
                             <div class="create_layout">
                                 <div class="layout_subject _asterisk">판매글 제목</div>
-                                <input type="text" id="psTitle" name="ps_title" class="layout_input" value="" maxlength='30'>
+                                <input type="text" id="psTitle" name="ps_title" class="layout_input" value="${post.ps_title}" maxlength='30'>
                             </div>
                             <div class="create_layout">
                                 <div class="layout_subject _asterisk">게시물 판매가(최소 금액)</div>
-                                <input type="text" id="psPrice" class="layout_input" name="ps_price" value="" maxlength='11' oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1');">
+                                <input type="text" id="psPrice" class="layout_input" name="ps_price" value="${post.ps_price }" maxlength='11' oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
                             <div class="create_layout">
 						    	<div class="layout_subject _asterisk">판매 상품 추가</div>
@@ -56,7 +58,10 @@
 							                    <div class="pdAddList_content_area">
 							                        <div class="pdAddList_h_check">
 							                            <div>
-							                                <input type="checkbox" id="addPdVal" class="iChek" data-pk="${pd.pid}" name="postlist" value="${pd.pid}">
+							                                <input type="checkbox" id="addPdVal" class="iChek" data-pk="${pd.pid}" name="postlist" value="${pd.pid}"
+							                                <c:forEach items="${post2}" var="pid">
+	                                                   			<c:if test="${pid.product_pid eq pd.pid}"> checked </c:if>
+	                                                   		</c:forEach>>
 							                            </div>
 							                        </div>
 							                        <div class="pdAddList_cell_1">${pd.pname}</div>
@@ -73,12 +78,12 @@
                                 <div class="layout_subject _asterisk">판매 상태</div>
                                 <select name="ps_post_status" id="pdPostOnOff" class="_filter">
                                     <option value="">판매 상태</option>
-                                    <option value="판매중">판매중</option>
-                                    <option value="판매중지">판매중지</option>
+                                    <option value="판매중" <c:if test="${post.ps_post_status eq '판매중'}"> selected="selected"></c:if>>판매중</option>
+                                    <option value="판매중지"<c:if test="${post.ps_post_status eq '판매중지'}"> selected="selected"></c:if>>판매중지</option>
                                 </select>
                             </div>
                             <div class="create_layout">
-                    			<button class="btn_post_create btn_pp" onclick="go_save()">판매글 등록하기</button>
+                    			<button class="btn_post_create btn_pp" onclick="go_modify()">판매글 수정하기</button>
                     		</div>
                         </div>
                     </form>
@@ -88,7 +93,7 @@
     </div>
 </div>
 <script>
-/*     var ifrContent = $('#psContentText').text();
+    var ifrContent = $('#psContentText').text();
     //iframe 디자인모드
     var iframe = document.getElementById("psContentIframe").contentWindow;
     //var lodeContent=document.getElementById("psContentIframe").innerHTML;
@@ -97,9 +102,9 @@
         iframeD.write("<!DOCTYPE html><html><body>" + ifrContent + "</body></html>");
     }
     iframeD.designMode = 'on';
-    //iframe.focus();  */
-
-    function go_save(){
+    //iframe.focus(); 
+    
+	function go_modify(){
         if(document.formm.ps_title.value ==""){
             alert("제목을 입력해주세요");
         } else if(document.formm.ps_price.value == ""){

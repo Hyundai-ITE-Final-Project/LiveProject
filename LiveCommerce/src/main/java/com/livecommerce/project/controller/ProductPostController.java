@@ -25,7 +25,16 @@ import com.livecommerce.project.vo.ProductPostVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
-
+/**
+ * @author 김나형
+ * @since 2023.01.16
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일              	수정자                   수정내용
+2023.01.16		김나형		최초생성
+ * </pre>
+ */ 
 @Log4j
 @Controller
 @RequestMapping("/manage/*")
@@ -63,13 +72,29 @@ public class ProductPostController {
 	
 	@PostMapping("/productpostadd")
 	public String PostAddPOST(HttpServletRequest request, Model model, Principal prin, ProductPostVO post, RedirectAttributes rttr) throws Exception{
-		//log.info(post.getProductlist());
-		//log.info(post.getMid());
 		postService.postproductAdd(post);
 		String memid = prin.getName();
 		model.addAttribute("member", memid);
 		rttr.addFlashAttribute("enroll_result", post);
-		//postService.postproductAdd(addpost);
+		return "redirect:/manage/productpost";
+	}
+	
+	@GetMapping("/postmodify")
+	public void PostModifyGet(int ps_index, Model model, Principal prin) throws Exception{
+		String memid = prin.getName();
+		model.addAttribute("member", memid);
+		model.addAttribute("ps_index", ps_index);
+		model.addAttribute("pd", postService.getpdlist());
+		model.addAttribute("post", postService.getPostDetail(ps_index));
+		List<ProductPostAddVO> prolist = postService.getPostProductDetail(ps_index);
+		model.addAttribute("post2", prolist);
+	}
+	
+	@PostMapping("/postmodify")
+	public String PostModify(ProductPostVO post) throws Exception{
+		log.info("ps_index : " + post.getPs_index());
+		postService.postproductDelete(post.getPs_index());
+		postService.postModify(post);
 		return "redirect:/manage/productpost";
 	}
 	
