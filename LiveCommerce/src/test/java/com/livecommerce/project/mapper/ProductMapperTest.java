@@ -20,13 +20,15 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.livecommerce.project.vo.Criteria;
+import com.livecommerce.project.vo.Criteria2;
 import com.livecommerce.project.vo.ProductVO;
 
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
-"file:src/main/webapp/WEB-INF/spring/security-context.xml" })
+@ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
+	"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml",
+	"file:src/main/webapp/WEB-INF/spring/security-context.xml"})
 @Log4j
 public class ProductMapperTest {
 	@Autowired
@@ -69,6 +71,18 @@ public class ProductMapperTest {
 	public void testGetProductList() {
 		mapper.getProductList().forEach(product -> log.info(product));
 	}
+	
+	
+//	@Test
+//	public void testPagingProduct() {
+//		Criteria2 cri2 = new Criteria2();
+//		
+//		List<ProductVO> list = mapper.getListWithPagingProduct(cri2);
+//		
+//		list.forEach(product -> log.info(product));
+//	}
+	
+	
 	
 	
 	@Test

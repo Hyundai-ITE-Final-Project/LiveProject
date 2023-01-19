@@ -14,7 +14,6 @@ package com.livecommerce.project.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 import com.livecommerce.project.vo.Criteria;
 import com.livecommerce.project.vo.ProductVO;
@@ -35,6 +34,8 @@ public interface ProductMapper {
 	// 박소은 작성
 //	@Select("select * from product")
 	public List<ProductVO> getProductList();
+	
+	public List<ProductVO> getListWithPagingProduct(Criteria cri);
 	
 	public void insertProduct(ProductVO product);
 	
