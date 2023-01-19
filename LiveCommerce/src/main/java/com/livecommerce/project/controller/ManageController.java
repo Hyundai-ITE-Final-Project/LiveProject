@@ -10,14 +10,13 @@ package com.livecommerce.project.controller;
  * </pre>
  */ 
 
-import javax.annotation.Resource;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.livecommerce.project.service.ProductService;
@@ -47,12 +46,14 @@ public class ManageController {
 ////		model.addAttribute("products", service.getProductList());
 //	}
 	
+	// 전체 개수를 토대로 페이징 처리 + 상품 전체 목록 띄우기
 	@GetMapping("/products")
 	public void products(Criteria cri, Model model) {
 		
 		log.info("products: " + cri);
+		int total = service.getTotal(cri);
 		model.addAttribute("products", service.getProductList(cri));
-		model.addAttribute("pageMaker", new PageDTO(cri, 10000));
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 	@GetMapping("/registerProduct")
@@ -110,6 +111,17 @@ public class ManageController {
 		return "redirect:/manage/products";
 	}
 	
+	
+	@PostMapping("/uploadFormAction")
+	public void uploadFormPost(MultipartFile[] uploadFile, Model model) {
+		
+		for (MultipartFile multipartFile : uploadFile) {
+			
+			log.info("-----------------------------");
+			log.info("Upload File Name: " + multipartFile.getOriginalFilename());
+			log.info("Upload File Size: " + multipartFile.getSize());
+		}
+	}
 	
 	
 	
