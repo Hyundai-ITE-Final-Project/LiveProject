@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>          
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>         
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,11 @@
   crossorigin="anonymous"></script>
 </head>
 <body>
-
+<%-- 로그인ID : <sec:authentication property="name"/><br>
+로그인 Auth : <sec:authentication property="authorities"/><br>
+로그인 Detail : <sec:authentication property="Details"/><br>
+로그인 Credentials : <sec:authentication property="Credentials"/>
+로그인 Principal : <sec:authentication property="Principal"/><br> --%>
 <div class="wrapper">
 	<div class="wrap">
 		<div class="top_gnb_area">
@@ -235,6 +240,7 @@
 			
 			<!-- 수량 조정 form -->
  			<form action="/cart/update" method="post" class="quantity_update_form">
+ 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<input type="hidden" name="cart_id" class="update_cart_id">
 				<input type="hidden" name="p_quantity" class="update_p_quantity">
 				<input type="hidden" name="member_mid" value="gd">
@@ -242,11 +248,12 @@
 			
 			<!-- 삭제 form -->
 			<form action="/cart/delete" method="post" class="quantity_delete_form">
+			    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<input type="hidden" name="cart_id" class="delete_cartId">
 				<input type="hidden" name="member_mid" value="gd">
 			</form>		
 			<!-- 주문 form -->
-			<form action="/order/gd" method="get" class="order_form">
+			<form action="/order/<sec:authentication property="name"/>" method="get" class="order_form">
 
 			</form>		 		
 						
