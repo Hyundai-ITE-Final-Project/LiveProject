@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
 <%@ include file="/WEB-INF/views/header/tool_header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -71,8 +72,8 @@
 			<div class="admin_menulist">
 				<div class="admin_tablist">
 					<a href="/tool/live" class="main_tab" aria-selected="false">라이브
-						관리</a> <a href="/tool/products" class="main_tab" aria-selected="true">상품
-						관리</a> <a href="/tool/pdpost" class="main_tab" aria-selected="false">판매글
+						관리</a> <a href="/manage/products" class="main_tab" aria-selected="true">상품
+						관리</a> <a href="/manage/productpost" class="main_tab" aria-selected="false">판매글
 						관리</a> <a href="/tool/sale" class="main_tab" aria-selected="false">판매
 						내역 관리</a> <a href="/tool/setting" class="main_tab"
 						aria-selected="false">설정</a>
@@ -138,7 +139,8 @@
 												<div>${products.pstock}</div>
 											</div>
 											<div class="pd_cell_7">
-												<div>${products.pregdate}</div>
+												<fmt:formatDate value="${products.pregdate}"
+													pattern="yyyy-MM-d" type="date" />
 											</div>
 										</div>
 									</c:forEach>
@@ -153,27 +155,34 @@
 
 
 						</form>
-
-						<div class='pull-right'>
-							<ul class="pagination">
-								<c:if test="${pageMaker.prev}">
-									<li class="paginate_button previous"><a
-										href="{pageMaker.startPage - 1}">Previous</a></li>
-								</c:if>
-								<c:forEach var="num" begin="${pageMaker.startPage}"
-									end="${pageMaker.endPage}">
-									<li class="paginate_button"${pageMaker.cri.pageNum == num ? "active":""} "><a
-										href="${num}">${num}</a></li>
-								</c:forEach>
-								<c:if test="${pageMaker.next}">
-									<li class="paginate_button next"><a
-										href="${pageMaker.endPage + 1}">Next</a></li>
-								</c:if>
-							</ul>
+						<div style='text-align: center;'>
+							<div style='display: inline-block;'>
+								<ul style='text-align: center;'>
+									<c:if test="${pageMaker.prev}">
+										<li class="paginate_button previous"
+											style='float: left; margin: 10px; text-align: center;'><a
+											href="${pageMaker.startPage - 1}">이전</a></li>
+									</c:if>
+									<c:forEach var="num" begin="${pageMaker.startPage}"
+										end="${pageMaker.endPage}">
+										<li style='float: left; margin: 10px; text-align: center;'
+											class="paginate_button"${pageMaker.cri.pageNum == num ? "active":""} "><a
+											href="${num}">${num}</a></li>
+									</c:forEach>
+									<c:if test="${pageMaker.next}">
+										<li class="paginate_button next"
+											style='float: left; margin: 10px; text-align: center;'><a
+											href="${pageMaker.endPage + 1}">다음 </a></li>
+									</c:if>
+								</ul>
+							</div>
 						</div>
 
 					</div>
+
 				</div>
+
 			</div>
+
 		</div>
 	</div>

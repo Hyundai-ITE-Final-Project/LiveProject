@@ -86,10 +86,13 @@
 			rownum rn, pid, pname, pstatus, price, pstock, pregdate
 		from
 			product
-		where rownum <= #{pageNum} * #{amount}
-		)
-		where rn > (#{pageNum} - 1) * #{amount}
+		where pid <= #{pageNum} * #{amount}
+		order by pid
 		
+		
+		)
+		where pid > (#{pageNum} - 1) * #{amount}
+		order by pid
 		]]>
 
 	</select>
