@@ -15,7 +15,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
 //xml설정방식 사용 시
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
+"file:src/main/webapp/WEB-INF/spring/security-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class HikariDataSourceTest {
 
