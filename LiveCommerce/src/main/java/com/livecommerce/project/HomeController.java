@@ -18,36 +18,32 @@ import com.livecommerce.project.service.LiveService;
 import lombok.extern.log4j.Log4j;
 
 /**
- * Handles requests for the application home page.
+ * @author 신기원
+ * @since 2023.01.19
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일                    수정자                   수정내용
+ * ----------  --------    ---------------------------
+ * 2023.01.17    신기원                	 스트리밍 연결
+ * </pre>
  */
 @Controller
-@Log4j
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@Autowired
 	private LiveService liveService;
 	
 	@Value("${video.url}")
 	private String url;
 	
+	//메인 페이지로 스트리밍 영상 리스트 전달
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("url", url);
-		model.addAttribute("live", liveService.liveList());
-		log.info(url);
+		model.addAttribute("lives", liveService.liveList());
 		return "home";
 	}
 	
