@@ -5,22 +5,9 @@
   <mapper namespace="com.livecommerce.project.mapper.MypageMapper">
   <!-- 주문 리스트 -->
 	<select id="getOrderList" resultType="com.livecommerce.project.vo.OrderVO">
-		<![CDATA[
-		select * 
-		from(
-		    select rownum rn, oid, member_mid, ostate, odate, imp_uid
+		    select oid, member_mid, ostate, odate, imp_uid
 		    from orders
-		    where rownum <= #{pageNum} * #{amount} 
-		]]>    
-		<if test="keyword != null">
-			and member_mid like '%'||#{keyword}||'%'
-		</if>
-		<![CDATA[
-		    
-		    order by odate desc
-		    )
-		where rn > (#{pageNum} -1) * #{amount}
-		]]>
+		    where member_mid = #{member_mid} 
 	</select>	
 	
 	<!-- 상품 총 개수 -->

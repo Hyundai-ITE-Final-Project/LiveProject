@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>      
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +28,6 @@
                     <div class="admin_content_subject"><span>주문 현황</span></div>
 					<div class="author_table_wrap">
 						<!-- 게시물 O -->
-						<c:if test="${listCheck != 'empty' }">
 	                    	<table class="order_table">
 	                    	<colgroup>
 	                    		<col width="21%">
@@ -53,127 +52,38 @@
 	                    			<td><fmt:formatDate value="${item.odate}" pattern="yyyy-MM-dd"/></td>
 	                    			<td><span id="ostate${status.index}" value="${item.ostate}"/>${item.ostate}</span></td>
 	                    			<td><button id="cancelbtn" class="btn_orderCancel" value="${status.index}" onClick="setTotalInfo(this)">주문취소</button><td>
-	                    		</tr>
-	                <form class="mypageOrderForm" action="/ordercancel" method="post">
+	                    			<td><span id="imp_uid${status.index}" value = "${item.imp_uid}">${item.imp_uid}</span> </td>
+	                <form class="mypageOrderForm" action="/mypage/ordercancel" method="post">
 	                	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 						<input type="hidden" name="oid" value="${item.oid}">
 						<input type="hidden" name="ostate" value="${item.ostate}">
 						<input type="hidden" name="imp_uid" value="${item.imp_uid}">
 					</form>        
+	                    		</tr>
 	                    		</c:forEach>
 	                    	</table> 					
-						</c:if>
-						
-                		<!-- 게시물 x -->
-                		<c:if test="${listCheck == 'empty'}">
-                			<div class="table_empty">
-                				등록된 작가가 없습니다.
-                			</div>
-                		</c:if> 						
-                			
+									
+               
                     </div> 
-                    
-                     <!-- 검색 영역 -->
- <%--                    <div class="search_wrap">
-                    	<form id="searchForm" action="/orderList" method="get">
-                    		<div class="search_input">
-                    			<input type="text" name="keyword" value='<c:out value="${pageMaker.cri.keyword}"></c:out>'>
-                    			<input type="hidden" name="pageNum" value='<c:out value="${pageMaker.cri.pageNum }"></c:out>'>
-                    			<input type="hidden" name="amount" value='${pageMaker.cri.amount}'>
-                    			<button class='btn search_btn'>검 색</button>
-                    		</div>
-                    	</form>
-                    </div> --%>
-                    
-                                        <!-- 페이지 이동 인터페이스 영역 -->
-                    <div class="pageMaker_wrap" >
-                    
-	                    <ul class="pageMaker">
-	                    
-	                    	<!-- 이전 버튼 -->
-	                    	<c:if test="${pageMaker.prev}">
-	                    		<li class="pageMaker_btn prev">
-	                    			<a href="${pageMaker.startPage - 1}">이전</a>
-	                    		</li>
-	                    	</c:if>
-	                    	
-	                    	<!-- 페이지 번호 -->
-	                    	<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="num">
-	                    		<li class="pageMaker_btn ${pageMaker.cri.pageNum == num ? "active":""}">
-	                    			<a href="${num}">${num}</a>
-	                    		</li>
-	                    	</c:forEach>
-	                    	
-	                    	<!-- 다음 버튼 -->
-	                    	<c:if test="${pageMaker.next}">
-	                    		<li class="pageMaker_btn next">
-	                    			<a href="${pageMaker.endPage + 1 }">다음</a>
-	                    		</li>
-	                    	</c:if>
-	                    	
-	                    </ul>
-	                    
-                    </div>          
-                </div>
                 
-
-                    
-					<form id="moveForm" action="/orderList" method="get">
-						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-					</form>                             
+                </div>
  
  			<%-- 	<%@include file="../includes/admin/footer.jsp" %> --%>
 
 <script>
-$(document).ready(function(){
-	
 
-
-});
-
-
-let searchForm = $('#searchForm');
-let moveForm = $('#moveForm');
-
-/* 작거 검색 버튼 동작 */
-$("#searchForm button").on("click", function(e){
-	
-	e.preventDefault();
-	
-	/* 검색 키워드 유효성 검사 */
-	if(!searchForm.find("input[name='keyword']").val()){
-		alert("키워드를 입력하십시오");
-		return false;
-	}
-	
-	searchForm.find("input[name='pageNum']").val("1");
-	
-	searchForm.submit();
-	
-});
-
-
-/* 페이지 이동 버튼 */
-$(".pageMaker_btn a").on("click", function(e){
-	
-	e.preventDefault();
-	
-	console.log($(this).attr("href"));
-	
-	moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-	
-	moveForm.submit();
-	
-});
 //주문삭제 버튼
 function setTotalInfo(btn){
 	var index = btn.value;
 	var ostate = $("#ostate"+index).text();
+	var oimp_uid = $("#imp_uid"+index).text();
+	var oid1 = $("#oid"+index).text();
 	//console.log("index: " + index + " , oid : " + oid);
+	console.log(oimp_uid);
 	if(ostate == '배송준비') {
 		alert("주문취소 완료되었습니다.");
+		$("input[name='imp_uid']").val(oimp_uid);
+		$("input[name='oid']").val(oid1);
     	$(".mypageOrderForm").submit();	
 	}
 	else if(ostate == '주문취소'){
