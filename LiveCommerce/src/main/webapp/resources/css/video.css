@@ -28,7 +28,7 @@ textarea:focus {outline: none;}
 .LiveHeader_wrap{position: absolute;top: 0;right: 0;left: 0;z-index: 40;}
 .LiveHeader_logo{display: inline-block;min-width: 132px;min-height: 54px;font-size: 0;vertical-align: top;}
 .logo_link{display: inline-block;padding: 13px 15px;}
-.header_icon{background-size: 500px 500px; background-image:url("/img/logo/shopping_live_img.png");display: inline-block;background-repeat: no-repeat;}
+.header_icon{background-size: 500px 500px; background-image:url("/resources/img/logo/shopping_live_img.png");display: inline-block;background-repeat: no-repeat;}
 .logo_icon{display: inline-block;background-repeat: no-repeat;width: 90px;height: 40px;vertical-align: top;background-position: 0 -60px;}
 .ToolBox_wrap{position: absolute;top: 5px;right: 2px;z-index: 70;display: flex;}
 .SoundButton_wrap{position: relative;}

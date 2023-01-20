@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- /**
+ * @author 신기원
+ * @since 2023.01.17
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일                		수정자                   수정내용
+ * 2023.01.17		신기원		최초생성
+ * 2023.01.19		신기원		getLiveInfo 생성
+ * </pre>
+ */ -->
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -34,8 +45,7 @@
       <result column="ps_price"         property="ps_price" />
       <result column="ps_post_status"    property="ps_post_status" />
     </resultMap>
-    
-    
+   
     <select id="liveList" resultMap="LiveMap">
     	select li.*, pp.ps_title, pp.ps_price, pp.ps_post_status, m.stream_key
 		from live LI left join product_post pp
@@ -43,6 +53,26 @@
 		<![CDATA[ where CONCAT(to_char(LI.LIVE_STARTDAY,'yy-mm-dd'),to_char(LI.LIVE_START_TIME,' HH24:MI')) <=  to_char(sysdate,'yy-mm-dd HH24:MI') 
 		and CONCAT(to_char(LI.LIVE_STARTDAY,'yy-mm-dd'),to_char(LI.LIVE_END_TIME,' HH24:MI')) >=  to_char(sysdate,'yy-mm-dd HH24:MI')]]>
 		and li.live_status = '1'
+    </select>
+    
+    <select id="getLiveInfo" parameterType="String" resultMap="LiveMap">
+        /*LiveMapper.getLiveInfo*/
+		SELECT       
+			LI.MEMBER_MID
+		    ,LI.LIVE_ID
+		    ,LI.LIVE_TITLE
+		    ,LI.LIVE_STATUS
+		    ,to_char(LI.LIVE_STARTDAY, 'yy-mm-dd') AS LIVE_STARTDAY
+            ,to_char(LI.LIVE_START_TIME, 'hh24:mi') AS LIVE_START_TIME
+            ,to_char(LI.LIVE_END_TIME, 'hh24:mi') AS LIVE_END_TIME
+            ,m.stream_key
+		    ,PP.PS_INDEX
+		    ,PP.PS_TITLE
+		    ,PP.PS_PRICE
+		    ,PP.PS_POST_STATUS
+		FROM LIVE LI LEFT JOIN PRODUCT_POST PP
+		ON li.ps_index = pp.ps_index join member m on li.member_mid = m.mid
+		where PS_POST_STATUS = '판매중' and LIVE_ID = #{liveId}
     </select>
   
   
