@@ -2,7 +2,7 @@ package com.livecommerce.project.vo;
 
 import lombok.Data;
 /**
- * @author 김민석
+ * @author 신기원
  * @since 2023.01.17
  * @version 1.0
  * 
