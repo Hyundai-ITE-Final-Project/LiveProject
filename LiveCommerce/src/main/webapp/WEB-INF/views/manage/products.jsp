@@ -40,28 +40,28 @@
 
 				var actionForm = $("#actionForm");
 
-				$(".paginate_button a").on(
-						"click",
-						function(e) {
+				$(".paginate_button a").on("click", function(e) {
 							e.preventDefault();
 
 							console.log('click');
+							alert('바보야!')
 
-							actionForm.find("input[name='pageNum']").val(
-									$(this).attr("href"));
+							actionForm.find("input[name='pageNum']").val($(this).attr("href"));
 							actionForm.submit();
-						});
+				});
 
-			});
+			
 
-	$(".move").on(
-			"click",
-			function(e) {
-				e.preventDefault();
-				actionFrom.append("<input type='hidden' name='pid' value'"
-						+ $(this).attr("href") + "'>");
-				actionFrom.attr("action", "manage/get");
-				actionForm.submit();
+				$(".move").on(
+					"click",
+					function(e) {
+						e.preventDefault();
+						actionFrom.append("<input type='hidden' name='pid' value'"
+								+ $(this).attr("href") + "'>");
+						actionFrom.attr("action", "manage/get");
+						actionForm.submit();
+					}
+				);
 			});
 </script>
 </head>
@@ -148,35 +148,29 @@
 							</div>
 
 						</div>
-						<form id='actionForm' action="/manage/products" method='get'>
-							<input type='hidden' name='pageNum'
-								value='${pageMaker.cri.pageNum }'> <input type='hidden'
-								name='amount' value='${pageMaker.cri.amount}'>
-
-
-						</form>
-						<div style='text-align: center;'>
-							<div style='display: inline-block;'>
-								<ul style='text-align: center;'>
-									<c:if test="${pageMaker.prev}">
-										<li class="paginate_button previous"
-											style='float: left; margin: 10px; text-align: center;'><a
-											href="${pageMaker.startPage - 1}">이전</a></li>
-									</c:if>
-									<c:forEach var="num" begin="${pageMaker.startPage}"
-										end="${pageMaker.endPage}">
-										<li style='float: left; margin: 10px; text-align: center;'
-											class="paginate_button"${pageMaker.cri.pageNum == num ? "active":""} "><a
-											href="${num}">${num}</a></li>
-									</c:forEach>
-									<c:if test="${pageMaker.next}">
-										<li class="paginate_button next"
-											style='float: left; margin: 10px; text-align: center;'><a
-											href="${pageMaker.endPage + 1}">다음 </a></li>
-									</c:if>
-								</ul>
-							</div>
-						</div>
+						<div class="paging" style="display: block;">
+					<input type="hidden" class="realEnd" value="${pageMaker.realEnd}">
+					<a class="prev2" href="#"></a>
+					<c:if test="${pageMaker.prev}">
+						<!-- 이전 버튼 -->
+						<a class="prev" href="/manage/products?pageNum=${pageMaker.startPage - 1}">Previous</a>
+					</c:if>
+	
+					<!-- 1~10 버튼 -->
+					<span class="num">
+						<c:forEach var="num"
+							begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+							<c:if test="${(pageMaker.startPage+i) <= pageMaker.endPage}">
+								<a href="/manage/products?pageNum=${num}" class="pageBtn">${num}</a>
+							</c:if>
+						</c:forEach>
+					</span>  
+					<c:if test="${pageMaker.next}">
+						<!-- 다음 버튼 -->
+						<a href="/manage/products?pageNum=${pageMaker.endPage +1}" class="next">Next</a>
+					</c:if>
+					<a class="next2" href="#"></a>
+				</div>
 
 					</div>
 

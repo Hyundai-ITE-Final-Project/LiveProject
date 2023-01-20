@@ -18,6 +18,9 @@ public class Criteria {
     private String keyword;
 
     /* Criteria 생성자 */
+    public Criteria(int pageNum) {
+    	this(pageNum, 12);
+    }
     public Criteria(int pageNum, int amount) {
         this.pageNum = pageNum;
         this.amount = amount;

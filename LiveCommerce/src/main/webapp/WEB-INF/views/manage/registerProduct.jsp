@@ -70,6 +70,7 @@
 				</div>
 			</div>
 			<form role="form" action="/manage/registerProduct" method="post">
+
 				<div class="product_create_wrap">
 					<div class="product_create_area">
 						<div class="product_create_inner">
@@ -187,8 +188,8 @@
 									<div class="layout_subject _asterisk">상품 상세</div>
 									<input class="form-control layout_input" name='detail'>
 								</div>
-								
-								
+
+
 								<div class="create_layout form-group">
 									<div class="layout_subject _asterisk">이미지</div>
 									<input class="form-control layout_input" name='img1'>
@@ -209,11 +210,11 @@
 									<div class="memo">* 미전시 선택 시 판매등록이 불가능합니다.</div>
 								</div>
 
-								
 
 
 
-<!--
+
+								<!--
 								 <div class="create_layout filebox">
 									<div class="layout_subject _asterisk">판매글 메인 이미지</div>
 									<div class="layout_memo">5MB 크기의 정사각형 이미지를 올려주세요.</div>
@@ -230,7 +231,8 @@
 								</div> -->
 
 
-
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}" />
 								<button type="submit" class="btn btn-default">Submit</button>
 			</form>
 		</div>
