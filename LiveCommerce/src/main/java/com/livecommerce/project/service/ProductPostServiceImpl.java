@@ -21,10 +21,12 @@ import lombok.extern.log4j.Log4j;
  * @version 1.0
  * 
  * <pre>
- * 수정일              	수정자                   수정내용
-2023.01.16		김나형		최초생성
+ * 수정일                    수정자                   수정내용
+ * ----------  --------    ---------------------------
+ * 2023.01.16     김나형              최초 생성
+ * 2023.01.19   김나형, 신기원      Transactional 설정
  * </pre>
- */ 
+ */
 @Service
 @Log4j
 public class ProductPostServiceImpl implements ProductPostService{
@@ -44,7 +46,7 @@ public class ProductPostServiceImpl implements ProductPostService{
 		return postMapper.getProductPost(cri, mid);
 	}
 	//post 추가
-	@Transactional
+	@Transactional(rollbackFor = {Exception.class})
 	@Override
 	public void postproductAdd(ProductPostVO post) throws Exception{
 		postMapper.postAdd(post);
