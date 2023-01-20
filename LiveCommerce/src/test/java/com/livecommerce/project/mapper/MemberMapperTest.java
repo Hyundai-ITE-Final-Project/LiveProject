@@ -14,7 +14,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.livecommerce.project.vo.MemberVO;
 
 import lombok.extern.log4j.Log4j;
-
+/**
+ * @author ì‹ ê¸°ì›
+ * @since 2023.01.12
+ * @version 1.0
+ * 
+ * <pre>
+ * ìˆ˜ì •ì¼                     ìˆ˜ì •ì                   ìˆ˜ì •ë‚´ìš©
+ * ----------  --------    ---------------------------
+ * 2023.01.12     ì‹ ê¸°ì›              ìµœì´ˆ ìƒì„±
+ * </pre>
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
 "file:src/main/webapp/WEB-INF/spring/security-context.xml" })
@@ -23,12 +33,15 @@ public class MemberMapperTest {
 
 	@Autowired
 	MemberMapper mapper;
+	
+	//ì•„ì´ë””ë¥¼ í†µí•´ íšŒì› ì¡°íšŒ
 	@Test
 	public void test() {
 		mapper.findById("gd");
 		log.info(mapper);
 	}
 	
+	//íšŒì›ê°€ì…
 	@Test
 	public void testJoin() {
 		MemberVO vo = new MemberVO();
@@ -38,14 +51,15 @@ public class MemberMapperTest {
 		vo.setMtel("gd");
 		vo.setMbirth(LocalDate.now());
 		vo.setMemail("gd");
-		vo.setMgender("³²");
+		vo.setMgender("ë‚¨ì");
 		vo.setMrole("ADMIN");
-		vo.setMaddress1("¼­¿ï½Ã");
-		vo.setMaddress2("»ï¼ºµ¿");
+		vo.setMaddress1("ì„œìš¸ì‹œ");
+		vo.setMaddress2("í˜œí™”");
 		int r = mapper.join(vo);
-		log.info("°á°úÈ®ÀÎ : " +r);
+		log.info(r);
 	}
 	
+	//ì •ë³´ ìˆ˜ì •
 	@Test
 	public void testInfo() {
 		MemberVO vo = new MemberVO();
@@ -55,23 +69,20 @@ public class MemberMapperTest {
 		vo.setMtel("11111");
 		vo.setMbirth(LocalDate.now());
 		vo.setMemail("@naver.com");
-		vo.setMgender("³²");
+		vo.setMgender("ë‚¨ì");
 		vo.setMjoindate(LocalDate.now());
 		vo.setMrole("ADMIN");
-		vo.setMaddress1("¼­¿ï½Ã??");
-		vo.setMaddress2("»ï¼ºµ¿!!");
+		vo.setMaddress1("ê²½ê¸°ë„");
+		vo.setMaddress2("ì´ì²œì‹œ");
 		mapper.changeInfo(vo);
 	}
 	
+	//ì•„ì´ë”” ì°¾ê¸°
 	@Test 
 	public void testMyId() {
 		String id = mapper.findMyId("gd", "11111");
-		log.info("IDÃ£±â ¼º°ø : " + id);
+		log.info(id);
 	}
 	
-	@Test 
-	public void testMyPassword() {
-		String id = mapper.findMyPassword("2d", "gd", "11111");
-		log.info("IDÃ£±â ¼º°ø : " + id);
-	}
+
 }

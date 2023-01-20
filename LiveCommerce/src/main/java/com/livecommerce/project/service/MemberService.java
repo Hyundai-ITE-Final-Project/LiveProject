@@ -10,7 +10,7 @@ import com.livecommerce.project.vo.MemberVO;
  * <pre>
  * 수정일              수정자                   수정내용
  * ----------  --------    ---------------------------
- * 2023.01.12     신기원              최초 생성
+ * 2023.01.12     신기원              최초 생성, 회원가입, 정보수정, 아이디 찾기
  * </pre>
  */
 public interface MemberService {
