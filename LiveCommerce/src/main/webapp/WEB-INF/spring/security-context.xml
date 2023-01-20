@@ -10,8 +10,9 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
  * @version 1.0
  * 
  * <pre>
- * 수정일              수정자               		수정내용
- * 2023.1.10     신기원              		최초 생성
+ * 수정일              수정자               	수정내용
+ * 2023.1.10     신기원              	최초 생성
+ * 2023.1.19  신기원              		ROLE 규칙 변경, intercept-url 추가  
  * </pre>
  */ -->
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
@@ -23,8 +24,9 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<security:http auto-config="true" use-expressions="true">
 
 		<security:intercept-url pattern="/*" access="permitAll" />
-		<security:intercept-url pattern="/cart/**" access="isAuthenticated()" />
-		<security:intercept-url pattern="/order/**" access="isAuthenticated()" />
+		<security:intercept-url pattern="/cart/**" access="isAuthenticated()"/>
+		<security:intercept-url pattern="/order/**" access="isAuthenticated()"/>
+		<security:intercept-url pattern="/mypage/**" access="isAuthenticated()"/>
 		<security:intercept-url pattern="/manage/**" access="hasRole('ROLE_ADMIN')" />
 		<!-- <security:intercept-url pattern="/cartAjax/**" access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/cart/**" access="hasRole('ROLE_ADMIN')" />
