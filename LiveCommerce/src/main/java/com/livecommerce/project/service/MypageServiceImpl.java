@@ -16,8 +16,8 @@ public class MypageServiceImpl implements MypageService{
 	
 	/* 주문 상품 리스트 */
 	@Override
-	public List<OrderVO> getOrderList(Criteria cri) {
-		return mypageMapper.getOrderList(cri);
+	public List<OrderVO> getOrderList(String member_mid) {
+		return mypageMapper.getOrderList(member_mid);
 	}
 	
 	/* 주문 총 갯수 */

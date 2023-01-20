@@ -90,12 +90,12 @@
         }
     </script>
     <div class="location-navi">
-<%-- 로그인ID : <sec:authentication property="name"/><br>
+로그인ID : <sec:authentication property="name"/><br>
 로그인 Auth : <sec:authentication property="authorities"/><br>
 로그인 Detail : <sec:authentication property="Details"/><br>
 로그인 Credentials : <sec:authentication property="Credentials"/>
-로그인 Principal : <sec:authentication property="Principal"/><br> --%>
-
+로그인 Principal : <sec:authentication property="Principal"/><br>
+<a href="/mypage/orderList">주문현황</a>
         <ul>
             <li>
                 <a href="#" data-montelena-acode="200000474" onclick="">홈</a>
@@ -550,7 +550,7 @@
 	// 서버로 전송할 데이터(상품상세페이지 -> 장바구니)
 	// 밑에 form data에다가 member_mid : '${member.mid}'로 바꿔줘야함 밑에는 테스트
 	const form = {
-			member_mid : 'gd',
+			member_mid : '<sec:authentication property="name"/>',
 			product_pid : '${productInfo.pid}',
 			p_quantity : ''
 	}

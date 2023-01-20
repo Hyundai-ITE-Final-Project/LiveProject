@@ -7,7 +7,7 @@ import com.livecommerce.project.vo.OrderVO;
 
 public interface MypageService {
 	/* 주문 상품 리스트 */
-	public List<OrderVO> getOrderList(Criteria cri);
+	public List<OrderVO> getOrderList(String member_mid);
 	
 	/* 주문 총 갯수 */
 	public int getOrderTotal(Criteria cri);
