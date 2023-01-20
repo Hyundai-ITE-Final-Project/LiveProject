@@ -104,6 +104,7 @@ public class ProductPostController {
 		List<Integer> pindexList = new ArrayList<>();
 		for(String s : chArr) {
 			pindexList.add(Integer.parseInt(s));
+			log.info(Integer.parseInt(s));
 		}
 		postService.postDelete(pindexList);
 		return "redirect:/manage/productpost";

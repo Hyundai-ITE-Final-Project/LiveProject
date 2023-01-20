@@ -125,6 +125,8 @@
     </div>
 </div>
 <script>
+let csrfHeaderName ="${_csrf.headerName}";
+let csrfTokenValue="${_csrf.token}";
 	$(document).ready(function(){
 		$("input[name=allCheck]").on('click', function(){
 			var chk = $(this).is(":checked");
@@ -170,6 +172,7 @@
 					data:{
 						chbox:checkArr
 					},
+					beforeSend: function(xhr) { xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
 					success: function(){
 						location.href = "/manage/productpost";
 					},
