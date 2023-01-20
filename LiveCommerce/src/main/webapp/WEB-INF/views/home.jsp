@@ -84,17 +84,17 @@
                     </div>
                     <div class="livenow_tab_wrap">
                     
-                        <c:if test="${empty live}">
+                        <c:if test="${empty lives}">
                             <h2 class="live_non_text">
+                            
                                 현재 라이브 중인 상품이 없습니다.
                             </h2>
                         </c:if>
                         <div class="video_list_wrap">
                             <div class="video_list_scroll" draggable="true">
-                              <c:forEach var="live" items="${live}">
-              					<%-- <c:out value="${live}"></c:out> --%>
+                              <c:forEach var="live" items="${lives}">
                                 <div class="video_list_item video_inline">
-	                                <a href="/live?fm=${live.liveId}" target="self" class="video_link">
+	                                <a href="/live/${live.liveId}" target="self" class="video_link">
 		                                <div class="video_wrap">
 		                                   <!-- 라이브 -->
 		                                    <div class="video_container">
@@ -296,7 +296,8 @@
 <script>
 //라이브 연결
 var hls = new Hls();
-<c:forEach var="live" items="${live}" varStatus='st'>
+<c:forEach var="live" items="${lives}" varStatus='st'>
+
    <c:if test="${live.liveStatus eq 1}">
      var video = $('.liveVideo')[${st.index}];
      if(video.canPlayType('application/vnd.apple.mpegurl')) {   // 우선 HLS를 지원하는지 체크
