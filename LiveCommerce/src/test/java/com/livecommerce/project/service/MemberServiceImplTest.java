@@ -15,7 +15,17 @@ import com.livecommerce.project.mapper.MemberMapperTest;
 import com.livecommerce.project.vo.MemberVO;
 
 import lombok.extern.log4j.Log4j;
-
+/**
+ * @author 신기원
+ * @since 2023.01.12
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일                     수정자                   수정내용
+ * ----------  --------    ---------------------------
+ * 2023.01.12     신기원              최초 생성
+ * </pre>
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
 "file:src/main/webapp/WEB-INF/spring/security-context.xml" })
