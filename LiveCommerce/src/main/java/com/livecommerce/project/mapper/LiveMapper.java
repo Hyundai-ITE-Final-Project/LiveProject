@@ -22,4 +22,6 @@ public interface LiveMapper {
 	
 	public List<LiveVO> liveList();
 	public LiveVO getLiveInfo(String liveId);
+	public void setLiveView(LiveVO liveVO);
+	public void getLiveView(LiveVO liveVO);
 }
