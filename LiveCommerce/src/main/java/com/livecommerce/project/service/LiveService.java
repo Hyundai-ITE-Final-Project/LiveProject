@@ -14,6 +14,7 @@ import com.livecommerce.project.vo.LiveVO;
  * ----------  --------    ---------------------------
  * 2023.01.17     신기원              최초 생성, 라이브 목록
  * 2023.01.19     신기원              실시간 영상 상세정보
+ * 2023.01.21     신기원              실시간 영상 뷰 + 1 업데이트
  * </pre>
  */
 public interface LiveService {
@@ -21,4 +22,6 @@ public interface LiveService {
 	//현재 라이브 목록 가져오기
 	public List<LiveVO> liveList();
 	public LiveVO getLiveInfo(String liveId);
+	public void setLiveView(LiveVO liveVo);
+	public int getLiveView(LiveVO liveVo);
 }

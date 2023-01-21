@@ -18,6 +18,7 @@ import com.livecommerce.project.vo.LiveVO;
  * ----------  --------    ---------------------------
  * 2023.01.17     신기원              최초 생성, 라이브 목록
  * 2023.01.19     신기원              실시간 영상 상세정보
+ * 2023.01.21     신기원              실시간 영상 뷰 + 1 업데이트
  * </pre>
  */
 
@@ -26,20 +27,33 @@ import com.livecommerce.project.vo.LiveVO;
 public class LiveServiceImpl implements LiveService{
 
 	@Autowired
-	private LiveMapper LiveMapper;
+	private LiveMapper liveMapper;
 	
 	
 	//라이브되는 영상 리스트
 	@Override
 	public List<LiveVO> liveList() {
-		return LiveMapper.liveList();
+		return liveMapper.liveList();
 	}
 
 
 	//실시간 영상 상세정보 받아오기
 	@Override
 	public LiveVO getLiveInfo(String liveId) {
-		return LiveMapper.getLiveInfo(liveId);
+		return liveMapper.getLiveInfo(liveId);
+	}
+
+
+	@Override
+	public void setLiveView(LiveVO liveVO) {
+		liveMapper.setLiveView(liveVO);
+	}
+
+
+	@Override
+	public int getLiveView(LiveVO liveVO) {
+		liveMapper.getLiveView(liveVO);
+		return 0;
 	}
 
 }

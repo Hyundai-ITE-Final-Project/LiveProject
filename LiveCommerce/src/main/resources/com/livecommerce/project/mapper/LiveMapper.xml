@@ -75,5 +75,15 @@
 		where PS_POST_STATUS = '판매중' and LIVE_ID = #{liveId}
     </select>
   
+  <update id="setLiveView">
+        UPDATE LIVE
+        SET    LIVE_VIEW = LIVE_VIEW+1
+        WHERE  LIVE_ID = #{liveId}
+    </update>
+    <select id="getLiveView" parameterType="com.livecommerce.project.vo.LiveVO" resultType="int">
+        SELECT LIVE_VIEW
+        FROM   LIVE
+        WHERE  LIVE_ID = #{liveId}
+    </select>
   
   </mapper>
