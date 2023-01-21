@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.livecommerce.project.vo.LiveVO;
+
 import lombok.extern.log4j.Log4j;
 /**
  * @author 신기원
@@ -19,6 +21,7 @@ import lombok.extern.log4j.Log4j;
  * ----------  --------    ---------------------------
  * 2023.01.17    신기원                	 최초 생성
  * 2023.01.19    신기원                	 라이브 상세정보
+ * 2023.01.21    신기원                	 실시간 영상 view + 1
  * </pre>
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -41,6 +44,15 @@ public class LiveServiceTest {
 	public void testGetLiveInfo() {
 		String liveId = "1";
 		log.info(liveService.getLiveInfo(liveId));
+	}
+	
+	@Test
+	public void testSetLiveView() {
+		LiveVO liveVO = new LiveVO();
+        liveVO.setLiveId("1");
+        log.info("live" + liveVO);
+        liveService.setLiveView(liveVO);
+        
 	}
 
 }
