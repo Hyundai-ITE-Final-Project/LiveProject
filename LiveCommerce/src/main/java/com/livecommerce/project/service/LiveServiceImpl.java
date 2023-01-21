@@ -52,8 +52,8 @@ public class LiveServiceImpl implements LiveService{
 
 	@Override
 	public int getLiveView(LiveVO liveVO) {
-		liveMapper.getLiveView(liveVO);
-		return 0;
+		
+		return liveMapper.getLiveView(liveVO);
 	}
 
 }

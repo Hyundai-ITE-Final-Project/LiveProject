@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.livecommerce.project.vo.LiveVO;
+
 import lombok.extern.log4j.Log4j;
 /**
  * @author 신기원
@@ -20,7 +22,8 @@ import lombok.extern.log4j.Log4j;
  * 수정일                     수정자                   수정내용
  * ----------  --------    ---------------------------
  * 2023.01.16     신기원              최초 생성
- * 2023.01.19     신기원              1개의 라이브 정보 가져오기
+ * 2023.01.21     신기원              1개의 라이브 정보 가져오기
+ * 2023.01.21     신기원              view 조회하기
  * </pre>
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -43,6 +46,13 @@ public class LiveMapperTest {
 	public void testLiveInfo() {
 		String liveId = "1";
 		log.info(mapper.getLiveInfo(liveId));
+	}
+	
+	@Test
+	public void testGetView() {
+		LiveVO liveVo = new LiveVO();
+        liveVo.setLiveId("1");
+		log.info(mapper.getLiveView(liveVo));
 	}
 
 }
