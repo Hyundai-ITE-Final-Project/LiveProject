@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- /**
+ * @author 신기원
+ * @since 2023.01.21
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일              	수정자                   수정내용
+ * 2023.01.21		신기원		최초생성, 기능 추가
+ * </pre>
+ */ -->
+  <mapper namespace="com.livecommerce.project.mapper.ChatMapper">
+  
+  	<insert id="saveChat">
+  		insert into chat(ctext, cdatetime, chat_mid, live_id) values (#{ctext}, CURRENT_DATE, #{chatMid}, #{liveId})
+  </insert>
+  </mapper>

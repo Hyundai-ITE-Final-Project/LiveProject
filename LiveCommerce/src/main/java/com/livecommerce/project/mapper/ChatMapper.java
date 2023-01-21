@@ -1,0 +1,22 @@
+package com.livecommerce.project.mapper;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.livecommerce.project.vo.ChatMessageVO;
+/**
+ * @author 신기원
+ * @since 2023.01.21
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일                    수정자                   수정내용
+ * ----------  --------    ---------------------------
+ * 2023.01.21    신기원                	 최초 생성
+ * </pre>
+ */
+@Mapper
+public interface ChatMapper {
+
+	public void saveChat(ChatMessageVO chat);
+
+}
