@@ -133,10 +133,12 @@ $(document).ready(function() {
     const stream = "${live.streamKey}".trim();
     const status = '${live.liveStatus}';
     const liveId = '${live.liveId}';
+    const host = '${host}';
+    
     const liveUrl = '${liveUrl}';
     const nick = '${nick}';
-    /* const chatUrl = '${chatUrl}'; */
-    console.log("${liveStatus}");
+    const chatUrl = '${chatUrl}';
+    
     //라이브 연결
     var video = document.getElementById('video');
     var videoSrc =liveUrl+"/"+stream+".m3u8";
@@ -196,12 +198,12 @@ $(document).ready(function() {
     client.debug = null;  //프레임 개발자 도구에서 숨기기
     client.connect({}, function(frame){
         //subscribe(path, callback)으로 메세지 받기
-        client.subscribe("/sub/chat/room/"+roomId,function(chat){   // 서버 연결
+        client.subscribe("/sub/chat/room/"+liveId,function(chat){   // 서버 연결
             var content = JSON.parse(chat.body);
-            var writer = content.writer;
-            var msg = content.message;
+            var writer = content.chatMid;
+            var msg = content.ctext;
             var str = '';    
-            if(writer == null){
+            if(writer == host){
                 str = "<div class='Comments_master'>";
                 str +="<span class='Comment_comment_master'>"+msg+"</span>";
                 str +="</div>";             
@@ -215,9 +217,9 @@ $(document).ready(function() {
             $('#Comments_wrap').scrollTop($('#Comments_wrap')[0].scrollHeight);
         });   
        //send(path,header,message)로 메세지 전송
-       client.send('/pub/chat/enter', {}, JSON.stringify({'chatRoomId': roomId,'liveId': liveId}))
+       client.send('/pub/chat/enter', {}, JSON.stringify({'liveId': liveId}))
        //메세지 받기
-       client.subscribe("/sub/chat/count/"+roomId,function(chat){
+       client.subscribe("/sub/chat/count/"+liveId,function(chat){
             var count = JSON.parse(chat.body);
             $('.LiveHeader_view_count').text(count);
          }); 
@@ -251,7 +253,7 @@ $(document).ready(function() {
     });
     function send(){
         var msg = $("#wa_textarea").val();
-        client.send('/pub/chat/message', {}, JSON.stringify({chatRoomId: roomId, message: msg, writer: nick}));
+        client.send('/pub/chat/message', {}, JSON.stringify({liveId: liveId, ctext: msg, chatMid: nick}));
         $("#wa_textarea").val('');   
         $("#send_btn").attr("disabled",true);
     }
