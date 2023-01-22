@@ -133,7 +133,7 @@ public class OrderServiceImpl implements OrderService{
 			
 			/* oid만들기 및 OrderVO객체 oid에 저장 */
 			Date date = new Date();
-			SimpleDateFormat format = new SimpleDateFormat("_yyyyMMddmm");
+			SimpleDateFormat format = new SimpleDateFormat("_yyyyMMdd_HH:mm:ss");
 			System.out.println(member.getMid());
 			String orderId = member.getMid() + format.format(date);
 			
