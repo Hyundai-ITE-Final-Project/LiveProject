@@ -81,23 +81,17 @@
                                     <div class="Comments_animation_area"></div>
                                 </div>
                             </div>
-                            
+                            <!-- 방송중인 아이템 이미지 -->
                             <div class="TagItem_wrap" >
                                 <div class="TagItem_current">
                                     <a class="TagItem_link">
                                         <div class="TagItem_thumbnail">
                                             <img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/chun.jpg">
                                         </div>
-                                        <div class="TagItem_title">
-                                            <%-- ${live.ProductPostVO.getPsTitle()} --%>
-                                        </div>
-                                        <span class="TagItem_price">
-                                            <%-- <span class="TagItem_rate">${sale.psDiscount}%</span> --%>
-                                            <%-- <strong><fmt:formatNumber value="${live.ProductPostVO.getPsPrice()}" pattern="#,###" /></strong>원 --%>
-                                        </span>
                                     </a>
                                 </div>
                             </div>
+                            <!-- 방송중인 아이템 리스트 -->
                             <section class="ItemModal_section" style="display: none;">
                                 <div class="ItemModal_content ItemModal_content_iframe">
                                     <div class="ModelTitle_wrap">
@@ -106,7 +100,7 @@
                                             <i class="ModelTitle_icon"></i>
                                         </button>
                                     </div>
-                                    <iframe class="TagItemIframe_iframe" src="/live/item?pd=${live.psIndex}"></iframe>
+                                    <iframe class="TagItemIframe_iframe" src="/live/item?ps_index=${live.psIndex}"></iframe>
                                 </div>
                             </section>
                             <button type="button" class="CommentBtn_wrap" aria-hidden="false">

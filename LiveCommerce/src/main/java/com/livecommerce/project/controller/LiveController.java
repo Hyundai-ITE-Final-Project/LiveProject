@@ -1,5 +1,9 @@
 package com.livecommerce.project.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -9,10 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.livecommerce.project.security.CustomMember;
 import com.livecommerce.project.service.LiveService;
 import com.livecommerce.project.vo.LiveVO;
+import com.livecommerce.project.vo.ProductVO;
 
 import lombok.extern.log4j.Log4j;
 /**
@@ -64,5 +70,15 @@ public class LiveController {
 		
 		return "";
 		
+	}
+	
+	@GetMapping("/live/item")
+	public void getLiveProductList(HttpServletRequest request, @RequestParam("ps_index") int ps_index, Model model) {
+		log.info("Ps_index : " + ps_index);
+		List<ProductVO> productlist = LiveService.getLiveProductList(ps_index);
+		for(ProductVO list : productlist) {
+			log.info(list);
+		}
+		model.addAttribute("productlist", productlist);
 	}
 }

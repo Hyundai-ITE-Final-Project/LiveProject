@@ -3,6 +3,7 @@ package com.livecommerce.project.service;
 import java.util.List;
 
 import com.livecommerce.project.vo.LiveVO;
+import com.livecommerce.project.vo.ProductVO;
 
 /**
  * @author 신기원
@@ -15,6 +16,7 @@ import com.livecommerce.project.vo.LiveVO;
  * 2023.01.17     신기원              최초 생성, 라이브 목록
  * 2023.01.19     신기원              실시간 영상 상세정보
  * 2023.01.21     신기원              실시간 영상 뷰 + 1 업데이트
+ * 2023.01.22	    김나형		 영상별 상품리스트
  * </pre>
  */
 public interface LiveService {
@@ -24,4 +26,5 @@ public interface LiveService {
 	public LiveVO getLiveInfo(String liveId);
 	public void setLiveView(LiveVO liveVo);
 	public int getLiveView(LiveVO liveVo);
+	public List<ProductVO> getLiveProductList(int ps_index);
 }

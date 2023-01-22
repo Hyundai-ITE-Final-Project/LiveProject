@@ -14,7 +14,7 @@ import lombok.Data;
 public class LiveVO {
 	private String mId;
     private String liveId;
-    private String psIndex;
+    private int psIndex;
     private String liveTitle;
     private String fileImg;
     private String liveStartDay;    
