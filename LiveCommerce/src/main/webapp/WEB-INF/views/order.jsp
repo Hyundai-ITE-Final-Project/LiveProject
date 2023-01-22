@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>      
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %> 
+<%-- <%@ include file="/WEB-INF/views/header/tool_header.jsp"%>     --%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,7 @@
 </head>
 <body>
 
-<div class="wrapper">
+<div class="wrapper">z
 	<div class="wrap">
 		<div class="top_gnb_area">
 			<ul class="list">
