@@ -86,4 +86,11 @@
         WHERE  LIVE_ID = #{liveId}
     </select>
   
+  	<select id="getLiveProductList" resultType="com.livecommerce.project.vo.ProductVO">
+  		select pid, pname, price, img1
+  		from product
+  		where pid in (select product_pid
+  					  from product_post_add
+  					  where ps_index = #{ps_index})
+  	</select>
   </mapper>

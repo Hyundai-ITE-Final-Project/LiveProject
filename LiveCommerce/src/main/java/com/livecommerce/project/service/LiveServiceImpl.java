@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.livecommerce.project.mapper.LiveMapper;
 import com.livecommerce.project.vo.LiveVO;
+import com.livecommerce.project.vo.ProductVO;
 /**
  * @author 신기원
  * @since 2023.01.17
@@ -54,6 +55,11 @@ public class LiveServiceImpl implements LiveService{
 	public int getLiveView(LiveVO liveVO) {
 		
 		return liveMapper.getLiveView(liveVO);
+	}
+	
+	@Override
+	public List<ProductVO> getLiveProductList(int ps_index){
+		return liveMapper.getLiveProductList(ps_index);
 	}
 
 }
