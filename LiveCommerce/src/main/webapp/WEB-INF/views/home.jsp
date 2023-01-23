@@ -25,6 +25,7 @@
     <script type="text/javascript" src="/resources/js/order.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2dbd6c0b5c00df629f26d19c5981c33&libraries=services"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
     
 <%-- <script src="<!-- https://cdn.jsdelivr.net/npm/hls.min.js.map -->"></script> --%>
 </head>
@@ -67,19 +68,9 @@
                 <section id="LiveNow" class="main_section">
                     <div class="section_title"><span class="color_point">⚡NOW⚡</span>
                     </div>
-<!--                     <div class="SortBox_wrap LiveNow_sord">
-                        <a href="javascript:0;" class="SortBox_label">시청순</a>
-                        <i class="SortBox_icon"></i>
-                    </div> -->
                     <div class="ListBox_wrap">
                         <div class="ListBox_list">
                             <a href="javascript:0;" class="livenow_tab_menu" aria-selected="true">전체</a>
-<!--                        <a href="javascript:0;" class="livenow_tab_menu">우리동네라이브</a>     
-                            <a href="javascript:0;" class="livenow_tab_menu">패션</a>
-                            <a href="javascript:0;" class="livenow_tab_menu">뷰티</a>
-                            <a href="javascript:0;" class="livenow_tab_menu">푸드</a>
-                            <a href="javascript:0;" class="livenow_tab_menu">라이프</a>
-                            <a href="javascript:0;" class="livenow_tab_menu">취미 · 문화생활</a> -->
                         </div>                     
                     </div>
                     <div class="livenow_tab_wrap">
@@ -98,14 +89,6 @@
 		                                <div class="video_wrap">
 		                                   <!-- 라이브 -->
 		                                    <div class="video_container">
-		                                        <!--  기본 이미지 -->
-		                                        <%-- <img class="video_mini_img" src="/img/upload/${live.uploadPath}/${live.fileName}" > --%>
-		                                        <%-- <div class="video_player" >
-		                                        <!-- video poster: 재생 전 보여줄 이미지  -->
-		                                          <video class="VideoPlayer_video liveVideo" id="vid" autoplay muted loop poster="https://s3.ap-northeast-2.amazonaws.com/onlshop.shop${live.uploadPath}/${live.fileId}">
-		                                              
-		                                          </video>
-		                                        </div> --%>
 		                                        <!-- 영상 상단 -->
 		                                        <video class="VideoPlayer_video liveVideo" id="vid" autoplay muted loop >
 		                                          </video>
@@ -129,15 +112,11 @@
 		                                        <!-- 영상 하단 --> 
 		                                          <span class="video_item_inner">
 		                                              <span class="video_item_img">
-		                                                  <%-- <img class="video_mini_img" src="https://s3.ap-northeast-2.amazonaws.com/onlshop.shop${live.ProductPostVO.getPsUploadPath()}/${live.ProductPostVO.getPsFileId()}" > --%>
 		                                              </span>
 		                                              <span class="video_item_title">
-		                                                  <%-- ${live.ProductPostVO.getPsTitle()} --%>
 		                                              </span>
 		                                              <span class="video_item_price">
-		                                                  <!-- <span class="video_discount">20%</span> -->
 		                                                  <span class="video_price">
-		                                                      <%-- <strong><fmt:formatNumber value="${live.ProductPostVO.getPsPrice()}" pattern="#,###" /></strong>원 --%>
 		                                                  </span>
 		                                              </span>
 		                                          </span>
@@ -148,146 +127,16 @@
 	                                </a>
                                     <a rel="opener" target="_self" href="javascript:0;" class="video_link_creator">
                                         <span class="video_profile">
-                                            <%-- <img class="video_profile_img" alt="기업명" src="https://s3.ap-northeast-2.amazonaws.com/onlshop.shop${live.liveSellerVo.getSelUploadPath()}/${live.liveSellerVo.getSelFileId()}" draggable="false"> --%>
-                                        <%-- </span>${live.liveSellerVo.getSelName()} --%>
                                     </a>
                                 </div>
                               </c:forEach>
-                              <%-- <c:if test="${!empty live}">
-                                <div class="video_list_more">
-                                    <a href="/shop/live" class="video_list_more_link">
-                                        <div class="list_more_IconBox">
-                                            <span class="list_more_icon">-></span>
-                                            <span class="list_more_txt">더보기</span>
-                                        </div>
-                                    </a>
-                                </div>
-                               </c:if> --%>
                             </div>
                         </div>
                     </div>
                 </section>
                 <section id="liveTrailer" class="main_section">
                     <div class="section_title">📆라이브 예고</div>
-                    <!-- <a href="#" class="section_link">더보기
-                        <i class="section_link_icon"></i>
-                    </a> -->
-                    <%-- <ul class="LiveList_list LiveList_pc_twoColumn">
-                        <c:forEach var="trailer" items="${trailer}">
-                        <li class="LiveList_item" data-id>
-                            <div class="LiveList_itembox">
-                                <div class="LiveList_inner">
-                                    <a class="LiveItem_wrap" target="_self" href="javascript:void(0);" >
-                                        <div class="LiveItem_airtime">
-                                            <time datetime="">
-                                                
-                                                <span class="LiveItem_day">
-	                                                <fmt:parseDate value="${trailer.liveStartDay}" var="startDate" pattern="MM-dd" />
-	                                                <fmt:formatDate value="${startDate}" pattern="MM월dd일" />
-                                                </span>
-                                                <span class="LiveItem_time">${trailer.liveStartTime}</span>
-                                            </time>
-                                        </div>
-                                        <div class="LiveItem_thumbnail">
-                                            <div class="video_container">
-                                                <img class="video_container_img" src="https://s3.ap-northeast-2.amazonaws.com/onlshop.shop${trailer.uploadPath}/${trailer.fileId}" draggable="false">
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="LiveContent_title">${trailer.liveTitle}</div>
-                                            <!-- <div class="LiveContent_additional">라이브 방송 중 사은품 증정 이벤트 </div> -->
-                                            <div class="LiveContent_product">
-                                                <div class="LiveContent_thumbnail">
-                                                    <img class="LiveContent_img" src="https://s3.ap-northeast-2.amazonaws.com/onlshop.shop${trailer.ProductPostVO.getPsUploadPath()}/${trailer.ProductPostVO.getPsFileId()}" draggable="false">
-                                                </div>
-                                                <div class="LiveContent_info">
-                                                    <span class="LiveContent_product_name">${trailer.ProductPostVO.getPsTitle()}</span>
-                                                    <div class="LiveContent_price">
-                                                        <strong>
-                                                            <!-- <span class="LiveContent_discount">91%</span>  -->
-                                                            <fmt:formatNumber value="${trailer.ProductPostVO.getPsPrice()}" pattern="#,###" />원
-                                                        </strong>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                            <span class="LiveContent_seller">${trailer.liveSellerVo.getSelName()}</span>
-                                       </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                       </c:forEach>
-                    </ul> --%>
                 </section>
-                <%-- <section id="TopTen" class="main_section">
-                    <div class="section_title">TOP 10✨<!-- <span class="Guide_icon">i</span> --></div>
-                    <div class="TopTen_tab_wrap">
-                        <div class="video_list_wrap video_inline">
-                            <div class="video_list_scroll toptenscroll" draggable="true">
-                               <c:set var="num" value="1"/>
-                               <c:forEach var="top" items="${topten}">
-                                <div class="video_list_item video_list_wrap">
-                                    <a href="/replay?fm=${top.liveId}" target="self" class="video_link">
-                                        <div class="video_wrap">
-                                           <!-- 라이브 -->
-                                            <div class="video_container">
-                                                <!--  기본 이미지 -->
-                                                <img class="video_container_img videoload" draggable="false" src="https://s3.ap-northeast-2.amazonaws.com/onlshop.shop${top.uploadPath}/${top.fileId}">
-                                                <div class="video_player" >
-                                                <!-- video poster: 재생 전 보여줄 이미지  -->
-                                                  <video class="VideoPlayer_video" id="vid" autoplay muted loop 
-                                                        poster="https://s3.ap-northeast-2.amazonaws.com/onlshop.shop${top.uploadPath}/${top.fileId}">
-                                                        <source src="https://s3.ap-northeast-2.amazonaws.com/onlshop.shop${top.videoPath}${top.videoName}" type="video/mp4">
-                                                          <!-- <source src="/img/video_mp4/omg_short.mp4" type="video/mp4"> -->
-                                                  </video>
-                                                </div>
-                                                <!-- 영상 상단 -->
-                                                <strong class="video_ranking">${num}</strong>
-                                                <span class="video_viewer video_viewer_type_ranking">
-                                                    <span class="OnAirBadge_count">
-                                                        <c:choose>
-                                                            <c:when test="${top.liveView > 9999}">
-                                                                <c:set var="view" value="${top.liveView / 10000}"/>
-                                                                <fmt:formatNumber value="${view}" pattern="#.#" />만 시청
-                                                            </c:when>
-                                                            <c:otherwise>
-                                                                <fmt:formatNumber value="${top.liveView}" pattern="#,###" /> 시청
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                    </span>
-                                                </span>
-                                                <span class="video_item_wrap">   
-                                                <!-- 영상 하단 --> 
-                                                  <span class="video_item_inner">
-                                                      <span class="video_item_img">
-                                                          <img class="video_mini_img" src="https://s3.ap-northeast-2.amazonaws.com/onlshop.shop${top.ProductPostVO.getPsUploadPath()}/${top.ProductPostVO.getPsFileId()}" >
-                                                      </span>
-                                                      <span class="video_item_title">
-                                                          ${top.ProductPostVO.getPsTitle()}
-                                                      </span>
-                                                      <span class="video_item_price">
-                                                          <!-- <span class="video_discount">20%</span> -->
-                                                          <span class="video_price"><strong><fmt:formatNumber value="${top.ProductPostVO.getPsPrice()}" pattern="#,###" /></strong>원</span>
-                                                      </span>
-                                                  </span>
-                                                </span>
-                                            </div>                                    
-                                        </div>
-                                        <span class="video_title">${top.liveTitle}</span>
-                                    </a>
-                                    <a rel="opener" target="_self" href="javascript:0;" class="video_link_creator">
-                                        <span class="video_profile">
-                                            <img class="video_profile_img" alt="기업명" src="https://s3.ap-northeast-2.amazonaws.com/onlshop.shop${top.liveSellerVo.getSelUploadPath()}/${top.liveSellerVo.getSelFileId()}" draggable="false">
-                                        </span>${top.liveSellerVo.getSelName()}
-                                    </a>
-                                </div>
-                                <c:set var="num" value="${num+1}" />
-                               </c:forEach>
-                            </div>
-                        </div>
-                    </div>
-                </section> --%>
             </div>
         </div>
     </div>
@@ -315,32 +164,21 @@ var hls = new Hls();
   </c:if>
 </c:forEach>
 </script>
-<!-- 
+<div id='chatbot'/>
+<button  class="chatbot" title="chatbot"
+	style="display: scroll; position: fixed; bottom: 30px; right: 5px;" rel="nofollow" onfocus='this.blur()'>
+<img src="그림 이미지 주소(URL)" style="width: 25px; height: 25px; border-radius: 15px;"/>
+</button>
 <script>
-var video = document.getElementById('video-player');
-        var videoSrc = 'http://localhost/hls/test.m3u8';
-        //
-        // First check for native browser HLS support
-        //
-        if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = videoSrc;
-            //
-            // If no native HLS support, check if hls.js is supported
-            //
-        } else if (Hls.isSupported()) {
-            var hls = new Hls();
-            hls.loadSource(videoSrc);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                video.oncanplaythrough = function () {
-                    video.play(); //라이브 시작
-                }
-            })
-            hls.on(Hls.Events.ERROR, function (data) {
-                liveEnd();
-            });
-        }
-    </script> -->
+	$(document).ready(function() {
+		$('.chatbot').on("click",function(e){
+			e.preventDefault();
+			let popUrl = "/chatbot/chat"
+			let popOption = "width=430,height=800,scrollbars=yes";
+			window.open(popUrl, "챗봇", popOption);
+		});
+	});
 
+</script>
 </body>
 </html>
