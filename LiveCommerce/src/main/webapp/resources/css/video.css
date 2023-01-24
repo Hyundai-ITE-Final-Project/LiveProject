@@ -102,8 +102,8 @@ div#Comments_wrap::-webkit-scrollbar {display: none;}
 .ItemModal_section{position: absolute;top: 0;right: 0;bottom: 0;left: 0;z-index: 90;display: block;overflow: hidden;}
 .ItemModal_content{animation: ItemModal_showAnimation_UfCjp 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) 0s forwards;position: absolute;right: 0;bottom: 0;left: 0;display: flex;
     flex-direction: column;overflow: hidden;max-height: 65%;border-top-left-radius: 16px;border-top-right-radius: 16px;background-color: #fff;box-shadow: 0 -10px 30px 0 rgb(0 0 0 / 15%);}
-.ItemModal_content_iframe{display: block;height: 65%;max-height: none;}
-.ModelTitle_wrap{position: relative;padding: 15px 107px 12px;border-bottom: 1px solid #efeff0;border-top-left-radius: 16px;border-top-right-radius: 16px;background-color: #fff;}
+.ItemModal_content_iframe{display: block;height: 50%;max-height: none;}
+.ModelTitle_wrap{position: relative;padding-top: 50px;border-bottom: 1px solid #efeff0;border-top-left-radius: 16px;border-top-right-radius: 16px;background-color: #fff;}
 .ModelTitle_title{overflow: hidden;text-overflow: ellipsis;display: block;white-space: nowrap;word-wrap: normal;line-height: 1.27;font-size: 15px;
     font-weight: 400;color: #1e1e23;letter-spacing: -0.5px;text-align: center;}
 .ModelTitle_btn{position: absolute;top: 0;right: 0;width: 50px;height: 100%;}
@@ -146,11 +146,11 @@ i.ModelTitle_icon:after{transform: translate(-50%, -50%) rotate(135deg);}
     background-color: #fff;box-sizing: border-box;}
 
 .fix_wrap{position: fixed;right: 0;bottom: 0;left: 0;z-index: 9000;}
-.fix_filter_wrap{position: relative;padding-top: 34px;background-color: #ffffff;border-radius: 11px 11px 0 0;
+.fix_filter_wrap{position: relative;padding-top: 10px;background-color: #ffffff;border-radius: 11px 11px 0 0;
     box-shadow: 0 -10px 30px 0 rgb(0 0 0 / 7%);box-sizing: border-box;display: block;}
 .fix_filter_head{position: absolute;top: 0;z-index: 100;width: 100%;height: 34px;border-radius: 11px 11px 0 0;background-color: #ffffff;}
 .fix_filter_head h1{display: inline-block;content: "";width: 15px;height: 15px;transform: rotate(135deg);border: solid #bdbdbd;border-width: 2px 2px 0 0;}
-.fix_filter_content{overflow-y: auto;max-height: 321px;}
+.fix_filter_content{overflow-y: scroll;max-height: -webkit-fill-available;}
 .fix_filter_inner{padding: 0 15px 20px;}
 .filter_box{overflow: hidden;}
 .filter_header{display: block;margin-bottom: 7px;font-size: 15px;line-height: 19px;color: #000000;}

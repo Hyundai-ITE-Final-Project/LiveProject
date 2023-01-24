@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ include file="/WEB-INF/views/header/main_header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +37,28 @@
     <link rel="stylesheet" href="http://script.gmarket.co.kr/pc/css/common/kr/ui/desktop_layout.css">
     <script src="http://script.gmarket.co.kr/fnp/desktop-layout.js"></script>
     <!-- // header -->
+    <style>
+    	body{
+    		margin: 0 auto;
+    		width: auto;
+    		font-size:16px;
+    	}
+    	.location-navi{
+    		background-color: white;
+    		padding-right: 30px;
+    		padding-top:130px;
+    		padding-bottom:20px;
+    		padding-left:50px;
+    	}
+    	#container{
+    		background-color: white;
+    	}
+
+		.vip-tabwrap .vip-tabnavi.fixed{
+			position:absolute;
+		}
+
+    </style>
 </head>
 
 <body class="vip-smiledelivery">
@@ -90,12 +110,14 @@
         }
     </script>
     <div class="location-navi">
-로그인ID : <sec:authentication property="name"/><br>
-로그인 Auth : <sec:authentication property="authorities"/><br>
-로그인 Detail : <sec:authentication property="Details"/><br>
-로그인 Credentials : <sec:authentication property="Credentials"/>
-로그인 Principal : <sec:authentication property="Principal"/><br>
-<a href="/mypage/orderList">주문현황</a>
+    	<div style="display:none;">
+			로그인ID : <sec:authentication property="name"/><br>
+			로그인 Auth : <sec:authentication property="authorities"/><br>
+			로그인 Detail : <sec:authentication property="Details"/><br>
+			로그인 Credentials : <sec:authentication property="Credentials"/>
+			로그인 Principal : <sec:authentication property="Principal"/><br>
+		</div>
+	<!-- 	<a href="/mypage/orderList">주문현황</a> -->
         <ul>
             <li>
                 <a href="#" data-montelena-acode="200000474" onclick="">홈</a>
@@ -195,7 +217,9 @@
                             <p class="price">
                                 <span class="box__icon"></span>
                                 <span class="price_innerwrap">
-                                    <strong class="price_real">${productInfo.price}<span class="unit">원</span></strong>
+                                    <strong class="price_real">
+                                    <fmt:formatNumber value="${productInfo.price}" pattern="#,###" />
+                                    <span class="unit">원</span></strong>
                                 </span>
                             </p>
                         </div>
@@ -247,7 +271,7 @@
                                                 <span class="item_num"> <em>상품</em></span>
                                                 <span class="item_tit">${productInfo.pname}</span>
                                                 <span class="item_price">
-                                                    ${productInfo.price}<em class="unit">원</em>
+                                                    <fmt:formatNumber value="${productInfo.price}" pattern="#,###" /><em class="unit">원</em>
                                                 </span>
                                             </div>
                                         </span>
@@ -286,7 +310,7 @@
                                         <strong id="sumPrice" class="price sumPrice" data-goodscode="1552234801" data-index="0" data-originprice="32900"
                                             data-baseprice="27970" data-count="6" data-price="167820" data-std-price="32900"
                                             data-addprice="0" data-couponprice="0" data-hascoupon="false" data-free-count="0"
-                                            data-bundle-discount-price="0">${productInfo.price}<span>원</span></strong>
+                                            data-bundle-discount-price="0"><fmt:formatNumber value="${productInfo.price}" pattern="#,###" /><span>원</span></strong>
                                     </div>
                                 </li>
                             </ul>
@@ -299,7 +323,7 @@
                                     <i class="icon i_question">총 상품금액 안내 레이어 보기</i>
                                 </a>
                             </span>
-                            <strong class="price" id="coreTotalPrice">${productInfo.price}<span class="unit">원</span></strong>
+                            <strong class="price" id="coreTotalPrice"><fmt:formatNumber value="${productInfo.price}" pattern="#,###" /><span class="unit">원</span></strong>
                         </p>
                         <div class="section_bottombtns section_bottombtns-layout ">
                             <div class="box__gift-info">
