@@ -11,15 +11,20 @@ package com.livecommerce.project.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.livecommerce.project.service.CouponService;
 import com.livecommerce.project.service.MemberService;
 import com.livecommerce.project.service.OrderService;
+import com.livecommerce.project.vo.CouponVO;
 import com.livecommerce.project.vo.MemberVO;
 import com.livecommerce.project.vo.OrderPageVO;
 import com.livecommerce.project.vo.OrderVO;
@@ -33,40 +38,38 @@ public class OrderController {
 	private OrderService orderService;
 	@Autowired
 	private MemberService memberService;
-
+	@Autowired
+	private CouponService couponService;
+	
+	//주문페이지 불러오기
 	@GetMapping("/order/{mid}")
 	public String orderPgaeGET(@PathVariable("mid") String mid, OrderPageVO opv, Model model) {
 		
+		model.addAttribute("list", orderService.getGoodsInfo(opv.getOrders())); 
 		model.addAttribute("orderList", orderService.getGoodsInfo(opv.getOrders()));
 		model.addAttribute("memberInfo", memberService.getMemberInfo(mid));
-		
+		model.addAttribute("couponList", couponService.getCouponList(mid));
 		return "/order";
 	}	
 	
+	//주문하기
 	@PostMapping("/order")
-	public void orderPagePost(OrderVO ov, HttpServletRequest request) {
+	public String orderPagePost(OrderVO ov, CouponVO coupon, HttpServletRequest request) {
 		
 		System.out.println(ov);		
-		
+		//주문하기
 		orderService.order(ov);
+		System.out.println(coupon.getCname());
+		//사용한 쿠폰이 있으면 쿠폰유무상태 업데이트
+		if(coupon.getCname() != null) couponService.modifyCoupon(coupon.getCname());
 		
 		MemberVO member = new MemberVO();
 		member.setMid(ov.getMember_mid());
 		
-//		HttpSession session = request.getSession();
-//		
-//		try {
-//			MemberVO memberLogin = memberService.memberLogin(member);
-//			memberLogin.setMemberPw("");
-//			session.setAttribute("member", memberLogin);
-//			
-//		} catch (Exception e) {
-//			
-//			e.printStackTrace();
-//		}
-//		
-//		return "redirect:/main";
+	    return "redirect:/home";
 		
 	}
+	
+	
 	
 }
