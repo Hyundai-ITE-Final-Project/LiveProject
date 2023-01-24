@@ -10,6 +10,8 @@ package com.livecommerce.project.controller;
  * </pre>
  */ 
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -110,6 +112,8 @@ public class ManageController {
 		
 		return "redirect:/manage/products";
 	}
+	
+	
 	
 	
 	@PostMapping("/uploadFormAction")

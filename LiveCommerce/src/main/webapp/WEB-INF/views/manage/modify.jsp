@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
 <%@ include file="/WEB-INF/views/header/tool_header.jsp"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 
 
 <!DOCTYPE html>
@@ -89,6 +91,8 @@
 										readonly='readonly'>
 
 								</div>
+								<h1><sec:authentication property="mid"/></h1>
+								<h1><sec:authentication property="mname"/></h1>
 
 
 
