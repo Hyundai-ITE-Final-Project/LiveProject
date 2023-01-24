@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!-- /**
  * @author 신기원
  * @since 2023.01.17
@@ -93,4 +92,51 @@
   					  from product_post_add
   					  where ps_index = #{ps_index})
   	</select>
+  	
+  	<insert id="createLive">
+    	INSERT INTO LIVE(
+            MEMBER_MID
+            ,LIVE_ID
+            ,PS_INDEX
+            ,LIVE_TITLE
+            ,LIVE_STARTDAY
+            ,LIVE_START_TIME
+            ,LIVE_END_TIME
+            ,LIVE_Status
+        )VALUES(
+            #{mId, jdbcType=VARCHAR}
+            ,#{liveId}
+            ,#{psIndex}
+            ,#{liveTitle}
+            ,to_date(#{liveStartDay}, 'yy/mm/dd')
+            ,to_date(#{liveStartTime},'yy/mm/dd HH24:MI')
+            ,to_date(#{liveEndTime},'yy/mm/dd HH24:MI')
+            , #{liveStatus}
+        )
+    </insert>
+    
+    <select id="countLive1Status" parameterType="HashMap" resultType="int">
+        /*AdminMapper.countLive1Status*/
+	     SELECT COUNT(LIVE_ID)
+		 FROM   LIVE
+<![CDATA[WHERE CONCAT(to_char(LIVE_STARTDAY,'yy-mm-dd'),to_char(LIVE_START_TIME,' HH24:MI')) <=  to_char(current_date,'yy-mm-dd HH24:MI') 
+		AND CONCAT(to_char(LIVE_STARTDAY,'yy-mm-dd'),to_char(LIVE_END_TIME,' HH24:MI')) >=  to_char(current_date,'yy-mm-dd HH24:MI') ]]>
+		AND Member_MID = #{mId, jdbcType=VARCHAR}
+		AND LIVE_ID != #{liveId}
+     </select>
+     
+     
+     <select id="myLiveList" parameterType="String" resultMap="LiveMap">
+         SELECT LI.LIVE_ID
+               ,LI.LIVE_TITLE
+               ,to_char(LI.LIVE_STARTDAY, 'yy-mm-dd') AS LIVE_STARTDAY
+               ,to_char(LI.LIVE_START_TIME, 'hh24:mm') AS LIVE_START_TIME
+               ,to_char(LI.LIVE_END_TIME, 'hh24:mm') AS LIVE_END_TIME
+               ,LI.LIVE_VIEW
+               ,LI.LIVE_STATUS
+        FROM LIVE LI
+        WHERE  LI.MEMBER_MID = #{mId}
+        ORDER BY LIVE_STARTDAY DESC
+    </select>
+     
   </mapper>

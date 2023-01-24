@@ -15,7 +15,8 @@ import com.livecommerce.project.vo.ProductVO;
  * 
  * <pre>
  * 수정일              	수정자                   수정내용
-2023.01.16		김나형		최초생성
+ * 2023.01.16		김나형		최초생성
+ * 2023.01.24		신기원		라이브 등록 가능한 판매글 리스트
  * </pre>
  */ 
 public interface ProductPostMapper {
@@ -40,4 +41,6 @@ public interface ProductPostMapper {
 	public void postDelete(List<Integer> pindexList);
 	//판매 상품 리스트
 	public List<ProductVO> getpdlist();
+	//라이브 등록시 판매글 리스트
+	public List<ProductPostVO> getLivePostList(String mId);
 }

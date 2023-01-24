@@ -25,6 +25,7 @@ import lombok.extern.log4j.Log4j;
  * ----------  --------    ---------------------------
  * 2023.01.16     김나형              최초 생성
  * 2023.01.19   김나형, 신기원      Transactional 설정
+ * 2023.01.24		신기원		라이브 등록 가능한 판매글 리스트
  * </pre>
  */
 @Service
@@ -45,6 +46,8 @@ public class ProductPostServiceImpl implements ProductPostService{
 		log.info("Service - getProductPostList.." + cri + mid);
 		return postMapper.getProductPost(cri, mid);
 	}
+	
+	
 	//post 추가
 	@Transactional(rollbackFor = {Exception.class})
 	@Override
@@ -89,6 +92,12 @@ public class ProductPostServiceImpl implements ProductPostService{
 	@Override
 	public List<ProductVO> getpdlist() {
 		return postMapper.getpdlist();
+	}
+	
+	//라이브 등록시 판매글 리스트
+	@Override
+	public List<ProductPostVO> getLivePostList(String mId) {
+		return postMapper.getLivePostList(mId);
 	}
 
 }
