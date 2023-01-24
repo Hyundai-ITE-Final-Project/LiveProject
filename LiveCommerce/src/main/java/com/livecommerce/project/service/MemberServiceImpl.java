@@ -1,7 +1,6 @@
 package com.livecommerce.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,11 +66,13 @@ public class MemberServiceImpl implements MemberService{
      */
 	@Override
 	public int changeInfo(MemberVO memberVO) {
-		memberVO.setMpassword(password(memberVO.getMpassword()));
+		// memberVO.setMpassword(password(memberVO.getMpassword()));
 		int result = memberMapper.changeInfo(memberVO);
 		if(result > 0) return 1;
 		return 0;
 	}
+	
+	
 	
 	/**
      * 메서드 설명 : 회원 이름과 전화번호로 아이디 조회
