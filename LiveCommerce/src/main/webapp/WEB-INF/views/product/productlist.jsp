@@ -13,7 +13,58 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+	<style>
+	.paging {
+		margin-top:50px;
+		margin-bottom:30px;
+		text-align:center;
+		font-size:0;
+	}
+	.paging2 {
+		display:inline-block;
+	}
+	.paging .none {
+		display:none;
+	}
+	.paging .pageBtn {
+		display:block;
+		margin:0 3px;
+		float:left;
+		border:1px solid #e6e6e6;
+		width:28px;
+		height:28px;
+		line-height:28px;
+		text-align:center;
+		background-color:#fff;
+		font-size:13px;
+		color:#999999;
+		text-decoration:none;
+	}
+	.paging .arrow {
+		border:1px solid #ccc;
+	}
+	.paging .prev2 {
+		background:#f8f8f8 url('img/page_pprev.png') no-repeat center center;
+		margin-left:0;
+	}
+	.paging .prev {
+		background:#f8f8f8 url('img/page_prev.png') no-repeat center center;
+		margin-right:7px;
+	}
+	.paging .next {
+		background:#f8f8f8 url('/resources/img/next.png') no-repeat center center;
+		margin-left:7px;
+	}
+	.paging .next2 {
+		background:#f8f8f8 url('img/page_nnext.png') no-repeat center center;
+		margin-right:0;
+	}
+ 	.paging .pageBtn .active {
+		background-color:#42454c;
+		color:#fff;
+		border:1px solid #42454c;
+	}
+	</style>
 </head>
 <body>
     <main class="container">
@@ -41,38 +92,40 @@
                             </c:forEach>
 						</div>
                     </div>
+
+	                <!-- 김나형 페이지 번호 처리  -->
+					<div class="paging" style="display: block;">
+						<div class="paging2">
+							<input type="hidden" class="realEnd" value="${pageMaker.realEnd}">
+							<a class="arrow prev2" href="#"></a>
+							<c:if test="${pageMaker.prev}">
+								<!-- 이전 버튼 -->
+								<a class="arrow prev"
+									href="/product/listCategory?lcategory=${lc}&scategory=${sc}&pageNum=${pageMaker.startPage -1}">Previous</a>
+							</c:if>
+						
+							<!-- 1~10 버튼 -->
+							<span class="num">
+								<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+									<c:if test="${(pageMaker.startPage+i) <= pageMaker.endPage}">
+										<a href="/product/listCategory?lcategory=${lc}&scategory=${sc}&pageNum=${num}"
+											class="pageBtn">${num}</a>
+									</c:if>
+								</c:forEach>
+							</span>  
+							<c:if test="${pageMaker.next}">
+								<!-- 다음 버튼 -->
+								<a href="/product/listCategory?lcategory=${lc}&scategory=${sc}&pageNum=${pageMaker.endPage +1}"
+									class="arrow next">Next</a>
+							</c:if>
+							<a class="arrow next2" href="#"></a>
+						</div>
+					</div>
+					<!--  end Pagination -->
                 </div>
             </div>
         </div>
     </main>
-
-<!-- 김나형 페이지 번호 처리  -->
-<div class="paging" style="display: block;">
-	<input type="hidden" class="realEnd" value="${pageMaker.realEnd}">
-	<a class="prev2" href="#"></a>
-	<c:if test="${pageMaker.prev}">
-		<!-- 이전 버튼 -->
-		<a class="prev"
-			href="/product/listCategory?lcategory=${lc}&scategory=${sc}&pageNum=${pageMaker.startPage -1}">Previous</a>
-	</c:if>
-
-	<!-- 1~10 버튼 -->
-	<span class="num">
-		<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-			<c:if test="${(pageMaker.startPage+i) <= pageMaker.endPage}">
-				<a href="/product/listCategory?lcategory=${lc}&scategory=${sc}&pageNum=${num}"
-					class="pageBtn">${num}</a>
-			</c:if>
-		</c:forEach>
-	</span>  
-	<c:if test="${pageMaker.next}">
-		<!-- 다음 버튼 -->
-		<a href="/product/listCategory?lcategory=${lc}&scategory=${sc}&pageNum=${pageMaker.endPage +1}"
-			class="next">Next</a>
-	</c:if>
-	<a class="next2" href="#"></a>
-</div>
-<!--  end Pagination -->
 <%-- 
 <form id='actionForm' action="/list" method='get'>
 	<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
@@ -90,6 +143,11 @@ $(document).ready(function() {
 			products[i].getElementsByClassName("video_link")[0].setAttribute(
 					"href", "/product/productDetail?pid=" + productid);
 		}
+		var btn = $(".num");
+		btn.find("a").click(function(){
+			btn.removeClass("active");
+			$(this).parent().addClass("active");
+		});
 	});//  end ready
 
 </script>
