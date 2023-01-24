@@ -83,4 +83,13 @@
 		from product
 		where pstatus = 1
 	</select>
+	
+	<select id="getLivePostList" parameterType="string" resultType="com.livecommerce.project.vo.ProductPostVO">
+        SELECT PS_INDEX
+               ,PS_TITLE
+        FROM   PRODUCT_POST
+        WHERE  MID = #{mId}
+               AND PS_POST_STATUS = '판매중'
+    </select>
+	
 </mapper>

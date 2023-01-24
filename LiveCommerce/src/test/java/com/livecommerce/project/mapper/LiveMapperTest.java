@@ -2,7 +2,9 @@ package com.livecommerce.project.mapper;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +26,8 @@ import lombok.extern.log4j.Log4j;
  * 2023.01.16     신기원              최초 생성
  * 2023.01.21     신기원              1개의 라이브 정보 가져오기
  * 2023.01.21     신기원              view 조회하기
+ * 2023.01.22     신기원              라이브 등록하기
+ * 2023.01.24     신기원              본인 라이브 목록 조회
  * </pre>
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -53,6 +57,30 @@ public class LiveMapperTest {
 		LiveVO liveVo = new LiveVO();
         liveVo.setLiveId("1");
 		log.info(mapper.getLiveView(liveVo));
+		
 	}
+	
+	// 라이브 생성 테스트 Status 생성 로직을 같이 실행해야한다.
+	@Test
+	public void testCreateLive() {
+		LiveVO liveVO = new LiveVO();
+		liveVO.setMId("123");
+		liveVO.setLiveId("22gd");
+		liveVO.setLiveStartDay("2023-01-22");
+		liveVO.setLiveStartTime("2023-01-22 18:00");
+		liveVO.setLiveEndTime("2023-01-22 20:00");
+		liveVO.setLiveView("1");
+		liveVO.setPsIndex(82);
+		liveVO.setLiveTitle("괜춘");
+		log.info(liveVO);
+		mapper.createLive(liveVO);
+	}
+	
+	@Test
+	public void testMyLiveList() {
+		String mId = "4d";
+		log.info(mapper.myLiveList(mId));
+	}
+
 
 }
