@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.livecommerce.project.mapper.CouponMapper">
+  	<!-- 쿠폰 추가 -->
+	<insert id="addCoupon">
+		insert into coupon(ccode, cname, cprice, cstartdate, cenddate)
+		values(#{ccode}, #{cname}, #{cprice}, #{cstartdate}, #{cenddate})
+	</insert>
+	<!-- 쿠폰리스트 추가 -->
+	<insert id="addCouponList">
+		insert into couponlist(member_mid, coupon_ccode)
+		values(#{member_mid}, #{coupon_ccode})
+	</insert>
+	
+	
+	<!-- 쿠폰 확인 -->
+	<select id="checkCoupon" resultType="com.livecommerce.project.vo.CouponVO">
+	
+		select * from coupon
+		where ccode = #{ccode}	
+	</select>
+	
+	<select id="getCouponList" resultType="com.livecommerce.project.vo.CouponVO">
+		select * from coupon c, couponlist cl
+		where c.ccode = cl.coupon_ccode
+		and member_mid = #{member_mid}
+		and cstate = 'available'
+	</select>
+	
+		<!-- 쿠폰 사용유무 수정 -->
+	<update id="modifyCoupon">
+	
+		update coupon set cstate='used' where cname = #{cname}
+	
+	</update>
+	
+
+  </mapper>

@@ -254,7 +254,18 @@
 							</tr>
 						</tbody>
 					</table>
-				</div>				
+				</div>
+							<!-- 쿠폰 정보 -->
+				<div class="point_div">
+					<div class="point_div_subject">쿠폰 사용</div>
+				        <select title="쿠폰을 선택해 주세요." id="selectVoucher" style="width: 190px;" onchange="selectCoupon(this.value)" >
+                              <option value="0">쿠폰을 선택해 주세요.</option>
+                            <c:forEach items="${couponList}" var="coupon">
+                              <option value="<c:out value="${coupon.cprice}"></c:out>">
+                              <c:out value="${coupon.cname}"></c:out></option>
+                            </c:forEach>                           
+                        </select>
+				</div>					
 				<!-- 주문 종합 정보 -->
 				<div class="total_info_div">
 					<!-- 가격 종합 정보 -->
@@ -308,6 +319,8 @@
 				<input name="usePoint" type="hidden">
 				<!-- 주문한 KG이니시스 imp_uid -->
 				<input name="imp_uid" type="hidden">
+				 <!-- 쿠폰이름 -->
+				<input name="cname" type="hidden">
 			</form> 
 			
 		</div> <!-- class="content_area" -->
@@ -452,7 +465,8 @@ $(".order_point_input_btn").on("click", function(){
 
 let totalCount = 0;				// 총 갯수
 let totalKind = 0;				// 총 종류
-let finalTotalPrice = 0;		//최종 가격(총 가격 + 배송비)	
+let finalTotalPrice = 0;		//최종 가격(총 가격 + 배송비)
+let couponPrice = 0;
 /* 총 주문 정보 세팅(배송비, 총 가격, 마일리지, 물품 수, 종류) */
 function setTotalInfo(){
 	let totalPrice = 0;				// 총 가격
@@ -462,7 +476,7 @@ function setTotalInfo(){
 	let deliveryPrice = 0;			// 배송비
 	let usePoint = 0;				// 사용 포인트(할인가격)
 	    finalTotalPrice = 0; 		// 최종 가격(총 가격 + 배송비)	
-	
+		//console.log(couponPrice);
 	$(".goods_table_price_td").each(function(index, element){
 		// 총 가격
 		totalPrice += parseInt($(element).find(".individual_totalprice_input").val());
@@ -487,7 +501,7 @@ function setTotalInfo(){
 	/* 사용 포인트 */
 	usePoint = $(".order_point_input").val();
 	
-	finalTotalPrice = totalPrice - usePoint;	
+	finalTotalPrice = totalPrice - usePoint - couponPrice;
 	
 	/* 값 삽입 */
 	// 총 가격
@@ -503,7 +517,7 @@ function setTotalInfo(){
 	// 최종 가격(총 가격 + 배송비)
 	$(".finalTotalPrice_span").text(finalTotalPrice.toLocaleString());		
 	// 할인가(사용 포인트)
-	$(".usePoint_span").text(usePoint.toLocaleString());
+	$(".usePoint_span").text((parseInt(usePoint)+parseInt(couponPrice)).toLocaleString());
 	
 }
 var date = new Date();
@@ -586,6 +600,19 @@ let oid="${memberInfo.mid}"+"_"+year + month + day + hour + minites + seconds;
 		}); 
 }); 
 
+
+function selectCoupon(str) {
+	couponPrice = parseInt(str);
+	//console.log(couponPrice);
+	setTotalInfo();
+
+	//var index = $("#selectVoucher option").index($("#selectVoucher option:selected"));
+	var a = $("#selectVoucher option:checked").text();
+	var b = a.trimStart();
+	$("input[name='cname']").val(b);
+	//var b = $('#ccode1').val();
+	console.log(b);
+}
 
 </script>
 
