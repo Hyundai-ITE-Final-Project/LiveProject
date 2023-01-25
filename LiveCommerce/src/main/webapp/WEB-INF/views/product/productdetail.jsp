@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/header/main_header.jsp"%>
-
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,13 +59,36 @@
 		.vip-tabwrap .vip-tabnavi.fixed{
 			position:absolute;
 		}
-
+		.vip-smiledelivery .btn_mycart{
+			border-color:#668679;
+			background:#668679 !important;
+			color:#fff !important;
+		}
+		
+		.vip-smiledelivery .btn_blue{
+			border-color:#efdcec;
+			background:#efdcec !important;
+			color:#000;
+		}
     </style>
 </head>
 
 <body class="vip-smiledelivery">
     <script type="text/javascript" src="http://script.gmarket.co.kr/js/common/rpm.js"></script>
     <script>
+    $(document).ready(function(){
+		// 숫자 format
+		Number.prototype.format = function () {
+			if (this == 0) return 0;
+
+			var reg = /(^[+-]?\d+)(\d{3})/;
+			var n = (this + '');
+
+			while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
+
+			return n;
+		};
+    });
 		// 제품 수량 변경
 		function change_qty(button){
 			console.log("버튼클릭");
@@ -97,9 +120,9 @@
 			 
 			 var show_total_amount = this_price * this_qty;
 			 $(".num").val(this_qty);
-			 $("#coreTotalPrice").html(show_total_amount + "원");
-			 $("#wingTotalPrice").html(show_total_amount + "원");
-			 $(".sumPrice").html(show_total_amount + "원");
+			 $("#coreTotalPrice").html(show_total_amount.format() + "원");
+			 $("#wingTotalPrice").html(show_total_amount.format() + "원");
+			 $(".sumPrice").html(show_total_amount.format() + "원");
 	
 			 $("#pamount").val(this_qty);
 		}
@@ -220,7 +243,7 @@
                                 <span class="box__icon"></span>
                                 <span class="price_innerwrap">
                                     <strong class="price_real">
-                                    <fmt:formatNumber value="${productInfo.price}" pattern="#,###" />${productInfo.price}
+                                    <fmt:formatNumber value="${productInfo.price}" pattern="#,###" />
                                     <span class="unit">원</span></strong>
                                 </span>
                             </p>
@@ -273,7 +296,7 @@
                                                 <span class="item_num"> <em>상품</em></span>
                                                 <span class="item_tit">${productInfo.pname}</span>
                                                 <span class="item_price">
-                                                    <fmt:formatNumber value="${productInfo.price}" pattern="#,###" /><em class="unit">${productInfo.price}원</em>
+                                                    <fmt:formatNumber value="${productInfo.price}" pattern="#,###" /><em class="unit">원</em>
                                                 </span>
                                             </div>
                                         </span>
@@ -312,7 +335,7 @@
                                         <strong id="sumPrice" class="price sumPrice" data-goodscode="1552234801" data-index="0" data-originprice="32900"
                                             data-baseprice="27970" data-count="6" data-price="167820" data-std-price="32900"
                                             data-addprice="0" data-couponprice="0" data-hascoupon="false" data-free-count="0"
-                                            data-bundle-discount-price="0"><fmt:formatNumber value="${productInfo.price}" pattern="#,###" />${productInfo.price}<span>원</span></strong>
+                                            data-bundle-discount-price="0"><fmt:formatNumber value="${productInfo.price}" pattern="#,###" /><span>원</span></strong>
                                     </div>
                                 </li>
                             </ul>
@@ -325,7 +348,7 @@
                                     <i class="icon i_question">총 상품금액 안내 레이어 보기</i>
                                 </a>
                             </span>
-                            <strong class="price" id="coreTotalPrice"><fmt:formatNumber value="${productInfo.price}" pattern="#,###" />${productInfo.price}<span class="unit">원</span></strong>
+                            <strong class="price" id="coreTotalPrice"><fmt:formatNumber value="${productInfo.price}" pattern="#,###" /><span class="unit">원</span></strong>
                         </p>
                         <div class="section_bottombtns section_bottombtns-layout ">
                             <div class="box__gift-info">
@@ -469,8 +492,7 @@
                                                 <div class="info">
                                                     <span class="item_num">상품 <em></em></span>
                                                     <span class="item_tit">${productInfo.pname}</span>
-                                                    <span class="item_price">
-                                                        ${productInfo.price}<em class="unit">원</em>
+                                                    <span class="item_price"><fmt:formatNumber value="${productInfo.price}" pattern="#,###" /><em class="unit">원</em>
                                                     </span>
                                                 </div>
                                             </span>
@@ -507,7 +529,7 @@
                                             <strong id="sumPrice" class="price sumPrice" data-goodscode="1552234801" data-index="0" data-originprice="32900"
                                                 data-baseprice="27970" data-count="6" data-price="167820" data-std-price="32900"
                                                 data-addprice="0" data-couponprice="0" data-hascoupon="false" data-free-count="0"
-                                                data-bundle-discount-price="0">${productInfo.price}<span>원</span></strong>
+                                                data-bundle-discount-price="0"><fmt:formatNumber value="${productInfo.price}" pattern="#,###" /><span>원</span></strong>
                                         </div>
                                     </li>
                 
@@ -518,7 +540,7 @@
                             <p class="total" id="wingTotalPriceP" style="visibility: visible;">
                                 <span class="tit">총 상품금액<a href="#tooltip_priceguide" class="open_tooltip_priceguide uxeBlock-ctrl"><i
                                             class="icon i_question">총 상품금액 안내 레이어 보기</i></a></span>
-                                <strong class="price" id="wingTotalPrice">${productInfo.price}<span class="unit">원</span></strong>
+                                <strong class="price" id="wingTotalPrice"><fmt:formatNumber value="${productInfo.price}" pattern="#,###" /><span class="unit">원</span></strong>
                             </p>
                             <div class="section_bottombtns section_bottombtns-layout ">
                                 <button class="btn_primary btn_white btn_mycart" data-href="#layer_mycart"
