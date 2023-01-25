@@ -9,6 +9,7 @@ a{
 /* 화면 전체 렙 */
 .wrapper{
 	width: 100%;
+	background-color:white;
 }
 /* content 랩 */
 .wrap{
@@ -174,7 +175,7 @@ a{
 	 }
 	 	.content_btn_section a{
 	    color: #fefeff;
-	    background-color: #365fdd;
+	    background-color: #668679;
 	    min-width: 125px;
 	    padding: 17px 25px;
 	    display: inline-block;
@@ -182,8 +183,9 @@ a{
 	    font-size: 23px;
 	    font-weight: bold;
 	    text-align: center;
-	    margin-right: 14px;
+	    margin-right: 1px;
 	    line-height: 39px; 	
+	    margin-top: 43px;
 	 	}
 	 
 
@@ -197,10 +199,13 @@ a{
 		 th{
 		text-align: center;
 	    color: #333;
+	    background-color:#668679;
 	    border-bottom: 1px solid #e7e7e7;
-	    border-top: 1px solid #3084d9;
-	    background: #f4f9fd;
+	    border-top: 1px solid #668679;
+/* 	    background: #668679; */
 	    padding: 2px 0;	 
+	    font-size: 18px;
+    	font-weight: bold;
 		 }
 		.td_width_1{
 			width: 5%;
@@ -220,6 +225,9 @@ a{
 		}  
 			.cart_table tr{
 				height: 110px;
+				line-height: 10;
+				font-color:white;
+				accent-color: #668679;
 			}
 			.price_td{
 				padding-left: 5px;
@@ -292,7 +300,8 @@ a{
 			}
 		
 	.content_total_section{
-		    background-color: rgb(227, 237, 247);
+			background-color: #f5f5f5;
+		    margin-top: 60px;
 	}		
 		.total_wrap{
 			width: 80%;
@@ -489,6 +498,10 @@ a{
 	width: 680px;
 	margin-left: 70px;
 	margin-top : 30px;
+}
+
+.all_check_input_div {
+	accent-color: #668679;
 }
 
 
