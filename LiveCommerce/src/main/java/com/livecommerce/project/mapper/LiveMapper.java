@@ -20,7 +20,7 @@ import com.livecommerce.project.vo.ProductVO;
  * 2023.01.21	신기원		실시간 영상 조회수 기능
  * 2023.01.22	신기원		라이브 등록
  * 2023.01.22	김나형		영상별 상품리스트보기
- * 2023.01.24	신기원		본인 라이브 목록
+ * 2023.01.24	신기원		본인 라이브 목록, Video 목록 조회
  * </pre>
  */
 @Mapper
@@ -35,4 +35,5 @@ public interface LiveMapper {
 	public int createLive(LiveVO liveVO);
 	public int countLive1Status(Map<String, Object> liveMap);
 	public List<LiveVO> myLiveList(String mId);
+	public List<LiveVO> videoList();
 }

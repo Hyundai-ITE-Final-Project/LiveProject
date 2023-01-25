@@ -23,6 +23,8 @@ public class LiveVO {
     private String liveView;
     private String liveStatus;
     private String streamKey;
+    private String videoId;
+    private String videoName;
     private VideoVO videoVO;
     private ProductPostVO ProductPostVO;
     

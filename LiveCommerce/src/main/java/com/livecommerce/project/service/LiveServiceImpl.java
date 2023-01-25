@@ -132,4 +132,10 @@ public class LiveServiceImpl implements LiveService{
     }
 
 
+    //모든 영상 조회하기
+	@Override
+	public List<LiveVO> videoList() {
+		return liveMapper.videoList();
+	}
+
 }
