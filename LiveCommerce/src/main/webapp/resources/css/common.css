@@ -42,11 +42,11 @@ button{cursor: pointer;border: 0;border-radius: 0;background: none;outline:none;
 .error-txt01{font-size: 36px;font-weight: 700;   }
 .error-txt02{margin: 32px 0 60px;font-size: 18px;   }
 .btn_home{border-radius: 30px;font-size: 20px;font-weight: 700;color: #fff;padding: 15px 30px;}
-.btn_point{background: #1FB9EA; color: #fff;}
+.btn_point{background: #668679; color: #fff;}
 .btn_gray{background: #bbb; color: #fff;} 
 .btn_radius_5{border-radius: 5px;}
 .btn_radius_10{border-radius: 10px;}
-.color_point{color: #1fb9ea;}
+.color_point{color: #668679;}
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {-webkit-appearance: none;margin: 0;}
 /* footer */
