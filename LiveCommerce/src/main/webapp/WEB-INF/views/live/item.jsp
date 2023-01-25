@@ -19,6 +19,9 @@
     	.selective{
     		height:auto;
     	}
+		.btn_buy{
+			background-color: #efdcec;color: #000;
+		}
     </style>
 </head>
 <body class="wpqkf">
