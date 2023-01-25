@@ -7,6 +7,11 @@
 <meta charset="UTF-8">
 <title></title>
 	<style>
+	body{
+    	margin: 0 auto;
+    	width: auto;
+    	font-size:16px;
+    }
 	.paging {
 		margin-top:50px;
 		margin-bottom:30px;
@@ -35,24 +40,28 @@
 	}
 	.paging .arrow {
 		border:1px solid #ccc;
+		display:block;
+		margin:0 3px;
+		float:left;
+		width:28px;
+		height:28px;
+		line-height:28px;
+		text-align:center;
+		background-color:#fff;
+		font-size:13px;
+		color:#999999;
+		text-decoration:none;
 	}
-	.paging .prev2 {
-		background:#f8f8f8 url('img/page_pprev.png') no-repeat center center;
-		margin-left:0;
-	}
+
 	.paging .prev {
-		background:#f8f8f8 url('img/page_prev.png') no-repeat center center;
+		background:#f8f8f8 url('/resources/img/page_prev.png') no-repeat center center;
 		margin-right:7px;
 	}
-	.paging .next {
-		background:#f8f8f8 url('/resources/img/next.png') no-repeat center center;
+	.paging .arrow.next {
+		background:#f8f8f8 url('/resources/img/page_next.png') no-repeat center center;
 		margin-left:7px;
 	}
-	.paging .next2 {
-		background:#f8f8f8 url('img/page_nnext.png') no-repeat center center;
-		margin-right:0;
-	}
- 	.paging .pageBtn .active {
+ 	.paging .pageBtn.active {
 		background-color:#42454c;
 		color:#fff;
 		border:1px solid #42454c;
@@ -90,11 +99,10 @@
 					<div class="paging" style="display: block;">
 						<div class="paging2">
 							<input type="hidden" class="realEnd" value="${pageMaker.realEnd}">
-							<a class="arrow prev2" href="#"></a>
 							<c:if test="${pageMaker.prev}">
 								<!-- 이전 버튼 -->
 								<a class="arrow prev"
-									href="/product/listCategory?lcategory=${lc}&scategory=${sc}&pageNum=${pageMaker.startPage -1}">Previous</a>
+									href="/product/listCategory?lcategory=${lc}&scategory=${sc}&pageNum=${pageMaker.startPage -1}"></a>
 							</c:if>
 						
 							<!-- 1~10 버튼 -->
@@ -102,16 +110,15 @@
 								<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 									<c:if test="${(pageMaker.startPage+i) <= pageMaker.endPage}">
 										<a href="/product/listCategory?lcategory=${lc}&scategory=${sc}&pageNum=${num}"
-											class="pageBtn">${num}</a>
+											class="pageBtn" onclick="click(${num})">${num}</a>
 									</c:if>
 								</c:forEach>
 							</span>  
 							<c:if test="${pageMaker.next}">
 								<!-- 다음 버튼 -->
 								<a href="/product/listCategory?lcategory=${lc}&scategory=${sc}&pageNum=${pageMaker.endPage +1}"
-									class="arrow next">Next</a>
+									class="arrow next"></a>
 							</c:if>
-							<a class="arrow next2" href="#"></a>
 						</div>
 					</div>
 					<!--  end Pagination -->
@@ -131,11 +138,11 @@ $(document).ready(function() {
 			products[i].getElementsByClassName("video_link")[0].setAttribute(
 					"href", "/product/productDetail?pid=" + productid);
 		}
-		var btn = $(".num");
-		btn.find("a").click(function(){
-			btn.removeClass("active");
-			$(this).parent().addClass("active");
-		});
+
+	    function click(num){
+	    	var strText = $(num).text();
+	    	alert(strText);
+	    }
 	});//  end ready
 </script>
 </html>
