@@ -1,5 +1,6 @@
 @charset "UTF-8";
-body{padding: 100px 30px;text-align: center;}
+/*body{padding: 100px 30px;text-align: center;} 박소은: 이거엿는데 아래로 수정함!*/
+body{text-align: center;}
 a:visited{color: #717171;}
 em{display: inline-block;width: 1px;height: 15px;margin: 0 9px;vertical-align: -1px;background: #8a8c93;}
 .img_logo{height: 130px;}

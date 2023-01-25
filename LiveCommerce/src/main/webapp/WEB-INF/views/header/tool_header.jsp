@@ -20,7 +20,7 @@
             <span class="blind">오늘의쇼핑</span>
         </a>
         <a href="/tool/live" class="logo_link_admin">
-            <h1 class="tool">관리</h1>
+            
         </a>
     </div>
     <nav class="header_nav">
