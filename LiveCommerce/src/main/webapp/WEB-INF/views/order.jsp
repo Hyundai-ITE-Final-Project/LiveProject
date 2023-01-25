@@ -543,6 +543,10 @@ let oid="${memberInfo.mid}"+"_"+year + month + day + hour + minites + seconds;
 		IMP.init("imp71146844");
 		console.log(oid);
 		
+		//주문총금액이 쿠폰금액보다 작다면 예외처리
+		if(finalTotalPrice <= couponPrice) {
+			alert("주문금액을 확인해주세요.");
+		}
 	 	//결제 부분 시작
 	  IMP.request_pay({
 		        pg : 'html5_inicis',//이니시스 결제 시스템을 하기 위한 부분 고정시켜야합니다
