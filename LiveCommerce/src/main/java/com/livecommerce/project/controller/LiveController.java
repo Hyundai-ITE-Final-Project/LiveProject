@@ -35,7 +35,7 @@ import lombok.extern.log4j.Log4j;
  * ----------  --------    ---------------------------
  * 2023.01.19    신기원                	 최초 생성
  * 2023.01.20    신기원                	 스트리밍 상세 화면 보기, 라이브 등록 화면
- * 2023.01.24    신기원                	 본인 라이브 목록 조회
+ * 2023.01.24    신기원                	 본인 라이브 목록 조회, video(모든 영상) 조회
  * 
  * </pre>
  */
@@ -110,5 +110,12 @@ public class LiveController {
 			log.info(list);
 		}
 		model.addAttribute("productlist", productlist);
+	}
+	
+	@GetMapping("/live/video")
+	public String VideoList(Model model) {
+		model.addAttribute("live", LiveService.videoList());
+		model.addAttribute("liveUrl",liveUrl);
+		return "/live/videoList";
 	}
 }

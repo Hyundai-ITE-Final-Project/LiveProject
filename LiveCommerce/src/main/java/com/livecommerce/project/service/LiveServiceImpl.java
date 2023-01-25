@@ -29,7 +29,7 @@ import com.livecommerce.project.vo.ProductVO;
  * 2023.01.17     신기원              최초 생성, 라이브 목록
  * 2023.01.19     신기원              실시간 영상 상세정보
  * 2023.01.21     신기원              실시간 영상 뷰 + 1 업데이트
- * 2023.01.24     신기원              본인 라이브 목록 조회
+ * 2023.01.24     신기원              본인 라이브 목록 조회, 모든 영상 조회
  * </pre>
  */
 
@@ -131,5 +131,11 @@ public class LiveServiceImpl implements LiveService{
     	return liveMapper.myLiveList(mId);
     }
 
+
+    //모든 영상 조회하기
+	@Override
+	public List<LiveVO> videoList() {
+		return liveMapper.videoList();
+	}
 
 }

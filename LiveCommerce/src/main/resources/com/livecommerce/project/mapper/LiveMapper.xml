@@ -28,6 +28,8 @@
     <result column="live_status"       property="liveStatus" />
     <result column="img"        property="fileImg" />
     <result column="stream_key" property="streamKey"/>
+    <result column="video_id" property="videoId"/>
+    <result column="video_name" property="videoName"/>
 	<collection property="videoVO" ofType="com.livecommerce.project.vo.VideoVO" resultMap="VideoMap"/>
 	<collection property="productPostVO" ofType="com.livecommerce.project.vo.ProductPostVO" resultMap="ProductPostMap"/>
   </resultMap>
@@ -137,6 +139,12 @@
         FROM LIVE LI
         WHERE  LI.MEMBER_MID = #{mId}
         ORDER BY LIVE_STARTDAY DESC
+    </select>
+    
+    <select id="videoList" resultMap="LiveMap">
+	    select LI.*, VI.*, m.stream_key
+		FROM LIVE LI LEFT JOIN VIDEO VI
+		ON li.video_id = vi.video_id JOIN MEMBER M ON LI.MEMBER_MID = M.MID
     </select>
      
   </mapper>
