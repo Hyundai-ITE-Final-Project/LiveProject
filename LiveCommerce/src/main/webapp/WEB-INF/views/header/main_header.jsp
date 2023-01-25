@@ -3,10 +3,21 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/resources/css/admin.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/cart.css"> 
+<link rel="stylesheet" type="text/css" href="/resources/css/common_login.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/shop.css"> 
+<link rel="stylesheet" type="text/css" href="/resources/css/login.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/mypage_orderlist.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/order.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/shop.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/smartTalk.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/swiper.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/video.css">
 <sec:authentication var="user" property="principal" />
 <header class="shop_header">
 	<style>
