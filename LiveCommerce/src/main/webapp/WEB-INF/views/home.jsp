@@ -18,6 +18,13 @@
     <script type="text/javascript" src="/resources/js/order.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2dbd6c0b5c00df629f26d19c5981c33&libraries=services"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        	body{
+    		margin: 0 auto;
+    		width: auto;
+    		font-size:16px;
+    	}
+    </style>
 </head>
 <body>
 <div id="shop_wrap">
