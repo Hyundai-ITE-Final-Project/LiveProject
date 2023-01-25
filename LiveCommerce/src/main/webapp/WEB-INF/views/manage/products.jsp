@@ -71,11 +71,11 @@
 		<div class="admin_content">
 			<div class="admin_menulist">
 				<div class="admin_tablist">
-					<a href="/tool/live" class="main_tab" aria-selected="false">라이브
+					<a href="/manage/live" class="main_tab" aria-selected="false">라이브
 						관리</a> <a href="/manage/products" class="main_tab" aria-selected="true">상품
 						관리</a> <a href="/manage/productpost" class="main_tab" aria-selected="false">판매글
-						관리</a> <a href="/tool/sale" class="main_tab" aria-selected="false">판매
-						내역 관리</a> <a href="/tool/setting" class="main_tab"
+						관리</a> <a href="/manage/orderList" class="main_tab" aria-selected="false">판매
+						내역 관리</a> <a href="/manage/setting" class="main_tab"
 						aria-selected="false">설정</a>
 				</div>
 			</div>
