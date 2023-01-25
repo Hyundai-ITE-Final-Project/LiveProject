@@ -61,15 +61,15 @@
 	            </div>
 	            <div class="userInfo_input_area">
 	                <span class="subject">전화번호</span>
-	                <input type="text" class="input_w_100" name="mtel" placeholder="${userInfo.mtel}" >
+	                <input type="text" class="input_w_100" name="mtel" value="${userInfo.mtel}" >
 	            </div>
 	          
 	            <div class="signup_input_area">
                 <div class="subject">주소</div>
-                <input type="text" name="mzipcode" id="userZipCodeSign" autocomplete="off" maxlength='30' placeholder="${userInfo.mzipcode }">
-                <input type="text" name="maddress1" id="userAddressSign" autocomplete="off" maxlength='30' placeholder="${userInfo.maddress1}">
+                <input type="text" name="mzipcode" id="userZipCodeSign" autocomplete="off" maxlength='30' value="${userInfo.mzipcode }">
+                <input type="text" name="maddress1" id="userAddressSign" autocomplete="off" maxlength='30' value="${userInfo.maddress1}">
                 <div id="addr_error" class="regul_div"></div>
-                <input type="text" name="maddress2" id="userAddressDetailSign" autocomplete="off" maxlength='15' placeholder="${userInfo.maddress2}">
+                <input type="text" name="maddress2" id="userAddressDetailSign" autocomplete="off" maxlength='15' value="${userInfo.maddress2}">
                 
                 <div id="addr2_error" class="regul_div"></div>
             </div>

@@ -24,6 +24,11 @@ public class MypageController {
 	OrderService orderService;
 	
 	
+	@GetMapping("/mypage/main")
+	public String mypage() {
+		return "/mypage/main";
+	}
+	
 	//구현부에는 주문 페이지에서 출력시켜야 할 주문 정보와 페이지 번호 버튼을 만드는데 
 	//필요로 한 페이지 정보를 뷰로 전달하는 코드를 작성합니다.
 	/* 주문 현황 페이지 */

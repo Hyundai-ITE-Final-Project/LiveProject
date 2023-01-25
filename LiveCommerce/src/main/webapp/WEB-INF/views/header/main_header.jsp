@@ -4,6 +4,7 @@
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
@@ -236,7 +237,7 @@
 		                            <a href="#" onclick="category('양념과오일,통조림','소금*설탕*조미료*향신료');">소금 · 설탕 · 조미료 · 향신료 </a>
 		                        </li>
 		                        <li>
-		                            <a href="#" onclick="category('양념과오일,통조림','소스*드레싱]');">소스 · 드레싱 </a>
+		                            <a href="#" onclick="category('양념과오일,통조림','소스*드레싱');">소스 · 드레싱 </a>
 		                        </li>
 		                        <li>
 		                            <a href="#" onclick="category('양념과오일,통조림','식용유*참기름*올리브유');">식용유 · 참기름 · 올리브유 </a>
