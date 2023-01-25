@@ -367,6 +367,7 @@
                             <form action="/order/<sec:authentication property="name"/>" method="get" class="order_form">
 								<input type ="hidden" name = "orders[0].pid" value = "${productInfo.pid}">
 								<input type ="hidden" name = "orders[0].pcount" value = "">
+								<input class = "pstock1" type = "hidden" name = "pstock" value = "${productInfo.pstock}">
 							</form>
                         </div>
                         <div class="tooltip_priceguide tooltip_layer">
@@ -587,12 +588,17 @@
     <script>
     let csrfHeaderName ="${_csrf.headerName}";
     let csrfTokenValue="${_csrf.token}";
+	let pStock = $(".pstock1").val();
     /* 바로구매 버튼 */
 	$("#coreInsOrderBtn").on("click", function(){
 		let pCount = $(".num").val();
-		console.log(pCount)
-		$(".order_form").find("input[name='orders[0].pcount']").val(pCount);
-		$(".order_form").submit();
+		console.log(typeof pStock);
+		console.log(pStock);
+		if(pStock == 0) alert("재고량이 부족합니다.");
+		else {
+		    $(".order_form").find("input[name='orders[0].pcount']").val(pCount);
+			$(".order_form").submit(); 
+		}
 	});
     
 	// 서버로 전송할 데이터(상품상세페이지 -> 장바구니)
@@ -604,19 +610,25 @@
 	}
 	//장바구니 추가 버튼
 	$("#coreAddCartBtn").on("click", function(e){
-		console.log('<sec:authentication property="name"/>');
-		if('<sec:authentication property="name"/>'== "anonymousUser") location.href = "/login";
-		form.p_quantity = $(".num").val();
-		
-		$.ajax({
-			url: '/cart/add',
-			type: 'POST',
-			data: form,
-			beforeSend: function(xhr) { xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
-			success: function(result){
-				cartAlert(result);
-			}
-		})
+		//재고량이 0이면 alert
+		if(pStock == 0) alert("재고량이 부족합니다.");
+		//재고량이 0이 아닐때 수행
+		else {
+			console.log('<sec:authentication property="name"/>');
+			if('<sec:authentication property="name"/>'== "anonymousUser") location.href = "/login";
+			form.p_quantity = $(".num").val();
+			
+			$.ajax({
+				url: '/cart/add',
+				type: 'POST',
+				data: form,
+				beforeSend: function(xhr) { xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
+				success: function(result){
+					cartAlert(result);
+				}
+			})
+		}
+
 	});
 	
 	function cartAlert(result){
