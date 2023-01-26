@@ -19,8 +19,6 @@
                 <ul class="order_group">
                     <c:set var = "addDelivery" value = "0"  />
                     <li class="order_group_list">
-                        <div class="order_group_title">
-                        </div>
                         <ul class="order_pd_group">
                              <c:forEach var="ol" items="${orderList}">
     
@@ -196,44 +194,7 @@
 			</form> 
     </div>
 </div>
-
-<%-- <div class="order_addr_pop">
-    <div class="order_addr_pop_wrap">
-        <div class="order_addr_pop_open">
-            <div class="order_addr_pop_inner">
-                <div class="order_addr_pop_container">
-                    <header class="order_addr_pop_header">
-                        <div class="order_addr_pop_exit"></div>
-                        <div class="order_addr_pop_title">배송지 선택</div>
-                    </header>
-                    <div class="order_addr_pop_content">
-                        <div class="order_addr_list_area">
-                            <ul>
-                              <c:forEach var="addr" items="${addr}">
-                                 <li class="order_addr_list">
-                                    <div class="addr_name_area">
-                                        <span class="addr_name">${addr.addrName}</span>
-                                        <span class="addr_recipient"> ${addr.addrRecipient}</span>
-                                        <c:if test="${addr.addrYn eq 'Y' }">
-                                            <span class="addr_marker"> 기본배송지</span>
-                                        </c:if>
-                                    </div>
-                                    <div class="addr_post">${addr.addrPostcode}</div>
-                                    <div class="addr_addr">${addr.addrRoadaddr}&nbsp;${addr.addrDetailaddr}</div>
-                                    <div class="addr_phone">${addr.addrContact}</div>
-                                    <div class="addr_button_area">
-                                        <button class="btn_addr_check ${addr.addrIndex}">선택</button>
-                                    </div>
-                                 </li>
-                               </c:forEach>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --%>
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 <script type="text/javascript"> 
 
 $(document).ready(function(){
