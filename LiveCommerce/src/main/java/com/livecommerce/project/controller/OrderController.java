@@ -49,7 +49,7 @@ public class OrderController {
 		model.addAttribute("orderList", orderService.getGoodsInfo(opv.getOrders()));
 		model.addAttribute("memberInfo", memberService.getMemberInfo(mid));
 		model.addAttribute("couponList", couponService.getCouponList(mid));
-		return "/order";
+		return "/order/order";
 	}	
 	
 	//주문하기
@@ -66,7 +66,7 @@ public class OrderController {
 		MemberVO member = new MemberVO();
 		member.setMid(ov.getMember_mid());
 		
-	    return "redirect:/home";
+	    return "/order/order_complete";
 		
 	}
 	
