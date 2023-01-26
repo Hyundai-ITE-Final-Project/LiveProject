@@ -1,5 +1,5 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page pageEncoding="UTF-8" language="java"%>
+<%@ include file="/WEB-INF/views/header/tool_header.jsp"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <head>
@@ -8,13 +8,7 @@
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <title>오늘의쇼핑</title>
-    <link rel="stylesheet" type="text/css" href="/resources/css/common.css" >
-<link rel="stylesheet" type="text/css" href="/resources/css/login.css" >
-<link rel="stylesheet" type="text/css" href="/resources/css/admin.css"> 
-
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="/resources/js/common.js"></script>
-<script type="text/javascript" src="/resources/js/login.js"></script>
+	<link rel="stylesheet" type="text/css" href="/resources/css/login.css" >
 </head>
 
 <div id="admin_wrap">

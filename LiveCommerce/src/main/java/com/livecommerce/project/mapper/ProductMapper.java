@@ -7,6 +7,7 @@ package com.livecommerce.project.mapper;
  * 
  * <pre>
  * 수정일              	수정자                   수정내용
+ * 2023.01.11	김나형		생성
  * 230116		박소은		관리자상품관리
 */
 
@@ -19,6 +20,7 @@ import com.livecommerce.project.vo.Criteria;
 import com.livecommerce.project.vo.ProductVO;
 
 public interface ProductMapper {
+	// 김나형 작성
     //전체상품
 	public List<ProductVO> getListWithPaging(Criteria cri);
     //전체상품갯수
