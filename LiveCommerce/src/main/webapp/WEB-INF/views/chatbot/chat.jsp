@@ -47,43 +47,37 @@
                                     </span>
                                 </div>
                             </div>
-<!--                             <div id="intro-faq-grid" class="intro-faq is-basic" style="margin: 0px; display: block;">
+                             <div id="intro-faq-grid" class="intro-faq is-basic" style="margin: 0px; display: block;">
                                 <p>다른 고객님들이 자주 이용하는 메뉴입니다.</p>
                                 <div class="inner">
                                     <ul>
-                                        <li title="내주문 보기"><a
-                                                href="javascript:requestAnswer('주문 목록 조회', '내주문 보기', '24')"><span
-                                                    class="img"><img
-                                                        src="https://ibot.hmall.com/images/20220906/dcd6005359724e4581820ab3f254d30a.png"
-                                                        alt=""></span><span class="txt">내주문 보기</span></a></li>
-                                        <li title="취소/반품/교환"><a
-                                                href="javascript:requestAnswer('취소/반품/교환 신청', '취소/반품/교환', '507')"><span
-                                                    class="img"><img
-                                                        src="https://ibot.hmall.com/images/20220906/fe7a7212ea1043c2bd0775b95f707a8f.png"
-                                                        alt=""></span><span class="txt">취소/반품/교환</span></a></li>
-                                        <li title="자주하는 질문"><a
-                                                href="javascript:requestAnswer('자주 묻는 질문', '자주하는 질문', '441')"><span
-                                                    class="img"><img
-                                                        src="https://ibot.hmall.com/images/20220906/fd4c7fac4dae48fc9c0a531e073f33ba.png"
-                                                        alt=""></span><span class="txt">자주하는 질문</span></a></li>
-                                        <li title="방송상품 확인"><a
-                                                href="javascript:requestAnswer('방송중인 상품 목록 조회', '방송상품 확인', '225')"><span
-                                                    class="img"><img
-                                                        src="https://ibot.hmall.com/images/20220906/94216669d669493aaa293f06cdec9701.png"
-                                                        alt=""></span><span class="txt">방송상품 확인</span></a></li>
-                                        <li title="이벤트/혜택"><a
-                                                href="javascript:requestAnswer('이벤트/추가 혜택', '이벤트/혜택', '370')"><span
-                                                    class="img"><img
-                                                        src="https://ibot.hmall.com/images/20220906/2b8ddf1eb0e4495583b7ae307ea5cad4.png"
-                                                        alt=""></span><span class="txt">이벤트/혜택</span></a></li>
-                                        <li title="1:1 문의"><a
-                                                href="javascript:requestAnswer('1:1 문의하기 안내', '1:1 문의', '380')"><span
-                                                    class="img"><img
-                                                        src="https://ibot.hmall.com/images/20220906/94749e20c9d847b68ef56f5037ccc607.png"
-                                                        alt=""></span><span class="txt">1:1 문의</span></a></li>
+                                        <li title="내주문 보기">
+                                        	<a href="javascript:requestAnswer('주문 목록 조회', '내주문 보기', '24')">
+	                                        	<span class="img">
+	                                        		<img src="https://ibot.hmall.com/images/20220906/dcd6005359724e4581820ab3f254d30a.png" alt="">
+	                                        	</span>
+	                                        	<span class="txt">내주문 보기</span>
+                                        	</a>
+                                        </li>
+                                        <li title="취소/반품/교환">
+                                        	<a href="javascript:requestAnswer('취소/반품/교환 신청', '취소/반품/교환', '507')">
+                                        		<span class="img">
+                                        			<img src="https://ibot.hmall.com/images/20220906/fe7a7212ea1043c2bd0775b95f707a8f.png" alt="">
+                                                </span>
+                                                <span class="txt">취소/반품/교환</span>
+                                            </a>
+                                        </li>
+                                        <li title="자주하는 질문">
+                                        	<a href="javascript:requestAnswer('자주 묻는 질문', '자주하는 질문', '441')">
+                                        		<span class="img">
+                                        			<img src="https://ibot.hmall.com/images/20220906/fd4c7fac4dae48fc9c0a531e073f33ba.png" alt="">
+                                                </span>
+                                                <span class="txt">자주하는 질문</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                     <div class="chat-item is-ktalk" style="visibility: visible;">
@@ -168,8 +162,6 @@
 				scrollDown();
             })
 			$('#inp-chat').val('');
-			//var divdiv = document.getElementById("contents");
-			//divdiv.scrollTop = divdiv.scrollHeight;
 			scrollDown();
         })
   </script>
