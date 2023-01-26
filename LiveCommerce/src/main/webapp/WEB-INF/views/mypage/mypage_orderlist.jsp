@@ -110,7 +110,7 @@
         </div>
     </div>
 </div>
-
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 <script>
 //주문삭제 버튼
 function setTotalInfo(btn){
