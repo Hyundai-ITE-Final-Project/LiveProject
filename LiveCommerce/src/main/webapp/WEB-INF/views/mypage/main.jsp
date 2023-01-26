@@ -16,7 +16,7 @@
                 </div>              
             </div>
            
-            <div class="mypage_boxs" onclick="location.href='/member/modify';">
+            <div class="mypage_boxs" onclick="location.href='/member/modify/?mid=${user.username}';">
                 <div class="user_modify" style="background-position: 0 -200px;">
                     <p>회원정보수정</p>
                     <img height='70px' style='text-align:center; margin-top:50px' src="/resources/img/modify.jpg">

@@ -12,7 +12,7 @@
  * </pre>
  */  -->
 
-<form role="form" action="/member/modify" method="post">
+<form role="form" action="/member/modify/?mid=${userInfo.mid}" method="post">
 <head>
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
@@ -49,7 +49,6 @@
         <!-- mtel, memail, mzipcode, maddress1, maddress2 수정되어야함 -->
         <div class="mypage_content">
             <div class="mypage_group">
-	            <div class="withdrawal"><a href="">탈퇴하기</a></div>
 	            <input type="hidden" name="mid" value="${userInfo.mid}">
 	            <div class="userInfo_input_area">
 	                <div class="subject">이메일</div>
