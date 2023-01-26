@@ -92,9 +92,15 @@ public class LiveServiceTest {
 		liveService.myLiveList(mId);
 	}
 	
+	//라이브 저장
 	@Test
-	public void testLiveVideo() {
-		log.info(liveService.saveLiveVideo("1"));
+	public void testSaveLive() {
+		liveService.saveLiveVideo("1");
 	}
+	@Test
+	public void testallVideoList() {
+		liveService.allVideoList();
+	}
+
 
 }

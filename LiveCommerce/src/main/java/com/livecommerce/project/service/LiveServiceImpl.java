@@ -2,6 +2,7 @@ package com.livecommerce.project.service;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,14 +32,18 @@ import com.livecommerce.project.vo.VideoVO;
  * 2023.01.17     신기원              최초 생성, 라이브 목록
  * 2023.01.19     신기원              실시간 영상 상세정보
  * 2023.01.21     신기원              실시간 영상 뷰 + 1 업데이트
- * 2023.01.24     신기원              본인 라이브 목록 조회
+ * 2023.01.21     신기원              라이브 등록
+ * 2023.01.22	    김나형		    영상별 상품리스트
+ * 2023.01.24	    신기원		  Video(모든 영상) 목록 조회
+ * 2023.01.25	    신기원		   영상 다시보기
+ * 2023.01.26	    신기원		  스케줄러로 라이브 상태 변경, 라이브 영상 저장하기
  * </pre>
  */
 
 @Service
 @Transactional(readOnly = true)
 public class LiveServiceImpl implements LiveService{
-
+	
 	@Autowired
 	private LiveMapper liveMapper;
 	
@@ -150,23 +156,41 @@ public class LiveServiceImpl implements LiveService{
 
 	@Override
 	public String saveLiveVideo(String liveId) {
-		LocalDateTime  nowDate = LocalDateTime .now();
-        DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss");
-        String videoName = nowDate.format(dayFormat);
-        VideoVO video = new VideoVO();
+		//video Id 설정 
+		String videoName = "";
+		//파일 시스템 video 목록
+		String[] files = videoFiles("C:/Users/kosa/Videos/live");
+		//DB의 video 목록
+		List<String> videos = liveMapper.onlyVideoList();
+		
+		//DB에 없는 video 이름으로 저장
+		for(String name : files) {
+			name = name.replaceAll("\\.\\w+$", "");
+			if(!videos.contains(name)) {
+				videoName = name;
+			}
+		}
+		System.out.println(videoName);
+		
+		VideoVO videoVO = new VideoVO();
         String videoId = "video_" + Integer.toString(createName()); 
-        video.setVid(videoId);
-        video.setVname(videoName);
+        videoVO.setVid(videoId);
+        videoVO.setVname(videoName);
 //        liveMapper.createVideo(video);
         
         LiveVO live = new LiveVO();
         live.setLiveId(liveId);
         live.setVideoId(videoId);
 //		liveMapper.updateLive(live);
-		if(liveMapper.createVideo(video) == 0 || liveMapper.updateLive(live) == 0) {
+		if(liveMapper.createVideo(videoVO) == 0 || liveMapper.updateLive(live) == 0) {
 			return null;
 		}
 		return "success";
+	}
+	
+	public String[] videoFiles(String url){
+		File dir = new File(url);
+		return dir.list();
 	}
 
 

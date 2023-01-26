@@ -34,7 +34,7 @@
 		            <div class="admin_tool_area">
 		                <div class="admin_tool_inner">
 		                    <div class="admin_tool_top">
-		                        <a href ="/tool/live/create" class="btn_pd_create_move btn_move">라이브 등록</a>
+		                        <a href ="/manage/live/create" class="btn_pd_create_move btn_move">라이브 등록</a>
 		                    </div>
 		                    <div class="admin_tool_content">
 		                        <div class="admin_list_body">

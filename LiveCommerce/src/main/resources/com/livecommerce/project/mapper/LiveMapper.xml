@@ -196,6 +196,10 @@
          AND LIVE_STATUS IN (0,1)
     </update>
     
+    <select id="onlyVideoList" resultType="String">
+    	SELECT VIDEO_NAME AS VNAME
+    	FROM VIDEO
+    </select>
     
      
   </mapper>
