@@ -111,13 +111,14 @@ public class LiveController {
 		
 	}
 	
+	//라이브 등록 후 목록 페이지로 이동
 	@PostMapping("/manage/live/create_process")
 	public String createLive(Authentication member, LiveVO liveVO) throws ParseException {
 		liveVO.setMId(member.getName());
 		liveVO.setLiveStartTime(liveVO.getLiveStartDay() + " " + liveVO.getLiveStartTime());
 		liveVO.setLiveEndTime(liveVO.getLiveStartDay() + " " + liveVO.getLiveEndTime());
 		LiveService.createLive(liveVO);
-		return "/manage/live";
+		return "redirect:/manage/live";
 	}
 	
 	@GetMapping("/live/item")
@@ -132,11 +133,12 @@ public class LiveController {
 	
 	@GetMapping("/live/video")
 	public String VideoList(Model model) {
-		model.addAttribute("lives", LiveService.videoList());
+		model.addAttribute("lives", LiveService.allVideoList());
 		model.addAttribute("liveUrl",liveUrl);
 		return "/live/videoList";
 	}
 	
+	//라이브가 종료되고 저장
 	@GetMapping("/live/finish")
 	@ResponseBody
 	public String liveFinish(@RequestParam("liveId") String liveId) {
