@@ -37,7 +37,7 @@ public class MypageController {
 		List<OrderVO> list = mypageService.getOrderList(principal.getName());
 		model.addAttribute("list", list);
 
-		return "/mypage_orderlist";
+		return "/mypage/mypage_orderlist";
 	}
 	//주문취소
 	@PostMapping("/mypage/ordercancel")
