@@ -45,7 +45,7 @@
     		font-size:16px;
     	}
      	.location-navi{
-     		width:1280px;
+     		width:1200px;
     		background-color: white;
     		padding-right: 30px;
     		padding-top:130px;
@@ -69,6 +69,9 @@
 			border-color:#efdcec;
 			background:#efdcec !important;
 			color:#000;
+		}
+		body, a, button, input, label, ul, li, p, div, span, th, td, textarea{
+			font-family:'Pretendard-Regular';
 		}
     </style>
 </head>
