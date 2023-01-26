@@ -34,6 +34,7 @@ public interface LiveService {
 	public int getLiveView(LiveVO liveVo);
 	public List<ProductVO> getLiveProductList(int ps_index);
 	public int createLive(LiveVO liveVO) throws ParseException;
+	public int updateLive(LiveVO liveVO) throws ParseException;
 	public List<LiveVO> myLiveList(String mId);
 	public List<LiveVO> allVideoList();
 	public String saveLiveVideo(String liveId);

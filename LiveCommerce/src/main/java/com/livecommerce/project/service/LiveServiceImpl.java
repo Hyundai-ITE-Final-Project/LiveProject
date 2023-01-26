@@ -36,7 +36,7 @@ import com.livecommerce.project.vo.VideoVO;
  * 2023.01.22	    김나형		    영상별 상품리스트
  * 2023.01.24	    신기원		  Video(모든 영상) 목록 조회
  * 2023.01.25	    신기원		   영상 다시보기
- * 2023.01.26	    신기원		  스케줄러로 라이브 상태 변경, 라이브 영상 저장하기
+ * 2023.01.26	    신기원		  스케줄러로 라이브 상태 변경, 라이브 영상 저장하기, 라이브 수정하기
  * </pre>
  */
 
@@ -96,6 +96,13 @@ public class LiveServiceImpl implements LiveService{
         String status = liveStatus(liveVO);
         liveVO.setLiveStatus(status);
 		return liveMapper.createLive(liveVO);
+	}
+	
+	@Override
+	public int updateLive(LiveVO liveVO) throws ParseException {
+		String status = liveStatus(liveVO);
+        liveVO.setLiveStatus(status);
+		return liveMapper.updateLive(liveVO);
 	}
 	
 	private int createName() {
@@ -181,8 +188,8 @@ public class LiveServiceImpl implements LiveService{
         LiveVO live = new LiveVO();
         live.setLiveId(liveId);
         live.setVideoId(videoId);
-//		liveMapper.updateLive(live);
-		if(liveMapper.createVideo(videoVO) == 0 || liveMapper.updateLive(live) == 0) {
+//		liveMapper.updateLiveVideo(live);
+		if(liveMapper.createVideo(videoVO) == 0 || liveMapper.updateLiveVideo(live) == 0) {
 			return null;
 		}
 		return "success";
@@ -198,6 +205,9 @@ public class LiveServiceImpl implements LiveService{
 	public void updateLiveStatus() {
 		liveMapper.updateLiveStatus();
 	}
+
+
+	
 
 
 }
