@@ -4,7 +4,7 @@
 /* mypage_nav ----------------------------------------------*/   
 .mypage_wrap{position: relative;flex: 1 1 auto;padding-top: 70px; text-align: center;background: #fff;    min-height: 100vh;}
 .mypage_area{display: inline-block;width: 100%;}
-.mypage_title{padding: 30px;border-bottom: 1px solid #ededed;}
+.mypage_title{padding: 30px;border-bottom: 1px solid #ededed; margin-top:70px;}
 #mypage_area .menubox{position: relative;height: auto;box-sizing: border-box;display: flex;
     font-size: 20px;justify-content: center;width: 410px;margin: 50px auto;}
 @media(min-width:900px){#mypage_area .menubox{width: auto;}}

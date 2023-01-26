@@ -2,7 +2,7 @@
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ include file="/WEB-INF/views/header/tool_header.jsp"%>
+<%@ include file="/WEB-INF/views/header/main_header.jsp"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>     
 <div id="orderList_wrap" class="mypage_wrap">
     <div id="orderList_area" class="mypage_area">
