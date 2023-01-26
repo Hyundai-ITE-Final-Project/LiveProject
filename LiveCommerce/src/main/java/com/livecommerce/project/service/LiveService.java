@@ -19,7 +19,8 @@ import com.livecommerce.project.vo.ProductVO;
  * 2023.01.21     신기원              실시간 영상 뷰 + 1 업데이트
  * 2023.01.21     신기원              라이브 등록
  * 2023.01.22	    김나형		    영상별 상품리스트
- * 2023.01.22	    신기원		  Video(모든 영상) 목록 조회
+ * 2023.01.24	    신기원		  Video(모든 영상) 목록 조회
+ * 2023.01.25	    신기원		   영상 다시보기, 라이브 영상 저장하기
  * </pre>
  */
 public interface LiveService {
@@ -27,10 +28,12 @@ public interface LiveService {
 	//현재 라이브 목록 가져오기
 	public List<LiveVO> liveList();
 	public LiveVO getLiveInfo(String liveId);
+	public LiveVO getReplayInfo(String liveId);
 	public void setLiveView(LiveVO liveVo);
 	public int getLiveView(LiveVO liveVo);
 	public List<ProductVO> getLiveProductList(int ps_index);
 	public int createLive(LiveVO liveVO) throws ParseException;
 	public List<LiveVO> myLiveList(String mId);
 	public List<LiveVO> videoList();
+	public String saveLiveVideo(String liveId);
 }

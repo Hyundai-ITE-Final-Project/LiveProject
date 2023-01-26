@@ -54,6 +54,12 @@ public class LiveServiceTest {
 	}
 	
 	@Test
+	public void testGetReply() {
+		String liveId = "live_134696";
+		log.info(liveService.getReplayInfo(liveId));
+	}
+	
+	@Test
 	public void testSetLiveView() {
 		LiveVO liveVO = new LiveVO();
         liveVO.setLiveId("1");
@@ -84,6 +90,11 @@ public class LiveServiceTest {
 	public void testMyLiveList() {
 		String mId = "4d";
 		liveService.myLiveList(mId);
+	}
+	
+	@Test
+	public void testLiveVideo() {
+		log.info(liveService.saveLiveVideo("1"));
 	}
 
 }

@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.livecommerce.project.security.CustomMember;
@@ -36,6 +38,7 @@ import lombok.extern.log4j.Log4j;
  * 2023.01.19    신기원                	 최초 생성
  * 2023.01.20    신기원                	 스트리밍 상세 화면 보기, 라이브 등록 화면
  * 2023.01.24    신기원                	 본인 라이브 목록 조회, video(모든 영상) 조회
+ * 2023.01.25    신기원                	 영상 다시보기, 라이브 영상 저장하기
  * 
  * </pre>
  */
@@ -67,12 +70,27 @@ public class LiveController {
 		model.addAttribute("live",liveVO);
 		model.addAttribute("liveUrl",liveUrl);
 		
-		
-		
 //		model.addAttribute("liveStatus",liveVO.getLiveStatus());
 		return "/live/video";
 	}
 	
+	//녹화된 영상의 정보를 가져온다. 
+		@GetMapping("/replay/{liveId}")
+		public String videoPage(Authentication  member, @PathVariable("liveId") String liveId, Model model ) {
+			LiveVO liveVO = LiveService.getReplayInfo(liveId);
+			
+			if(member !=null) {
+				model.addAttribute("nick", member.getName());
+	        }
+			log.info(liveVO.getMId());
+			model.addAttribute("host",liveVO.getMId());
+			model.addAttribute("replay",liveVO);
+			
+			model.addAttribute("url",liveUrl);
+			
+			return "/live/replay";
+		}
+		
 	@GetMapping("/manage/live")
 	public String LiveList(Authentication member, Model model) {
 		model.addAttribute("liveList", LiveService.myLiveList(member.getName()));
@@ -99,7 +117,7 @@ public class LiveController {
 		liveVO.setLiveStartTime(liveVO.getLiveStartDay() + " " + liveVO.getLiveStartTime());
 		liveVO.setLiveEndTime(liveVO.getLiveStartDay() + " " + liveVO.getLiveEndTime());
 		LiveService.createLive(liveVO);
-		return "manage/liveList";
+		return "/manage/live";
 	}
 	
 	@GetMapping("/live/item")
@@ -114,8 +132,14 @@ public class LiveController {
 	
 	@GetMapping("/live/video")
 	public String VideoList(Model model) {
-		model.addAttribute("live", LiveService.videoList());
+		model.addAttribute("lives", LiveService.videoList());
 		model.addAttribute("liveUrl",liveUrl);
 		return "/live/videoList";
+	}
+	
+	@GetMapping("/live/finish")
+	@ResponseBody
+	public String liveFinish(@RequestParam("liveId") String liveId) {
+		return LiveService.saveLiveVideo(liveId);
 	}
 }

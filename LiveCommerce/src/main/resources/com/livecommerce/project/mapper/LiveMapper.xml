@@ -75,6 +75,24 @@
 		ON li.ps_index = pp.ps_index join member m on li.member_mid = m.mid
 		where PS_POST_STATUS = '판매중' and LIVE_ID = #{liveId}
     </select>
+    
+    <select id="getReplayInfo" parameterType="String" resultMap="LiveMap">
+	    SELECT
+            LI.MEMBER_MID
+            ,LI.LIVE_ID
+            ,LI.LIVE_TITLE
+            ,LI.LIVE_VIEW
+            ,to_char(LI.LIVE_STARTDAY, 'yy-mm-dd') AS LIVE_STARTDAY
+            ,to_char(LI.LIVE_END_TIME, 'hh24:mm') AS LIVE_END_TIME
+            ,m.stream_key
+            ,VI.VIDEO_NAME  
+        FROM LIVE LI LEFT JOIN VIDEO VI
+		ON LI.VIDEO_ID = VI.VIDEO_ID JOIN PRODUCT_POST PP
+		ON li.ps_index = pp.ps_index JOIN MEMBER M
+        ON LI.MEMBER_MID = M.MID
+        WHERE LIVE_ID = #{liveId}
+        and PS_POST_STATUS = '판매중'
+    </select>
   
   <update id="setLiveView">
         UPDATE LIVE
@@ -146,5 +164,22 @@
 		FROM LIVE LI LEFT JOIN VIDEO VI
 		ON li.video_id = vi.video_id JOIN MEMBER M ON LI.MEMBER_MID = M.MID
     </select>
+    
+    <insert id="createVideo">
+    	INSERT INTO VIDEO(
+                VIDEO_ID
+                ,VIDEO_NAME
+            )VALUES
+            (
+                #{vid}
+                ,#{vname}
+            )
+    </insert>
+    
+    <update id="updateLive">
+    	UPDATE LIVE
+	        SET    VIDEO_ID = #{videoId}
+	        WHERE  LIVE_ID  = #{liveId}
+    </update>
      
   </mapper>

@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/admin.css" >
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
     <script type="text/javascript" src="/resources/js/common.js"></script>
-    <script type="text/javascript" src="/resources/js/manage.js"></script>
+    <!-- <script type="text/javascript" src="/resources/js/manage.js"></script> -->
 </head>
 	<body>
     	<%@ include file="/WEB-INF/views/header/tool_header.jsp"%>

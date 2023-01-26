@@ -1,6 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/header/main_header.jsp"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,6 +15,9 @@
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <link rel="shortcut icon" href="/img/logo/logo_header_icon.png">
     <title>오늘의쇼핑</title>
+    <link rel="stylesheet" type="text/css" href="/resources/css/common.css" >
+    <link rel="stylesheet" type="text/css" href="/resources/css/shop.css" > 
+    <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css" >
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
     <script type="text/javascript" src="/resources/js/common.js"></script>
     <script type="text/javascript" src="/resources/js/shop.js"></script>
@@ -18,17 +25,25 @@
     <script type="text/javascript" src="/resources/js/order.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2dbd6c0b5c00df629f26d19c5981c33&libraries=services"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <style>
-        	body{
-    		margin: 0 auto;
-    		width: auto;
-    		font-size:16px;
-    	}
-    </style>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
+<%-- <script src="<!-- https://cdn.jsdelivr.net/npm/hls.min.js.map -->"></script> --%>
 </head>
 <body>
 <div id="shop_wrap">
     <div class="shop_content">
+        <div class="shop_menulist" role="presentation">
+            <div class="shop_tablist" role="tablist" style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms;">
+                <a href="/home" class="main_tab" aria-selected="true">홈</a>
+                <a href="/shop?category=98" class="main_tab">라이브</a>
+                <a href="javascript:void(0);" class="main_tab loc_live" class="main_tab">우리동네라이브</a>
+                <a href="/shop?category=101" class="main_tab">패션</a>
+                <a href="/shop?category=102" class="main_tab">뷰티</a>
+                <a href="/shop?category=103" class="main_tab">푸드</a>
+                <a href="/shop?category=104" class="main_tab">라이프</a>
+                <a href="/shop?category=105" class="main_tab">취미 · 문화생활</a>
+            </div>
+        </div>
         <div class="shop_mainPage">
             <section id="HomeBanner">
                 <div class="banner_view">
@@ -126,29 +141,34 @@
         </div>
     </div>
 </div>
-
 <script>
 //라이브 연결
-var hls = new Hls();
 <c:forEach var="live" items="${lives}" varStatus='st'>
-
    <c:if test="${live.liveStatus eq 1}">
-     var video = $('.liveVideo')[${st.index}];
-     if(video.canPlayType('application/vnd.apple.mpegurl')) {   // 우선 HLS를 지원하는지 체크
-         video.src = "${url}/${live.getStreamKey()}.m3u8";
+     var hls${st.index} = new Hls();
+     var video${st.index} = $('.liveVideo')[${st.index}];
+     var stream${st.index} = "${url}/${live.getStreamKey()}.m3u8";
+     console.log(video${st.index});
+     if(video${st.index}.canPlayType('application/vnd.apple.mpegurl')) {   // 우선 HLS를 지원하는지 체크
+         video${st.index}.src = stream${st.index};
+         console.log("지원");
      }else if(Hls.isSupported()){  // HLS를 지원하지 않는다면 hls.js를 지원
-         hls.loadSource("${url}/${live.getStreamKey()}.m3u8");
-         hls.attachMedia(video);
-         hls.on(Hls.Events.MANIFEST_PARSED,()=>{
-             video.play(); //라이브 시작
+    	 console.log("지원 안함");
+     
+         hls${st.index}.loadSource(stream${st.index});
+         hls${st.index}.attachMedia(video${st.index});
+         hls${st.index}.on(Hls.Events.MANIFEST_PARSED,()=>{
+             video${st.index}.play(); //라이브 시작
          })
-         hls.on(Hls.Events.ERROR, function(data) {
-             hls.destroy();  
+         hls${st.index}.on(Hls.Events.ERROR, function(data) {
+        	 video${st.index}.src="";
          });
      }
   </c:if>
 </c:forEach>
+console.log(video);
 </script>
+
 <div id='chatbot'/>
 <button  class="chatbot" title="chatbot"
 	style="display: scroll; position: fixed; bottom: 30px; right: 5px;" rel="nofollow" onfocus='this.blur()'>

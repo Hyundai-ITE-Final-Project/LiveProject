@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.livecommerce.project.mapper.LiveMapper;
 import com.livecommerce.project.vo.LiveVO;
 import com.livecommerce.project.vo.ProductVO;
+import com.livecommerce.project.vo.VideoVO;
 /**
  * @author 신기원
  * @since 2023.01.17
@@ -53,6 +54,11 @@ public class LiveServiceImpl implements LiveService{
 	public LiveVO getLiveInfo(String liveId) {
 		return liveMapper.getLiveInfo(liveId);
 	}
+	
+	@Override
+	public LiveVO getReplayInfo(String liveId) {
+		return liveMapper.getReplayInfo(liveId);
+	}
 
 
 	@Override
@@ -76,13 +82,7 @@ public class LiveServiceImpl implements LiveService{
 	@Override
 	public int createLive(LiveVO liveVO) throws ParseException {
 		System.out.println(liveVO);
-		LocalDateTime  nowDate = LocalDateTime .now();
-        DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("yyMMdd");
-        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HHmmss");
-        String day = nowDate.format(dayFormat);
-        String time = nowDate.format(timeFormat);
-        
-        int id = Math.abs(Integer.parseInt(day)-Integer.parseInt(time));
+		int id = createName();
         String liveId = "live_"+Integer.toString(id);
         liveVO.setLiveId(liveId);
         
@@ -92,13 +92,22 @@ public class LiveServiceImpl implements LiveService{
 		return liveMapper.createLive(liveVO);
 	}
 	
+	private int createName() {
+		LocalDateTime  nowDate = LocalDateTime .now();
+        DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("yyMMdd");
+        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HHmmss");
+        String day = nowDate.format(dayFormat);
+        String time = nowDate.format(timeFormat);
+        return Math.abs(Integer.parseInt(day)-Integer.parseInt(time));
+	}
+
+
 	//등록 및 수정하는 라이브 날짜로 라이브 상태 변경하기
     public String liveStatus(LiveVO live) throws ParseException {
         LocalDateTime  localDate = LocalDateTime .now();
         DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         SimpleDateFormat dateFormat2 = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
         String nowDateTime = dayFormat.format(localDate);
-        System.out.println(live);
         Date today = dateFormat2.parse(nowDateTime);
         Date startDate = dateFormat2.parse(live.getLiveStartTime()+":00");
         Date endDate = dateFormat2.parse(live.getLiveEndTime()+":00");
@@ -137,5 +146,28 @@ public class LiveServiceImpl implements LiveService{
 	public List<LiveVO> videoList() {
 		return liveMapper.videoList();
 	}
+
+
+	@Override
+	public String saveLiveVideo(String liveId) {
+		LocalDateTime  nowDate = LocalDateTime .now();
+        DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss");
+        String videoName = nowDate.format(dayFormat);
+        VideoVO video = new VideoVO();
+        String videoId = "video_" + Integer.toString(createName()); 
+        video.setVid(videoId);
+        video.setVname(videoName);
+//        liveMapper.createVideo(video);
+        
+        LiveVO live = new LiveVO();
+        live.setLiveId(liveId);
+        live.setVideoId(videoId);
+//		liveMapper.updateLive(live);
+		if(liveMapper.createVideo(video) == 0 || liveMapper.updateLive(live) == 0) {
+			return null;
+		}
+		return "success";
+	}
+
 
 }
