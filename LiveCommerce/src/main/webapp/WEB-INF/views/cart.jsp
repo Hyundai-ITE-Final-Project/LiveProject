@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
 <title>Welcome BookMall</title>
 <link rel="stylesheet" href="/resources/css/cart.css">
+
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -31,7 +32,7 @@
 			<!-- 장바구니 가격 합계 -->
 			<!-- cartInfo -->
 			<div class="content_totalCount_section">
-				
+				<h1>장바구니</h1>
 				<!-- 체크박스 전체 여부 -->
 				<div class="all_check_input_div">
 					<input type="checkbox" class="all_check_input input_size_20" checked="checked"><span class="all_chcek_span">전체선택</span>
@@ -43,12 +44,12 @@
 
 						<tr>
 							<th class="td_width_1"></th>
-							<th class="td_width_2"></th>
+							<th class="td_width_2">상품이미지</th>
 							<th class="td_width_3">상품명</th>
 							<th class="td_width_4">가격</th>
 							<th class="td_width_4">수량</th>
 							<th class="td_width_4">합계</th>
-							<th class="td_width_4">삭제</th>
+
 						</tr>
 					</tbody>
 				</table>
@@ -74,7 +75,7 @@
 								</td>
 								<td class="td_width_3">${ci.pname}</td>
 								<td class="td_width_4 price_td">
-									<del>판매가 : <fmt:formatNumber value="${ci.saleprice}" pattern="#,### 원" /></del><br>
+									<span>판매가 : <fmt:formatNumber value="${ci.saleprice}" pattern="#,### 원" /></span><br>
 									<%-- 판매가 : <span class="red_color"><fmt:formatNumber value="${ci.salePrice}" pattern="#,### 원" /></span><br>
 									마일리지 : <span class="green_color"><fmt:formatNumber value="${ci.point}" pattern="#,###" /></span> --%>
 								</td>
@@ -86,12 +87,11 @@
 									</div>
 									<a class="quantity_modify_btn" data-cartid="${ci.cart_id}">변경</a>
 								</td>
-								<td class="td_width_4 table_text_align_center">
-									<fmt:formatNumber value="${ci.saleprice * ci.p_quantity}" pattern="#,### 원" />
+								<td class="td_width_4 table_text_align_center1">
+								<fmt:formatNumber value="${ci.saleprice * ci.p_quantity}" pattern="#,### 원" />
+									<button class="delete_btn" data-cartid="${ci.cart_id}"><img class ="x_icon12" src="/resources/img/x_icon.png" alt="버튼"></button>
 								</td>
-								<td class="td_width_4 table_text_align_center">
-									<button class="delete_btn" data-cartid="${ci.cart_id}">삭제</button>
-								</td>
+
 							</tr>
 						</c:forEach>
 					</tbody>
