@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -68,12 +69,25 @@
                             </header>
                             <div class="NoticeContent_area blind"></div>
                             <div class="NoticeContent_box blind">
-                                <div class="NoticeContent_text">라이브가 종료되었습니다.</div>    
-                                <div class="NoticeContent_btn_home"> 다른 라이브 보기</div>                            
+                            
+                                <div class="NoticeContent_text">라이브가 종료되었습니다.</div>  
+                                
+                                <sec:authentication property="principal" var="user"/> 
+                                
+                                
+                                <sec:authorize access="isAuthenticated()">
+								   <c:if test="${user.username eq host}">
+                                   
+                                	   
+                                	   <button class="LiveFinish" type="button" ><div class="NoticeContent_btn_home">라이브 종료</button>
+                                	   </div>  
+                                	</c:if>
+								</sec:authorize>
+                                
                             </div>
                             <div class="LiveVideoPlayer_wrap">
                                 <div class="video_container">
-                                    <video id="video"  muted disablepictureinpicture="true" controlslist="nodownload" width="100%" height="100%" preload="auto" poster="/resources/img/chun.jpg"></video>  
+                                    <video id="video" controls muted disablepictureinpicture="true" controlslist="nodownload" width="100%" height="100%" preload="auto" poster="/resources/img/chun.jpg"></video>  
                                 </div>
                             </div>
                             <div class="Comments_wrap" id="Comments_wrap">
@@ -251,6 +265,28 @@ $(document).ready(function() {
         $("#wa_textarea").val('');   
         $("#send_btn").attr("disabled",true);
     }
+    
+    $(".LiveFinish").click(function() {
+    	$.ajax({
+    		type:"get",
+    		data: {"liveId" : liveId},
+    		url: "/live/finish",
+    		success:function(data){
+    			if(data === null){
+    				alert("동영상이 정상적으로 저장되지 않았습니다.");
+    			}else{
+    				alert("동영상이 저장되었습니다.");
+    				window.close();
+    			}
+    			
+    		},
+    		error : function(error){
+    			console.log(error);
+    			alert("데이터가 전달되지 않았습니다.");
+    		}
+    	});
+    });
+    
 });
 </script>
 </html>

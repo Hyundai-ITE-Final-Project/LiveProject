@@ -21,20 +21,17 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/common.css" >
     <link rel="stylesheet" type="text/css" href="/resources/css/shop.css" > 
     <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css" >
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
     <script type="text/javascript" src="/resources/js/common.js"></script>
     <script type="text/javascript" src="/resources/js/shop.js"></script>
     <script type="text/javascript" src="/resources/js/mypage.js"></script>
     <script type="text/javascript" src="/resources/js/order.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2dbd6c0b5c00df629f26d19c5981c33&libraries=services"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 <body>
     <main class="container">
     </main>
-            <!-- <video class="VideoPlayer_video liveVideo" id="vid" autoplay muted loop >
-		    	<source src="/video/sunset.mp4" type="video/mp4">
-		    </video> -->
 <div id="shop_wrap">
     <div class="shop_content">
         <div class="shop_menulist" role="presentation">
@@ -42,14 +39,14 @@
         <div class="menu_tabpanel">
             <div class="infiniteScroll_wrap">
                 <!-- c:if -->
-                <c:forEach var="live" items="${live}">
+                <c:forEach var="live" items="${lives}">
                 <div class="videoCard_wrap videoVerticalList_item">
                     <c:choose>
                         <c:when test="${live.liveStatus eq 1}">
-                            <a href="/live?fm=${live.liveId}" target="self" class="video_link">
+                            <a href="/live/${live.liveId}" target="self" class="video_link">
                         </c:when>
                         <c:otherwise>
-                            <a href="/replay?fm=${live.liveId}" target="self" class="video_link">
+                            <a href="/replay/${live.liveId}" target="self" class="video_link">
                         </c:otherwise>
                     </c:choose>
                     <div class="video_wrap">
@@ -61,9 +58,8 @@
                             <!-- video poster: 재생 전 보여줄 이미지  -->
                                 <c:choose>
                                     <c:when test="${live.liveStatus eq 1}">
-			                          <video class="VideoPlayer_video liveVideo"  autoplay muted loop poster="/resources/img/chun.jpg">
-			                            
-			                          </video>
+			                          <video class="VideoPlayer_video liveVideo" id="vid" autoplay muted loop >
+		                                          </video>
 			                        </c:when>
 			                        <c:otherwise>
 			                          <video class="VideoPlayer_video replayVideo" autoplay muted loop poster="/resources/img/chun.jpg">
@@ -135,25 +131,32 @@
 </div>
 <script>
 //라이브 연결
-<c:forEach var="live" items="${live}" varStatus='st'>
+
+<c:forEach var="live" items="${lives}" varStatus='st'>
+
    <c:if test="${live.liveStatus eq 1}">
+   
      var hls${st.index} = new Hls();
      var video${st.index} = $('.liveVideo')[${st.index}];
-     var stream${st.index} = "${liveUrl}/${live.getStreamKey()}.m3u8"
-     if(video${st.index}.canPlayType('application/vnd.apple.mpegurl')) {   // 우선 HLS를 지원하는지 체크
-         video${st.index}.src = stream${st.index};
+     var stream${st.index} = "${url}/${live.getStreamKey()}.m3u8";
+     console.log(video${st.index});
+   	 if(video${st.index}.canPlayType('application/vnd.apple.mpegurl')) {   // 우선 HLS를 지원하는지 체크
+   		 video${st.index}.src = stream${st.index};
+         console.log("지원");
      }else if(Hls.isSupported()){  // HLS를 지원하지 않는다면 hls.js를 지원
+    	 console.log("지원 안함");
          hls${st.index}.loadSource(stream${st.index});
          hls${st.index}.attachMedia(video${st.index});
          hls${st.index}.on(Hls.Events.MANIFEST_PARSED,()=>{
              video${st.index}.play(); //라이브 시작
          })
          hls${st.index}.on(Hls.Events.ERROR, function(data) {
-             video${st.index}.src="";
+        	 video${st.index}.src="";
          });
      }
   </c:if>
 </c:forEach>
 </script>
+
 </body>
 </html>

@@ -60,7 +60,7 @@ textarea:focus {outline: none;}
 .LiveVideoPlayer_wrap{position: absolute;top: 0;right: 0;bottom: 0;left: 0;z-index: 10;overflow: hidden;touch-action: manipulation;}
 .LiveVideoPlayer_wrap:after{content: '';position: absolute;top: 0;right: 0;bottom: 0;left: 0;
     background-image: linear-gradient(to top, rgba(0,0,0,0.5) 0, rgba(0,0,0,0) 320px);}
-.video_container{position: absolute;top: 0;right: 0;bottom: 0;left: 0;overflow: hidden;}
+.video_container{position: absolute;top: 0;right: 0;bottom: 0;left: 0;overflow: hidden;z-index:1}
 .video_container:before{content: '';position: absolute;top: 0;right: 0;left: 0;z-index: 10;height: 200px;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0.25) 0, rgba(0,0,0,0) 100%);}
 /* video Comments ---------------------------------------------------------------------- */
@@ -166,8 +166,8 @@ i.ModelTitle_icon:after{transform: translate(-50%, -50%) rotate(135deg);}
 .tf_ct_sel_box{border: 1px solid #ddd;position: absolute;top: 11px;left: 17px;line-height: 0;width: 20px;height: 20px;background: #fff;}
 .fix_btn_inner{position: relative;display: table;padding: 10px 8px 10px 7px;width: 100%;box-sizing: border-box;
     table-layout: fixed;background-color: #ffffff;box-shadow: inset 0 1px 0 0 rgb(0 0 0 / 7%);}
-.btn_buy{background-color: #efdcec;color: #000;}
-.btn_bk{border: 1px solid #ffff; background-color:#668679; color:white;}
+.btn_buy{background-color: #1fb9ea;color: #fff;}
+.btn_bk{border: 1px solid #1fb9ea;}
 .fix_a_btn_area{display: table-cell;padding: 0 2px 0 3px;vertical-align: top;}
 .fix_btn{position: relative;width: 100%;height: 44px;border-radius: 2px;line-height: 20px;font-weight: bold;font-size: 16px;letter-spacing: -0.64px;}
 
