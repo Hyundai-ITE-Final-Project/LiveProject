@@ -92,7 +92,7 @@ input:focus{border:none;outline: none;}
 .orderList_card_body{text-align: left;padding: 25px 20px; }
 .orderList_card_body:not(:last-child){    border-bottom: 1px solid #e0e0e0;}
 .order_status{font-size: 18px;line-height: 24px;margin-bottom: 12px;padding: 4px 8px;background-color: rgb(247, 249, 250);display: inline-block;
-    border-radius: 4px;font-weight: 700;color: rgb(53, 197, 240);}
+    border-radius: 4px;font-weight: 700;color: #668679;}
 .goods_item{display: flex;align-items: center;min-height: 110px;}
 .goods_thumb{display: flex;margin-right: 20px;flex-direction: column;}
 .goods_info{display: flex;flex-direction: column;flex: 1 0 0px;margin-right: 10px;}

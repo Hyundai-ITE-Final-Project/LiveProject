@@ -56,8 +56,21 @@ public class OrderVO {
 	/* 최종 판매 비용 */
 	private int orderfinalsaleprice;
 	
-	/* 주문한 imp_uid*/
+	// 주문한 imp_uid 
 	private String imp_uid;
+	
+	// 주문한 상품 첫번째 이미지 
+	private String img1;
+	
+	// 주문한 상품 이름 
+	private String pname;
+	
+	// 주문한 상품 가격 
+	private int olprice;
+	
+	// 주문한 상품 수량
+	private int olquantity;
+	
 	
 	public void getOrderPriceInfo() {
 		/* 상품 비용 & 적립포인트 */
