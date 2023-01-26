@@ -85,13 +85,18 @@ public class LiveMapperTest {
 	
 	@Test
 	public void testVideoList() {
-		log.info(mapper.videoList());
+		log.info(mapper.allVideoList());
 	}
 	
 	@Test
 	public void testGetReplay() {
 		String liveId = "live_134696";
 		log.info(mapper.getReplayInfo(liveId));
+	}
+	
+	@Test
+	public void testUpdateLiveStatus() {
+		log.info(mapper.updateLiveStatus());
 	}
 
 

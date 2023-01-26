@@ -143,8 +143,8 @@ public class LiveServiceImpl implements LiveService{
 
     //모든 영상 조회하기
 	@Override
-	public List<LiveVO> videoList() {
-		return liveMapper.videoList();
+	public List<LiveVO> allVideoList() {
+		return liveMapper.allVideoList();
 	}
 
 
@@ -167,6 +167,12 @@ public class LiveServiceImpl implements LiveService{
 			return null;
 		}
 		return "success";
+	}
+
+
+	@Override
+	public void updateLiveStatus() {
+		liveMapper.updateLiveStatus();
 	}
 
 
