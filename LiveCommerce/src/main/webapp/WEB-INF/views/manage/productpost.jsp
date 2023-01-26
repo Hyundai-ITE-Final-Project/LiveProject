@@ -178,3 +178,4 @@ let csrfTokenValue="${_csrf.token}";
 		}
 	}
 </script>
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
