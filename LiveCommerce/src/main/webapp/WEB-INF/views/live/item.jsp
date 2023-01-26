@@ -109,7 +109,7 @@
 				                        </div>
 				                    </li>
 				                    <li>
-				                        <a><img src="${pd.img1}" height="100px"></a>
+				                        <a href="/product/productDetail?pid=${pd.pid}" target='_blank'><img src="${pd.img1}" height="100px"></a>
 				                        <div class="item_name">${pd.pname}</div>
 				                    </li>
 				                    <li>
