@@ -29,7 +29,7 @@
 </head>
 <body>
 
-<div class="wrapper">z
+<div class="wrapper">
 	<div class="wrap">
 		<div class="top_gnb_area">
 			<ul class="list">

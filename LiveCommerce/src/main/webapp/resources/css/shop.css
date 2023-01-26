@@ -300,7 +300,7 @@ transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 #order_wrap{background-color: #fff;}
 #order_wrap section{border-bottom: 1px solid #e7e7e7;margin-bottom: 0px;}
 .order_container{position: relative;width: 100%;max-width: 1256px;padding: 0px 60px;margin: 0px auto;box-sizing: border-box;}
-.order_container_title{line-height: 36px;color: rgb(0, 0, 0);font-weight: bold;margin: 40px 0px 20px;}
+.order_container_title{line-height: 36px;color: rgb(0, 0, 0);font-weight: bold;margin: 60px 0px 20px;}
 .order_pd_list_header, .order_address_header, .order_payment_header{
     max-width: 100%;height: 70px;min-height: 1px;display: flex;align-items: center;margin: 0px auto;width: calc(100% - 80px);box-sizing: border-box;
 }
@@ -368,7 +368,121 @@ transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 .btn_method_payment_click{background-color: rgb(239, 251, 255);border: 2px solid rgb(53, 197, 240);}
 .payment_btn_text{font-size: 15px;font-weight: bold;line-height: 17px;color: rgb(41, 41, 41);margin-bottom: 3px;transition: font-weight 0.2s ease 0s;}
 .payment_img{width: 60px;height: 60px;margin: 8px auto 4px;}
+.order_img{width:80px; height: 80px;}
+ /* 사용자 주소 정보 */
+ .addressInfo_div{
+ 	margin-top: 30px;
+ }
+ .addressInfo_input_div_wrap{
+ 	border-bottom: 1px solid #f3f3f3;
+ 	height: 225px;
+ }
+.address_btn {
 
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 30%;
+    margin-left: 40px;
+    margin-right: -40px;
+}
+
+
+
+.address_btn:hover{
+	background-color: white;
+}
+.addressInfo_button_div::after{
+	content:'';
+	display:block;
+	clear:both;
+}
+		.addressInfo_input_div{
+			padding:12px;
+			text-align: left;
+			display: none;
+			line-height: 40px;
+		}
+		.addressInfo_input_div_wrap{
+			height: 140px;
+		}
+		.addressInfo_input_div th{
+			border-color: transparent;
+		    background-color: transparent;		
+		}
+		.addressInfo_input_div th{
+			padding : 12px 5px 12px 20px;
+			vertical-align: top;
+		}
+		.addressInfo_input_div td{
+			padding : 8px 12px;
+		}		
+		.addressInfo_input_div_2 input{
+			padding: 6px 5px;
+		}
+.address_search_btn{
+    vertical-align: middle;
+    display: inline-block;
+    border: 1px solid #aaa;
+    width: 90px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    color: #555;
+    cursor: pointer;
+}
+
+
+/* 포인트 영역 */
+.point_div{
+	margin-top: 30px;
+	margin-bottom: 50px;
+	margin-left: 38px;
+}
+.point_div_subject{
+	font-size: 25px;
+    line-height: 35px;
+    font-weight: bold;
+}
+.point_table{
+	border-color: #ddd;
+    border-spacing: 0;
+    border-top: 1px solid #363636;
+    border-bottom: 1px solid #b6b6b6;
+}
+.point_table th{
+	border-color: #ddd;
+    vertical-align: top;
+    text-align: center;
+    color: #333333;
+    background: #fbfbfb;
+    text-indent: 0;
+    padding: 12px 5px 12px 20px;
+    font-size: 15px;
+    line-height: 20px;
+}
+.point_table_td{
+	border-color: #ddd;
+    text-align: left;
+    color: #333333;
+    padding: 8px 15px;
+}
+.order_point_input_btn{
+	vertical-align: middle;
+    display: inline-block;
+    border: 1px solid #aaa;
+    width: 60px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    color: #555;
+    cursor: pointer;
+    font-size: 12px;
+}
 /* orderComplete ---------------------------------------------------*/
 
 #order_complate_wrap{background:#fff;}
