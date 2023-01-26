@@ -98,6 +98,11 @@ public class LiveMapperTest {
 	public void testUpdateLiveStatus() {
 		log.info(mapper.updateLiveStatus());
 	}
+	
+	@Test
+	public void testOnlyVideo() {
+		log.info(mapper.onlyVideoList());
+	}
 
 
 }
