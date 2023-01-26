@@ -146,3 +146,4 @@ $(document).ready(function() {
 	});//  end ready
 </script>
 </html>
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>

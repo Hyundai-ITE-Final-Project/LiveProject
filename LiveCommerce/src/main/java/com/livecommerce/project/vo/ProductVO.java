@@ -6,6 +6,7 @@ package com.livecommerce.project.vo;
  * 
  * <pre>
  * 수정일              	수정자                   수정내용
+ * 2023.01.11	김나형		최초 생성
  * 230116		박소은		테이블 변경 (재고, 상태, regdate)
 */
 

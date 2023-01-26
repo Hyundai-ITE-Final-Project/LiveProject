@@ -1,6 +1,5 @@
 <%@page  pageEncoding="UTF-8" language="java"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ include file="/WEB-INF/views/header/main_header.jsp"%>
 
 <%-- <%
 	response.setHeader("Cache-Control","no-store");
@@ -19,24 +18,17 @@
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <link rel="shortcut icon" href="/img/logo/logo_header_icon.png">
     <title>오늘의쇼핑</title>
-    <link rel="stylesheet" type="text/css" href="/resources/css/common.css" >
-    <link rel="stylesheet" type="text/css" href="/resources/css/shop.css" > 
-    <link rel="stylesheet" type="text/css" href="/resources/css/mypage.css" >
     <script type="text/javascript" src="/resources/js/common.js"></script>
     <script type="text/javascript" src="/resources/js/shop.js"></script>
     <script type="text/javascript" src="/resources/js/mypage.js"></script>
     <script type="text/javascript" src="/resources/js/order.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2dbd6c0b5c00df629f26d19c5981c33&libraries=services"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/header/main_header.jsp"%>
     <main class="container">
 		<div id="shop_wrap">
 		    <div class="shop_content">
-		        <div class="shop_menulist" role="presentation">
-		        </div>
 		        <div class="menu_tabpanel">
 		            <div class="infiniteScroll_wrap">
 		                <!-- c:if -->
@@ -158,6 +150,6 @@
   </c:if>
 </c:forEach>
 </script>
-
 </body>
 </html>
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>

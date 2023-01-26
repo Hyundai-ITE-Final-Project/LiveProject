@@ -44,7 +44,8 @@ public class ProductPostController {
 
 	@Autowired
 	private ProductPostService postService;
-
+	
+	// 자신이 등록한 post 조회
 	@GetMapping("/productpost")
 	public void PostMainGET(Criteria cri, HttpServletRequest request, Model model, Principal prin) throws Exception {
 		// principal를 통해 id 가져오기
@@ -69,7 +70,7 @@ public class ProductPostController {
 		model.addAttribute("pd", postService.getpdlist());
 		log.info(memid);
 	}
-	
+	// post 등록
 	@PostMapping("/productpostadd")
 	public String PostAddPOST(HttpServletRequest request, Model model, Principal prin, ProductPostVO post, RedirectAttributes rttr) throws Exception{
 		postService.postproductAdd(post);
@@ -78,7 +79,7 @@ public class ProductPostController {
 		rttr.addFlashAttribute("enroll_result", post);
 		return "redirect:/manage/productpost";
 	}
-	
+	// post 수정페이지로 이동
 	@GetMapping("/postmodify")
 	public void PostModifyGet(int ps_index, Model model, Principal prin) throws Exception{
 		String memid = prin.getName();
@@ -89,7 +90,7 @@ public class ProductPostController {
 		List<ProductPostAddVO> prolist = postService.getPostProductDetail(ps_index);
 		model.addAttribute("post2", prolist);
 	}
-	
+	// post 수정
 	@PostMapping("/postmodify")
 	public String PostModify(ProductPostVO post) throws Exception{
 		log.info("ps_index : " + post.getPs_index());
@@ -97,7 +98,7 @@ public class ProductPostController {
 		postService.postModify(post);
 		return "redirect:/manage/productpost";
 	}
-	
+	// post 삭제
 	@ResponseBody
 	@PostMapping("/delete")
 	public String deletePost(HttpServletRequest request, @RequestParam(value="chbox[]") List<String> chArr) throws Exception{

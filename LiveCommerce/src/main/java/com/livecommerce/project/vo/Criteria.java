@@ -2,7 +2,16 @@ package com.livecommerce.project.vo;
 
 import lombok.Getter;
 import lombok.Setter;
-
+/**
+ * @author 김나형
+ * @since 2023.01.10
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일              	수정자                   수정내용
+2023.01.10		김나형		최초생성
+ * </pre>
+ */ 
 @Getter
 @Setter
 

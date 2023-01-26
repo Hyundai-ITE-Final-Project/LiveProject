@@ -698,3 +698,4 @@
     
 </body>
 </html>
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>

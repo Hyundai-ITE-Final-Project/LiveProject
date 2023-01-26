@@ -37,16 +37,6 @@ import lombok.extern.log4j.Log4j;
 public class ProductController {
     @Autowired
 	private ProductService service;
-	/*
-	 * //전체상품리스트
-	 * 
-	 * @GetMapping("/list") public String list(Criteria cri, Model model) {
-	 * log.info("list controller 들어옴"); log.info("list" + cri);
-	 * model.addAttribute("list", service.getList(cri));
-	 * 
-	 * int total = service.getTotal(cri); model.addAttribute("pageMaker", new
-	 * PageDTO(cri, total)); return "product/productlist"; }
-	 */
     
     // pid 값으로 상품 정보를 받아옴 - 상품 상세페이지 구현
     @GetMapping("/productDetail")
