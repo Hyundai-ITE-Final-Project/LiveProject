@@ -24,7 +24,7 @@
 		}
     </style>
 </head>
-<body class="wpqkf">
+<body>
     <script>
     $(document).ready(function(){
 		// 숫자 format
@@ -111,8 +111,10 @@
 				                    <li>
 				                        <a><img src="${pd.img1}" height="100px"></a>
 				                        <div class="item_name">${pd.pname}</div>
-				                        <div class="item_num_box">
-				                            <div class="item_num_left">
+				                    </li>
+				                    <li>
+				                    	<div class="item_num_box">
+				                        	<div class="item_num_left">
 				                                <div class="item_num_btn_area pd_15871">
 				                                    <a class="count_btn count_minus" onclick="change_qty('${pd.pid}','left');"></a>
 				                                    <input type="text" id="quantity${pd.pid}" name="quantity" class="item_count" value="1" readonly="readonly" />
@@ -139,7 +141,7 @@
 			                <strong>총 금액</strong>
 			                <div class="sum_amount_div">
 			                    <em class="sum_item_amount">
-			                    	<fmt:formatNumber value="${pd.price}" pattern="#,###" />
+			                    	<fmt:formatNumber value="0" pattern="#,###" />
 								</em> 원
 			                </div>
 			            </div>
