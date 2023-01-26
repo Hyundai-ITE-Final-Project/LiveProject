@@ -28,6 +28,7 @@ import lombok.extern.log4j.Log4j;
  * 2023.01.21     신기원              view 조회하기
  * 2023.01.22     신기원              라이브 등록하기
  * 2023.01.24     신기원              본인 라이브 목록 조회, Video 목록 조회
+ * 2023.01.24     신기원              영상 다시보기
  * </pre>
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -85,6 +86,12 @@ public class LiveMapperTest {
 	@Test
 	public void testVideoList() {
 		log.info(mapper.videoList());
+	}
+	
+	@Test
+	public void testGetReplay() {
+		String liveId = "live_134696";
+		log.info(mapper.getReplayInfo(liveId));
 	}
 
 
