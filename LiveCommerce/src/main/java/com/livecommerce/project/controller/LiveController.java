@@ -39,7 +39,7 @@ import lombok.extern.log4j.Log4j;
  * 2023.01.20    신기원                	 스트리밍 상세 화면 보기, 라이브 등록 화면
  * 2023.01.24    신기원                	 본인 라이브 목록 조회, video(모든 영상) 조회
  * 2023.01.25    신기원                	 영상 다시보기, 라이브 영상 저장하기
- * 
+ * 2023.01.26    신기원                	 라이브 영상 저장하기, 등록 후 수정하기
  * </pre>
  */
 @Controller
@@ -101,10 +101,10 @@ public class LiveController {
 	@GetMapping("/manage/live/create")
 	public String createLivePage(Authentication member, String live, Model model) {
 		if(live != null) {
-			LiveVO liveVO = new LiveVO();
+			LiveVO liveVO = LiveService.getLiveInfo(live);
 			liveVO.setMId(member.getName());
 			liveVO.setLiveId(live);
-			model.addAttribute("live", LiveService.getLiveInfo(live));
+			model.addAttribute("live", liveVO);
 		}
 		model.addAttribute("pdPostList",postService.getLivePostList(member.getName()));
 		return "manage/live_create";
@@ -118,6 +118,16 @@ public class LiveController {
 		liveVO.setLiveStartTime(liveVO.getLiveStartDay() + " " + liveVO.getLiveStartTime());
 		liveVO.setLiveEndTime(liveVO.getLiveStartDay() + " " + liveVO.getLiveEndTime());
 		LiveService.createLive(liveVO);
+		return "redirect:/manage/live";
+	}
+	//라이브 수정 후 목록 페이지로 이동
+	@PostMapping("/manage/live/update_process")
+	public String updateLive(Authentication member, LiveVO liveVO) throws ParseException {
+		System.out.println(liveVO);
+		liveVO.setMId(member.getName());
+		liveVO.setLiveStartTime(liveVO.getLiveStartDay() + " " + liveVO.getLiveStartTime());
+		liveVO.setLiveEndTime(liveVO.getLiveStartDay() + " " + liveVO.getLiveEndTime());
+		LiveService.updateLive(liveVO);
 		return "redirect:/manage/live";
 	}
 	

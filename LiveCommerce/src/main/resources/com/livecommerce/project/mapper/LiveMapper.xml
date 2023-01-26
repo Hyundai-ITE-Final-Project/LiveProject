@@ -135,6 +135,12 @@
         )
     </insert>
     
+    <update id="updateLive">
+    	UPDATE LIVE
+	        SET    LIVE_TITLE = #{liveTitle}, LIVE_STARTDAY = to_date(#{liveStartDay}, 'yy/mm/dd'), LIVE_START_TIME = to_date(#{liveStartTime},'yy/mm/dd HH24:MI'), LIVE_END_TIME = to_date(#{liveEndTime},'yy/mm/dd HH24:MI')
+	        WHERE  LIVE_ID  = #{liveId}
+    </update>
+    
     <select id="countLive1Status" parameterType="HashMap" resultType="int">
         /*AdminMapper.countLive1Status*/
 	     SELECT COUNT(LIVE_ID)
@@ -176,7 +182,10 @@
             )
     </insert>
     
-    <update id="updateLive">
+    
+    
+    
+    <update id="updateLiveVideo">
     	UPDATE LIVE
 	        SET    VIDEO_ID = #{videoId}
 	        WHERE  LIVE_ID  = #{liveId}

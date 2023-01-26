@@ -78,6 +78,20 @@ public class LiveMapperTest {
 	}
 	
 	@Test
+	public void testUpdateLive() {
+		LiveVO liveVO = new LiveVO();
+		liveVO.setLiveId("22gd");
+		liveVO.setLiveStartDay("2023-01-22");
+		liveVO.setLiveStartTime("2023-01-22 18:00");
+		liveVO.setLiveEndTime("2023-01-22 20:00");
+		liveVO.setLiveView("1");
+		liveVO.setPsIndex(82);
+		liveVO.setLiveTitle("괜춘");
+		log.info(liveVO);
+		mapper.createLive(liveVO);
+	}
+	
+	@Test
 	public void testMyLiveList() {
 		String mId = "4d";
 		log.info(mapper.myLiveList(mId));

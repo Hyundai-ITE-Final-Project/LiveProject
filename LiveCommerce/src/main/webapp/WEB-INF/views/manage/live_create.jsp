@@ -44,7 +44,8 @@
 			                        </c:choose>
 			                    </div>
 			                    <div class="product_create_content">
-			                        <form name="LiveCreateForm" id=" " autocomplete="off" action="/manage/live/create_process" method="post">
+			                        <!-- <form name="LiveCreateForm" id=" " autocomplete="off" action="/manage/live/create_process" method="post"> -->
+			                        <form id="LiveCreateForm" method="post">
 				                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				                        <div class="create_layout">
 				                            <div class="layout_subject _asterisk">라이브 제목</div>
@@ -128,10 +129,11 @@
 				                        
 				                        <c:choose>
 				                            <c:when test="${empty live}">
-				                                <button class="btn_live_create btn_pp">라이브 등록하기</button>
+				                                <button class="btn_live_create btn_pp" type="button">라이브 등록하기</button>
 				                            </c:when>
 				                            <c:otherwise>
-				                                <button class="btn_live_update btn_pp">라이브 수정하기</button>
+				                            	<input type="hidden" id="live_id" name="liveId" value="${live.liveId}">
+				                                <button class="btn_live_update btn_pp" type="button">라이브 수정하기</button>
 				                            </c:otherwise>
 				                        </c:choose>
 				                        </div>
@@ -141,10 +143,23 @@
 			            </div>
 			        </div>
 			    </div>
-			    <input type="hidden" id="live_id" value="${live.liveId}">
+			    
 			    <%-- <input type="hidden" id="file_id" value="${live.fileId}"> --%>
 			</div>
 		</main>
 		   
 	</body>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('.btn_live_create').click(function(){
+			$("#LiveCreateForm").attr("action","/manage/live/create_process").submit();
+		});
+		
+		$('.btn_live_update').click(function(){
+			$("#LiveCreateForm").attr("action","/manage/live/update_process").submit();
+		});
+		
+	});
+	</script>
 </html>
