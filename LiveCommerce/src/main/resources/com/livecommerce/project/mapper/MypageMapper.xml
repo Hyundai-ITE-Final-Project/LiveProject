@@ -5,9 +5,14 @@
   <mapper namespace="com.livecommerce.project.mapper.MypageMapper">
   <!-- 주문 리스트 -->
 	<select id="getOrderList" resultType="com.livecommerce.project.vo.OrderVO">
-		    select oid, member_mid, ostate, odate, imp_uid
-		    from orders
-		    where member_mid = #{member_mid} 
+	select o.oid, p.img1, p.pname, ol.olprice, ol.olquantity, o.odate, o.ostate, o.imp_uid
+ 	  from orders o
+         , orderlist ol
+         , product p
+     where o.oid = ol.oid
+       and member_mid = #{member_mid}
+       and ol.pid = p.pid
+     order by odate desc
 	</select>	
 	
 	<!-- 상품 총 개수 -->
