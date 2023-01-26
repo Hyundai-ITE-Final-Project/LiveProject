@@ -196,6 +196,7 @@
 	
 	</div>	<!-- class="wrap" -->
 </div>	<!-- class="wrapper" -->
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 <script>
 
 $(document).ready(function(){
