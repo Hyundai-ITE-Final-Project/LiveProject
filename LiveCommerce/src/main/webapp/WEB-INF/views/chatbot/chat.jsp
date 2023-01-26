@@ -5,6 +5,7 @@
 <jsp:useBean id="now" class="java.util.Date" />
 <!DOCTYPE html>
 <html lang="ko" class="win chrome etc ui-d s480 col-4 is-mobile is-modal-open">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,14 +29,14 @@
 </head>
 
 <body id="smartchat" class="smartchat themeA scroll-no">
-	<fmt:formatDate value="${now}" pattern="HH시mm분" var="now" />
-	<div class="header">
+    <fmt:formatDate value="${now}" pattern="HH시mm분" var="now" />
+    <div class="header">
         <div class="header-inner">
             <h1><span class="logo">아이들(IDLE-AI)봇</span></h1>
             <button class="btn-login" onclick="toggleHelloWrap()"><em>로그인하기</em></button>
             <a id="alarm-icon" class="btn-alarm js-alarm"><em>알림 new</em></a>
         </div>
-	</div>
+    </div>
     <div class="wrapper">
         <div class="container">
             <div class="contents" id="contents" style="overflow: auto;">
@@ -45,39 +46,44 @@
                         <div id="intro" class="intro-wrap" style="">
                             <div class="intro-character" style="padding:10px;">
                                 <p>반갑습니다!</p>
-                                <div id="subIntroMsg" style="font-size: 14px;font-weight: normal;text-align: center;padding-top: 10px;">
-                                    	챗봇입니다.
+                                <div id="subIntroMsg"
+                                    style="font-size: 14px;font-weight: normal;text-align: center;padding-top: 10px;">
+                                    챗봇입니다.
                                 </div>
                                 <div class="characters" style="margin: 10px auto 0;">
                                     <span class="">
-                                        <img src="https://ibot.hmall.com/images/20220816/ac4647ab7974497b88181679e4549715.png">
+                                        <img
+                                            src="https://ibot.hmall.com/images/20220816/ac4647ab7974497b88181679e4549715.png">
                                     </span>
                                 </div>
                             </div>
-                             <div id="intro-faq-grid" class="intro-faq is-basic" style="margin: 0px; display: block;">
+                            <div id="intro-faq-grid" class="intro-faq is-basic" style="margin: 0px; display: block;">
                                 <p>다른 고객님들이 자주 이용하는 메뉴입니다.</p>
                                 <div class="inner">
                                     <ul>
                                         <li title="내주문 보기">
-                                        	<a onclick="menulist('orderlist')">
-	                                        	<span class="img">
-	                                        		<img src="https://ibot.hmall.com/images/20220906/dcd6005359724e4581820ab3f254d30a.png" alt="">
-	                                        	</span>
-	                                        	<span class="txt">내 주문 보기</span>
-                                        	</a>
+                                            <a onclick="menulist('orderlist')">
+                                                <span class="img">
+                                                    <img src="https://ibot.hmall.com/images/20220906/dcd6005359724e4581820ab3f254d30a.png"
+                                                        alt="">
+                                                </span>
+                                                <span class="txt">내 주문 보기</span>
+                                            </a>
                                         </li>
                                         <li title="방송상품 확인">
-                                        	<a onclick="menulist('livelist')">
-                                        		<span class="img">
-                                        			<img src="https://ibot.hmall.com/images/20220906/94216669d669493aaa293f06cdec9701.png" alt="">
+                                            <a onclick="menulist('livelist')">
+                                                <span class="img">
+                                                    <img src="https://ibot.hmall.com/images/20220906/94216669d669493aaa293f06cdec9701.png"
+                                                        alt="">
                                                 </span>
                                                 <span class="txt">방송상품 확인</span>
                                             </a>
                                         </li>
                                         <li title="자주하는 질문">
-                                        	<a onclick="menulist('faq')">
-                                        		<span class="img">
-                                        			<img src="https://ibot.hmall.com/images/20220906/fd4c7fac4dae48fc9c0a531e073f33ba.png" alt="">
+                                            <a onclick="menulist('faq')">
+                                                <span class="img">
+                                                    <img src="https://ibot.hmall.com/images/20220906/fd4c7fac4dae48fc9c0a531e073f33ba.png"
+                                                        alt="">
                                                 </span>
                                                 <span class="txt">자주하는 질문</span>
                                             </a>
@@ -90,10 +96,12 @@
                     <div class="chat-item is-ktalk" style="visibility: visible;">
                         <div class="bubble has-moving in" style="max-height: 357px;">
                             <div class="inner"> 고객님, 안녕하세요.
-                                				무엇이 궁금하신가요?
+                                무엇이 궁금하신가요?
                             </div>
                         </div>
-                        <div class="date"><c:out value="${now}" /></div>
+                        <div class="date">
+                            <c:out value="${now}" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -168,38 +176,41 @@
 			scrollDown();
         })
   </script>
-<script>
-//페이지 맨 하단으로 이동
-  function scrollDown() {
-      setTimeout(function () {
-          $('.contents').animate({
-              'scrollTop': $('.contents')[0].scrollHeight
-          }, 300);
-      }, 100);
-  }
-  var cnt = 100;
-  
-  function menulist(value){
-	  var login_id = opener.document.getElementById("loginid").value;
-	  console.log("로그인된 아이디 : " + login_id);
+    <script>
+        let csrfHeaderName = "${_csrf.headerName}";
+        let csrfTokenValue = "${_csrf.token}";
+        //페이지 맨 하단으로 이동
+        function scrollDown() {
+            setTimeout(function () {
+                $('.contents').animate({
+                    'scrollTop': $('.contents')[0].scrollHeight
+                }, 300);
+            }, 100);
+        }
+        
+        var cnt = 100;
+		
+        function menulist(value) {
+            var login_id = opener.document.getElementById("loginid").value;
+            console.log("로그인된 아이디 : " + login_id);
 
-	  if(value == 'orderlist'){
-          var template = `<div class="chat-item is-customer me">
+            if (value == 'orderlist') {
+                var template = `<div class="chat-item is-customer me">
 				          	<div class="bubble has-moving in" style="max-height: 105px;">
 				            	<div class="inner mine">내 주문 보기</div>
 				          	</div>
 				       		<span class="date"><c:out value="${now}"/></span>
 				       	   </div>`
-				       	console.log("durl");
-		  document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
-							const list = document.querySelectorAll(".me");
-							const len = list.length - 1;
-							list[len].getElementsByClassName("mine")[0].setAttribute("id", cnt);	
-							cnt++;
-							
-		  if(login_id == 'anonymousUser'){
-			  console.log("로그인안됨");
-			  var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
+                console.log("durl");
+                document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+                const list = document.querySelectorAll(".me");
+                const len = list.length - 1;
+                list[len].getElementsByClassName("mine")[0].setAttribute("id", cnt);
+                cnt++;
+
+                if (login_id == 'anonymousUser') {
+                    console.log("로그인안됨");
+                    var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
 				              	<div class="bubble has-moving in your" style="max-height: 357px;">
 				              		로그인이 필요한 서비스 입니다.
 				              		로그인 버튼을 클릭해 주세요.
@@ -211,33 +222,72 @@
 				              	</div>
 				              	<div class="date"><c:out value="${now}"/></div>
 				          	   </div>`;
-			  document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
-		  }
-		  else{
-			  console.log("로그인됨");
-			  var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
-	              	<div class="bubble has-moving in your" style="max-height: 357px;">
-	              	
-	              	</div>
-	              	<div class="date"><c:out value="${now}"/></div>
-	          	   </div>`;
-			  document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
-		  }
-			const list2 = document.querySelectorAll(".you");
-			const len2 = list2.length - 1;
-			list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
-			cnt++;
-			scrollDown();
-	  }
-	  
-	  if(value == 'livelist'){
-		  
-	  }
-	  
-	  if(value == 'faq'){
-		  
-	  }
-  }
-  </script>
+                    document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+                    const list2 = document.querySelectorAll(".you");
+                    const len2 = list2.length - 1;
+                    list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
+                    cnt++;
+                    scrollDown();
+                } 
+                else {
+                    var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
+					              	<div class="bubble has-moving in your" style="max-height: 357px;">
+					              		최근 주문내역입니다.
+					              		<div class="bubble-actions">
+					                	</div>	              		
+					              	</div>
+					              	<div class="date"><c:out value="${now}"/></div>
+					          	 </div>`;
+				    document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+                    const list2 = document.querySelectorAll(".you");
+                    const len2 = list2.length - 1;
+                    list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
+                    cnt++;
+                    list2[len2].getElementsByClassName("bubble-actions")[0].setAttribute("id", cnt);
+                    $.ajax({
+                        url: "/chatbot/chat2",
+                        type: "GET",
+                        dataType: "json",
+                        async: false,
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+                        },
+                        error: function (request, status, error) {
+                        	alert("error : " + error);
+                        },
+                        success: function (result) {
+                        	alert("성공");
+                             var html = "";
+                            for(var i=0; i<result.length; i++){
+                                html += '<button type="button" class="btn-link is-script is-dynamic-script"'
+                                		+ 'onclick="window.opener.location.href='
+                                		+ '"/login">';
+								var oid = result[i].oid;
+								html += '<span>'
+										+ oid
+										+'</span>';
+								html += '</button>';
+                            }
+                            
+                            $("#"+cnt).html(html);
+                            alert(html);
+                        }
+                    });
+                    cnt++;
+                    console.log("로그인됨");
+                    scrollDown();
+                }
+            }
+
+            if (value == 'livelist') {
+
+            }
+
+            if (value == 'faq') {
+
+            }
+        }
+    </script>
 </body>
+
 </html>
