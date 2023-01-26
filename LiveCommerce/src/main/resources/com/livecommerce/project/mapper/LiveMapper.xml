@@ -83,7 +83,7 @@
             ,LI.LIVE_TITLE
             ,LI.LIVE_VIEW
             ,to_char(LI.LIVE_STARTDAY, 'yy-mm-dd') AS LIVE_STARTDAY
-            ,to_char(LI.LIVE_END_TIME, 'hh24:mm') AS LIVE_END_TIME
+            ,to_char(LI.LIVE_END_TIME, 'HH24:MI') AS LIVE_END_TIME
             ,m.stream_key
             ,VI.VIDEO_NAME  
         FROM LIVE LI LEFT JOIN VIDEO VI
@@ -150,8 +150,8 @@
          SELECT LI.LIVE_ID
                ,LI.LIVE_TITLE
                ,to_char(LI.LIVE_STARTDAY, 'yy-mm-dd') AS LIVE_STARTDAY
-               ,to_char(LI.LIVE_START_TIME, 'hh24:mm') AS LIVE_START_TIME
-               ,to_char(LI.LIVE_END_TIME, 'hh24:mm') AS LIVE_END_TIME
+               ,to_char(LI.LIVE_START_TIME, 'HH24:MI') AS LIVE_START_TIME
+               ,to_char(LI.LIVE_END_TIME, 'HH24:MI') AS LIVE_END_TIME
                ,LI.LIVE_VIEW
                ,LI.LIVE_STATUS
         FROM LIVE LI
@@ -159,7 +159,7 @@
         ORDER BY LIVE_STARTDAY DESC
     </select>
     
-    <select id="videoList" resultMap="LiveMap">
+    <select id="allVideoList" resultMap="LiveMap">
 	    select LI.*, VI.*, m.stream_key
 		FROM LIVE LI LEFT JOIN VIDEO VI
 		ON li.video_id = vi.video_id JOIN MEMBER M ON LI.MEMBER_MID = M.MID
@@ -181,5 +181,21 @@
 	        SET    VIDEO_ID = #{videoId}
 	        WHERE  LIVE_ID  = #{liveId}
     </update>
+    
+    <update id="updateLiveStatus">
+    UPDATE LIVE  
+            SET LIVE_STATUS = CASE
+               <![CDATA[ WHEN TO_CHAR(LIVE_START_TIME,'YY-MM-DD HH24:MI') <=  TO_CHAR(current_date,'YY-MM-DD HH24:MI') 
+               AND TO_CHAR(LIVE_END_TIME,'YY-MM-DD HH24:MI') >=  TO_CHAR(current_date,'YY-MM-DD HH24:MI') 
+              THEN 1
+             WHEN TO_CHAR(LIVE_END_TIME,'YY-MM-DD HH24:MI') <  TO_CHAR(current_date,'YY-MM-DD HH24:MI')]]>
+             THEN 2
+            ELSE 0
+           END 
+         WHERE TO_CHAR(LIVE_STARTDAY,'yy-MM-DD') = TO_CHAR(current_date,'yy-MM-DD') 
+         AND LIVE_STATUS IN (0,1)
+    </update>
+    
+    
      
   </mapper>
