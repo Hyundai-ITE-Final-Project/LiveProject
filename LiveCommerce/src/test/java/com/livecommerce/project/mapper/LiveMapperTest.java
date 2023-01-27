@@ -98,8 +98,13 @@ public class LiveMapperTest {
 	}
 	
 	@Test
-	public void testVideoList() {
-		log.info(mapper.allVideoList());
+	public void testrecentVideoList() {
+		log.info(mapper.recentVideoList());
+	}
+	
+	@Test
+	public void testviewVideoList() {
+		log.info(mapper.viewVideoList());
 	}
 	
 	@Test

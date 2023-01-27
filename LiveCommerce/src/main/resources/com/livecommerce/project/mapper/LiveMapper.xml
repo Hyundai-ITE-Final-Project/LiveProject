@@ -173,10 +173,18 @@
         ORDER BY LIVE_STARTDAY DESC
     </select>
     
-    <select id="allVideoList" resultMap="LiveMap">
+    <select id="recentVideoList" resultMap="LiveMap">
 	    select LI.*, VI.*, m.stream_key
 		FROM LIVE LI LEFT JOIN VIDEO VI
 		ON li.video_id = vi.video_id JOIN MEMBER M ON LI.MEMBER_MID = M.MID
+		ORDER BY LIVE_END_TIME DESC
+    </select>
+    
+    <select id="viewVideoList" resultMap="LiveMap">
+	    select LI.*, VI.*, m.stream_key
+		FROM LIVE LI LEFT JOIN VIDEO VI
+		ON li.video_id = vi.video_id JOIN MEMBER M ON LI.MEMBER_MID = M.MID
+		ORDER BY LIVE_VIEW DESC
     </select>
     
     <insert id="createVideo">
@@ -189,8 +197,6 @@
                 ,#{vname}
             )
     </insert>
-    
-    
     
     
     <update id="updateLiveVideo">

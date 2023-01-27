@@ -99,7 +99,7 @@ public class LiveServiceTest {
 	}
 	@Test
 	public void testallVideoList() {
-		liveService.allVideoList();
+		liveService.recentVideoList();
 	}
 
 
