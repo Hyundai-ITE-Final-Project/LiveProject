@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
+<%@page pageEncoding="UTF-8" language="java"%>
 <%@ include file="/WEB-INF/views/header/tool_header.jsp"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!-- /**
@@ -12,7 +12,7 @@
  * </pre>
  */  -->
 
-<form role="form" action="/member/modify/?mid=${userInfo.mid}" method="post">
+<form role="form" action="/member/modify" method="post">
 <head>
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
@@ -40,6 +40,7 @@
 	</script>
 </head>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
 
 <div id="userInfo_wrap" class="mypage_wrap">
     <div id="userInfo_area" class="mypage_area">
@@ -82,3 +83,4 @@
     </div>
 </div>
 </form>
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>

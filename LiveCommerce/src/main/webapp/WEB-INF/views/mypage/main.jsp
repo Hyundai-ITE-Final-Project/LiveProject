@@ -1,7 +1,7 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
+<%@page pageEncoding="UTF-8" language="java"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ include file="/WEB-INF/views/header/tool_header.jsp"%>
-
+<!-- 박소은 작성 -->
 <div id="mypage_wrap" class="mypage_wrap">
     <div id="mypage_area" class="mypage_area">      
         <div class="mypage_title">
@@ -28,3 +28,4 @@
 	    </div>
 	</div>
 </div>
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
