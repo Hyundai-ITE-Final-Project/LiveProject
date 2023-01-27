@@ -13,7 +13,7 @@
 <script type="text/javascript" src="/resources/js/login.js"></script>
 <sec:authentication var="user" property="principal"/>
 <header class="admin_header">
-    <form:form action="/logout" method="POST" id="logoutForm"></form:form>
+    <form:form action="/logout" method="POST" id="logoutForm">
     <div class="admin_logo_wrap">
         <a href="/" class="logo_link">
             <i class="header_icon logo_icon"></i>
@@ -36,4 +36,20 @@
             </c:otherwise>
         </c:choose>
     </nav>
-</header> 
+    </form:form>
+    	<div id="admin_wrap">
+			<div class="admin_content">
+			<div class="admin_menulist">
+				<div class="admin_tablist">
+					<a href="/manage/live" class="live_tab" aria-selected="false">라이브관리</a> 
+					<a href="/manage/products" class="products_tab" aria-selected="false">상품관리</a> 
+					<a href="/manage/productpost" class="productpost_tab" aria-selected="false">판매글관리</a> 
+					<a href="/manage/orderList" class="order_tab" aria-selected="false">판매내역 관리</a> 					
+					<a href="/manage/setting" class="setting_tab"aria-selected="false">설정</a>
+				</div>
+			</div>
+		</div>
+	 </div>
+    
+</header>
+

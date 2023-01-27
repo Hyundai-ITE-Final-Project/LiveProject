@@ -14,18 +14,6 @@
 </head>
 
 <body>
-	<div id="admin_wrap">
-		<div class="admin_content">
-			<div class="admin_menulist">
-				<div class="admin_tablist">
-					<a href="/manage/live" class="main_tab" aria-selected="false">라이브관리</a> 
-					<a href="/manage/products" class="main_tab" aria-selected="false">상품관리</a> 
-					<a href="/manage/productpost" class="main_tab" aria-selected="false">판매글관리</a> 
-					<a href="/manage/orderList" class="main_tab" aria-selected="true">판매내역 관리</a> 					
-					<a href="/manage/setting" class="main_tab"aria-selected="false">설정</a>
-				</div>
-			</div>
-
 			<div class="admin_tool_wrap">
 				<div class="admin_tool_area">
 					<div class="admin_tool_inner">			
@@ -129,9 +117,15 @@
 					</div>
 				</div>
 			</div>
-		 </div>
-	 </div>
 <script>
+$(function() {
+	console.log("테스트 입니다.");
+	
+	$(".order_tab").attr("aria-selected","true");
+	
+})
+
+
 let searchForm = $('#searchForm');
 let moveForm = $('#moveForm');
 
