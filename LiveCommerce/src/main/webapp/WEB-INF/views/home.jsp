@@ -42,14 +42,14 @@
                 <div class="banner_view">
                     <div class="banner_pannel">
                         <div class="HomeBanner_wrap" style="position: absolute; left: 0px;">
-                            <a href="#" class="HomeBanner_link link_black" style="background-color: #e9dcf3;">
+                            <a href="#" class="HomeBanner_link link_black" style="background-color: #efdcec;">
 	                            <div class="HomeBanner_banner">
 	                                <span class="HomeBanner_txt">
 	                                    <span class="HomeBanner_label">LIVE 예고</span>
-	                                    <strong class="HomeBanner_title">스위트홈🧁<br>인기 과자폭탄 선물세트</strong>
-	                                    <span class="HomeBanner_date">8월 10일 오후 9시</span>
+	                                    <strong class="HomeBanner_title">Valentine's Day🧁<br>인기 발렌타인 데이 선물</strong>
+	                                    <span class="HomeBanner_date">2월 10일 오후 2시</span>
 	                                </span>
-	                                <img class="HomeBanner_img" src="/img/banner/live_banner2.png" ></img>
+	                                <img style='text-align: right;' src="../../resources/img/banner/live_banner2.png" ></img>
 	                            </div>
                             </a>
                         </div>
