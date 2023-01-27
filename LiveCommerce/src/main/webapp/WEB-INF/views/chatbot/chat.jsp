@@ -25,6 +25,11 @@
 
     <!-- javascript -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script>
+    function goLogin() {
+    	window.opener.location.href="/login";
+    }
+    </script>
 
 </head>
 
@@ -257,16 +262,17 @@
                         },
                         success: function (result) {
                         	alert("성공");
-                             var html = "";
+                            var html = "";
                             for(var i=0; i<result.length; i++){
-                                html += '<button type="button" class="btn-link is-script is-dynamic-script"'
-                                		+ 'onclick="window.opener.location.href='
-                                		+ '"/login">';
-								var oid = result[i].oid;
-								html += '<span>'
-										+ oid
-										+'</span>';
-								html += '</button>';
+                                html += 
+                                	`
+                                	<button type="button" class="btn-link is-script is-dynamic-script"
+                                	 onclick="goLogin()">
+									<span>
+									\${result[i].oid}
+									</span>
+									</button>
+									`
                             }
                             
                             $("#"+cnt).html(html);
