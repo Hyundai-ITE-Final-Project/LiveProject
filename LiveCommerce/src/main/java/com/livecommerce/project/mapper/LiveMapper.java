@@ -24,6 +24,8 @@ import com.livecommerce.project.vo.VideoVO;
  * 2023.01.24	신기원		본인 라이브 목록, Video 목록 조회
  * 2023.01.25	신기원		영상 다시보기
  * 2023.01.26	신기원		라이브 상태 변경, 녹화된 영상만 가져오기, 라이브 수정, 라이브 저장하기
+ * 2023.01.27	신기원		라이브 최신순, 인기순 목록
+ * 
  * </pre>
  */
 @Mapper
@@ -40,7 +42,8 @@ public interface LiveMapper {
 	public int updateLive(LiveVO liveVO);
 	public int countLive1Status(Map<String, Object> liveMap);
 	public List<LiveVO> myLiveList(String mId);
-	public List<LiveVO> allVideoList();
+	public List<LiveVO> recentVideoList();
+	public List<LiveVO> viewVideoList();
 	public int createVideo(VideoVO video);
 	public int updateLiveVideo(LiveVO live);
 	public int updateLiveStatus();
