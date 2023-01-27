@@ -48,7 +48,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 			authentication-success-handler-ref="customLoginSuccess" />
 		
 		<security:logout 
-			logout-url="/member/logout" 
+			logout-url="/logout" 
 			logout-success-url="/"
 			invalidate-session="true"
 			delete-cookies="JSESSIONID"/>

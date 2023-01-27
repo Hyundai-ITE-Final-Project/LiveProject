@@ -96,11 +96,11 @@
                 <button class="h_btn_login h_btn_logout">로그아웃</button>
             </c:otherwise>
         </c:choose>
-        <a href="/mypage" class="h_nav_pa">
+        <a href="/mypage/main" class="h_nav_pa">
             <i class="header_icon header_nav_icon user_icon"></i>
             <span class="blind">유저정보</span>
         </a>
-        <a href="/cart" class="h_nav_pa">
+        <a href="/cart/<sec:authentication property="name"/>" class="h_nav_pa">
             <i class="header_icon header_nav_icon cart_icon"></i>
             <span class="blind">장바구니</span>
         </a>
@@ -413,14 +413,13 @@
 		    		</ul>
 	    		</li>
 	    	</ul>
-	        <a href="/home" class="main_tab" aria-selected="true">홈</a>
-	        <a href="/shop?category=98" class="main_tab">라이브</a>
-	        <a href="javascript:void(0);" class="main_tab loc_live" class="main_tab">우리동네라이브</a>
-	        <a href="/shop?category=101" class="main_tab">패션</a>
-	        <a href="/shop?category=102" class="main_tab">뷰티</a>
-	        <a href="/shop?category=103" class="main_tab">푸드</a>
-	        <a href="/shop?category=104" class="main_tab">라이프</a>
-	        <a href="/shop?category=105" class="main_tab">취미 · 문화생활</a>
+	        <a href="/home" class="main_tab" aria-selected="false">홈</a>
+	        <a href="/live/video" class="main_tab">인기라이브</a>
+	        <a href="/live/video" class="main_tab loc_live" class="main_tab">최신라이브</a>
+	        <a href="/shop?category=101" class="main_tab">신상품</a>
+	        <a href="/coupon/couponpage" class="main_tab">이벤트</a>
+	        <!-- <a href="/shop?category=103" class="main_tab">이벤트</a> -->
+	        
 	    </div>
 	</div>
 </header>

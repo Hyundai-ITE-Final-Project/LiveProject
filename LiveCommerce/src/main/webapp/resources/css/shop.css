@@ -7,7 +7,7 @@
 .shop_logo_wrap{position: absolute;top: 0;left: 0;line-height: 0;}
 .logo_link{margin-left: 11px;padding: 5px 9px 12px;}
 .header_icon, .video_viewer::before, .search_input_header::before,.video_viewer-icon::before{background-size: 500px 500px;
-	background-image:url("/img/logo/shopping_live_img.png");display: inline-block;background-repeat: no-repeat;}    
+	background-image:url("../img/logo/shopping_live_img.png");display: inline-block;background-repeat: no-repeat;}    
 .header_nav{position: relative;display: inline-block;text-align: center;
     vertical-align: middle;}
 .header_nav_icon{width: 40px;height: 40px;vertical-align: middle;}
