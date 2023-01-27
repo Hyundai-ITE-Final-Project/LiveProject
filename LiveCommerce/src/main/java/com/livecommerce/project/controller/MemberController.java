@@ -1,9 +1,11 @@
 package com.livecommerce.project.controller;
+import java.security.Principal;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 /**
  * @author 박소은
@@ -24,10 +26,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.livecommerce.project.service.MemberService;
-import com.livecommerce.project.vo.Criteria;
 import com.livecommerce.project.vo.MemberVO;
 
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -41,9 +41,16 @@ public class MemberController {
 	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	@GetMapping("/modify")
-	public void changeInfoGet(@RequestParam("mid") String mid, Model model, HttpServletRequest request, Authentication authentication) {
+	public String changeInfoGet(@RequestParam("mid") String mid, Model model, HttpServletRequest request, Authentication authentication, Principal principal) {
     	model.addAttribute("userInfo", memberservice.getMemberInfo(mid));
+    	String memid = principal.getName();
+    	model.addAttribute("member", memid);
+		log.info("로그인된 아이디 : " + memid);
+
+
 		log.info("회원정보 수정");
+		return "member/modify";
+
 	}
 
 	
@@ -51,7 +58,7 @@ public class MemberController {
 	public RedirectView changeInfoPost(MemberVO memberVO, Model model) throws Exception {
 		RedirectView redirectView = new RedirectView();
 		int res = memberservice.changeInfo(memberVO);
-		
+		log.info("왜이래");
 		redirectView.setUrl("http://localhost:8080/member/modify/?mid=" + memberVO.getMid() + "&result=" + res);
 		return redirectView;
 	}

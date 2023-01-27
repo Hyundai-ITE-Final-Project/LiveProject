@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
+<%@page pageEncoding="UTF-8" language="java"%>
 <%@ include file="/WEB-INF/views/header/tool_header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -180,3 +180,4 @@
 
 		</div>
 	</div>
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
