@@ -101,7 +101,7 @@
                                             <i class="ModelTitle_icon"></i>
                                         </button>
                                     </div>
-                                    <iframe class="TagItemIframe_iframe" src="/live/item?pd=${replay.psIndex}"></iframe>
+                                    <iframe class="TagItemIframe_iframe" src="/live/item?ps_index=${replay.psIndex}"></iframe>
                                 </div>
                             </section>
                             <div class="CommentWrite_wrap">
