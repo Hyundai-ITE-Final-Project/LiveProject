@@ -19,7 +19,7 @@ input[type="checkbox"]{width: 20px;height: 20px;}
 /* tool - commen ----------------------- */
 .setting_wrap, .admin_tool_wrap{position: relative;display: flex;flex-direction: column;max-width: 1280px;min-height: 100%;margin: 0 auto;color: #2e2e2e;}
 .admin_tool_area{padding: 50px 0;text-align: center;min-height: 100vh;background: #fff;max-width: 100%;box-sizing: border-box;}
-.admin_tool_inner{margin-right: auto;margin-left: auto;max-width: 100%;box-sizing: border-box;min-height: 1px;width: calc(100% - 120px);}
+.admin_tool_inner{margin-right: auto;margin-left: auto;max-width: 100%;box-sizing: border-box;min-height: 1px;width: calc(100% - 120px); margin-top:43px;}
 .admin_tool_top{text-align: left;margin: 30px 0 20px 0;display: flex;align-items: end;justify-content: space-between;}
 
 .admin_tool_content{top: 0px;width: 100%;overflow: visible;display: inline-flex;line-height: 20px;min-height: 100%;}
@@ -85,12 +85,12 @@ input:focus{ border:none; outline: none; border: 1px solid #54D6FF; box-shadow: 
 .pd_content_area>div, .sale_content_area>div{padding: 9px 2px;justify-content: center;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .pd_h_check{width: 30px;}
 .pd_cell_1{width: 80px;}
-.pd_cell_2{width: 150px;}
-.pd_cell_3{width: 400px;text-align: left;}
-.pd_cell_4{width: 100px;}
+.pd_cell_2{width: 200px;}
+.pd_cell_3{width: 100px;text-align: center;}
+.pd_cell_4{width: 250px;}
 .pd_cell_5{width: 150px;}
-.pd_cell_6{width: 100px;}
-.pd_cell_7{width: 200px;}
+.pd_cell_6{width: 150px;}
+.pd_cell_7{width: 100px;}
 .pd_cell_1>div{text-align: center;display: inline-block;}
 .pd_content_area>div:last-child, .pd_header_viewport>div:last-child{border-right: 1px solid #fff;}
 

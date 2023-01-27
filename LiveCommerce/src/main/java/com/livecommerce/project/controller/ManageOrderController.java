@@ -26,12 +26,8 @@ public class ManageOrderController {
 	public String orderListGET(Criteria cri, Model model) {
 		List<OrderVO> list = ManageOrderService.getOrderList(cri);
 		
-		if(!list.isEmpty()) {
-			model.addAttribute("list", list);
-			model.addAttribute("pageMaker", new PageDTO(cri, ManageOrderService.getOrderTotal(cri)));
-		} else {
-			model.addAttribute("listCheck", "empty");
-		}
+		model.addAttribute("list", list);
+		model.addAttribute("pageMaker", new PageDTO(cri, ManageOrderService.getOrderTotal(cri)));
 		
 		return "/manage/manage_order";
 	}
