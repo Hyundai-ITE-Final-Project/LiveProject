@@ -51,8 +51,8 @@
     	select li.*, pp.ps_title, pp.ps_price, pp.ps_post_status, m.stream_key
 		from live LI left join product_post pp
 		on li.ps_index = pp.ps_index join member m on li.member_mid = m.mid
-		<![CDATA[ where CONCAT(to_char(LI.LIVE_STARTDAY,'yy-mm-dd'),to_char(LI.LIVE_START_TIME,' HH24:MI')) <=  to_char(sysdate,'yy-mm-dd HH24:MI') 
-		and CONCAT(to_char(LI.LIVE_STARTDAY,'yy-mm-dd'),to_char(LI.LIVE_END_TIME,' HH24:MI')) >=  to_char(sysdate,'yy-mm-dd HH24:MI')]]>
+		<![CDATA[ where TO_CHAR(LIVE_START_TIME,'YY-MM-DD HH24:MI') <=  to_char(CURRENT_DATE,'yy-mm-dd HH24:MI') 
+		and TO_CHAR(LIVE_END_TIME,'YY-MM-DD HH24:MI') >=  to_char(CURRENT_DATE,'yy-mm-dd HH24:MI')]]>
 		and li.live_status = '1'
     </select>
     
@@ -85,6 +85,10 @@
             ,to_char(LI.LIVE_STARTDAY, 'yy-mm-dd') AS LIVE_STARTDAY
             ,to_char(LI.LIVE_END_TIME, 'HH24:MI') AS LIVE_END_TIME
             ,m.stream_key
+            ,PP.PS_INDEX
+		    ,PP.PS_TITLE
+		    ,PP.PS_PRICE
+		    ,PP.PS_POST_STATUS
             ,VI.VIDEO_NAME  
         FROM LIVE LI LEFT JOIN VIDEO VI
 		ON LI.VIDEO_ID = VI.VIDEO_ID JOIN PRODUCT_POST PP
@@ -137,7 +141,11 @@
     
     <update id="updateLive">
     	UPDATE LIVE
-	        SET    LIVE_TITLE = #{liveTitle}, LIVE_STARTDAY = to_date(#{liveStartDay}, 'yy/mm/dd'), LIVE_START_TIME = to_date(#{liveStartTime},'yy/mm/dd HH24:MI'), LIVE_END_TIME = to_date(#{liveEndTime},'yy/mm/dd HH24:MI')
+	        SET    LIVE_TITLE = #{liveTitle}
+	        ,LIVE_STARTDAY = to_date(#{liveStartDay}, 'yy/mm/dd')
+	        ,LIVE_START_TIME = to_date(#{liveStartTime},'yy/mm/dd HH24:MI')
+	        ,LIVE_END_TIME = to_date(#{liveEndTime},'yy/mm/dd HH24:MI')
+	        ,LIVE_STATUS = #{liveStatus}
 	        WHERE  LIVE_ID  = #{liveId}
     </update>
     

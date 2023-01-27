@@ -67,8 +67,8 @@
                         </div>                     
                     </div>
                     <div class="livenow_tab_wrap">
-                    
                         <c:if test="${empty lives}">
+                        <c:out value="${lives}"></c:out>
                             <h2 class="live_non_text">
                             
                                 현재 라이브 중인 상품이 없습니다.
