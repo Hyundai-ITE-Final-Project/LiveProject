@@ -7,12 +7,7 @@
 <footer class="shop_footer">
 <div id="footer_view">
     <div class="footer_btn_area">
-<%--         <c:if test="${user ne 'anonymousUser'}">
-	        <c:if test="${user.userRole eq '11'}">
-		        <button class="btn_seller_insert">판매자 등록</button>
-	        </c:if>
-        </c:if> --%>
-		<button class="btn_tool_move">오늘의 쇼핑 관리툴</button>
+		I_LIVE
 	</div>
 	<div class="footer_nav">
 	    <a href="javascript:void(0);">사이트 소개</a>
@@ -21,7 +16,7 @@
 	    <a href="javascript:void(0);">문제보고</a>
 	</div>
     <div class="footer-capy minitext">
-        © OnlShop Corporation
+        © I-LIVE Corporation
     </div>
 </div>
 </footer> 

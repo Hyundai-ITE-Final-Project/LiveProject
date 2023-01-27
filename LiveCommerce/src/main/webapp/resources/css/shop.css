@@ -35,9 +35,9 @@
 transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .main_tab[aria-selected='true']{font-weight: 700;color: #f4361e;}
-.main_tab{    position: relative;box-sizing: border-box;display: inline-block;height: 39px;
+.main_tab{    position: relative;box-sizing: border-box;display: inline-block;height: 39px; width: 150px;
     padding: 10px 10px 12px 11px;transform: translate3d(0, 0, 0);line-height: 1.18;
-    font-size: 17px;color: #767678;vertical-align: top;}
+    font-size: 17px; text-align:center; color: #767678;vertical-align: top;}
 .main_tab[aria-selected='true']::after{content: '';position: absolute;right: 10px;
     bottom: -1px;left: 11px;height: 2px;background-color: #f4361e;}
     
