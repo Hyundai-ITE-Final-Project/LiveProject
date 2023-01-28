@@ -26,8 +26,8 @@
     <!-- javascript -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script>
-    function goLogin() {
-    	window.opener.location.href="/login";
+    function go_mypage() {
+    	window.opener.location.href="/mypage/orderList";
     }
     </script>
 
@@ -124,6 +124,7 @@
             </div>
         </div>
     </div>
+    <!-- GPT를 사용한 실시간 채팅 -->
     <script type="module">
         import { Configuration, OpenAIApi } from 'https://cdn.skypack.dev/openai';
 		var cnt=1;
@@ -132,7 +133,7 @@
 			var txt = document.querySelector('#inp-chat').value;
 
             var template = `<div class="chat-item is-customer me">
-                                    <div class="bubble has-moving in" style="max-height: 105px;">
+                                    <div class="bubble has-moving in" style="max-height: 10000px;">
                                         <div class="inner mine"></div>
                                 	</div>
                              	<span class="date"><c:out value="${now}"/></span>
@@ -165,7 +166,7 @@
 				console.log("txt2 : " + txt2);
 
                 var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
-                                	<div class="bubble has-moving in your" style="max-height: 357px;"></div>
+                                	<div class="bubble has-moving in your" style="max-height: 10000px;"></div>
                                 	<div class="date"><c:out value="${now}"/></div>
                             	</div>`
                 document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
@@ -194,14 +195,16 @@
         }
         
         var cnt = 100;
-		
+        
+		// 클릭한 버튼을 기준으로 답변 출력
         function menulist(value) {
             var login_id = opener.document.getElementById("loginid").value;
             console.log("로그인된 아이디 : " + login_id);
-
+            
+			// 주문목록 조회하기 버튼을 클릭했을 경우
             if (value == 'orderlist') {
                 var template = `<div class="chat-item is-customer me">
-				          	<div class="bubble has-moving in" style="max-height: 105px;">
+				          	<div class="bubble has-moving in" style="max-height: 10000px;">
 				            	<div class="inner mine">내 주문 보기</div>
 				          	</div>
 				       		<span class="date"><c:out value="${now}"/></span>
@@ -212,11 +215,11 @@
                 const len = list.length - 1;
                 list[len].getElementsByClassName("mine")[0].setAttribute("id", cnt);
                 cnt++;
-
+				// 로그인 하지 않았을 경우
                 if (login_id == 'anonymousUser') {
                     console.log("로그인안됨");
                     var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
-				              	<div class="bubble has-moving in your" style="max-height: 357px;">
+				              	<div class="bubble has-moving in your" style="max-height: 10000px;">
 				              		로그인이 필요한 서비스 입니다.
 				              		로그인 버튼을 클릭해 주세요.
 				              		<div class="bubble-actions">
@@ -233,11 +236,11 @@
                     list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
                     cnt++;
                     scrollDown();
-                } 
+                }
                 else {
                     var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
-					              	<div class="bubble has-moving in your" style="max-height: 357px;">
-					              		최근 주문내역입니다.
+					              	<div class="bubble has-moving in your" style="max-height: 10000px;">
+                                		최근 주문내역입니다.
 					              		<div class="bubble-actions">
 					                	</div>	              		
 					              	</div>
@@ -261,26 +264,61 @@
                         	alert("error : " + error);
                         },
                         success: function (result) {
-                        	alert("성공");
                             var html = "";
+                            var lc = 0;
+
                             for(var i=0; i<result.length; i++){
-                                html += 
-                                	`
-                                	<button type="button" class="btn-link is-script is-dynamic-script"
-                                	 onclick="goLogin()">
-									<span>
-									\${result[i].oid}
-									</span>
-									</button>
-									`
+                            	console.log(result[i].count);
+                            	//alert(result[i].oid);
+                            	lc++;
+								var listcount = result[i].count -1;
+
+
+								if(listcount > 0){
+									i += listcount;
+	                                html += 
+	                                	`
+	                                	<button type="button" class="btn-link is-script is-dynamic-script"
+	                                	 onclick="go_mypage()" style="height:auto;">
+										<span>
+											\${result[i].oid}
+											<br>
+											<p style="white-space:initial; line-height:1.2;">
+											\${result[i].pname} 외 \${listcount}건
+											</p>
+										</span>
+										<span>
+											<img style="width:50px; height:50px;" src=\${result[i].img1}>
+										</span>
+										</button>
+										`
+								}
+								else{
+	                                html += 
+	                                	`
+	                                	<button type="button" class="btn-link is-script is-dynamic-script"
+	                                	 onclick="go_mypage()" style="height:auto;">
+										<span>
+											\${result[i].oid}
+										<br>
+											<p style="white-space:initial; line-height:1.2;">
+											\${result[i].pname}
+											</p>
+										</span>
+											<span>
+											<img style="width:50px; height:50px;" src=\${result[i].img1}>
+											</span>
+										</button>
+										`
+								}
+	                            if(lc>=5){
+	                            	break;
+	                            }
                             }
-                            
                             $("#"+cnt).html(html);
-                            alert(html);
                         }
                     });
                     cnt++;
-                    console.log("로그인됨");
                     scrollDown();
                 }
             }
