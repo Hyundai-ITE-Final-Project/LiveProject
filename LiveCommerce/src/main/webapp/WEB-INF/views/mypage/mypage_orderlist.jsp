@@ -41,48 +41,50 @@
 	                            </c:choose>" type="button">2020</button>
                         </div> --%>
                         <c:choose>
-                        <c:when test="${!empty list}">
+                        <c:when test="${!empty list1}">
+                      <c:forEach var="list" items="${list1}">
+                      <div class="my-box">
                          <ul class="orderList_card">
 
-                           <c:forEach var="list" items="${list}" varStatus="status">
+                           <c:forEach var="olist" items="${list}" varStatus="status">
                            <li class="orderList_card_title">
-                                <span class="order_day"><fmt:formatDate value="${list.odate}" pattern="yyyy.MM.dd" /></span> 
+                                <span class="order_day"><fmt:formatDate value="${olist.odate}" pattern="yyyy.MM.dd" /></span> 주문번호 &nbsp; ${olist.oid}
                                <!-- <a class="a_order_detail" href="/orders/주문번호">상세정보</a> -->
                            </li> 
                               <li class="orderList_card_body">
                                 <h3 class="order_status">
                                     <c:choose>
-                                        <c:when test="${list.ostate ne null}">
-                                            <c:if test="${list.ostate eq '배송준비'}">배송준비</c:if>
-                                            <c:if test="${list.ostate eq '배송중'}">배송중</c:if>
-                                            <c:if test="${list.ostate eq '주문취소'}">주문취소</c:if>
+                                        <c:when test="${olist.ostate ne null}">
+                                            <c:if test="${olist.ostate eq '배송준비'}">배송준비</c:if>
+                                            <c:if test="${olist.ostate eq '배송중'}">배송중</c:if>
+                                            <c:if test="${olist.ostate eq '주문취소'}">주문취소</c:if>
                                         </c:when>                          
                                     </c:choose>
                                 </h3>
                                 <div class="goods_item">
                                     <div class="goods_thumb">
-                                        <img src="${list.img1}" width=90 height=90>
+                                        <img src="${olist.img1}" width=90 height=90>
                                     </div>
                                     <div class="goods_info">
-                                        <div id="ostate${status.index}" value="${item.ostate}" class="goods_seller">${list.ostate}</div>
-                                        <div class="goods_name">${list.pname}</div>
+                                        <div id="ostate${status.index}" value="${item.ostate}" class="goods_seller">${olist.ostate}</div>
+                                        <div class="goods_name">${olist.pname}</div>
                                         <div class="goods_order_info">
-                                            <span class="goods_price"> <fmt:formatNumber value="${list.olprice}" pattern="#,###" />원</span>
-                                             <fmt:formatNumber value="${list.olquantity}" pattern="#,###" />개
-                                             <span id="imp_uid${status.index}" value = "${list.imp_uid}" style="display:none">${list.imp_uid}</span> 
-                                             <span id="oid${status.index}" value = "${list.oid}" style="display:none">${list.oid}</span> 
+                                            <span class="goods_price"> <fmt:formatNumber value="${olist.olprice}" pattern="#,###" />원</span>
+                                             <fmt:formatNumber value="${olist.olquantity}" pattern="#,###" />개
+                                             <span id="imp_uid${status.index}" value = "${olist.imp_uid}" style="display:none">${olist.imp_uid}</span> 
+                                             <span id="oid${status.index}" value = "${olist.oid}" style="display:none">${olist.oid}</span> 
                                         </div>
                                     </div>
                                     <div>
                                        <c:choose>
-                                        <c:when test="${list.ostate ne null}">
-                                            <c:if test="${list.ostate eq '배송준비'}">
+                                        <c:when test="${olist.ostate ne null}">
+                                            <c:if test="${olist.ostate eq '배송준비'}">
                                                 <button class="btn_cancel" value="${status.index}" onClick="setTotalInfo(this)">주문 취소</button>
                                             </c:if>
-                                            <c:if test="${list.ostate eq '배송중'}">
+                                            <c:if test="${olist.ostate eq '배송중'}">
                                                 <button class="btn_cancel" value="${status.index}" style="display:none" onClick="setTotalInfo(this)">주문 취소</button>
                                             </c:if>
-                                            <c:if test="${list.ostate eq '주문취소'}">
+                                            <c:if test="${olist.ostate eq '주문취소'}">
                                                 <button class="btn_complete" value="${status.index}" onClick="setTotalInfo(this)">취소완료</button>
                                             </c:if>
                                         </c:when>
@@ -97,8 +99,12 @@
 						<input type="hidden" name="imp_uid" value="${item.imp_uid}">
 					</form>        
                            </c:forEach>
-                         </ul>         
-                  
+                         </ul>
+                         </div>
+                         <br/>
+                         <br/>
+                         <br/>         
+                        </c:forEach>
                        </c:when>
                        <c:otherwise>
                             <div> 구매 이력이 없습니다.</div>
