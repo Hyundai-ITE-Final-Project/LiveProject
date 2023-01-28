@@ -1,10 +1,16 @@
 package com.livecommerce.project.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.livecommerce.project.auth.SNSLogin;
 import com.livecommerce.project.auth.SnsValue;
+import com.livecommerce.project.security.CustomLoginSuccessHandler;
+import com.livecommerce.project.security.CustomMember;
 import com.livecommerce.project.service.MemberService;
 import com.livecommerce.project.vo.MemberVO;
 
@@ -29,6 +37,8 @@ public class LoginController {
 
 	@Autowired
 	MemberService service;
+	@Autowired
+	CustomLoginSuccessHandler loginHandler;
 
 	@GetMapping("/login")
 	public void login(HttpSession session, Model model) {
@@ -43,7 +53,9 @@ public class LoginController {
 	
 
 	@RequestMapping(value = "/auth/naver/callback", method = { RequestMethod.GET, RequestMethod.POST })
-	public void snsLoginCallback(Model model, @RequestParam String code, HttpSession session, HttpServletResponse response) throws Exception {
+	public void snsLoginCallback(Model model, @RequestParam String code, HttpSession session, HttpServletRequest request, HttpServletResponse response,
+			Authentication auth
+			) throws Exception {
 
 		SNSLogin snsLogin = new SNSLogin(naverSns);
 		MemberVO memberVO = snsLogin.getUserProfile(code);
@@ -54,9 +66,10 @@ public class LoginController {
 		} else {
 			model.addAttribute("memberVO", memberVO.getMname() + "님, 반갑습니다.");
 		}
-		model.addAttribute("memberVO", memberVO);
-		System.out.println("Session is " + session);
-		System.out.println(response);
+		Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+		authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+		CustomMember customMember = new CustomMember(memberVO.getMid(), memberVO.getMpassword(), authorities);
+		loginHandler.onAuthenticationSuccess(request, response, auth);
 
 		// 1. code를 이용해서 access_token 받기
 		// 2. access_token을 이용해서 사용자 profile 정보 가져오기
