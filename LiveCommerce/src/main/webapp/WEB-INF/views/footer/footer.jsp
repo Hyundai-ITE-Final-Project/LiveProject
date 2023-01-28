@@ -7,7 +7,15 @@
 <footer class="shop_footer">
 <div id="footer_view">
     <div class="footer_btn_area">
-		I_LIVE
+		I_LIVE - IDLE
+		<br>
+		신기원 (shingiwon58@gmail.com)
+		<br>
+		김나형 (donadio912@naver.com)
+		<br>
+		김민석 (bansongsss@gamil.com)
+		<br>
+		박소은 (bbaksso0324@gmail.com)
 	</div>
 	<div class="footer_nav">
 	    <a href="javascript:void(0);">사이트 소개</a>

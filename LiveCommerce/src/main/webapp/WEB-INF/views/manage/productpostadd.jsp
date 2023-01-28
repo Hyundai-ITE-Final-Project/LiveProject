@@ -85,6 +85,12 @@
     </div>
 </div>
 <script>
+$(function() {
+	console.log("테스트 입니다.");
+	
+	$(".productpost_tab").attr("aria-selected","true");
+	
+})
     function go_save(){
         if(document.formm.ps_title.value ==""){
             alert("제목을 입력해주세요");

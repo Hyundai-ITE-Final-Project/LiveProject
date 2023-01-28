@@ -118,6 +118,13 @@
     </div>
 </div>
 <script>
+$(function() {
+	console.log("테스트 입니다.");
+	
+	$(".productpost_tab").attr("aria-selected","true");
+	
+})
+
 let csrfHeaderName ="${_csrf.headerName}";
 let csrfTokenValue="${_csrf.token}";
 	$(document).ready(function(){
