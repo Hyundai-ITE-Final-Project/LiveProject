@@ -8,7 +8,6 @@
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <title>오늘의쇼핑</title>
-	<link rel="stylesheet" type="text/css" href="/resources/css/login.css" >
 </head>
 
 <div id="admin_wrap">
@@ -48,7 +47,7 @@
                             <div class="pdPost_content">
                                 <c:forEach var="list" items="${list}" varStatus="postIndex">
                                     <div class="pdPost_content_area">
-                                        <div class="pd_h_check">
+                                        <div class="pd_h_check" style="padding-top: 60px;">
                                             <div><input type="checkbox" data-pk="${list.ps_index}" name="postlist" id="psId" class="iChek" value="${list.ps_index}">
                                             </div>
                                         </div>
