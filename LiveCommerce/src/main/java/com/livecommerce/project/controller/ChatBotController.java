@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.livecommerce.project.service.ChatBotService;
+import com.livecommerce.project.service.CouponService;
 import com.livecommerce.project.service.ProductService;
+import com.livecommerce.project.vo.CouponVO;
 import com.livecommerce.project.vo.OrderVO;
 
 import lombok.AllArgsConstructor;
@@ -40,6 +42,8 @@ import lombok.extern.log4j.Log4j;
 public class ChatBotController {
 	@Autowired
 	ChatBotService chatbotService;
+	@Autowired
+	private CouponService couponService;
 
 	// 챗봇 팝업창 띄어주기
 	@GetMapping("/chat")
@@ -55,6 +59,15 @@ public class ChatBotController {
 		log.info("이렇게도 가능하니??? : " + memid);
 		log.info(chatbotService.getOrderLists(memid));
 		return chatbotService.getOrderLists(memid);
+	}
+	
+	@ResponseBody
+	@GetMapping(value = "/coupon",
+			produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public List<CouponVO> chatCouponListPost(Principal principal) throws Exception{
+		String memid = principal.getName();
+		log.info(couponService.getCouponList(memid));
+		return couponService.getCouponList(memid);
 	}
 	
 	
