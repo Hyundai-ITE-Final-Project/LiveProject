@@ -23,6 +23,13 @@
                 </div>
             </div>
             
+             <div class="mypage_boxs" onclick="location.href='/manage/live';">
+                <div class="user_modify" style="background-position: 0 -200px;">
+                    <p>관리자모드</p>
+                    <img height='70px' style='text-align:center; margin-top:50px' src="/resources/img/manage_mode.png">
+                </div>
+            </div>
+            
 	       </div>
 
 	    </div>

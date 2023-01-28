@@ -78,8 +78,8 @@
                                 <div class="layout_subject _asterisk">판매 상태</div>
                                 <select name="ps_post_status" id="pdPostOnOff" class="_filter">
                                     <option value="">판매 상태</option>
-                                    <option value="판매중" <c:if test="${post.ps_post_status eq '판매중'}"> selected="selected"></c:if>>판매중</option>
-                                    <option value="판매중지"<c:if test="${post.ps_post_status eq '판매중지'}"> selected="selected"></c:if>>판매중지</option>
+                                    <option value="판매중" <c:if test="${post.ps_post_status eq '판매중'}"> selected="selected"</c:if>>판매중</option>
+                                    <option value="판매중지"<c:if test="${post.ps_post_status eq '판매중지'}"> selected="selected"</c:if>>판매중지</option>
                                 </select>
                             </div>
                             <div class="create_layout">
@@ -93,6 +93,12 @@
     </div>
 </div>
 <script>
+$(function() {
+	console.log("테스트 입니다.");
+	
+	$(".productpost_tab").attr("aria-selected","true");
+	
+})
     var ifrContent = $('#psContentText').text();
     //iframe 디자인모드
     var iframe = document.getElementById("psContentIframe").contentWindow;

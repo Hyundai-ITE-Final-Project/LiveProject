@@ -18,7 +18,14 @@ input[type="checkbox"]{width: 20px;height: 20px;}
 
 /* tool - commen ----------------------- */
 .setting_wrap, .admin_tool_wrap{position: relative;display: flex;flex-direction: column;max-width: 1280px;min-height: 100%;margin: 0 auto;color: #2e2e2e;}
-.admin_tool_area{padding: 50px 0;text-align: center;min-height: 100vh;background: #fff;max-width: 100%;box-sizing: border-box;}
+.admin_tool_area{
+	padding: 50px 0;
+    text-align: center;
+    min-height: 100vh;
+    background: #fff;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-top: 53px;}
 .admin_tool_inner{margin-right: auto;margin-left: auto;max-width: 100%;box-sizing: border-box;min-height: 1px;width: calc(100% - 120px); margin-top:43px;}
 .admin_tool_top{text-align: left;margin: 30px 0 20px 0;display: flex;align-items: end;justify-content: space-between;}
 
@@ -34,9 +41,9 @@ input[type="checkbox"]{width: 20px;height: 20px;}
 .layout_input{width: 100%;background: #FFFFFF;border: 1px solid #D8D8D8;box-sizing: border-box;border-radius: 5px;height: 50px;font-size: 16px;padding-left: 15px;}
 input:focus{ border:none; outline: none; border: 1px solid #54D6FF; box-shadow: 0px 0px 2px 3px rgba(80, 181, 255, 0.35);}
 .red_act{border: 1px solid red;box-shadow: 0px 0px 2px 3px rgba(255, 43, 43, 0.3);}
-.btn_move{width: 120px;height: 40px;font-size: 20px;border-radius: 5px;background: #1fb9ea;color: #fff;font-weight: 500;text-align: center;line-height: 40px}
+.btn_move{width: 120px;height: 40px;font-size: 20px;border-radius: 5px;background: #668679;color: #fff;font-weight: 500;text-align: center;line-height: 40px}
 
-.btn_pp{width: 100%;box-sizing: border-box;border-radius: 5px;height: 50px;font-size: 18px;margin-top: 20px;background: #1FB9EA;color: #fff;font-weight: 600;}
+.btn_pp{width: 100%;box-sizing: border-box;border-radius: 5px;height: 50px;font-size: 18px;margin-top: 20px;background: #668679;color: #fff;font-weight: 600;}
 
 .layout_filter{position: relative;}
 ._filter{width: 100%;background: #FFFFFF;border: 1px solid #D8D8D8;box-sizing: border-box;border-radius: 5px;height: 50px;font-size: 16px;padding-left: 15px;}
@@ -46,18 +53,84 @@ input:focus{ border:none; outline: none; border: 1px solid #54D6FF; box-shadow: 
 ._asterisk:after {content: '*';padding-left: 5px;color: #f4361e;}
 
 .pdPost_content, .pd_content, .live_content, .sale_content{min-height: 500px;}
-.text_blue{color: #1fb9ea;}
+.text_blue{color: #668679;}
 
 .ag-header-cell-resize{top: 0;width: 8px;cursor: col-resize;right: -4px;box-sizing: border-box;position: absolute;z-index: 1;height: 100%}
 
 /* menu ----------------------------------------- */
 
 .admin_content{position: relative;flex: 1 1 auto;padding-top: 70px;}
-.admin_menulist{position: fixed;top: 68px;z-index: 100;width: 100%;overflow: hidden;max-width: 1280px;height: 40px;background-color: #fff;border-bottom: 1px solid #efeff0;}
+.admin_menulist{    
+	position: fixed;
+    top: 68px;
+    z-index: 100;
+    width: 1271px;
+    overflow: hidden;
+    max-width: 1283px;
+    height: 60px;
+    background-color: #fff;
+    border-bottom: 1px solid #efeff0;
+    }
 .admin_tablist{position: absolute;top: 0;left: 0;padding: 0 10px 0 11px;white-space: nowrap;will-change: transform;transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);touch-action: pan-x;}
-.main_tab{position: relative;box-sizing: border-box;display: inline-block;height: 39px;padding: 10px 10px 12px 11px;transform: translate3d(0, 0, 0);line-height: 1.18;font-size: 17px;color: #767678;vertical-align: top;}
-.main_tab[aria-selected='true'] {font-weight: 700;color: #f4361e;}
-.main_tab[aria-selected='true']::after {content: '';position: absolute;right: 10px;bottom: -1px;left: 11px;height: 2px;background-color: #f4361e;}
+.live_tab{
+	position: relative;
+	box-sizing: border-box;
+	display: inline-block;
+	height: 39px;padding: 10px 10px 12px 11px;
+	transform: translate3d(0, 0, 0);
+	line-height: 1.18;font-size: 17px;
+	color: #767678;vertical-align: top;
+	}
+.products_tab{
+	position: relative;
+	box-sizing: border-box;
+	display: inline-block;
+	height: 39px;padding: 10px 10px 12px 11px;
+	transform: translate3d(0, 0, 0);
+	line-height: 1.18;font-size: 17px;
+	color: #767678;vertical-align: top;
+	}
+.productpost_tab{
+	position: relative;
+	box-sizing: border-box;
+	display: inline-block;
+	height: 39px;padding: 10px 10px 12px 11px;
+	transform: translate3d(0, 0, 0);
+	line-height: 1.18;font-size: 17px;
+	color: #767678;vertical-align: top;
+	}
+.order_tab{
+	position: relative;
+	box-sizing: border-box;
+	display: inline-block;
+	height: 39px;padding: 10px 10px 12px 11px;
+	transform: translate3d(0, 0, 0);
+	line-height: 1.18;font-size: 17px;
+	color: #767678;vertical-align: top;
+	}
+.setting_tab{
+	position: relative;
+	box-sizing: border-box;
+	display: inline-block;
+	height: 39px;padding: 10px 10px 12px 11px;
+	transform: translate3d(0, 0, 0);
+	line-height: 1.18;font-size: 17px;
+	color: #767678;vertical-align: top;
+	}
+.order_tab[aria-selected='true'] {font-weight: 700;color: #f4361e;}
+.order_tab[aria-selected='true']::after {content: '';position: absolute;right: 10px;bottom: -1px;left: 11px;height: 2px;background-color: #f4361e;}
+
+.live_tab[aria-selected='true'] {font-weight: 700;color: #f4361e;}
+.live_tab[aria-selected='true']::after {content: '';position: absolute;right: 10px;bottom: -1px;left: 11px;height: 2px;background-color: #f4361e;}
+
+.products_tab[aria-selected='true'] {font-weight: 700;color: #f4361e;}
+.products_tab[aria-selected='true']::after {content: '';position: absolute;right: 10px;bottom: -1px;left: 11px;height: 2px;background-color: #f4361e;}
+
+.productpost_tab[aria-selected='true'] {font-weight: 700;color: #f4361e;}
+.productpost_tab[aria-selected='true']::after {content: '';position: absolute;right: 10px;bottom: -1px;left: 11px;height: 2px;background-color: #f4361e;}
+
+.setting_tab[aria-selected='true'] {font-weight: 700;color: #f4361e;}
+.setting_tab[aria-selected='true']::after {content: '';position: absolute;right: 10px;bottom: -1px;left: 11px;height: 2px;background-color: #f4361e;}
 
 /* setting page -----------------------------------------*/
 .setting_area{padding: 200px 0;text-align: center;min-height: 100vh;background: #fff;}
