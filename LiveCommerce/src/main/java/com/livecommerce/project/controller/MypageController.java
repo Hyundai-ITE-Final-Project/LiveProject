@@ -1,6 +1,7 @@
 package com.livecommerce.project.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,19 @@ public class MypageController {
 	/* 주문 현황 페이지 */
 	@GetMapping("/mypage/orderList")
 	public String orderListGET(Principal principal, Model model) {
-		List<OrderVO> list = mypageService.getOrderList(principal.getName());
-		model.addAttribute("list", list);
+//		List<OrderVO> list = mypageService.getOrderList(principal.getName());
+//		model.addAttribute("list", list);
+		
+		String member_mid = principal.getName();
+		List<List<OrderVO>> list3 = new ArrayList<>();
+		List<String> list = mypageService.getOid(member_mid);
+		for(int i=0; i<list.size(); i++) {
+			String oid1 = list.get(i);
+			List<OrderVO> list2 = mypageService.getOidorderList(oid1, member_mid);
+			list3.add(list2);
+		}
+		model.addAttribute("list1", list3);
+		
 
 		return "/mypage/mypage_orderlist";
 	}

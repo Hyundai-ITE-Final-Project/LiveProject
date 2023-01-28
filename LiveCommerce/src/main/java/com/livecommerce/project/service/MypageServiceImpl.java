@@ -32,4 +32,14 @@ public class MypageServiceImpl implements MypageService{
 		return mypageMapper.ordercancelState(ostate, oid);
 	}
 
+	@Override
+	public List<String> getOid(String member_mid) {
+		return mypageMapper.getOid(member_mid);
+	}
+
+	@Override
+	public List<OrderVO> getOidorderList(String oid, String member_mid) {
+		return mypageMapper.getOidorderList(oid, member_mid);
+	}
+
 }

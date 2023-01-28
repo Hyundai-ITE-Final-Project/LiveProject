@@ -15,4 +15,8 @@ public interface MypageMapper {
 	public int getOrderTotal(Criteria cri);
 	/* 주문 취소 후 상태변경 */
 	public int ordercancelState(@Param("ostate") String ostate, @Param("oid") String oid);
+	/*-- 멤버아이디별 중복처리한 oid값들 */
+	public List<String> getOid(@Param("member_mid") String member_mid);
+	/* 주문아이디별 주문리스트 */
+	public List<OrderVO> getOidorderList(@Param("oid") String oid, @Param("member_mid") String member_mid);
 }
