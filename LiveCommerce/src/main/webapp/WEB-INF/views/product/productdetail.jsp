@@ -413,6 +413,9 @@
                         <div class="box__detail-view js-toggle-content">
                             <!-- 상품 상세 -->
                             <div class="vip-detailarea_seller" id="skip-item-detail">
+                                <div style="font-size: 19px; padding-bottom: 80px; padding-left: 30px; padding-right: 30px;">
+                            		${productInfo.detail }
+                            	</div>
                                 <iframe id="detail1" src="${productInfo.img2}" onload="" frameborder="0" width="860" height="700" scrolling="NO"></iframe>
                                 <iframe id="detail1" src="${productInfo.img3}" onload="" frameborder="0" width="860" height="700" scrolling="NO"></iframe>
                             </div>

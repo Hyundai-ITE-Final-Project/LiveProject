@@ -46,7 +46,8 @@ public class OrderVO {
 	private Date odate;
 	
 	/* DB테이블 존재 하지 않는 데이터 */
-	
+	/*oid 상품갯수*/
+	private int count;
 	/* 판매가(모든 상품 비용) */
 	private int ordersaleprice;
 	

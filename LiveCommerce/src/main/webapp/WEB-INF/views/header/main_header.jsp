@@ -68,6 +68,9 @@
 		    background: #F8F8F8;
 		    color: #767678;
 		}
+		.asd{
+			margin-right:15px;
+		}
 	</style>
 	<script>
     function category(lcategory, scategory){
@@ -76,39 +79,42 @@
         
         location.href = cate;
     }
+    
 	</script>
-    <form:form action="/logout" method="POST" id="logoutForm"></form:form>
+	
     <div class="shop_logo_wrap">
         <a href="/" class="logo_link">
             <i class="header_icon logo_icon"></i>
             <span class="blind">오늘의쇼핑</span>
         </a>
     </div>
-
-    <nav class="header_nav">
-        <c:choose>
-            <c:when test="${user eq 'anonymousUser'}">
-                <a href="/login" class="h_nav_pa">
-                    <span class="h_btn_login">로그인</span>
-                </a>
-            </c:when>
-            <c:otherwise>
-                <button class="h_btn_login h_btn_logout">로그아웃</button>
-            </c:otherwise>
-        </c:choose>
-        <a href="/mypage" class="h_nav_pa">
-            <i class="header_icon header_nav_icon user_icon"></i>
-            <span class="blind">유저정보</span>
-        </a>
-        <a href="/cart" class="h_nav_pa">
-            <i class="header_icon header_nav_icon cart_icon"></i>
-            <span class="blind">장바구니</span>
-        </a>
-    </nav>
+	<form action="/logout" method="POST" id="logoutForm">
+       <nav class="header_nav">
+           <c:choose>
+               <c:when test="${user eq 'anonymousUser'}">
+                   <a href="/login" class="h_nav_pa asd">
+                       <span class="h_btn_login">로그인</span>
+                   </a>
+               </c:when>
+               <c:otherwise>
+               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                   <button class="h_btn_login h_btn_logout asd" type="submit">로그아웃</button>
+               </c:otherwise>
+           </c:choose>
+           <a href="/mypage/main" class="h_nav_pa">
+               <i class="header_icon header_nav_icon user_icon"></i>
+               <span class="blind">유저정보</span>
+           </a>
+           <a href="/cart/<sec:authentication property="name"/>" class="h_nav_pa">
+               <i class="header_icon header_nav_icon cart_icon"></i>
+               <span class="blind">장바구니</span>
+           </a>
+       </nav>
+    </form>
     <div class="shop_menulist" role="presentation">
 	    <div class="shop_tablist" role="tablist" style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms;">
 	    	<ul class="one">
-	    		<li><a href="#" class="main_tab">카테고리</a>
+	    		<li><a href="#" class="main_tab ">카테고리</a>
 		    		<ul class="two">
 		    			<li><a href="#">과일과 채소</a>
 		    				<ul class="three">
@@ -413,14 +419,11 @@
 		    		</ul>
 	    		</li>
 	    	</ul>
-	        <a href="/home" class="main_tab" aria-selected="true">홈</a>
-	        <a href="/shop?category=98" class="main_tab">라이브</a>
-	        <a href="javascript:void(0);" class="main_tab loc_live" class="main_tab">우리동네라이브</a>
-	        <a href="/shop?category=101" class="main_tab">패션</a>
-	        <a href="/shop?category=102" class="main_tab">뷰티</a>
-	        <a href="/shop?category=103" class="main_tab">푸드</a>
-	        <a href="/shop?category=104" class="main_tab">라이프</a>
-	        <a href="/shop?category=105" class="main_tab">취미 · 문화생활</a>
+	        <a href="/" class="main_tab main1" role="tab" aria-selected="true">홈</a>
+	        <a href="/live/view" role="tab" class="main_tab main2" aria-selected="false">인기라이브</a>
+	        <a href="/live/recent" role="tab" class="main_tab main3" aria-selected="false">최신라이브</a>
+	        <a href="/shop?category=101" role="tab" class="main_tab main4" aria-selected="false">신상품</a>
+	        <a href="/coupon/couponpage" role="tab" class="main_tab main5" aria-selected="false">이벤트</a>
 	    </div>
 	</div>
 </header>

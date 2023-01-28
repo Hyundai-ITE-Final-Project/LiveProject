@@ -37,6 +37,7 @@ import com.livecommerce.project.vo.VideoVO;
  * 2023.01.24	    신기원		  Video(모든 영상) 목록 조회
  * 2023.01.25	    신기원		   영상 다시보기
  * 2023.01.26	    신기원		  스케줄러로 라이브 상태 변경, 라이브 영상 저장하기, 라이브 수정하기
+ * 2023.01.27	신기원		라이브 최신순, 인기순 목록
  * </pre>
  */
 
@@ -154,11 +155,17 @@ public class LiveServiceImpl implements LiveService{
     }
 
 
-    //모든 영상 조회하기
+    //최신순 영상 조회하기
 	@Override
-	public List<LiveVO> allVideoList() {
-		return liveMapper.allVideoList();
+	public List<LiveVO> recentVideoList() {
+		return liveMapper.recentVideoList();
 	}
+	
+	//인기순 영상 조회하기
+		@Override
+		public List<LiveVO> viewVideoList() {
+			return liveMapper.viewVideoList();
+		}
 
 
 	@Override

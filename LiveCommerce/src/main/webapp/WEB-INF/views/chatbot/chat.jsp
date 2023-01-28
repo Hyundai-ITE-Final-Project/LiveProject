@@ -25,6 +25,11 @@
 
     <!-- javascript -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script>
+    function go_mypage() {
+    	window.opener.location.href="/mypage/orderList";
+    }
+    </script>
 
 </head>
 
@@ -67,11 +72,11 @@
                                                     <img src="https://ibot.hmall.com/images/20220906/dcd6005359724e4581820ab3f254d30a.png"
                                                         alt="">
                                                 </span>
-                                                <span class="txt">내 주문 보기</span>
+                                                <span class="txt">내 쿠폰 보기</span>
                                             </a>
                                         </li>
-                                        <li title="방송상품 확인">
-                                            <a onclick="menulist('livelist')">
+                                        <li title="My Coupon">
+                                            <a onclick="menulist('couponlist')">
                                                 <span class="img">
                                                     <img src="https://ibot.hmall.com/images/20220906/94216669d669493aaa293f06cdec9701.png"
                                                         alt="">
@@ -95,7 +100,7 @@
                     </div>
                     <div class="chat-item is-ktalk" style="visibility: visible;">
                         <div class="bubble has-moving in" style="max-height: 357px;">
-                            <div class="inner"> 고객님, 안녕하세요.
+                            <div class="inner"> 고객님, 안녕하세요😊
                                 무엇이 궁금하신가요?
                             </div>
                         </div>
@@ -119,6 +124,7 @@
             </div>
         </div>
     </div>
+    <!-- GPT를 사용한 실시간 채팅 -->
     <script type="module">
         import { Configuration, OpenAIApi } from 'https://cdn.skypack.dev/openai';
 		var cnt=1;
@@ -127,7 +133,7 @@
 			var txt = document.querySelector('#inp-chat').value;
 
             var template = `<div class="chat-item is-customer me">
-                                    <div class="bubble has-moving in" style="max-height: 105px;">
+                                    <div class="bubble has-moving in" style="max-height: 10000px;">
                                         <div class="inner mine"></div>
                                 	</div>
                              	<span class="date"><c:out value="${now}"/></span>
@@ -160,7 +166,7 @@
 				console.log("txt2 : " + txt2);
 
                 var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
-                                	<div class="bubble has-moving in your" style="max-height: 357px;"></div>
+                                	<div class="bubble has-moving in your" style="max-height: 10000px;"></div>
                                 	<div class="date"><c:out value="${now}"/></div>
                             	</div>`
                 document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
@@ -189,14 +195,16 @@
         }
         
         var cnt = 100;
-		
+        
+		// 클릭한 버튼을 기준으로 답변 출력
         function menulist(value) {
             var login_id = opener.document.getElementById("loginid").value;
             console.log("로그인된 아이디 : " + login_id);
-
+            
+			// 주문목록 조회하기 버튼을 클릭했을 경우
             if (value == 'orderlist') {
                 var template = `<div class="chat-item is-customer me">
-				          	<div class="bubble has-moving in" style="max-height: 105px;">
+				          	<div class="bubble has-moving in" style="max-height: 10000px;">
 				            	<div class="inner mine">내 주문 보기</div>
 				          	</div>
 				       		<span class="date"><c:out value="${now}"/></span>
@@ -207,16 +215,16 @@
                 const len = list.length - 1;
                 list[len].getElementsByClassName("mine")[0].setAttribute("id", cnt);
                 cnt++;
-
+				// 로그인 하지 않았을 경우
                 if (login_id == 'anonymousUser') {
                     console.log("로그인안됨");
                     var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
-				              	<div class="bubble has-moving in your" style="max-height: 357px;">
+				              	<div class="bubble has-moving in your" style="max-height: 10000px;">
 				              		로그인이 필요한 서비스 입니다.
-				              		로그인 버튼을 클릭해 주세요.
+				              		<br>👇로그인 버튼을 클릭해 주세요👇
 				              		<div class="bubble-actions">
 				                    	<button type="button" class="btn-link is-script is-dynamic-script" onclick="window.opener.location.href='/login'">
-				                    		<span>현대홈쇼핑 로그인</span>
+				                    		<span>🔒현대홈쇼핑 로그인🔒</span>
 				                    	</button>
 				                	</div>
 				              	</div>
@@ -228,11 +236,11 @@
                     list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
                     cnt++;
                     scrollDown();
-                } 
+                }
                 else {
                     var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
-					              	<div class="bubble has-moving in your" style="max-height: 357px;">
-					              		최근 주문내역입니다.
+					              	<div class="bubble has-moving in your" style="max-height: 10000px;">
+					              	최근 주문내역입니다😄
 					              		<div class="bubble-actions">
 					                	</div>	              		
 					              	</div>
@@ -256,35 +264,273 @@
                         	alert("error : " + error);
                         },
                         success: function (result) {
-                        	alert("성공");
-                             var html = "";
+                            var html = "";
+                            var lc = 0;
                             for(var i=0; i<result.length; i++){
-                                html += '<button type="button" class="btn-link is-script is-dynamic-script"'
-                                		+ 'onclick="window.opener.location.href='
-                                		+ '"/login">';
-								var oid = result[i].oid;
-								html += '<span>'
-										+ oid
-										+'</span>';
-								html += '</button>';
+                            	console.log(result[i].count);
+                            	//alert(result[i].oid);
+                            	lc++;
+								var listcount = result[i].count -1;
+
+
+								if(listcount > 0){
+									i += listcount;
+	                                html += 
+	                                	`
+	                                	<button type="button" class="btn-link is-script is-dynamic-script"
+	                                	 onclick="go_mypage()" style="height:auto;">
+										<span>
+										\${result[i].oid}
+											<br>
+											<p style="white-space:initial; line-height:1.2;">
+											\${result[i].pname} 외 \${listcount}건
+											</p>
+										</span>
+										<span>
+											<img style="width:50px; height:50px;" src=\${result[i].img1}>
+										</span>
+										</button>
+										`
+								}
+								else{
+	                                html += 
+	                                	`
+	                                	<button type="button" class="btn-link is-script is-dynamic-script"
+	                                	 onclick="go_mypage()" style="height:auto;">
+										<span>
+										\${result[i].oid}
+										<br>
+											<p style="white-space:initial; line-height:1.2;">
+											\${result[i].pname}
+											</p>
+										</span>
+											<span>
+											<img style="width:50px; height:50px;" src=\${result[i].img1}>
+											</span>
+										</button>
+										`
+								}
+	                            if(lc>=5){
+	                            	break;
+	                            }
                             }
-                            
+                            html += 
+                            	`
+                            	<button type="button" class="btn-link is-script is-dynamic-script"
+                            	 onclick="go_mypage()" style="height:auto;">
+									<span>
+									👉더 많은 주문내역 보러가기👈
+									</span>
+								</button>
+								`
                             $("#"+cnt).html(html);
-                            alert(html);
                         }
                     });
                     cnt++;
-                    console.log("로그인됨");
                     scrollDown();
                 }
             }
 
-            if (value == 'livelist') {
+            if (value == 'couponlist') {
+            	var template = `<div class="chat-item is-customer me">
+						          	<div class="bubble has-moving in" style="max-height: 10000px;">
+						            	<div class="inner mine">내 쿠폰 보기</div>
+						          	</div>
+						       		<span class="date"><c:out value="${now}"/></span>
+						       	 </div>`
+		        console.log("durl");
+		        document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+		        const list = document.querySelectorAll(".me");
+		        const len = list.length - 1;
+		        list[len].getElementsByClassName("mine")[0].setAttribute("id", cnt);
+		        cnt++;
+				// 로그인 하지 않았을 경우
+		        if (login_id == 'anonymousUser') {
+		            console.log("로그인안됨");
+		            var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
+		              	<div class="bubble has-moving in your" style="max-height: 10000px;">
+	              		로그인이 필요한 서비스 입니다.
+	              		<br>👇로그인 버튼을 클릭해 주세요👇
+	              		<div class="bubble-actions">
+	                    	<button type="button" class="btn-link is-script is-dynamic-script" onclick="window.opener.location.href='/login'">
+	                    		<span>🔒현대홈쇼핑 로그인🔒</span>
+				                    	</button>
+				                	</div>
+				              	</div>
+				              	<div class="date"><c:out value="${now}"/></div>
+				          	   </div>`;
+		            document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+		            const list2 = document.querySelectorAll(".you");
+		            const len2 = list2.length - 1;
+		            list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
+		            cnt++;
+		            scrollDown();
+		        }
+		        else{
+			        $.ajax({
+			            url: "/chatbot/coupon",
+			            type: "GET",
+			            dataType: "json",
+			            async: false,
+			            beforeSend: function (xhr) {
+			                xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			            },
+			            error: function (request, status, error) {
+			            	alert("error : " + error);
+			            },
+			            success: function (result) {
+			                var html = "";
+			                var lc = 0;
+			                if(result.length == 0){
+			                    var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
+					              	<div class="bubble has-moving in your" style="max-height: 10000px;">
+			                    		쿠폰이 존재하지 않습니다😓
+					              		<div class="bubble-actions">
+		                        			<button type="button" class="btn-link is-script is-dynamic-script"
+				                        	 onclick="#" style="height:auto;">
+												<span>
+												👉쿠폰 받으러가기👈
+												</span>
+											</button>
+					                	</div>	              		
+					              	</div>
+					              	<div class="date"><c:out value="${now}"/></div>
+					          	 </div>`;
+							    document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+						        const list2 = document.querySelectorAll(".you");
+						        const len2 = list2.length - 1;
+						        list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
+						        cnt++;
+						        list2[len2].getElementsByClassName("bubble-actions")[0].setAttribute("id", cnt);
+			                }
+			                else{
+			                    var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
+					              	<div class="bubble has-moving in your" style="max-height: 10000px;">
+					              	나의 쿠폰내역입니다😄
+					              		<div class="bubble-actions">
+					                	</div>	              		
+					              	</div>
+					              	<div class="date"><c:out value="${now}"/></div>
+					          	 </div>`;
+							    document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+						        const list2 = document.querySelectorAll(".you");
+						        const len2 = list2.length - 1;
+						        list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
+						        cnt++;
+						        list2[len2].getElementsByClassName("bubble-actions")[0].setAttribute("id", cnt);
+				                for(var i=0; i<result.length; i++){
+				                	lc++;
+				                    html += 
+				                        	`
+				                        	<button type="button" class="btn-link is-script is-dynamic-script"
+				                        	 onclick="#" style="height:auto;">
+												<span>
+													\${result[i].cname}
+												</span>
+											</button>
+											`
+				                    if(lc>=5){
+				                    	break;
+				                    }
+				                }
+				                $("#"+cnt).html(html);
+			                }
 
+			            }
+			        });
+			        cnt++;
+			        scrollDown();
+		        }
             }
 
             if (value == 'faq') {
-
+            	var template = `<div class="chat-item is-customer me">
+		          	<div class="bubble has-moving in" style="max-height: 10000px;">
+		            	<div class="inner mine">궁금한게 있어요!</div>
+		          	</div>
+		       		<span class="date"><c:out value="${now}"/></span>
+		       	 </div>`
+		       	document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+			    const list = document.querySelectorAll(".me");
+			    const len = list.length - 1;
+			    list[len].getElementsByClassName("mine")[0].setAttribute("id", cnt);
+			    cnt++;
+			    
+			    var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
+	              					<div class="bubble has-moving in your" style="max-height: 10000px;">
+              							👇자주묻는 질문👇
+	              						<div class="bubble-actions">
+					                    	<button type="button" id="faq1" class="btn-link is-script is-dynamic-script" onclick="#">
+					                    		<span>주문취소는 어떻게 하나요?</span>
+								            </button>
+					                    	<button type="button" id="faq2" class="btn-link is-script is-dynamic-script" onclick="#">
+				                    			<span>전국 어디나 배송이 가능한가요?</span>
+								            </button>
+					                    	<button type="button" id="faq3" class="btn-link is-script is-dynamic-script" onclick="#">
+				                    			<span>쿠폰은 어디서 확인할 수 있나요?</span>
+							            	</button>
+				                		</div>
+			              			</div>
+			              			<div class="date"><c:out value="${now}"/></div>
+			          	   		</div>`;
+	            document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+	            const list2 = document.querySelectorAll(".you");
+	            const len2 = list2.length - 1;
+	            list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
+	            cnt++;
+	            scrollDown();
+	            
+	            document.getElementById("faq1").onclick = function(){
+					    var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
+	      					<div class="bubble has-moving in your" style="max-height: 10000px;">
+	  							주문전체 취소는 사이트에서 진행하실 수 있으며,
+	  							<br>
+	  							부분취소의 경우 고객센터를 통해 취소하실 수 있습니다.
+	  							<br>
+	  							주문 이후 배송준비가 시작될 경우 사이트에서 직접취소는 불가한 점 안내드립니다.
+		                    	<button type="button" class="btn-link is-script is-dynamic-script" onclick="go_mypage()">
+	                    			<span>나의 주문내역 보러가기</span>
+				            	</button>
+	              			</div>
+	              			<div class="date"><c:out value="${now}"/></div>
+	          	   		</div>`;
+				    document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+				    const list2 = document.querySelectorAll(".you");
+				    const len2 = list2.length - 1;
+				    list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
+				    cnt++;
+				    scrollDown();
+	            }
+	            
+	            document.getElementById("faq2").onclick = function(){
+				    var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
+      					<div class="bubble has-moving in your" style="max-height: 10000px;">
+  							I-LIVE는 전 지역 택배배송으로 배송됩니다.
+              			</div>
+              			<div class="date"><c:out value="${now}"/></div>
+          	   		</div>`;
+				    document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+				    const list2 = document.querySelectorAll(".you");
+				    const len2 = list2.length - 1;
+				    list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
+				    cnt++;
+				    scrollDown();
+	            }
+	            
+	            document.getElementById("faq3").onclick = function(){
+				    var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
+      					<div class="bubble has-moving in your" style="max-height: 10000px;">
+  							로그인 후 확인 가능합니다.
+              			</div>
+              			<div class="date"><c:out value="${now}"/></div>
+          	   		</div>`;
+				    document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+				    const list2 = document.querySelectorAll(".you");
+				    const len2 = list2.length - 1;
+				    list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
+				    cnt++;
+				    scrollDown();
+	            }
             }
         }
     </script>

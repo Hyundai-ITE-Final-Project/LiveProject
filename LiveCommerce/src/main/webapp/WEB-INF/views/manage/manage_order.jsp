@@ -1,84 +1,68 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page pageEncoding="UTF-8" language="java"%>
+<%@ include file="/WEB-INF/views/header/tool_header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>     
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../resources/css/mypage_orderlist.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+
+<!-- <link rel="shortcut icon"   href="https://drive.google.com/uc?id=1bbTmb2_R9gb6sEYY5zABHlybxCzhQVWX"> -->
+<title>오늘의쇼핑</title>
 </head>
-</head>
+
 <body>
-로그인ID : <sec:authentication property="name"/><br>
-로그인 Auth : <sec:authentication property="authorities"/><br>
-로그인 Detail : <sec:authentication property="Details"/><br>
-로그인 Credentials : <sec:authentication property="Credentials"/>
-로그인 Principal : <sec:authentication property="Principal"/><br>
-				<%-- <%@include file="../includes/admin/header.jsp" %> --%>
-				
-                <div class="admin_content_wrap">
-                    <div class="admin_content_subject"><span>주문 현황</span></div>
-					<div class="author_table_wrap">
-						<!-- 게시물 O -->
-						<c:if test="${listCheck != 'empty' }">
-	                    	<table class="order_table">
-	                    	<colgroup>
-	                    		<col width="10%">
-	                    		<col width="10%">
-	                    		<col width="10%">
-	                    		<col width="10%">
-	                    		<col width="10%">
-	                    	    <col width="10%">
-	                    	</colgroup>
-	                    		<thead>
-	                    			<tr>
-	                    				<td class="th_column_1">주문 번호</td>
-	                    				<td class="th_column_2">주문 아이디</td>
-	                    				<td class="th_column_3">주문 날짜</td>
-	                    				<td class="th_column_4">주문 상태</td>
-	                    			    <td class="th_column_5">주문Iamport번호</td>
-	                    				<td class="th_column_6">취소</td>
+			<div class="admin_tool_wrap">
+				<div class="admin_tool_area">
+					<div class="admin_tool_inner">			
+						<div class="admin_tool_content">
+							<div class="admin_list_body">
+								<div class="admin_list_header">
+									<div class="admin_list_header_viewport">
+										<div class="pd_cell_2">주문번호</div>
+										<div class="pd_cell_3">주문 아이디</div>
+										<div class="pd_cell_4">주문 날짜</div>
+										<div class="pd_cell_5">주문 상태</div>
+										<div class="pd_cell_6">주문 Iamport번호</div>
+										<div class="pd_cell_7">취소</div>
+									</div>
+								</div>
 
-	                    			</tr>
-	                    		</thead>
-	                    		<c:forEach items="${list}" var="item" varStatus="status">
-	                    		<tr>
-	                    			<td><span id="oid${status.index}" value = "${item.oid}">${item.oid}</span> </td>
-	                    			<td><c:out value="${item.member_mid}"></c:out></td>
-	                    			<td><fmt:formatDate value="${item.odate}" pattern="yyyy-MM-dd"/></td>
-	                    			<td><span id="ostate${status.index}" value="${item.ostate}">${item.ostate}</span></td>
-	                    		    <td><span id="imp_uid${status.index}" value="${item.imp_uid}">${item.imp_uid}</span></td>
-	                    			<td><button id="cancelbtn" class="btn_orderCancel" value="${status.index}" onClick="setTotalInfo(this)">주문취소</button></td>
+								<div class="pd_content">
+									<c:forEach var="item" items="${list}">
+										<div class="pd_content_area">
 
-	                				<form class="manageOrderForm" action="/manage/ordercancel" method="post">
-	              					  	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-										<input type="hidden" name="oid" value="${item.oid}">
-										<input type="hidden" name="ostate" value="${item.ostate}">
-										<input type="hidden" name="imp_uid" value="${item.imp_uid}">
-									</form>        
-	                    		</tr>
-	                    		</c:forEach>
-	                    	</table> 					
-						</c:if>
-						
-                		<!-- 게시물 x -->
-                		<c:if test="${listCheck == 'empty'}">
-                			<div class="table_empty">
-                				해당아이디로 등록된 주문이 없습니다.
-                			</div>
-                		</c:if> 						
-                			
-                    </div> 
-                    
-                     <!-- 검색 영역 -->
+											<div class="pd_cell_2">
+												<a  class="text_blue">${item.oid}</a>
+											</div>
+											<div class="pd_cell_3">
+												<a class='move'>
+													<c:out value="${item.member_mid}" />
+												</a>
+
+											</div>
+											<div class="pd_cell_4">
+												<a class='move'>
+													<c:out value="${item.odate}" />
+												</a>
+											</div>
+											<div class="pd_cell_5">
+												<a class='move'>
+													<c:out value="${item.ostate}" />
+												</a>
+											</div>
+											<div class="pd_cell_6">
+												<div>${item.imp_uid}</div>
+											</div>
+											<div class="pd_cell_7">
+												<button id="cancelbtn" class="btn_orderCancel" value="${status.index}" onClick="setTotalInfo(this)">주문취소</button>
+											</div>
+										</div>
+									</c:forEach>
+	
+								        <!-- 검색 영역 -->
                     <div class="search_wrap">
                     	<form id="searchForm" action="/manage/orderList" method="get">
                     		<div class="search_input">
@@ -117,22 +101,30 @@
 	                    	</c:if>
 	                    	
 	                    </ul>
-	                    
-                    </div>
-                                       
-                </div>
-                
-
-                    
-					<form id="moveForm" action="/manage/orderList" method="get">
+								</div>
+					
+	
+	                 <form id="moveForm" action="/manage/orderList" method="get">
 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-					</form>                                    
- 
- 				<%-- <%@include file="../includes/admin/footer.jsp" %> --%>
-
+					</form>     
+	                    
+                    </div>
+      
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 <script>
+$(function() {
+	console.log("테스트 입니다.");
+	
+	$(".order_tab").attr("aria-selected","true");
+	
+})
+
 
 let searchForm = $('#searchForm');
 let moveForm = $('#moveForm');
@@ -157,14 +149,14 @@ $("#searchForm button").on("click", function(e){
 
 /* 페이지 이동 버튼 */
 $(".pageMaker_btn a").on("click", function(e){
-	
-	e.preventDefault();
+	console.log("ddddd");
+ 	e.preventDefault();
 	
 	console.log($(this).attr("href"));
 	
 	moveForm.find("input[name='pageNum']").val($(this).attr("href"));
 	
-	moveForm.submit();
+	moveForm.submit(); 
 	
 });
 
@@ -193,6 +185,6 @@ function setTotalInfo(btn){
 	}
 }
 </script>
-
-</body>
-</html>
+					
+					
+<%-- <%@include file="/WEB-INF/views/footer/footer.jsp" %> --%>

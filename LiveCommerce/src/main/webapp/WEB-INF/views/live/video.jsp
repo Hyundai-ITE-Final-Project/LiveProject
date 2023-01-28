@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="LiveHeader_title">
                                     <div class="LiveHeader_img_area" >
-                                        <img class="LiveHeader_image" width="38" height="38" src="/resources/img/chun.jpg">
+                                        <img class="LiveHeader_image" width="38" height="38" src="/resources/img/live/free-icon-user.png">
                                         <span class="LiveBadge_live blind">LIVE</span>
                                     </div>           
                                     <div class="LiveHeader_text_area">
@@ -71,16 +71,14 @@
                             <div class="NoticeContent_box blind">
                             
                                 <div class="NoticeContent_text">라이브가 종료되었습니다.</div>  
-                                
+                                <div class="NoticeContent_text NoticeContent_count"></div>
                                 <sec:authentication property="principal" var="user"/> 
-                                
-                                
                                 <sec:authorize access="isAuthenticated()">
 								   <c:if test="${user.username eq host}">
                                    
                                 	   
-                                	   <button class="LiveFinish" type="button" ><div class="NoticeContent_btn_home">라이브 종료</button>
-                                	   </div>  
+                                	   <button class="LiveFinish" type="button" ><div class="NoticeContent_btn_home">라이브 종료</div></button>
+                                	   
                                 	</c:if>
 								</sec:authorize>
                                 
@@ -100,7 +98,7 @@
                                 <div class="TagItem_current">
                                     <a class="TagItem_link">
                                         <div class="TagItem_thumbnail">
-                                            <img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/chun.jpg">
+                                            <img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/live/shopstore.png">
                                         </div>
                                     </a>
                                 </div>
@@ -178,6 +176,8 @@ $(document).ready(function() {
         $('.NoticeContent_box').removeClass('blind');
         $('.CommentBtn_wrap').addClass('blind');
         $('.Comments_wrap').addClass('blind');
+        $('.NoticeContent_count').innerHTML = $('.LiveHeader_view_count').text();
+        console.log($('.LiveHeader_view_count').text());
         hls.destroy();              //hls 종료
     }
     $('#Comments_wrap').scrollTop($('#Comments_wrap')[0].scrollHeight);

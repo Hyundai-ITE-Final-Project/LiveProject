@@ -40,6 +40,7 @@ import lombok.extern.log4j.Log4j;
  * 2023.01.24    신기원                	 본인 라이브 목록 조회, video(모든 영상) 조회
  * 2023.01.25    신기원                	 영상 다시보기, 라이브 영상 저장하기
  * 2023.01.26    신기원                	 라이브 영상 저장하기, 등록 후 수정하기
+ * 2023.01.27	신기원		라이브 최신순, 인기순 목록
  * </pre>
  */
 @Controller
@@ -141,9 +142,16 @@ public class LiveController {
 		model.addAttribute("productlist", productlist);
 	}
 	
-	@GetMapping("/live/video")
-	public String VideoList(Model model) {
-		model.addAttribute("lives", LiveService.allVideoList());
+	@GetMapping("/live/recent")
+	public String recentVideoList(Model model) {
+		model.addAttribute("lives", LiveService.recentVideoList());
+		model.addAttribute("liveUrl",liveUrl);
+		return "/live/videoList";
+	}
+	
+	@GetMapping("/live/view")
+	public String viewVideoList(Model model) {
+		model.addAttribute("lives", LiveService.viewVideoList());
 		model.addAttribute("liveUrl",liveUrl);
 		return "/live/videoList";
 	}
