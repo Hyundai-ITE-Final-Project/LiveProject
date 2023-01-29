@@ -28,9 +28,9 @@ public class CustomMember extends User{
 	private static final long serialVersionUID = 1L;
 
 	public CustomMember(String username, String password, Collection<? extends GrantedAuthority> authorities) {
-		
 		super(username, password, authorities);
-		System.out.println(authorities);
+		
+		
 	}
 
 

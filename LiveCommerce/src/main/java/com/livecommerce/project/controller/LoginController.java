@@ -1,16 +1,31 @@
 package com.livecommerce.project.controller;
-
+/**
+ * @author 신기원
+ * @since 2023.01.12
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일              수정자                   수정내용
+ * ----------  --------    ---------------------------
+ * 2023.01.12     신기원              최초 생성, 회원가입, 정보수정, 아이디 찾기
+ * 2023.01.29	  박소은		소셜로그인 
+ * </pre>
+ */
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +38,7 @@ import com.livecommerce.project.auth.SNSLogin;
 import com.livecommerce.project.auth.SnsValue;
 import com.livecommerce.project.security.CustomLoginSuccessHandler;
 import com.livecommerce.project.security.CustomMember;
+import com.livecommerce.project.security.CustomUserDetailsService;
 import com.livecommerce.project.service.MemberService;
 import com.livecommerce.project.vo.MemberVO;
 
@@ -40,22 +56,21 @@ public class LoginController {
 	@Autowired
 	CustomLoginSuccessHandler loginHandler;
 
+	@Resource(name = "customUserDetailsService")
+	protected CustomUserDetailsService userDetailsService;
+
 	@GetMapping("/login")
 	public void login(HttpSession session, Model model) {
+		SNSLogin snsLogin = new SNSLogin(naverSns);
+		model.addAttribute("naver_url", snsLogin.getNaverAuthURL());
 		System.out.println("Session is " + session);
 		log.info("Welcome login! {}");
 
-		SNSLogin snsLogin = new SNSLogin(naverSns);
-		model.addAttribute("naver_url", snsLogin.getNaverAuthURL());
-
 	}
-	
-	
-
+//	작성자: 박소은
 	@RequestMapping(value = "/auth/naver/callback", method = { RequestMethod.GET, RequestMethod.POST })
-	public void snsLoginCallback(Model model, @RequestParam String code, HttpSession session, HttpServletRequest request, HttpServletResponse response,
-			Authentication auth
-			) throws Exception {
+	public String snsLoginCallback(Model model, @RequestParam String code,
+			HttpServletRequest request) throws Exception {
 
 		SNSLogin snsLogin = new SNSLogin(naverSns);
 		MemberVO memberVO = snsLogin.getUserProfile(code);
@@ -63,18 +78,19 @@ public class LoginController {
 
 		if (service.getMemberInfo(memberVO.getMid()) == null) {
 			service.join(memberVO);
-		} else {
-			model.addAttribute("memberVO", memberVO.getMname() + "님, 반갑습니다.");
 		}
-		Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-		authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-		CustomMember customMember = new CustomMember(memberVO.getMid(), memberVO.getMpassword(), authorities);
-		loginHandler.onAuthenticationSuccess(request, response, auth);
+		List<GrantedAuthority> list = new ArrayList<>();
+		list.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-		// 1. code를 이용해서 access_token 받기
-		// 2. access_token을 이용해서 사용자 profile 정보 가져오기
-		// 3. DB에 해당 유저가 존재하는지 체크(naverId 컬럼 추가)
-		// 4. 존재시 강제 로그인
+		
+		SecurityContext sc = SecurityContextHolder.getContext();
+		CustomMember member = new CustomMember(memberVO.getMid(), memberVO.getMpassword(), list);
+		sc.setAuthentication(new UsernamePasswordAuthenticationToken(member, null, list));
+		HttpSession session = request.getSession(true);	
+	
+		session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, sc);
+		
+		return "redirect:/";
 
 	}
 

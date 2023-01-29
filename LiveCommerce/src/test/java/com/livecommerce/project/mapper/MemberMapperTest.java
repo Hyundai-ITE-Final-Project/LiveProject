@@ -84,5 +84,13 @@ public class MemberMapperTest {
 		log.info(id);
 	}
 	
+	@Test
+	public void testUpdateStreamKey() {
+		mapper.findById("gd");
+
+
+		
+	}
+	
 
 }
