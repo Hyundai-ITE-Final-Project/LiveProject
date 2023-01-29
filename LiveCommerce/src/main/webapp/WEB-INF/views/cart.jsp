@@ -183,7 +183,7 @@
 			<form action="/cart/delete" method="post" class="quantity_delete_form">
 			    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<input type="hidden" name="cart_id" class="delete_cartId">
-				<input type="hidden" name="member_mid" value="gd">
+				<input type="hidden" name="member_mid" value="<sec:authentication property="name"/>">
 			</form>		
 			<!-- 주문 form -->
 			<form action="/order/<sec:authentication property="name"/>" method="get" class="order_form">

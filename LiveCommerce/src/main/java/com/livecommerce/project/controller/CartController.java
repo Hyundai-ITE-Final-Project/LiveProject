@@ -1,4 +1,7 @@
 package com.livecommerce.project.controller;
+import java.security.Principal;
+import java.util.List;
+
 /**
  * @author 김민석
  * @since 2023.01.15
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.livecommerce.project.service.CartService;
+import com.livecommerce.project.vo.CartListVO;
 import com.livecommerce.project.vo.CartVO;
 
 @Controller
@@ -44,6 +48,14 @@ public class CartController {
 		int result = cartService.addCart(cart);
 				
 		return result + "";	//addCart 반환타입이 int여서 빈 문자열을 더함
+	}
+	
+	@GetMapping("cart/add2")
+	public String addCartList(CartListVO clv, Principal prin) {
+		List<CartVO> list = clv.getCarts();
+		for(CartVO cart : list) cartService.addCart(cart);
+		
+		return "redirect:/cart/" + prin.getName();
 	}
 	
 	//장바구니 페이지 이동 
