@@ -74,7 +74,7 @@ public class SNSLogin {
 			memberVO.setMgender(resNode.get("gender").asText());
 			memberVO.setMjoindate(currentDate);
 			memberVO.setMpoint(0);
-			memberVO.setMrole("user");
+			memberVO.setMrole("ROLE_USER");
 			memberVO.setMbirth(currentDate);
 			memberVO.setMaddress1("미입력");
 			memberVO.setMaddress2("미입력");
