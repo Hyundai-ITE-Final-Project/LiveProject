@@ -31,11 +31,13 @@
 								</div>
 
 								<div class="pd_content">
-									<c:forEach var="item" items="${list}">
+									<c:forEach var="item" items="${list}" varStatus="status">
 										<div class="pd_content_area">
 
 											<div class="pd_cell_2">
-												<a  class="text_blue">${item.oid}</a>
+												<a  class="text_blue">
+													<span id="oid${status.index}" value = "${item.oid}">${item.oid}</span> 
+												</a>
 											</div>
 											<div class="pd_cell_3">
 												<a class='move'>
@@ -50,16 +52,21 @@
 											</div>
 											<div class="pd_cell_5">
 												<a class='move'>
-													<c:out value="${item.ostate}" />
+													<span id="ostate${status.index}" value="${item.ostate}">${item.ostate}</span>
 												</a>
 											</div>
 											<div class="pd_cell_6">
-												<div>${item.imp_uid}</div>
+												<div><span id="imp_uid${status.index}" value="${item.imp_uid}">${item.imp_uid}</span></div>
 											</div>
 											<div class="pd_cell_7">
 												<button id="cancelbtn" class="btn_orderCancel" value="${status.index}" onClick="setTotalInfo(this)">주문취소</button>
 											</div>
 										</div>
+									<form class="manageOrderForm" action="/manage/ordercancel" method="post">
+	              					  	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+										<input type="hidden" name="oid" value="">
+										<input type="hidden" name="imp_uid" value="">
+									</form>        
 									</c:forEach>
 	
 								        <!-- 검색 영역 -->
@@ -167,6 +174,9 @@ function setTotalInfo(btn){
 	var oimp_uid = $("#imp_uid"+index).text();
 	var oid1 = $("#oid"+index).text();
 	//console.log("index: " + index + " , oid : " + oid);
+	console.log(index);
+	console.log(ostate);
+	console.log(oid1);
 	console.log(oimp_uid);
 	if(ostate == '배송준비') {
 		alert("주문취소 완료되었습니다.");

@@ -36,6 +36,7 @@
 		select distinct(oid) 
  	      from orders
          where member_mid = #{member_mid}
+         order by oid desc
 	</select>
 	
 	<!-- 주문아이디별 주문리스트 -->

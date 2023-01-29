@@ -13,36 +13,9 @@
             <div class="orderList_group">
                 <div>
                     <div class="orderList_list_wrap">
-<%--                         <div class="orderList_list_area">
-	                        <button class="btn_select_day 
-	                            <c:choose>
-	                                <c:when test="${param.before == 1 || empty param.before}">daySel</c:when>
-	                                <c:otherwise>dayNoSel</c:otherwise>
-	                            </c:choose>" type="button">1개월전</button>
-		                     <button class="btn_select_day 
-		                        <c:choose>
-		                            <c:when test="${param.before == 3 || param.before==''}">daySel</c:when>
-		                            <c:otherwise>dayNoSel</c:otherwise>
-		                        </c:choose>" type="button">3개월전</button>
-		                     <button class="btn_select_day 
-		                        <c:choose>
-		                            <c:when test="${param.before == 2022 || param.before==''}">daySel</c:when>
-		                            <c:otherwise>dayNoSel</c:otherwise>
-		                        </c:choose>" type="button">2022</button>
-		                     <button class="btn_select_day 
-		                        <c:choose>
-		                            <c:when test="${param.before == 2021 || param.before==''}">daySel</c:when>
-		                            <c:otherwise>dayNoSel</c:otherwise>
-		                        </c:choose>" type="button">2021</button>
-		                     <button class="btn_select_day 
-		                        <c:choose>
-	                                <c:when test="${param.before == 2020 || param.before==''}">daySel</c:when>
-	                                <c:otherwise>dayNoSel</c:otherwise>
-	                            </c:choose>" type="button">2020</button>
-                        </div> --%>
                         <c:choose>
                         <c:when test="${!empty list1}">
-                      <c:forEach var="list" items="${list1}">
+                      <c:forEach var="list" items="${list1}" varStatus="stay">
                       <div class="my-box">
                          <ul class="orderList_card">
 
@@ -66,26 +39,26 @@
                                         <img src="${olist.img1}" width=90 height=90>
                                     </div>
                                     <div class="goods_info">
-                                        <div id="ostate${status.index}" value="${item.ostate}" class="goods_seller">${olist.ostate}</div>
+                                        <div id="ostate${stay.index}${status.index}" value="${item.ostate}" class="goods_seller">${olist.ostate}</div>
                                         <div class="goods_name">${olist.pname}</div>
                                         <div class="goods_order_info">
                                             <span class="goods_price"> <fmt:formatNumber value="${olist.olprice}" pattern="#,###" />원</span>
                                              <fmt:formatNumber value="${olist.olquantity}" pattern="#,###" />개
-                                             <span id="imp_uid${status.index}" value = "${olist.imp_uid}" style="display:none">${olist.imp_uid}</span> 
-                                             <span id="oid${status.index}" value = "${olist.oid}" style="display:none">${olist.oid}</span> 
+                                             <span id="imp_uid${stay.index}${status.index}" value = "${olist.imp_uid}" style="display:none">${olist.imp_uid}</span> 
+                                             <span id="oid${stay.index}${status.index}" value = "${olist.oid}" style="display:none">${olist.oid}</span> 
                                         </div>
                                     </div>
                                     <div>
                                        <c:choose>
                                         <c:when test="${olist.ostate ne null}">
                                             <c:if test="${olist.ostate eq '배송준비'}">
-                                                <button class="btn_cancel" value="${status.index}" onClick="setTotalInfo(this)">주문 취소</button>
+                                                <button class="btn_cancel" value="${stay.index}${status.index}" onClick="setTotalInfo(this)">주문 취소</button>
                                             </c:if>
                                             <c:if test="${olist.ostate eq '배송중'}">
-                                                <button class="btn_cancel" value="${status.index}" style="display:none" onClick="setTotalInfo(this)">주문 취소</button>
+                                                <button class="btn_cancel" value="${stay.index}${status.index}" style="display:none" onClick="setTotalInfo(this)">주문 취소</button>
                                             </c:if>
                                             <c:if test="${olist.ostate eq '주문취소'}">
-                                                <button class="btn_complete" value="${status.index}" onClick="setTotalInfo(this)">취소완료</button>
+                                                <button class="btn_complete" value="${stay.index}${status.index}" onClick="setTotalInfo(this)">취소완료</button>
                                             </c:if>
                                         </c:when>
                                     </c:choose> 
@@ -128,9 +101,8 @@ function setTotalInfo(btn){
 	console.log(ostate);
 	console.log(oimp_uid);
 	console.log(oid1);
-	//console.log("index: " + index + " , oid : " + oid);
 	console.log(oimp_uid);
-    if(ostate == '배송준비') {
+     if(ostate == '배송준비') {
 		alert("주문취소 완료되었습니다.");
 		$("input[name='imp_uid']").val(oimp_uid);
 		$("input[name='oid']").val(oid1);
@@ -141,6 +113,6 @@ function setTotalInfo(btn){
 	}
 	else {
 		alert("관리자에게 문의주세요.");
-	}    
+	}     
 }
 </script>
