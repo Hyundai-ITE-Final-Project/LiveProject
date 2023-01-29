@@ -27,5 +27,11 @@ $(document).ready(function() {
     $(".ModelTitle_btn").click(function(){
         $(".ItemModal_section").css('display','none');
     })
- 
+    
+    $(".TagItem_wrap2").click(function(){
+        $(".ItemModal_section2").css('display','');
+    })
+        $(".ModelTitle_btn2").click(function(){
+        $(".ItemModal_section2").css('display','none');
+    })
 });

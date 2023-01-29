@@ -93,6 +93,23 @@
                                     </a>
                                 </div>
                             </div>
+                            	<!-- 쿠폰버튼영역 -->
+                             <div class="TagItem_wrap2" >
+                                <div class="TagItem_current">
+                                    <a class="TagItem_link">
+                                        <div class="TagItem_thumbnail">
+                                        </div>
+                                        <div class="TagItem_title">
+                                           <%--  ${replay.livePdVo.getPsTitle()} --%>
+                                        </div>
+                                        <span class="TagItem_price">
+                                            <%-- <span class="TagItem_rate">${sale.psDiscount}%</span> --%>
+                                            <%-- <strong><fmt:formatNumber value="${replay.livePdVo.getPsPrice()}" pattern="#,###" /></strong>원 --%>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            
                             <section class="ItemModal_section" style="display: none;">
                                 <div class="ItemModal_content ItemModal_content_iframe">
                                     <div class="ModelTitle_wrap">
@@ -104,6 +121,19 @@
                                     <iframe class="TagItemIframe_iframe" src="/live/item?ps_index=${replay.psIndex}"></iframe>
                                 </div>
                             </section>
+                            <!-- 쿠폰페이지iframe영역 -->
+                            <section class="ItemModal_section2" style="display: none; z-index:999;">
+                                <div class="ItemModal_content ItemModal_content_iframe">
+                                    <div class="ModelTitle_wrap">
+                                        <%-- <h3 class="ModelTitle_title">${replay.livePdVo.getPsTitle()}</h3> --%>
+                                        <button type="button" class="ModelTitle_btn2">
+                                            <i class="ModelTitle_icon"></i>
+                                        </button>
+                                    </div>
+                                    <iframe class="TagItemIframe_iframe2" src="/coupon/couponpage?ps_index=${replay.psIndex}"></iframe>
+                                </div>
+                            </section>
+                            
                             <div class="CommentWrite_wrap">
                                 <textarea class="CommentWrite_text" id="wa_textarea" placeholder="실시간 채팅에 참여하세요" cols="1" ></textarea>
                                 <button type="submit" class="CommentWrite_btn" id="send_btn" disabled>전송</button>
