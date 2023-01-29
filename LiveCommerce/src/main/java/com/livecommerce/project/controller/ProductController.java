@@ -61,4 +61,15 @@ public class ProductController {
     	model.addAttribute("sc", scategory);
     	return "product/productlist";
     }
+    
+    //등록날짜순으로 조회한 상품리스트
+    @GetMapping("/listDate")
+    public String listDate(Criteria cri, Model model) {
+    	//카테고리 별 상품리스트를 model에 저장
+    	List<ProductVO> list = service.getListWithDate(cri);
+    	model.addAttribute("list", list);
+    	int total = service.getTotal(cri);
+    	model.addAttribute("pageMaker", new PageDTO(cri, total));
+    	return "product/productlist2";
+    }
 }
