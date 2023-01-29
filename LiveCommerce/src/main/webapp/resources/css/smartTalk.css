@@ -1,12 +1,17 @@
 @charset "utf-8"; 
 @import url('./swiper.css'); /* swiper */
 @import url('./stcommon.css'); /* ktalk 공통 스타일 */
-
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
 
 /* layout 
 ------------------------------ */
 /* body {background-color:#e9ebf0;} */
-#smartchat {/*min-height:100%; inner hmtl 병합 */ height:100%; background-color: rgba(245,246,249); color:#000; font-family:'맑은 고딕','Malgun Gothic','돋움',Dotum,'Apple SD Gothic Neo',sans-serif; font-size:14px; line-height:1.5; letter-spacing:-0.05em; margin:0; padding:0; box-sizing:border-box; -webkit-font-smoothing:antialiased;
+#smartchat {/*min-height:100%; inner hmtl 병합 */ height:100%; background-color: rgba(245,246,249); color:#000; font-family: 'Pretendard-Regular'; font-size:14px; line-height:1.5; letter-spacing:-0.05em; margin:0; padding:0; box-sizing:border-box; -webkit-font-smoothing:antialiased;
     -webkit-text-size-adjust:none; -moz-osx-font-smoothing:grayscale; -webkit-overflow-scrolling:touch; -webkit-user-select:none; -khtml-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; -ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; /* 개발자 추가 */overscroll-behavior: contain;/* -webkit-tap-highlight-color:rgba(0, 0, 0, 0); -webkit-tap-highlight-color:transparent; 201016 삭제 */} /* html, body */ 
 #smartchat .wrapper {height:100%;}
 #smartchat .header {position:relative; left:0; top:0; z-index:2; width:100%; height:51px; border:none;}
@@ -47,14 +52,14 @@
 #smartchat .chat-wrap .chat-forms {position:absolute; top:8px; left:22px; right:22px; z-index:2; width:calc(100% - 44px); height:50px; border:1px solid #d3d7e0; border-radius:9px; background-color:#fff;}
 #smartchat .chat-wrap .chat-forms:focus-within {border:1px solid #98a1b3; } /* 20220426 추가 */
 #smartchat .chat-wrap .chat-forms .btn-tips {display:inline-block; vertical-align:top; width:40px; height:100%; padding-top:14px; text-align:center;}
-#smartchat .chat-wrap .chat-forms .btn-tips:before {content:''; display:inline-block; width:20px; height:20px; background-image:url('../images/smartTalk/btn_tips.png'); background-position: 2px center;}
+#smartchat .chat-wrap .chat-forms .btn-tips:before {content:''; display:inline-block; width:20px; height:20px; background-image:url('/resources/img/free-icon-home-846449.png'); background-position: 2px center;}
 #smartchat .chat-wrap .chat-forms #addons.btn-tips:before {background-image:url('../images/smartTalk/btn_addons.png');}
-#smartchat .chat-wrap .chat-forms .inp-chat {display:inline-block; width:calc(100% - 86px); height:44px; line-height:44px; background: #fff; border:none; color:#000; margin-top:2px;margin-bottom:2px;padding:0; vertical-align:top;}
+#smartchat .chat-wrap .chat-forms .inp-chat {display:inline-block; width:calc(100% - 86px); height:44px; line-height:44px; background: #fff; border:none; color:#000; margin-top:2px;margin-bottom:2px;padding:0; padding-left:20px; vertical-align:top;}
 #smartchat .chat-wrap .chat-forms .inp-chat::placeholder {vertical-align:top; line-height:44px;color:#B8B8B8;}
 #smartchat .chat-wrap .chat-forms .inp-chat::-webkit-input-placeholder {vertical-align:top; line-height:44px;color:#B8B8B8;}
 #smartchat .chat-wrap .chat-forms .inp-chat::-ms-input-placeholder {vertical-align:top; line-height:44px;color:#B8B8B8;}
 #smartchat .chat-wrap .chat-forms .inp-chat:-ms-input-placeholder {vertical-align:top; line-height:44px;color:#B8B8B8 !important;}
-#smartchat .chat-wrap .chat-forms .btn-send {position:absolute; right:12px; top:13px; display:inline-block; vertical-align:middle; width:22px; height:22px; background:url('../images/smartTalk/btn_send.png'); background-size:22px auto;} /* 201202 배경색 변경 */
+#smartchat .chat-wrap .chat-forms .btn-send {position:absolute; right:12px; top:13px; display:inline-block; vertical-align:middle; width:22px; height:22px; background:url('/resources/img/send.png'); background-size:22px auto;} /* 201202 배경색 변경 */
 #smartchat .chat-wrap .chat-forms:focus-within .btn-send {background:url('../images/smartTalk/btn_send_active.png'); background-size:22px auto;} /* 20220415 추가 */
 #smartchat .chat-wrap .btn-del {position:absolute; right:10px; top:-40px; display:inline-block; vertical-align:middle; width:29px; height:29px; background-image:url('../images/smartTalk/btn_del.png');}
 #smartchat .chat-wrap .btn-gohome {position:absolute; right:20px; top:-44px; display:inline-block; vertical-align:middle; width:42px; height:42px; border-radius: 50%; background-image:url('../images/smartTalk/btn_gohome.png'); /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); -webkit-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);-moz-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */}

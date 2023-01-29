@@ -38,8 +38,6 @@
     <div class="header">
         <div class="header-inner">
             <h1><span class="logo">아이들(IDLE-AI)봇</span></h1>
-            <button class="btn-login" onclick="toggleHelloWrap()"><em>로그인하기</em></button>
-            <a id="alarm-icon" class="btn-alarm js-alarm"><em>알림 new</em></a>
         </div>
     </div>
     <div class="wrapper">
@@ -51,14 +49,10 @@
                         <div id="intro" class="intro-wrap" style="">
                             <div class="intro-character" style="padding:10px;">
                                 <p>반갑습니다!</p>
-                                <div id="subIntroMsg"
-                                    style="font-size: 14px;font-weight: normal;text-align: center;padding-top: 10px;">
-                                    챗봇입니다.
-                                </div>
                                 <div class="characters" style="margin: 10px auto 0;">
                                     <span class="">
                                         <img
-                                            src="https://ibot.hmall.com/images/20220816/ac4647ab7974497b88181679e4549715.png">
+                                            src="/resources/img/Lovepik_com-401266325-ai-vector-illustration-cartoon-cute-penguin-animal.png">
                                     </span>
                                 </div>
                             </div>
@@ -69,28 +63,28 @@
                                         <li title="내주문 보기">
                                             <a onclick="menulist('orderlist')">
                                                 <span class="img">
-                                                    <img src="https://ibot.hmall.com/images/20220906/dcd6005359724e4581820ab3f254d30a.png"
+                                                    <img src="/resources/img/shopping-cart.png"
                                                         alt="">
                                                 </span>
-                                                <span class="txt">내 쿠폰 보기</span>
+                                                <span class="txt">나의 주문내역</span>
                                             </a>
                                         </li>
                                         <li title="My Coupon">
                                             <a onclick="menulist('couponlist')">
                                                 <span class="img">
-                                                    <img src="https://ibot.hmall.com/images/20220906/94216669d669493aaa293f06cdec9701.png"
+                                                    <img src="/resources/img/coupons.png"
                                                         alt="">
                                                 </span>
-                                                <span class="txt">방송상품 확인</span>
+                                                <span class="txt">나의 쿠폰</span>
                                             </a>
                                         </li>
                                         <li title="자주하는 질문">
                                             <a onclick="menulist('faq')">
                                                 <span class="img">
-                                                    <img src="https://ibot.hmall.com/images/20220906/fd4c7fac4dae48fc9c0a531e073f33ba.png"
+                                                    <img src="/resources/img/faq.png"
                                                         alt="">
                                                 </span>
-                                                <span class="txt">자주하는 질문</span>
+                                                <span class="txt">FAQ</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -117,7 +111,7 @@
             <button type="button" class="btn-gohome" title="홈 버튼" onclick="home();"></button>
             <div class="chat-forms">
                 <form id="f-chat-wrap" method="post" class="forms" onsubmit="return false;" autocomplete="off">
-                    <input type="text" class="inp-chat" id="inp-chat" placeholder="하이(H-AI)봇에 무엇이든 물어보세요!">
+                    <input type="text" class="inp-chat" id="inp-chat" placeholder="무엇이든 물어보세요!">
                     <!-- 메시지 전송 버튼 -->
                     <button type="submit" id="btn-send" class="btn-send" title="전송"></button>
                 </form>
