@@ -273,14 +273,14 @@
 	                                	`
 	                                	<button type="button" class="btn-link is-script is-dynamic-script"
 	                                	 onclick="go_mypage()" style="height:auto;">
-										<span>
+										<span style="width: 70%;">
 										\${result[i].oid}
 											<br>
 											<p style="white-space:initial; line-height:1.2;">
 											\${result[i].pname} 외 \${listcount}건
 											</p>
 										</span>
-										<span>
+										<span style="width: auto; margin-top: 15px; margin-left: 6px;">
 											<img style="width:50px; height:50px;" src=\${result[i].img1}>
 										</span>
 										</button>
@@ -291,14 +291,14 @@
 	                                	`
 	                                	<button type="button" class="btn-link is-script is-dynamic-script"
 	                                	 onclick="go_mypage()" style="height:auto;">
-										<span>
+										<span style="width: 70%;">
 										\${result[i].oid}
 										<br>
 											<p style="white-space:initial; line-height:1.2;">
 											\${result[i].pname}
 											</p>
 										</span>
-											<span>
+											<span style="width: auto; margin-top: 15px; margin-left: 6px;">
 											<img style="width:50px; height:50px;" src=\${result[i].img1}>
 											</span>
 										</button>

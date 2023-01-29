@@ -132,9 +132,21 @@
                 </section>
             </div>
         </div>
+        <div>
+            <button  class="chatbot" title="chatbot"
+			style="position: fixed; bottom: 30px; right: 50px;" rel="nofollow" onfocus='this.blur()'>
+				<img src="/resources/img/free-icon-bot-4712269.png" style="width: 75px; height: 75px; border-radius: 15px;"/>
+			</button>   
+        </div>
     </div>
 </div>
 <script>
+$(function(){
+	var marginLeft = parseInt($(".chatbot").css('margin-left'));
+	$(window).scroll(function(e){
+		$(".chatbot").css("margin-left", marginLeft - $(this).scrollLeft());
+	});
+});
 //라이브 연결
 <c:forEach var="live" items="${lives}" varStatus='st'>
    <c:if test="${live.liveStatus eq 1}">
@@ -162,11 +174,7 @@
 console.log(video);
 </script>
 
-<div id='chatbot'/>
-<button  class="chatbot" title="chatbot"
-	style="display: scroll; position: fixed; bottom: 30px; right: 5px;" rel="nofollow" onfocus='this.blur()'>
-<img src="그림 이미지 주소(URL)" style="width: 25px; height: 25px; border-radius: 15px;"/>
-</button>
+
 <script>
 $(function() {
 	   $(".main1").attr("aria-selected","true");
