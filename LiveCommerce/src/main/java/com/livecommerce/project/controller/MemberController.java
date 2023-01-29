@@ -58,7 +58,6 @@ public class MemberController {
 	public RedirectView changeInfoPost(MemberVO memberVO, Model model) throws Exception {
 		RedirectView redirectView = new RedirectView();
 		int res = memberservice.changeInfo(memberVO);
-		log.info("왜이래");
 		redirectView.setUrl("http://localhost:8080/member/modify/?mid=" + memberVO.getMid() + "&result=" + res);
 		return redirectView;
 	}

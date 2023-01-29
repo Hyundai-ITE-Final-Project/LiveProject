@@ -41,7 +41,7 @@ public class MemberServiceImplTest {
 	@Test
 	public void testjoin() {
 		MemberVO vo = new MemberVO();
-		vo.setMid("4d");
+		vo.setMid("asdasds2");
 		vo.setMpassword("gd");
 		vo.setMname("gd");
 		vo.setMtel("gd");
@@ -49,8 +49,11 @@ public class MemberServiceImplTest {
 		vo.setMemail("gd");
 		vo.setMgender("남");
 		vo.setMrole("ADMIN");
-		vo.setMaddress1("서울시");
+		vo.setMpoint(0);
+		vo.setMjoindate(LocalDate.now());
+		vo.setMaddress1("강남구");
 		vo.setMaddress2("삼성동");
+		vo.setMzipcode("00000");
 		log.info(memberService.join(vo));
 	}
 

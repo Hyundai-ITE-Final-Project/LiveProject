@@ -59,14 +59,11 @@
             <div> 다른 서비스 계정으로 로그인</div>
             <span class="or_bar or_bar_right"></span>
         </div>
-        <div class="login_sns">
-	        <button id="btn_sns" class="btn_sns_na">
-	            <span class="logo_n">N</span>
-	        </button>
-	        <button id="btn_sns" class="btn_sns_ka">
-	            <span class="bubble"></span>
-	        </button>       
-        </div>       
+        <div id="naver_id_login" style="text-align:center"><a href="${naver_url}">
+			<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+			<br>
+
+      
 
 	</div>
 </div>

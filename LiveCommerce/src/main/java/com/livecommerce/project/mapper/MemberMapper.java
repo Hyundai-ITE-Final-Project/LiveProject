@@ -13,6 +13,7 @@ import com.livecommerce.project.vo.MemberVO;
  * 수정일              	수정자                   수정내용
  * ----------  --------    ---------------------------
  * 2023.01.11	신기원		최초 생성, 정보조회, 로그인, 정보 수정
+ * 2023.01.29       박소은		스트리밍 키 조회 및 수정
  * </pre>
  */
 @Mapper
@@ -35,4 +36,11 @@ public interface MemberMapper {
 	
 	/* 주문자 주소 정보 */
 	public MemberVO getMemberInfo(String mid);
+	
+	
+	/* 스트리밍 키 조회 */
+	public String getStreamKey(String mid);
+	
+	/* 스트리밍 키 변경 */
+	public int updateStreamKey(MemberVO memberVO); 
 }
