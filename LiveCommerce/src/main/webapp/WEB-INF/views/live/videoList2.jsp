@@ -85,7 +85,7 @@
 </main>
 <script>
 $(function() {
-	   $(".main2").attr("aria-selected","true");
+	   $(".main3").attr("aria-selected","true");
 	   
 	});
 //라이브 연결

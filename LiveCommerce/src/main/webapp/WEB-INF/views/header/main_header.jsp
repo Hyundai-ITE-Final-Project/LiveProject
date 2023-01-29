@@ -419,11 +419,28 @@
 		    		</ul>
 	    		</li>
 	    	</ul>
-	        <a href="/" class="main_tab main1" role="tab" aria-selected="true">홈</a>
+	        <a href="/" class="main_tab main1" role="tab" aria-selected="false">홈</a>
 	        <a href="/live/view" role="tab" class="main_tab main2" aria-selected="false">인기라이브</a>
 	        <a href="/live/recent" role="tab" class="main_tab main3" aria-selected="false">최신라이브</a>
-	        <a href="/shop?category=101" role="tab" class="main_tab main4" aria-selected="false">신상품</a>
+	        <a href="/product/listDate" role="tab" class="main_tab main4" aria-selected="false">신상품</a>
 	        <a href="/coupon/couponpage" role="tab" class="main_tab main5" aria-selected="false">이벤트</a>
+	        
+	        <script>
+	        	function maintab(value){
+	        		if(value == 'one'){
+	        			$(".main1").attr("aria-selected","true");
+	        		}
+	        		else if(value == 'two'){
+	        			$(".main2").attr("aria-selected","true");
+	        		}
+	        		else if(value == 'three'){
+	        			$(".main3").attr("aria-selected","true");
+	        		}
+	        		else{
+	        			$(".main4").attr("aria-selected","true");
+	        		}
+	        	}
+	        </script>
 	    </div>
 	</div>
 </header>

@@ -21,8 +21,8 @@ import com.livecommerce.project.vo.ProductVO;
 
 public interface ProductMapper {
 	// 김나형 작성
-    //전체상품
-	public List<ProductVO> getListWithPaging(Criteria cri);
+    //상품 등록순으로 정렬
+	public List<ProductVO> getListWithDate(Criteria cri);
     //전체상품갯수
 	public int getTotalCount(Criteria cri);
 	// 상품 상세조회
