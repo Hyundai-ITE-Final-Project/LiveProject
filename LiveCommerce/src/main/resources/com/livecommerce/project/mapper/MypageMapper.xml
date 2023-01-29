@@ -30,4 +30,24 @@
 	<update id="ordercancelState">
 		  update orders set ostate = '주문취소' where oid = #{oid}
 	</update>
+	
+	<!-- 멤버아이디별 중복처리한 oid값들 -->
+	<select id="getOid" resultType="String">
+		select distinct(oid) 
+ 	      from orders
+         where member_mid = #{member_mid}
+	</select>
+	
+	<!-- 주문아이디별 주문리스트 -->
+    <select id="getOidorderList" resultType="com.livecommerce.project.vo.OrderVO">
+	select o.oid, p.img1, p.pname, ol.olprice, ol.olquantity, o.odate, o.ostate, o.imp_uid
+ 	  from orders o
+         , orderlist ol
+         , product p
+     where o.oid = ol.oid
+       and member_mid = #{member_mid}
+       and o.oid = #{oid}
+       and ol.pid = p.pid
+     order by odate desc
+	</select>	
   </mapper>

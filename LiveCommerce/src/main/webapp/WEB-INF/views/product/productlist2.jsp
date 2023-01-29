@@ -128,6 +128,10 @@
     </main>
 </body>
 <script>
+$(function() {
+	   $(".main4").attr("aria-selected","true");
+	   
+	});
 $(document).ready(function() {
 		// 김나형 productDetail 페이지로 이동
 		const products = document.querySelectorAll(".videoCard_wrap")

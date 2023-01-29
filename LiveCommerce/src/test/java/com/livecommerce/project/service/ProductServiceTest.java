@@ -32,7 +32,7 @@ public class ProductServiceTest {
 	
 	@Test
 	public void testGetList() {
-		service.getList(new Criteria(2,10)).forEach(product -> log.info(product));
+		service.getListWithDate(new Criteria(2,10)).forEach(product -> log.info(product));
 	}
 	
 	@Test

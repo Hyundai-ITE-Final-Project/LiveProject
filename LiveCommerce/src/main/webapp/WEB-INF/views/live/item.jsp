@@ -2,6 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"    prefix="c" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>   
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/video.css">
 <!DOCTYPE html>
@@ -85,6 +86,78 @@
 			$(".sum_item_amount").html(total.format());
 			$(".sum_count").html(cnt);
 	    }
+    
+		// 주문 페이지 이동 
+		 function direct_buy(){
+ 			let form_contents ='';
+			let orderNumber = 0;
+			
+			$("div[name=productlist]").each(function(index, element){
+				
+				if($(element).find(".iChek").is(":checked") === true){	//체크여부
+					
+					let pid = $(element).find(".individual_product_pid_input").val();
+				/* 	let pcount = $(element).find(".individual_p_quantity_input").val(); */
+					var pcount = $(this).find("input[name='quantity']").val();
+					let pid_input = "<input name='orders[" + orderNumber + "].pid' type='hidden' value='" + pid + "'>";
+					form_contents += pid_input;
+					
+					let pcount_input = "<input name='orders[" + orderNumber + "].pcount' type='hidden' value='" + pcount + "'>";
+					form_contents += pcount_input;
+					
+					orderNumber += 1;
+					
+				}
+			});	
+
+			$(".order_form").html(form_contents);
+			console.log(form_contents);
+			if(!form_contents) {
+				alert('상품을 확인해주세요.');
+			
+			}
+	 		if(form_contents) $(".order_form").submit(); 
+			
+		}
+		
+		// 장바구니에 담기
+		 function addCart(){
+				console.log("장바구니에 담기");
+	 			let form_contents1 ='';
+				let cartNumber = 0;
+				
+				$("div[name=productlist]").each(function(index, element){
+					
+					if($(element).find(".iChek").is(":checked") === true){	//체크여부
+						
+						let pid1 = $(element).find(".individual_product_pid_input").val();
+						let pcount1 = $(this).find("input[name='quantity']").val();
+						let member_mid1 = $(element).find(".individual_member_mid_input").val();
+						
+							let pid_input = "<input name='carts[" + cartNumber + "].product_pid' type='hidden' value='" + pid1 + "'>";
+							form_contents1 += pid_input;
+							
+							let pcount_input = "<input name='carts[" + cartNumber + "].p_quantity' type='hidden' value='" + pcount1 + "'>";
+							form_contents1 += pcount_input;
+							
+							let mid_input = "<input name='carts[" + cartNumber + "].member_mid' type='hidden' value='" + member_mid1 + "'>";
+							form_contents1 += mid_input;
+							
+							cartNumber += 1;
+						
+					}
+				});	
+
+				$(".cart_form").html(form_contents1);
+				console.log(form_contents1);
+				if(!form_contents1) {
+					alert('상품을 확인해주세요.');
+				
+				}
+		 		if(form_contents1) $(".cart_form").submit();  
+			
+		} 
+
 	</script>
 	<style>
 		.fix_wrap{
@@ -106,6 +179,9 @@
 				                        <div>
 				                            <input type="checkbox" id="addPdVal" class="iChek" data-pk="${pd.pid}" name="productlist"
 				                                value="${pd.pid}">
+				                                <input type="hidden" class="individual_product_pid_input" value="${pd.pid}">
+				                                <input type="hidden" class="individual_p_quantity_input" value="2">
+				                                <input type="hidden" class="individual_member_mid_input" value="<sec:authentication property="name"/>">
 				                        </div>
 				                    </li>
 				                    <li>
@@ -154,12 +230,20 @@
 	            <button type="button" class="btn_buy fix_btn">구매하기</button>
 	        </div>
 	        <div class="fix_a_btn_area" style="">
-	            <button type="button" class="btn_bk fix_btn">장바구니</button>
+	            <button type="button" class="btn_bk fix_btn" onClick="addCart()">장바구니</button>
 	        </div>
 	        <div class="fix_a_btn_area" style="">
-	            <button type="button" class="btn_buyPage btn_buy fix_btn">바로구매</button>
+	            <button type="button" class="btn_buyPage btn_buy fix_btn" onClick="direct_buy()">바로구매</button>
 	        </div>
 	    </div>
 	</div>
+				<!-- 바로구매/주문 form -->
+			<form action="/order/<sec:authentication property="name"/>" method="get" class="order_form" target = "parent">
+
+			</form>
+			<!-- 장바구니 form -->
+			<form action="/cart/add2" method="get" class="cart_form" target = "parent">
+
+			</form>			 		
 </body>
 </html>

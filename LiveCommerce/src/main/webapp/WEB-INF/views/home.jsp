@@ -168,6 +168,10 @@ console.log(video);
 <img src="그림 이미지 주소(URL)" style="width: 25px; height: 25px; border-radius: 15px;"/>
 </button>
 <script>
+$(function() {
+	   $(".main1").attr("aria-selected","true");
+	   
+	});
 	$(document).ready(function() {
 		$('.chatbot').on("click",function(e){
 			e.preventDefault();

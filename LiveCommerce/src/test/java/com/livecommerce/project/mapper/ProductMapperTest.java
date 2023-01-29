@@ -38,7 +38,7 @@ public class ProductMapperTest {
 		Criteria cri = new Criteria();
 		cri.setPageNum(3);
 		cri.setAmount(10);
-		List<ProductVO> list = mapper.getListWithPaging(cri);
+		List<ProductVO> list = mapper.getListWithDate(cri);
 		list.forEach(product -> log.info(product));
 	}
 	

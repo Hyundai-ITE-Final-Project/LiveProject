@@ -30,9 +30,9 @@ public class ProductServiceImpl implements ProductService{
     private ProductMapper mapper;
     //전체상품
     @Override
-    public List<ProductVO> getList(Criteria cri){
+    public List<ProductVO> getListWithDate(Criteria cri){
     	log.info("list service 들어옴");
-    	return mapper.getListWithPaging(cri);
+    	return mapper.getListWithDate(cri);
     }
     //전체상품갯수
     @Override

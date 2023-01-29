@@ -16,7 +16,7 @@ import com.livecommerce.project.vo.ProductVO;
 
 public interface ProductService {
 	// 전체상품
-	public List<ProductVO> getList(Criteria cri);
+	public List<ProductVO> getListWithDate(Criteria cri);
 	// 전체상품갯수
 	public int getTotal(Criteria cri);
 	// 상품 상세보기

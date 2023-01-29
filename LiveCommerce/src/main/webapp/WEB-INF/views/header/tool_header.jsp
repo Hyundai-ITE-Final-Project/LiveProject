@@ -41,11 +41,13 @@
 			<div class="admin_content">
 			<div class="admin_menulist">
 				<div class="admin_tablist">
-					<a href="/manage/live" class="live_tab" aria-selected="false">라이브관리</a> 
-					<a href="/manage/products" class="products_tab" aria-selected="false">상품관리</a> 
-					<a href="/manage/productpost" class="productpost_tab" aria-selected="false">판매글관리</a> 
-					<a href="/manage/orderList" class="order_tab" aria-selected="false">판매내역 관리</a> 					
-					<a href="/manage/setting?mid=${user.username}" class="setting_tab"aria-selected="false">설정</a>
+
+					<a href="/manage/live" onclick="maintab(one)" class="live_tab" aria-selected="false">라이브관리</a> 
+					<a href="/manage/products" onclick="maintab(two)" class="products_tab" aria-selected="false">상품관리</a> 
+					<a href="/manage/productpost" onclick="maintab(three)" class="productpost_tab" aria-selected="false">판매글관리</a> 
+					<a href="/manage/orderList" onclick="maintab(four)" class="order_tab" aria-selected="false">판매내역 관리</a> 					
+					<a href="/manage/setting?mid=${user.username}" onclick="maintab(five)" class="setting_tab"aria-selected="false">설정</a>
+
 				</div>
 			</div>
 		</div>

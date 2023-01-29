@@ -146,7 +146,7 @@ public class LiveController {
 	public String recentVideoList(Model model) {
 		model.addAttribute("lives", LiveService.recentVideoList());
 		model.addAttribute("liveUrl",liveUrl);
-		return "/live/videoList";
+		return "/live/videoList2";
 	}
 	
 	@GetMapping("/live/view")
