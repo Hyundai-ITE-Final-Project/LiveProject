@@ -103,6 +103,20 @@
                                     </a>
                                 </div>
                             </div>
+                            <!-- 쿠폰버튼영역 -->
+                             <div class="TagItem_wrap2" >
+                                <div class="TagItem_current">
+                                    <a class="TagItem_link">
+                                        <div class="TagItem_thumbnail">
+                                        </div>
+                                        <div class="TagItem_title">
+                                        </div>
+                                        <span class="TagItem_price">
+                                       </span>
+                                    </a>
+                                </div>
+                            </div>
+                            
                             <!-- 방송중인 아이템 리스트 -->
                             <section class="ItemModal_section" style="display: none;">
                                 <div class="ItemModal_content ItemModal_content_iframe">
@@ -115,6 +129,18 @@
                                     <iframe class="TagItemIframe_iframe" src="/live/item?ps_index=${live.psIndex}"></iframe>
                                 </div>
                             </section>
+                            <!-- 쿠폰페이지iframe영역 -->
+                            <section class="ItemModal_section2" style="display: none; z-index:999;">
+                                <div class="ItemModal_content ItemModal_content_iframe">
+                                    <div class="ModelTitle_wrap">
+                                        <button type="button" class="ModelTitle_btn2">
+                                            <i class="ModelTitle_icon"></i>
+                                        </button>
+                                    </div>
+                                    <iframe class="TagItemIframe_iframe2" src="/coupon/couponpage?ps_index=${replay.psIndex}"></iframe>
+                                </div>
+                            </section>
+                            
                             <button type="button" class="CommentBtn_wrap" aria-hidden="false">
                                 <span class="CommentBtn_inner">
                                     <i class="header_icon CommentBtn_icon"></i>
