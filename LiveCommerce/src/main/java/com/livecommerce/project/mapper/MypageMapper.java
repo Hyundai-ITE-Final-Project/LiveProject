@@ -19,4 +19,7 @@ public interface MypageMapper {
 	public List<String> getOid(@Param("member_mid") String member_mid);
 	/* 주문아이디별 주문리스트 */
 	public List<OrderVO> getOidorderList(@Param("oid") String oid, @Param("member_mid") String member_mid);
+	/* 주문취소시 포인트 회수 */
+	public int orderCancelReturnPoint(@Param("oid") String oid, @Param("mid") String mid);
+	
 }
