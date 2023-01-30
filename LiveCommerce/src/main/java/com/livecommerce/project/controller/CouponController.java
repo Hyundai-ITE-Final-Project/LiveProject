@@ -35,7 +35,14 @@ public class CouponController {
 	@GetMapping("/coupon/couponpage")
 	public String couponPageGet(Model model) {
 		
-		return "/coupon";
+		return "/coupon/coupon";
+	}
+	
+	//이벤트쿠폰페이지 이동
+		@GetMapping("/coupon/Eventcouponpage")
+		public String EventcouponPageGet() {
+			
+			return "/coupon/event_coupon";
 	}
 	
 	//쿠폰 발급

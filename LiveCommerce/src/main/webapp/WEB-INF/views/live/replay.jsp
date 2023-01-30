@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="Comments_wrap" id="Comments_wrap">
-                                <div class="Comments_inner">
+                                <div clas="Comments_inner">
                                     <div class="Comments_animation_area"></div>
                                     <div class="Comments_animation_area bottom_ani"></div>
                                 </div>
@@ -82,6 +82,7 @@
                                 <div class="TagItem_current">
                                     <a class="TagItem_link">
                                         <div class="TagItem_thumbnail">
+                                            <img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/live/shopstore.png">
                                         </div>
                                         <div class="TagItem_title">
                                            <%--  ${replay.livePdVo.getPsTitle()} --%>
@@ -98,6 +99,7 @@
                                 <div class="TagItem_current">
                                     <a class="TagItem_link">
                                         <div class="TagItem_thumbnail">
+                                        	<img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/live/livecoupon.png">
                                         </div>
                                         <div class="TagItem_title">
                                            <%--  ${replay.livePdVo.getPsTitle()} --%>
@@ -122,7 +124,7 @@
                                 </div>
                             </section>
                             <!-- 쿠폰페이지iframe영역 -->
-                            <section class="ItemModal_section2" style="display: none; z-index:999;">
+                            <section class="ItemModal_section2" style="display: none;">
                                 <div class="ItemModal_content ItemModal_content_iframe">
                                     <div class="ModelTitle_wrap">
                                         <%-- <h3 class="ModelTitle_title">${replay.livePdVo.getPsTitle()}</h3> --%>
@@ -130,7 +132,7 @@
                                             <i class="ModelTitle_icon"></i>
                                         </button>
                                     </div>
-                                    <iframe class="TagItemIframe_iframe2" src="/coupon/couponpage?ps_index=${replay.psIndex}"></iframe>
+                                    <iframe class="TagItemIframe_iframe2" src="/coupon/couponpage?ps_index=${replay.psIndex}" scrolling="hidden"></iframe>
                                 </div>
                             </section>
                             
