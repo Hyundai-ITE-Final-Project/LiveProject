@@ -11,7 +11,6 @@
 <div id="bodyWrap" class="products">
     <!--title-->
     <h3 class="cnts_title">
-        <span> 이벤트 </span>
     </h3>
     <!--//title-->
     <div class="sub_container">
@@ -109,7 +108,6 @@
             </div>
         </div>
         <div class="btn_list_wrap">
-            <a href="/ko/magazine/events" class="btn_list">목록</a>
         </div>
     </div>
 </div>
@@ -125,7 +123,6 @@
 <div id="bodyWrap" class="products">
     <!--title-->
     <h3 class="cnts_title">
-        <span> 이벤트 </span>
     </h3>
     <!--//title-->
     <div class="sub_container">
@@ -217,7 +214,6 @@
             </div>
         </div>
         <div class="btn_list_wrap">
-            <a href="/ko/magazine/events" class="btn_list">목록</a>
         </div>
     </div>
 </div>
