@@ -35,9 +35,10 @@ import com.livecommerce.project.vo.VideoVO;
  * 2023.01.21     신기원              라이브 등록
  * 2023.01.22	    김나형		    영상별 상품리스트
  * 2023.01.24	    신기원		  Video(모든 영상) 목록 조회
- * 2023.01.25	    신기원		   영상 다시보기
- * 2023.01.26	    신기원		  스케줄러로 라이브 상태 변경, 라이브 영상 저장하기, 라이브 수정하기
- * 2023.01.27	신기원		라이브 최신순, 인기순 목록
+ * 2023.01.25	    신기원		    영상 다시보기
+ * 2023.01.26	    신기원		    스케줄러로 라이브 상태 변경, 라이브 영상 저장하기, 라이브 수정하기
+ * 2023.01.27	    신기원		    라이브 최신순, 인기순 목록
+ * 2023.01.30	    신기원		    라이브 예고
  * </pre>
  */
 
@@ -53,6 +54,11 @@ public class LiveServiceImpl implements LiveService{
 	@Override
 	public List<LiveVO> liveList() {
 		return liveMapper.liveList();
+	}
+	
+	@Override
+	public List<LiveVO> trailerList(){
+		return liveMapper.trailerList();
 	}
 
 

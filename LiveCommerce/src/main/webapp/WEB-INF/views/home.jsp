@@ -68,7 +68,6 @@
                     </div>
                     <div class="livenow_tab_wrap">
                         <c:if test="${empty lives}">
-                        <c:out value="${lives}"></c:out>
                             <h2 class="live_non_text">
                             
                                 현재 라이브 중인 상품이 없습니다.
@@ -129,6 +128,43 @@
                 </section>
                 <section id="liveTrailer" class="main_section">
                     <div class="section_title">📆라이브 예고</div>
+                    <ul class="LiveList_list LiveList_pc_twoColumn">
+                        <c:forEach var="trailer" items="${trailers}">
+                        <li class="LiveList_item" data-id>
+                            <div class="LiveList_itembox">
+                                <div class="LiveList_inner">
+                                        <div class="LiveItem_airtime">
+                                        <time datetime="">
+                                                
+                                                <span class="LiveItem_day">
+	                                                <fmt:parseDate value="${trailer.liveStartTime}" var="startDateTime" pattern="yy-MM-dd HH:mm" />
+	                                                <fmt:formatDate value="${startDateTime}" pattern="MM월dd일" />
+                                                </span>
+                                                <fmt:formatDate value="${startDateTime}" var="starttime" pattern="HH:mm" />
+                                                <span class="LiveItem_time">${starttime}</span>
+                                            </time>
+	                                        <%-- <span class="LiveItem_day">
+		                                         <fmt:parseDate value="${trailer.liveStartTime}" var="startDate" pattern="yy-mm-dd HH:mm"/>
+		                                         <fmt:formatDate value="${startDate}" var="trailTime" pattern="MM월dd일  HH:mm" />
+		                                         <fmt:formatDate value="${startDate}" pattern="MM월dd일 " />
+		                                         
+											</span>
+	                                        
+	                                        <span class="LiveItem_time">
+	                                        	<fmt:formatDate value="${startDate}" pattern="HH:mm" />
+	                                        </span> --%>
+                                        </div>
+                                        <div class="LiveItem_thumbnail">
+                                            <div class="video_container">
+                                                <img class="video_container_img" src="/resources/img/chun.jpg" draggable="false">
+                                            </div>
+                                        </div>
+                                        
+                                </div>
+                            </div>
+                        </li>
+                       </c:forEach>
+                    </ul>
                 </section>
             </div>
         </div>

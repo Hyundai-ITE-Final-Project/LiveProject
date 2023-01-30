@@ -56,6 +56,13 @@
 		and li.live_status = '1'
     </select>
     
+    <select id="trailerList" resultMap="LiveMap">
+    SELECT  LI.*
+		    FROM LIVE LI 
+  <![CDATA[WHERE TO_CHAR(LI.LIVE_START_TIME,'YY-MM-DD HH24:MI') > TO_CHAR(CURRENT_DATE,'YY-MM-DD HH24:MI')]]>
+           ORDER BY LI.LIVE_STARTDAY,LI.LIVE_START_TIME 
+    </select>
+    
     <select id="getLiveInfo" parameterType="String" resultMap="LiveMap">
         /*LiveMapper.getLiveInfo*/
 		SELECT       
