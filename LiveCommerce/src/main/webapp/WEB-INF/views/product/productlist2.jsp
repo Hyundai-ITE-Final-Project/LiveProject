@@ -102,21 +102,21 @@
 							<c:if test="${pageMaker.prev}">
 								<!-- 이전 버튼 -->
 								<a class="arrow prev"
-									href="/product/listCategory?lcategory=${lc}&scategory=${sc}&pageNum=${pageMaker.startPage -1}"></a>
+									href="/product/listDate?pageNum=${pageMaker.startPage -1}"></a>
 							</c:if>
 						
 							<!-- 1~10 버튼 -->
 							<span class="num">
 								<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 									<c:if test="${(pageMaker.startPage+i) <= pageMaker.endPage}">
-										<a href="/product/listCategory?lcategory=${lc}&scategory=${sc}&pageNum=${num}"
+										<a href="/product/listDate?pageNum=${num}"
 											class="pageBtn" onclick="click(${num})">${num}</a>
 									</c:if>
 								</c:forEach>
 							</span>  
 							<c:if test="${pageMaker.next}">
 								<!-- 다음 버튼 -->
-								<a href="/product/listCategory?lcategory=${lc}&scategory=${sc}&pageNum=${pageMaker.endPage +1}"
+								<a href="/product/listDate?pageNum=${pageMaker.endPage +1}"
 									class="arrow next"></a>
 							</c:if>
 						</div>

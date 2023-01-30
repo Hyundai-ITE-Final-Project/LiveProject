@@ -8,6 +8,12 @@
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <title>오늘의쇼핑</title>
+    <style>
+   		 .post_cell_2{width:190px;}
+   		 .post_cell_4{width:400px; text-align:center;}
+   		 .post_cell_6{width:230px;}
+   		 .post_cell_8{width:230px;}
+    </style>
 </head>
 
 <div id="admin_wrap">
@@ -36,11 +42,8 @@
                                         <input type="checkbox" class="isChek" name="allCheck">
                                     </div>
                                     <div class="post_cell_2">판매글 번호</div>
-                                    <div class="post_cell_3"></div>
                                     <div class="post_cell_4">제목</div>
-                                    <div class="post_cell_5">판매가</div>
                                     <div class="post_cell_6">배송방법</div>
-                                    <div class="post_cell_7">배송비</div>
                                     <div class="post_cell_8">전시 상태</div>
                                 </div>
                             </div>
@@ -56,14 +59,10 @@
                                             <a href="/manage/postmodify?ps_index=${list.ps_index}"
                                                 class="text_blue">${list.ps_index}</a>
                                         </div>
-                                        <div class="post_cell_3">
-                                        </div>
                                         <div class="post_cell_4">
                                             ${list.ps_title}
                                         </div>
-                                        <div class="post_cell_5">
-                                            <fmt:formatNumber value="${list.ps_price}" pattern="#,###" />
-                                        </div>
+
                                         <div class="post_cell_6">
    <%--                                          <c:choose>
                                                 <c:when test="${pds.psDeliveryOpt eq 0}">
@@ -74,11 +73,6 @@
                                                 </c:otherwise>
                                             </c:choose> --%>
                                             	무료배송
-                                        </div>
-                                        <div class="post_cell_7">
-                                            <div>
-                                                <fmt:formatNumber value="0" pattern="#,###" />
-                                            </div>
                                         </div>
                                         <div class="post_cell_8">
 											${list.ps_post_status}

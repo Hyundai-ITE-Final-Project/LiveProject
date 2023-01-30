@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="/resources/css/common.css">
 <div id="order_complate_wrap">
     <div class="order_cp_container">
-        <img class="order_cp_img" src="resources/img/complate_icon.png">
+        <img class="order_cp_img" src="/resources/img/yes.png">
 	    <h1 class="order_cp_title">주문이 <span>완료</span>되었습니다.</h1>
 	    <div class="order_info_area">
 <%-- 	       <ul>
