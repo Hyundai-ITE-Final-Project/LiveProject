@@ -15,4 +15,6 @@ public interface ManageOrderMapper {
 	public int getOrderTotal(Criteria cri);
 	/* 주문 취소 후 상태변경 */
 	public int ordercancelState(@Param("ostate") String ostate, @Param("oid") String oid);
+	/* 주문취소시 포인트 회수 */
+	public int orderCancelReturnPoint(@Param("oid") String oid, @Param("mid") String mid);
 }

@@ -29,4 +29,8 @@ public class ManageOrderServiceImpl implements ManageOrderService{
 	public int ordercancelState(String ostate, String oid) {
 		return manageOrdermapper.ordercancelState(ostate, oid);
 	}
+	@Override
+	public int orderCancelReturnPoint(String oid, String mid) {
+		return manageOrdermapper.orderCancelReturnPoint(oid, mid);
+	}
 }

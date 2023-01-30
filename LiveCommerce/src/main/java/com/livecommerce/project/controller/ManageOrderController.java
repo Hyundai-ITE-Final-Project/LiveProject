@@ -1,5 +1,6 @@
 package com.livecommerce.project.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +35,11 @@ public class ManageOrderController {
 	
 	//주문취소
 	@PostMapping("/manage/ordercancel")
-	public String orderCancel(OrderVO ov) {
+	public String orderCancel(OrderVO ov, Principal principal) {
 		System.out.println("테스트" + ov.getImp_uid());
 		orderService.OrderCancel(ov.getImp_uid());
 		ManageOrderService.ordercancelState(ov.getOstate(), ov.getOid());
+		ManageOrderService.orderCancelReturnPoint(ov.getOid(), principal.getName());
 		return "redirect:/manage/orderList";
 	}
 
