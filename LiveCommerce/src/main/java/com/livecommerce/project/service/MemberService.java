@@ -1,6 +1,12 @@
 package com.livecommerce.project.service;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.livecommerce.project.vo.Criteria;
 import com.livecommerce.project.vo.MemberVO;
+import com.livecommerce.project.vo.OrderVO;
 
 /**
  * @author 신기원
@@ -39,9 +45,13 @@ public interface MemberService {
 	public String updateStreamKey(MemberVO memberVO);
 	
 	
+	/* 전체 멤버 리스트 */
+	public List<MemberVO> getMemberListAll(Criteria cri);
 	
+	/* 멤버 총 인원 */
+	public int getMemberTotal(Criteria cri);
 	
-	
-	
+	/* 멤버 권한변경 */
+	public int updateRole(String mid);
 	
 }

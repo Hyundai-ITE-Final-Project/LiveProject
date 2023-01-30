@@ -12,21 +12,21 @@ import com.livecommerce.project.vo.OrderVO;
 @Service
 public class ManageOrderServiceImpl implements ManageOrderService{
 	@Autowired
-	private ManageOrderMapper manageOrderService;
+	private ManageOrderMapper manageOrdermapper;
 	/* 주문 상품 리스트 */
 	@Override
 	public List<OrderVO> getOrderList(Criteria cri) {
-		return manageOrderService.getOrderList(cri);
+		return manageOrdermapper.getOrderList(cri);
 	}
 	
 	/* 주문 총 갯수 */
 	@Override
 	public int getOrderTotal(Criteria cri) {
-		return manageOrderService.getOrderTotal(cri);
+		return manageOrdermapper.getOrderTotal(cri);
 	}
 
 	@Override
 	public int ordercancelState(String ostate, String oid) {
-		return manageOrderService.ordercancelState(ostate, oid);
+		return manageOrdermapper.ordercancelState(ostate, oid);
 	}
 }

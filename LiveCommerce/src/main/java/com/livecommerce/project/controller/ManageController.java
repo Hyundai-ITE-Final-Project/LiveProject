@@ -12,6 +12,7 @@ package com.livecommerce.project.controller;
  */
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,6 +31,7 @@ import com.livecommerce.project.service.MemberService;
 import com.livecommerce.project.service.ProductService;
 import com.livecommerce.project.vo.Criteria;
 import com.livecommerce.project.vo.MemberVO;
+import com.livecommerce.project.vo.OrderVO;
 import com.livecommerce.project.vo.PageDTO;
 import com.livecommerce.project.vo.ProductVO;
 
@@ -142,6 +144,25 @@ public class ManageController {
 		System.out.println("컨트롤러의 멤버: " + member);
 		memberService.updateStreamKey(member);
 		return "redirect:/manage/setting/?mid=" + member.getMid();
+	}
+	
+	@GetMapping("/role")
+	public String MemberListGET(Criteria cri, Model model) {
+		List<MemberVO> list = memberService.getMemberListAll(cri);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("pageMaker", new PageDTO(cri, memberService.getMemberTotal(cri)));
+		
+		return "/manage/manage_management";
+	}
+	
+	//권한변경(관리자로 업데이트)
+	@PostMapping("/updateMemberRole")
+	public String updateMemberRole(MemberVO mv) {
+		String mid2 = mv.getMid();
+		System.out.println(mid2);
+		memberService.updateRole(mv.getMid());
+		return "redirect:/manage/role";
 	}
 
 }

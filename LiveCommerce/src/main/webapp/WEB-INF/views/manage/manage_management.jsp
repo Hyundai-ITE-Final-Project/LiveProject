@@ -21,12 +21,10 @@
 							<div class="admin_list_body">
 								<div class="admin_list_header">
 									<div class="admin_list_header_viewport">
-										<div class="pd_cell_2">주문번호</div>
-										<div class="pd_cell_3">주문 아이디</div>
-										<div class="pd_cell_4">주문 날짜</div>
-										<div class="pd_cell_5">주문 상태</div>
-										<div class="pd_cell_6">주문 Iamport번호</div>
-										<div class="pd_cell_7">취소</div>
+										<div class="pd_cell_2">회원 아이디</div>
+										<div class="pd_cell_3">멤버 이름</div>
+										<div class="pd_cell_4">멤버 권한</div>
+										<div class="pd_cell_5">권한 변경</div>
 									</div>
 								</div>
 
@@ -36,43 +34,37 @@
 
 											<div class="pd_cell_2">
 												<a  class="text_blue">
-													<span id="oid${status.index}" value = "${item.oid}">${item.oid}</span> 
+													<span id="mid${status.index}" value = "${item.mid}">${item.mid}</span> 
 												</a>
 											</div>
 											<div class="pd_cell_3">
 												<a class='move'>
-													<c:out value="${item.member_mid}" />
+													<c:out value="${item.mname}" />
 												</a>
 
 											</div>
 											<div class="pd_cell_4">
 												<a class='move'>
-													<%-- <c:out value="${item.odate}" /> --%>
-													<fmt:formatDate value="${item.odate}" pattern="yyyy-MM-dd HH:mm:ss" />
+												<c:if test="${item.mrole eq 'ROLE_USER'}">일반회원</c:if>
+		                                        <c:if test="${item.mrole eq 'ROLE_ADMIN'}">관리자</c:if>
+		                                        <c:if test="${item.mrole eq 'USER'}">일반회원</c:if>
+		                                        <c:if test="${item.mrole eq 'ADMIN'}">관리자</c:if>
+		                                     <span id="mrole${status.index}" value = "${item.mrole}" style="display:none">${item.mrole}</span> 								
 												</a>
 											</div>
 											<div class="pd_cell_5">
-												<a class='move'>
-													<span id="ostate${status.index}" value="${item.ostate}">${item.ostate}</span>
-												</a>
-											</div>
-											<div class="pd_cell_6">
-												<div><span id="imp_uid${status.index}" value="${item.imp_uid}">${item.imp_uid}</span></div>
-											</div>
-											<div class="pd_cell_7">
-												<button id="cancelbtn" class="btn_orderCancel" value="${status.index}" onClick="setTotalInfo(this)">주문취소</button>
-											</div>
+												<button id="updatebtn" class="btn_updateRole" value="${status.index}" onClick="setUpdateRole(this)">권한변경</button>
+											</div>		
 										</div>
-									<form class="manageOrderForm" action="/manage/ordercancel" method="post">
+									<form class="updateMrole" action="/manage/updateMemberRole" method="post">
 	              					  	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-										<input type="hidden" name="oid" value="">
-										<input type="hidden" name="imp_uid" value="">
+										<input type="hidden" name="mid" value="">
 									</form>        
 									</c:forEach>
 	
 								        <!-- 검색 영역 -->
                     <div class="search_wrap">
-                    	<form id="searchForm" action="/manage/orderList" method="get">
+                    	<form id="searchForm" action="/manage/role" method="get">
                     		<div class="search_input">
                     			<input type="text" name="keyword" value='<c:out value="${pageMaker.cri.keyword}"></c:out>'>
                     			<input type="hidden" name="pageNum" value='<c:out value="${pageMaker.cri.pageNum }"></c:out>'>
@@ -112,7 +104,7 @@
 								</div>
 					
 	
-	                 <form id="moveForm" action="/manage/orderList" method="get">
+	                 <form id="moveForm" action="/manage/role" method="get">
 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
@@ -126,12 +118,12 @@
 				</div>
 			</div>
 <script>
-$(function() {
+/* $(function() {
 	console.log("테스트 입니다.");
 	
 	$(".order_tab").attr("aria-selected","true");
 	
-})
+}) */
 
 
 let searchForm = $('#searchForm');
@@ -168,31 +160,25 @@ $(".pageMaker_btn a").on("click", function(e){
 	
 });
 
-//주문취소 버튼
-function setTotalInfo(btn){
+//권한수정 버튼
+function setUpdateRole(btn){
 	var index = btn.value;
-	var ostate = $("#ostate"+index).text();
-	var oimp_uid = $("#imp_uid"+index).text();
-	var oid1 = $("#oid"+index).text();
+	var mrole = $("#mrole"+index).text();
+	var mid = $("#mid"+index).text();
 	//console.log("index: " + index + " , oid : " + oid);
 	console.log(index);
-	console.log(ostate);
-	console.log(oid1);
-	console.log(oimp_uid);
-	if(ostate == '배송준비') {
-		alert("주문취소 완료되었습니다.");
-		$("input[name='imp_uid']").val(oimp_uid);
-		$("input[name='oid']").val(oid1);
-    	$(".manageOrderForm").submit();	
+	console.log(mrole);
+	console.log(mid);
+	if(mrole == 'ROLE_USER') {
+	 	alert("등급이 관리자로 변경되었습니다.");
+		$("input[name='mid']").val(mid);
+    	$(".updateMrole").submit();
 	}
-	else if(ostate == '배송중'){
-		alert("주문취소 완료되었습니다.");
-		$("input[name='imp_uid']").val(oimp_uid);
+	else if(mrole == 'ROLE_ADMIN'){
+		alert("관리자 등급입니다.");
+/* 		$("input[name='imp_uid']").val(oimp_uid);
 		$("input[name='oid']").val(oid1);
-    	$(".manageOrderForm").submit();	
-	}
-	else {
-		alert("이미 주문이 취소되었습니다.");
+    	$(".manageOrderForm").submit();	 */
 	}
 }
 </script>
