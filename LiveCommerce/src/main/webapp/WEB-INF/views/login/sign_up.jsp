@@ -107,16 +107,6 @@
             	<input type="radio" name="mgender" autocomplete="off" value="남자" checked>남자    
                 <input type="radio" name="mgender" autocomplete="off" value="여자">여자
             </div>
-            
-            
-            <div class="signup_input_area">
-                <div class="subject">회원유형</div>
-            </div>
-            
-            <div>
-            	<input type="radio" name="mrole" id="userRoleSign" autocomplete="off" value="ROLE_USER" checked>일반유저 
-                <input type="radio" name="mrole" id="userRoleSign" autocomplete="off" value="ROLE_ADMIN">관리자
-            </div>
            
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
          
