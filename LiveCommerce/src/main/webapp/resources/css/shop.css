@@ -517,13 +517,13 @@ hr{background-color: #e7e7e7; width: 100%; height: 1px; border: none;}
 .order_cp_container{padding: 170px 0;text-align: center;min-height: 100vh;}
 .order_cp_title {letter-spacing: 2px;}
 .order_cp_title span{color: #ff2f97;}
-.order_info_area{margin: 40px 0;font-size: 20px;display: inline-block;width: 350px;}
+.order_info_area{margin: 20px 0;font-size: 20px;display: inline-block;width: 350px;}
 .order_cp_li{margin-bottom: 10px;display: flex;align-items: center;color: #424242;}
 .order_cp_li span:nth-child(1){flex: 1 0 0px;line-height: 19px;font-weight: bold;display: flex;align-items: center;}
 .order_cp_li span:nth-child(2){font-weight: bold;}
 .order_cp_btn_area{font-size: 20px;}
 .order_cp_li .pay_price{color: #668679;}
-.order_cp_img,.cart_empty_img{width:200px;margin-bottom: 20px;}
+.order_cp_img,.cart_empty_img{width:200px;margin-bottom: 50px;}
 .order_cp_btn_area .btn_home,.cart_empty .btn_home{padding: 15px;font-weight: 600;background: #668679;color: #fff;border-radius: 5px;}
 
 

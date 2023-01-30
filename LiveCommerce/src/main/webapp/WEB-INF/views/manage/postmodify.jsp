@@ -35,10 +35,6 @@
                                 <input type="text" id="psTitle" name="ps_title" class="layout_input" value="${post.ps_title}" maxlength='30'>
                             </div>
                             <div class="create_layout">
-                                <div class="layout_subject _asterisk">게시물 판매가(최소 금액)</div>
-                                <input type="text" id="psPrice" class="layout_input" name="ps_price" value="${post.ps_price }" maxlength='11' oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1');">
-                            </div>
-                            <div class="create_layout">
 						    	<div class="layout_subject _asterisk">판매 상품 추가</div>
 						    	<div class="layout_memo">상품 체크/체크 해제 후 등록하면 상품이 새로 등록됩니다.</div>
 							    <div>
@@ -113,8 +109,6 @@ $(function() {
 	function go_modify(){
         if(document.formm.ps_title.value ==""){
             alert("제목을 입력해주세요");
-        } else if(document.formm.ps_price.value == ""){
-            alert("가격을 설정해주세요");
         } else if(document.formm.ps_post_status.value ==""){
             alert("판매상태를 설정해주세요");
         } else{
