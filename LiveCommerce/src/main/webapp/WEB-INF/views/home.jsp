@@ -132,9 +132,9 @@
                 </section>
             </div>
         </div>
-        <div>
+                <div>
             <button  class="chatbot" title="chatbot"
-			style="position: fixed; bottom: 30px; right: 50px;" rel="nofollow" onfocus='this.blur()'>
+			style="position: fixed; bottom: 30px; right: 30px;" rel="nofollow" onfocus='this.blur()'>
 				<img src="/resources/img/free-icon-bot-4712269.png" style="width: 75px; height: 75px; border-radius: 15px;"/>
 			</button>   
         </div>
