@@ -82,7 +82,7 @@ div#Comments_wrap::-webkit-scrollbar {display: none;}
 	margin-bottom: env(safe-area-inset-bottom);
     position: relative;
     top: 50px;
-    LEFT: 670px;
+    LEFT: 500px;
     z-index: 40;
     overflow: hidden;
     width: 64px;

@@ -135,7 +135,7 @@
                 <div>
             <button  class="chatbot" title="chatbot"
 			style="position: fixed; bottom: 30px; right: 30px;" rel="nofollow" onfocus='this.blur()'>
-				<img src="/resources/img/free-icon-bot-4712269.png" style="width: 75px; height: 75px; border-radius: 15px;"/>
+				<img src="/resources/img/free-icon-chatbot-2068998.png" style="width: 50px; height: 50px; border-radius: 15px;"/>
 			</button>   
         </div>
     </div>
@@ -192,3 +192,4 @@ $(function() {
 </script>
 </body>
 </html>
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>
