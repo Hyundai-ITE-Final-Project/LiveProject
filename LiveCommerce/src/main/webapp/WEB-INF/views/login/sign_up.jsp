@@ -114,8 +114,8 @@
             </div>
             
             <div>
-            	<input type="radio" name="mrole" id="userRoleSign" autocomplete="off" value="USER" checked>일반유저 
-                <input type="radio" name="mrole" id="userRoleSign" autocomplete="off" value="ADMIN">관리자
+            	<input type="radio" name="mrole" id="userRoleSign" autocomplete="off" value="ROLE_USER" checked>일반유저 
+                <input type="radio" name="mrole" id="userRoleSign" autocomplete="off" value="ROLE_ADMIN">관리자
             </div>
            
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
