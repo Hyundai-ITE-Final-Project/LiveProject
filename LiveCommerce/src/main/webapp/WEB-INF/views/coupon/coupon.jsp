@@ -5,6 +5,8 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %> 
 <link rel="stylesheet" href="/resources/css/coupon.css">
 <script type="text/javascript" src="http://script.gmkt.kr/jQuery/1.8.3/jquery-1.8.3.min.js"></script>
+<style>
+</style>
 <body oncontextmenu="return false">
 
 <!-- bodyWrap -->
@@ -32,7 +34,7 @@
                         <div class="coupon-wrap">
                             <div>
                                      <img class="coupon2" 
-                                     src="${pageContext.request.contextPath}/resources/img/coupon_2000.png"></img>
+                                     src="${pageContext.request.contextPath}/resources/img/coupon/coupon_6400.PNG"></img>
                             </div>
                             <div class="coupon-list">
                                 <div class="coupon coupon01" style="display: none">
@@ -48,7 +50,7 @@
 
                         <div class="btn-coupon-wrap ready">
                             <a href="javascript:;" class="btn-coupon" id = "coupon2000Btn"> 
-                            <img src="http://cdn.thehandsome.com/_ui/desktop/common/images/event/event_7th/evt_main/img_btn_coupon.jpg">
+                            <img class ="btn1" src="http://cdn.thehandsome.com/_ui/desktop/common/images/event/event_7th/evt_main/img_btn_coupon.jpg">
                             </a>
 
                         </div>
@@ -112,13 +114,13 @@
     </div>
 </div>
 <!-- //bodyWrap -->
-<script src="https://static.addtoany.com/menu/locale/ko-KR.js"></script>
-<%-- <%@ include file="/WEB-INF/views/common/footer.jsp" %><%@ page contentType="text/html; charset=UTF-8" %>
+<%-- <script src="https://static.addtoany.com/menu/locale/ko-KR.js"></script>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %><%@ page contentType="text/html; charset=UTF-8" %>
 
-<%@ include file="/WEB-INF/views/common/header.jsp" %> --%>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link rel="stylesheet" href="/resources/css/coupon.css">
-<body oncontextmenu="return false">
+<body oncontextmenu="return false" style=”overflow-x:auto;overflow-y:hidden”> --%>
 <!-- bodyWrap -->
 <div id="bodyWrap" class="products">
     <!--title-->
@@ -147,7 +149,7 @@
                   <!--               <img
                                         src="http://cdn.thehandsome.com/_ui/desktop/common/images/event/event_7th/evt_main/img_main_evt01_coupon.gif"> -->
                                      <img class="coupon1" 
-                                     src="${pageContext.request.contextPath}/resources/img/coupon_1000.png"></img>
+                                     src="${pageContext.request.contextPath}/resources/img/coupon/coupon_6400.PNG"></img>
                             </div>
                             <div class="coupon-list">
                                 <div class="coupon coupon01" style="display: none">
@@ -163,7 +165,7 @@
 
                         <div class="btn-coupon-wrap ready">
          				    <a href="javascript:;" class="btn-coupon" id = "coupon1000Btn"> 
-                            <img src="http://cdn.thehandsome.com/_ui/desktop/common/images/event/event_7th/evt_main/img_btn_coupon.jpg">
+                            <img class="btn2" src="http://cdn.thehandsome.com/_ui/desktop/common/images/event/event_7th/evt_main/img_btn_coupon.jpg">
                             </a>
 
                         </div>

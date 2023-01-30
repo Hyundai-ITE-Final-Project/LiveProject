@@ -2,6 +2,7 @@
 *{
 	margin: 0;
 	padding:0;
+	margin-top: 20px;
 }
 a{
 	text-decoration: none;
@@ -72,12 +73,21 @@ a{
         transform: rotate(45deg);
     }
     .coupon1 {
-    	width: 613px;
-    	height: 238px;
-    }
-        .coupon2 {
-        margin-left: 50px;
     	width: 500px;
-    	height: 200px;
+    	margin-left: 10px;
+    	height: 150px;
     }
+     .coupon2 {
+        margin-left: 10px;
+    	width: 500px;
+    	height: 150px;
+    }
+     .btn1 {
+    	width: 330px;
+    	height: 70px;
+    } 
+    .btn2 {
+    	width: 330px;
+    	height: 70px;
+    } 
     
