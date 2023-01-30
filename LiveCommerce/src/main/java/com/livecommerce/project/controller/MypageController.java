@@ -14,9 +14,12 @@ import com.livecommerce.project.service.MypageService;
 import com.livecommerce.project.service.OrderService;
 import com.livecommerce.project.vo.OrderVO;
 
+import lombok.extern.log4j.Log4j;
+
 
 //
 
+@Log4j
 @Controller
 public class MypageController {
 	@Autowired
@@ -41,14 +44,18 @@ public class MypageController {
 		String member_mid = principal.getName();
 		List<List<OrderVO>> list3 = new ArrayList<>();
 		List<String> list = mypageService.getOid(member_mid);
+		log.info("list 출력 " + list);
+		model.addAttribute("listOid", list);
 		for(int i=0; i<list.size(); i++) {
 			String oid1 = list.get(i);
+			log.info(oid1);
 			List<OrderVO> list2 = mypageService.getOidorderList(oid1, member_mid);
 			list3.add(list2);
+			log.info(i + "번째 리스트 : " + list2);
+			log.info(" 주문번호 : " + oid1);
 		}
-		model.addAttribute("list1", list3);
-		
-
+		log.info("list3 출력 " + list3);
+		model.addAttribute("list3", list3);
 		return "/mypage/mypage_orderlist";
 	}
 	//주문취소
