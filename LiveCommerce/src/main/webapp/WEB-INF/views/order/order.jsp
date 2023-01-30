@@ -110,7 +110,7 @@
 						</div>
 					</div>
 				</div>		
-		
+				<hr>
 						<!-- 포인트 정보 -->
 				<div class="point_div">
 					<div class="point_div_subject">포인트 사용</div>
@@ -122,27 +122,30 @@
 						<tbody>
 							<tr>
 								<th>포인트 사용</th>
-								<td>
-									${memberInfo.mpoint} | <input class="order_point_input" value="0">원 
-									<a class="order_point_input_btn order_point_input_btn_N" data-state="N">모두사용</a>
-									<a class="order_point_input_btn order_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
+								<td style="font-size:16px;">
+									${memberInfo.mpoint}원 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+									<input class="order_point_input" value="0" style="height: 25px; width: 200px; text-align: right; padding: 12px;"> &nbsp; &nbsp;원 
+									 &nbsp; &nbsp;<a class="order_point_input_btn order_point_input_btn_N" data-state="N">모두사용</a>
+									 &nbsp; &nbsp;<a class="order_point_input_btn order_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
 									
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
+				<hr>
 							<!-- 쿠폰 정보 -->
 				<div class="point_div">
 					<div class="point_div_subject">쿠폰 사용</div>
-				        <select title="쿠폰을 선택해 주세요." id="selectVoucher" style="width: 190px;" onchange="selectCoupon(this.value)" >
+				        <select title="쿠폰을 선택해 주세요." id="selectVoucher" style="width: 300px;padding: 7px;border: 1px solid #999;border-radius: 3px;" onchange="selectCoupon(this.value)" >
                               <option value="0">쿠폰을 선택해 주세요.</option>
                             <c:forEach items="${couponList}" var="coupon">
                               <option value="<c:out value="${coupon.cprice}"></c:out>">
                               <c:out value="${coupon.cname}"></c:out></option>
                             </c:forEach>                           
                         </select>
-				</div>		
+				</div>	
+				<hr>	
         <section class="order_total_pay">
             <div class="order_payment_header">
                 <div class="section_order_title">결제금액</div>
