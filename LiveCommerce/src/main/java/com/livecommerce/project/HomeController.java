@@ -44,6 +44,7 @@ public class HomeController {
 		
 		model.addAttribute("url", url);
 		model.addAttribute("lives", liveService.liveList());
+		model.addAttribute("trailers", liveService.trailerList());
 		return "home";
 	}
 	
