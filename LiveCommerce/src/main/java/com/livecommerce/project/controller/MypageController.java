@@ -53,10 +53,11 @@ public class MypageController {
 	}
 	//주문취소
 	@PostMapping("/mypage/ordercancel")
-	public String orderCancel(OrderVO ov) {
+	public String orderCancel(OrderVO ov, Principal principal) {
 		System.out.println("테스트" + ov.getImp_uid());
 		orderService.OrderCancel(ov.getImp_uid());
 		mypageService.ordercancelState(ov.getOstate(), ov.getOid());
+		mypageService.orderCancelReturnPoint(ov.getOid(), principal.getName());
 		return "redirect:/mypage/orderList";
 	}
 }

@@ -42,4 +42,9 @@ public class MypageServiceImpl implements MypageService{
 		return mypageMapper.getOidorderList(oid, member_mid);
 	}
 
+	@Override
+	public int orderCancelReturnPoint(String oid, String mid) {
+		return mypageMapper.orderCancelReturnPoint(oid, mid);
+	}
+
 }

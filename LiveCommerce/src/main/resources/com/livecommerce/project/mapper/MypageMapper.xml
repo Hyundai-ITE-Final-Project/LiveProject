@@ -50,5 +50,16 @@
        and o.oid = #{oid}
        and ol.pid = p.pid
      order by odate desc
-	</select>	
+	</select>
+	
+	<!-- 주문취소에 따른 포인트회수 -->
+	<update id="orderCancelReturnPoint">
+	UPDATE MEMBER 
+       SET MPOINT = 
+               (select mpoint from member where mid=#{mid}) -  
+               (select sum(olquantity * savepoint)
+                  from orderlist
+                 where oid = #{oid}) 
+     WHERE MID = #{mid}
+     </update>	
   </mapper>

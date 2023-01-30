@@ -39,4 +39,17 @@
 	<update id="ordercancelState">
 		  update orders set ostate = '주문취소' where oid = #{oid}
 	</update>
+	
+	<!-- 주문취소에 따른 포인트회수 -->
+	<update id="orderCancelReturnPoint">
+	UPDATE MEMBER 
+       SET MPOINT = 
+                   (
+                    select mpoint from member where mid=#{mid})-(SELECT SUM(SAVEPOINT)
+                      FROM ORDERLIST
+                     WHERE OID = #{oid}
+                     ) 
+     WHERE MID = #{mid}
+  </update>
+	
   </mapper>

@@ -19,4 +19,8 @@ public interface MypageService {
 	public List<String> getOid(String member_mid);
 	
 	public List<OrderVO> getOidorderList(@Param("oid") String oid, @Param("member_mid") String member_mid);
+
+	/* 주문취소시 포인트회수 */
+	public int orderCancelReturnPoint(@Param("oid") String oid, @Param("mid") String mid);
+	
 }
