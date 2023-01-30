@@ -46,6 +46,11 @@ public class LiveMapperTest {
 		log.info(mapper.liveList());
 	}
 	
+	@Test
+	public void testTrailer() {
+		log.info(mapper.trailerList());
+	}
+	
 	//라이브 아이디를 기준으로 정보 출력
 	@Test
 	public void testLiveInfo() {
