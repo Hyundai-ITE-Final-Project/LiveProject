@@ -140,11 +140,10 @@ to {
 											<div class="HomeBanner_banner">
 												<span class="HomeBanner_txt"> <span
 													class="HomeBanner_label">LIVE 예고</span> <strong
-													class="HomeBanner_title">Valentine's Day🧁<br>인기
-														발렌타인 데이 선물
-												</strong> <span class="HomeBanner_date">2월 10일 오후 2시</span>
+													class="HomeBanner_title">현대 IT&E 5기<br>최종 프로젝트 발표
+												</strong> <span class="HomeBanner_date">2월 10일 오후 2시<br>신기원, 김나형, 김민석, 박소은</span>
 												</span> <img style='text-align: right;'
-													src="../../resources/img/banner/live_banner2.png"></img>
+													src="../../resources/img/banner/live_banner3.png"></img>
 											</div>
 										</a>
 									</div>
@@ -162,10 +161,7 @@ to {
 											style="background-color: #efdcec;">
 											<div class="HomeBanner_banner">
 												<span class="HomeBanner_txt"> <span
-													class="HomeBanner_label">LIVE 예고</span> <strong
-													class="HomeBanner_title">Valentine's Day🧁<br>인기
-														발렌타인 데이 선물
-												</strong> <span class="HomeBanner_date">2월 10일 오후 2시</span>
+													class="HomeBanner_label">LIVE 예고</span> <strong class="HomeBanner_title">Valentine's Day🧁<br>인기 초콜릿 선물세트</strong><span class="HomeBanner_date">2월 10일 오후 2시</span>
 												</span> <img style='text-align: right;'
 													src="../../resources/img/banner/live_banner2.png"></img>
 											</div>
@@ -174,56 +170,12 @@ to {
 								</div>
 							</div>
 						</div>
-
-						<div class="mySlides fade">
-							<div class="numbertext">3 / 3</div>
-							<div class="banner_view">
-								<div class="banner_pannel">
-									<div class="HomeBanner_wrap"
-										style="position: absolute; left: 0px;">
-										<a href="#" class="HomeBanner_link link_black"
-											style="background-color: #efdcec;">
-											<div class="HomeBanner_banner">
-												<span class="HomeBanner_txt"> <span
-													class="HomeBanner_label">LIVE 예고</span> <strong
-													class="HomeBanner_title">Valentine's Day🧁<br>인기
-														발렌타인 데이 선물
-												</strong> <span class="HomeBanner_date">2월 10일 오후 2시</span>
-												</span> <img style='text-align: right;'
-													src="../../resources/img/banner/live_banner2.png"></img>
-											</div>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-
 					</div>
 					<br>
 
 					<div style="text-align: center">
-						<span class="dot"></span> <span class="dot"></span> <span
-							class="dot"></span>
+						<span class="dot"></span> <span class="dot"></span></span>
 					</div>
-					<!-- 										<div class="banner_view"> -->
-					<!-- 											<div class="banner_pannel"> -->
-					<!-- 												<div class="HomeBanner_wrap" -->
-					<!-- 													style="position: absolute; left: 0px;"> -->
-					<!-- 													<a href="#" class="HomeBanner_link link_black" -->
-					<!-- 														style="background-color: #efdcec;"> -->
-					<!-- 														<div class="HomeBanner_banner"> -->
-					<!-- 															<span class="HomeBanner_txt"> <span -->
-					<!-- 																class="HomeBanner_label">LIVE 예고</span> <strong -->
-					<!-- 																class="HomeBanner_title">Valentine's Day🧁<br>인기 -->
-					<!-- 																	발렌타인 데이 선물 -->
-					<!-- 															</strong> <span class="HomeBanner_date">2월 10일 오후 2시</span> -->
-					<!-- 															</span> <img style='text-align: right;' -->
-					<!-- 																src="../../resources/img/banner/live_banner2.png"></img> -->
-					<!-- 														</div> -->
-					<!-- 													</a> -->
-					<!-- 												</div> -->
-					<!-- 											</div> -->
-					<!-- 										</div> -->
 
 				</section>
 				<div id="MainContent">
