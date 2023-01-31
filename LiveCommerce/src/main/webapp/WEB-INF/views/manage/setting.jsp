@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
+<%@page  pageEncoding="UTF-8" language="java"%>
 <%@ include file="/WEB-INF/views/header/tool_header.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,15 +13,6 @@
 <div id="admin_wrap">
 
     <div class="admin_content">
-        <div class="admin_menulist">
-            <div class="admin_tablist">
-                <a href="/tool/live"      class="main_tab" aria-selected="false">라이브 관리</a>
-                <a href="/tool/products"  class="main_tab" aria-selected="false">상품 관리</a>
-                <a href="/tool/pdpost" class="main_tab" aria-selected="false">판매글 관리</a>
-                <a href="/tool/sale"     class="main_tab" aria-selected="false">판매 내역 관리</a>
-                <a href="/tool/setting"   class="main_tab" aria-selected="true">설정</a>
-            </div>
-        </div>
         <div class="setting_wrap">
             <div class="setting_area">
                 <div class="setting_content">
@@ -48,3 +39,12 @@
         </div>
     </div>
 </div>
+	<script>
+	$(function() {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+	console.log("테스트 입니다.");
+	
+	$(".setting_tab").attr("aria-selected","true");
+	
+})
+</script>
+<%@ include file="/WEB-INF/views/footer/footer.jsp"%>

@@ -167,4 +167,12 @@
 
 		</div>
 	</div>
+	<script>
+	$(function() {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+	console.log("테스트 입니다.");
+	
+	$(".products_tab").attr("aria-selected","true");
+	
+})
+</script>
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
