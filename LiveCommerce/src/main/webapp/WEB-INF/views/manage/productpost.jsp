@@ -13,6 +13,60 @@
    		 .post_cell_4{width:400px; text-align:center;}
    		 .post_cell_6{width:230px;}
    		 .post_cell_8{width:230px;}
+   		 	.paging {
+		margin-top:50px;
+		margin-bottom:30px;
+		text-align:center;
+		font-size:0;
+	}
+	.paging2 {
+		display:inline-block;
+	}
+	.paging .none {
+		display:none;
+	}
+	.paging .pageBtn {
+		display:block;
+		margin:0 3px;
+		float:left;
+		border:1px solid #e6e6e6;
+		width:28px;
+		height:28px;
+		line-height:28px;
+		text-align:center;
+		background-color:#fff;
+		font-size:13px;
+		color:#999999;
+		text-decoration:none;
+	}
+	.paging .arrow {
+		border:1px solid #ccc;
+		display:block;
+		margin:0 3px;
+		float:left;
+		width:28px;
+		height:28px;
+		line-height:28px;
+		text-align:center;
+		background-color:#fff;
+		font-size:13px;
+		color:#999999;
+		text-decoration:none;
+	}
+
+	.paging .prev {
+		background:#f8f8f8 url('/resources/img/page_prev.png') no-repeat center center;
+		margin-right:7px;
+	}
+	.paging .arrow.next {
+		background:#f8f8f8 url('/resources/img/page_next.png') no-repeat center center;
+		margin-left:7px;
+	}
+ 	.paging .pageBtn.active {
+		background-color:#42454c;
+		color:#fff;
+		border:1px solid #42454c;
+	}
     </style>
 </head>
 
@@ -85,27 +139,26 @@
                 </div>
                 <div style="height:50px"></div>
                 <div class="paging" style="display: block;">
-					<input type="hidden" class="realEnd" value="${pageMaker.realEnd}">
-					<a class="prev2" href="#"></a>
-					<c:if test="${pageMaker.prev}">
-						<!-- 이전 버튼 -->
-						<a class="prev" href="/manage/productpost?pageNum=${pageMaker.startPage - 1}">Previous</a>
-					</c:if>
-	
-					<!-- 1~10 버튼 -->
-					<span class="num">
-						<c:forEach var="num"
-							begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-							<c:if test="${(pageMaker.startPage+i) <= pageMaker.endPage}">
-								<a href="/manage/productpost?pageNum=${num}" class="pageBtn">${num}</a>
-							</c:if>
-						</c:forEach>
-					</span>  
-					<c:if test="${pageMaker.next}">
-						<!-- 다음 버튼 -->
-						<a href="/manage/productpost?pageNum=${pageMaker.endPage +1}" class="next">Next</a>
-					</c:if>
-					<a class="next2" href="#"></a>
+                	<div class="paging2">
+						<input type="hidden" class="realEnd" value="${pageMaker.realEnd}">
+						<c:if test="${pageMaker.prev}">
+							<!-- 이전 버튼 -->
+							<a class="arrow prev" href="/manage/productpost?pageNum=${pageMaker.startPage - 1}"></a>
+						</c:if>
+		
+						<!-- 1~10 버튼 -->
+						<span class="num">
+							<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+								<c:if test="${(pageMaker.startPage+i) <= pageMaker.endPage}">
+									<a href="/manage/productpost?pageNum=${num}" class="pageBtn">${num}</a>
+								</c:if>
+							</c:forEach>
+						</span>  
+						<c:if test="${pageMaker.next}">
+							<!-- 다음 버튼 -->
+							<a href="/manage/productpost?pageNum=${pageMaker.endPage +1}" class="arrow next"></a>
+						</c:if>
+					</div>
 				</div>
             </div>
         </div>
