@@ -116,7 +116,7 @@ div#Comments_wrap::-webkit-scrollbar {display: none;}
     padding: 2px 0 1px;line-height: 1.26;font-size: 12px;font-weight: 600;color: #222;}
 .TagItem_rate{padding-right: 4px;color: #f4361e;}   
 /* video comment btn---------------------------------------------------------------------- */
-.CommentBtn_wrap{bottom: 90px;margin-bottom: env(safe-area-inset-bottom);position: absolute;right: 10px;z-index: 60;padding: 5px;background: none;border: 0;}
+.CommentBtn_wrap{bottom: 200px;margin-bottom: env(safe-area-inset-bottom);position: absolute;right: 10px;z-index: 60;padding: 5px;background: none;border: 0;}
 .CommentBtn_inner{position: relative;display: block;width: 60px;height: 60px;border-radius: 50%;background-color: rgba(0,0,0,0.5);}
 .CommentBtn_icon{width: 30px;height: 30px;position: absolute;top: 15px;left: 16px;background-position: -180px -60px;}
 .CommentWrite_wrap{padding-bottom: env(safe-area-inset-bottom);position: absolute;right: 0;bottom: 0;left: 0;z-index: 80;display: flex;
