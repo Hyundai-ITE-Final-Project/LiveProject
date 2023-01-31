@@ -85,7 +85,7 @@
 											<input type="checkbox" class="isChek">
 										</div>
 										<div class="pd_cell_2">제품번호</div>
-										<div class="pd_cell_3">제품명</div>
+										<div class="pd_cell_3" style='width: 200px;'>제품명</div>
 										<div class="pd_cell_4">판매상태</div>
 										<div class="pd_cell_5">판매가격</div>
 										<div class="pd_cell_6">재고수량</div>
@@ -104,20 +104,17 @@
 											<div class="pd_cell_2">
 												<a href="/manage/get?pid=${products.pid}" class="text_blue">${products.pid}</a>
 											</div>
-											<div class="pd_cell_3">
-												<a class='move' href='<c:out value="${products.pid }"/>'>
+											<div class="pd_cell_3" style='width: 200px;'>
+												<a class='move' href='<c:out value="${products.pname }"/>'>
 													<c:out value="${products.pname }" />
 												</a>
 
 											</div>
 											<div class="pd_cell_4">
 												<c:choose>
-													<c:when test="${products.pstatus eq '0'}">
-		                                      판매중지
-		                                  </c:when>
-													<c:otherwise>
-		                                      판매중
-		                                  </c:otherwise>
+													<c:when test="${products.pstatus eq '0'}">판매중지
+													</c:when>
+													<c:otherwise>판매중</c:otherwise>
 												</c:choose>
 											</div>
 											<div class="pd_cell_5">
