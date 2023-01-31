@@ -155,10 +155,11 @@ ul{
     text-align:center;	
 }
 .search_input input[name='keyword']{
-	padding: 4px 10px;
+	padding: 2px 0px;
     font-size: 15px;
-    height: 20px;
+    /* height: 20px; */
     line-height: 20px;
+    margin-top: 2px;
 }
 .search_btn{
 	height: 32px;
@@ -168,7 +169,9 @@ ul{
     line-height: 20px;
     position: absolute;
     margin-left: 15px;
-    background-color: #c3daf7;
+    background-color: #668679;
+    font-weight: 500;
+    color: white;
 }
 
 	/* 페이지 버튼 인터페이스 */

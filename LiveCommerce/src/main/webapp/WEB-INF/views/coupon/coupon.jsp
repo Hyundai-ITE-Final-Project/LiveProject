@@ -49,9 +49,13 @@
 
 
                         <div class="btn-coupon-wrap ready">
-                            <a href="javascript:;" class="btn-coupon" id = "coupon2000Btn"> 
+       <!--                      <a href="javascript:;" class="btn-coupon" id = "coupon2000Btn"> 
                             <img class ="btn1" src="http://cdn.thehandsome.com/_ui/desktop/common/images/event/event_7th/evt_main/img_btn_coupon.jpg">
-                            </a>
+                            </a> -->
+                              <button class="btn-coupon" 
+                                id="coupon2000Btn" onclick="">
+                                <p>쿠폰 발급</p>
+                            </button>
 
                         </div>
                         <script>
@@ -164,10 +168,10 @@
 
 
                         <div class="btn-coupon-wrap ready">
-         				    <a href="javascript:;" class="btn-coupon" id = "coupon1000Btn"> 
-                            <img class="btn2" src="http://cdn.thehandsome.com/_ui/desktop/common/images/event/event_7th/evt_main/img_btn_coupon.jpg">
-                            </a>
-
+         				    <button class="btn-coupon" 
+                                id="coupon1000Btn" onclick="">
+                                <p>쿠폰 발급</p>
+                            </button>
                         </div>
                      <script>      
                         let ccode2 = '<sec:authentication property="name"/>' + "_" + year + month + "p1000";

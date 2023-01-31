@@ -2,8 +2,9 @@
 *{
 	margin: 0;
 	padding:0;
-	margin-top: 20px;
 }
+
+
 a{
 	text-decoration: none;
 }
@@ -48,8 +49,7 @@ a{
     }
     .evt-7th-main .evt7th-main-event01 .btn-coupon-wrap {
         position: relative;
-        width: 360px;
-        margin: 60px auto 0;
+
     }
     .evt-7th-main .evt7th-main-event01 .btn-coupon-wrap .btn-coupon {
         display: block;
@@ -73,21 +73,37 @@ a{
         transform: rotate(45deg);
     }
     .coupon1 {
-    	width: 500px;
-    	margin-left: 10px;
-    	height: 150px;
+    	margin-left: 60px;
+    	width: 443px;
+    	height: 110px;
     }
      .coupon2 {
-        margin-left: 10px;
-    	width: 500px;
-    	height: 150px;
+        margin-top: 22px;
+        margin-left: 60px;
+    	width: 443px;
+    	height: 110px;
     }
      .btn1 {
-    	width: 330px;
-    	height: 70px;
+    	width: 300px;
+    	height: 60px;
     } 
     .btn2 {
-    	width: 330px;
-    	height: 70px;
+    	width: 300px;
+    	height: 60px;
     } 
+    
+.btn-coupon {
+	border: none;
+    display: block;
+    background-color: #668679;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    width: 126px;
+    height: 40px;
+    margin-left: 214px;
+    margin-top: 25px;
+}
     
