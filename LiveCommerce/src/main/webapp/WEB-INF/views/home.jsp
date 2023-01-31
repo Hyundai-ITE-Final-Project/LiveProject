@@ -267,33 +267,32 @@ to {
 	                                        <span class="LiveItem_time">
 	                                        	<fmt:formatDate value="${startDate}" pattern="HH:mm" />
 	                                        </span> --%>
-											</div>
-											<div class="LiveItem_thumbnail">
-												<div class="video_container">
-													<img class="video_container_img"
-														src="/resources/img/chun.jpg" draggable="false">
-												</div>
-											</div>
 
-										</div>
-									</div>
-								</li>
-							</c:forEach>
-						</ul>
-					</section>
-				</div>
-			</div>
-			<div>
-				<button class="chatbot" title="chatbot"
-					style="position: fixed; bottom: 30px; right: 30px;" rel="nofollow"
-					onfocus='this.blur()'>
-					<img src="/resources/img/free-icon-chatbot-2068998.png"
-						style="width: 50px; height: 50px; border-radius: 15px;" />
-				</button>
-			</div>
-		</div>
-	</div>
-	<script>
+                                        </div>
+                                        <div class="LiveItem_thumbnail">
+                                            <div class="video_container">
+                                                <img class="video_container_img" src="/resources/img/chun.jpg" draggable="false">
+                                            </div>
+                                        </div>
+                                        
+                                </div>
+                            </div>
+                        </li>
+                       </c:forEach>
+                    </ul>
+                </section>
+            </div>
+        </div>
+                <div>
+            <button  class="chatbot" title="chatbot"
+			style="position: fixed; bottom: 30px; right: 30px;" rel="nofollow" onfocus='this.blur()'>
+				<img src="/resources/img/free-icon-chatbot-2068998.png" style="width: 50px; height: 50px; border-radius: 15px; z-index:10000;"/>
+			</button>   
+        </div>
+    </div>
+</div>
+<script>
+
 $(function(){
 	var marginLeft = parseInt($(".chatbot").css('margin-left'));
 	$(window).scroll(function(e){

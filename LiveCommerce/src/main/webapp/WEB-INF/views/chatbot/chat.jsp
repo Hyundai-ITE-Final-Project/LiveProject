@@ -125,53 +125,57 @@
         /*전송 버튼을 누르면 내가 쓴 글자를 전송해주는 곳*/
         document.querySelector('#btn-send').addEventListener('click', function(){
 			var txt = document.querySelector('#inp-chat').value;
+			if(txt.indexOf("주문") != -1){
+				menulist('orderlist');
+			}
+			else{
+            	var template = `<div class="chat-item is-customer me">
+                                    	<div class="bubble has-moving in" style="max-height: 10000px;">
+                                        	<div class="inner mine"></div>
+                                		</div>
+                             		<span class="date"><c:out value="${now}"/></span>
+                             	</div>`
+            	document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
 
-            var template = `<div class="chat-item is-customer me">
-                                    <div class="bubble has-moving in" style="max-height: 10000px;">
-                                        <div class="inner mine"></div>
-                                	</div>
-                             	<span class="date"><c:out value="${now}"/></span>
-                             </div>`
-            document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
-
-			const list = document.querySelectorAll(".me");
-			const len = list.length - 1;
-			list[len].getElementsByClassName("mine")[0].setAttribute("id", cnt);
-			document.getElementById(cnt).innerHTML = txt;		
-			cnt++;
-			const configuration = new Configuration({
-                apiKey: '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',
-            });
-            const openai = new OpenAIApi(configuration);
-            // AI에게 보내는 부분
-            openai.createCompletion({
-                model: "text-davinci-003",
-                prompt: document.querySelector('#inp-chat').value,//AI에게 질문보내는 코드 (내가 입력한 글자)
-                temperature: 0.7,
-                max_tokens: 256,
-                top_p: 1,
-                frequency_penalty: 0,
-                presence_penalty: 0,
-            }).then((result)=>{ //result 변수에 답변 저장
-				const txt2 = result.data.choices[0].text;
-				txt2.split("\n").join("");
-				txt2.replace(/\r/g, "");
-				txt2.replace(/\n/g, "");
-				console.log("txt2 : " + txt2);
-
-                var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
-                                	<div class="bubble has-moving in your" style="max-height: 10000px;"></div>
-                                	<div class="date"><c:out value="${now}"/></div>
-                            	</div>`
-                document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
-
-				const list2 = document.querySelectorAll(".you");
-				const len2 = list2.length - 1;
-				list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
-				document.getElementById(cnt).innerHTML = txt2;
+				const list = document.querySelectorAll(".me");
+				const len = list.length - 1;
+				list[len].getElementsByClassName("mine")[0].setAttribute("id", cnt);
+				document.getElementById(cnt).innerHTML = txt;		
 				cnt++;
-				scrollDown();
-            })
+				const configuration = new Configuration({
+                	apiKey: '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',
+            	});
+            	const openai = new OpenAIApi(configuration);
+            	// AI에게 보내는 부분
+            	openai.createCompletion({
+                	model: "text-davinci-003",
+                	prompt: document.querySelector('#inp-chat').value,//AI에게 질문보내는 코드 (내가 입력한 글자)
+                	temperature: 0.9,
+                	max_tokens: 700,
+                	top_p: 1,
+                	frequency_penalty: 0,
+                	presence_penalty: 0.6,
+            	}).then((result)=>{ //result 변수에 답변 저장
+					const txt2 = result.data.choices[0].text;
+					txt2.split("\n").join("");
+					txt2.replace(/\r/g, "");
+					txt2.replace(/\n/g, "");
+					console.log("txt2 : " + txt2);
+
+                	var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
+                                		<div class="bubble has-moving in your" style="max-height: 10000px;"></div>
+                                		<div class="date"><c:out value="${now}"/></div>
+                            		</div>`
+                	document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+
+					const list2 = document.querySelectorAll(".you");
+					const len2 = list2.length - 1;
+					list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
+					document.getElementById(cnt).innerHTML = txt2;
+					cnt++;
+					scrollDown();
+            	})
+			}
 			$('#inp-chat').val('');
 			scrollDown();
         })
