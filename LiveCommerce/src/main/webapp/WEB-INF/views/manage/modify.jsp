@@ -57,6 +57,18 @@
 
 	});
 </script>
+<script>
+    var ifrContent = $('#psContentText').text();
+	//iframe 디자인모드
+	var iframe= document.getElementById("psContentIframe").contentWindow;
+	//var lodeContent=document.getElementById("psContentIframe").innerHTML;
+	var iframeD = iframe.document;  
+	if(ifrContent != ''){
+		iframeD.write("<!DOCTYPE html><html><body>"+ifrContent+"</body></html>");
+	}
+	iframeD.designMode = 'on';
+	//iframe.focus(); 
+</script>
 <style>
 .select_img img {
 	margin: 20px 0;
@@ -67,16 +79,6 @@
 <body>
 	<div id="admin_wrap">
 		<div class="admin_content">
-			<div class="admin_menulist">
-				<div class="admin_tablist">
-					<a href="/manage/live" class="main_tab" aria-selected="false">라이브
-						관리</a> <a href="/manage/products" class="main_tab" aria-selected="true">상품
-						관리</a> <a href="/manage/productpost" class="main_tab" aria-selected="false">판매글
-						관리</a> <a href="/manage/orderList" class="main_tab" aria-selected="false">판매
-						내역 관리</a> <a href="/manage/setting" class="main_tab"
-						aria-selected="false">설정</a>
-				</div>
-			</div>
 			<form role="form" action="/manage/modify" method="post">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			
@@ -190,17 +192,14 @@
 										name='price' value='<c:out value="${product.price }"/>'>
 
 								 </div>
-								<div class="create_layout form-group">
-									<label>상품 상세</label> <input class="form-control layout_input"
-										name='detail' value='<c:out value="${product.detail }"/>'>
-
-								</div> 
+								
 								
 								<div class="create_layout">
-                            <div class="layout_subject _asterisk">판매글 상세 내용</div>
-	                        <textarea id="psContentText" name="psContentText"><c:out value="${product.detail }"/></textarea>
-	                        <iframe id="psContentIframe" name="psContentIframe" scrolling=yes border=0 width="100%" height=300 frameborder=0></iframe>                    
-                        </div>
+                    		<div class="layout_subject _asterisk">판매글 상세 내용</div>
+                    		<textarea class="layout_input" name='detail' style="font-size: 16px; width: 100%; line-height:150%; padding-top: 15px; height: 200px;">${product.detail }</textarea>
+                    		</div>
+                        
+                        
 
 								<div class="create_layout form-group">
 									<label>이미지</label> <input class="form-control layout_input"
@@ -215,17 +214,28 @@
 
 								</div>
 
-								<div class="create_layout form-group">
-									<label>판매 상태</label> <input class="form-control layout_input"
-										name='pstatus' value='<c:out value="${product.pstatus }"/>'>
+								 <div class="create_layout">
+                            <div class="layout_subject _asterisk">판매 상태</div>
+                            <select name="pstatus" id="pstatus" class="_filter">
+                                <option value="non">판매 상태</option>
+                                <option value="1" <c:if test="${product.pstatus eq '1'}"> selected="selected"</c:if>>판매중</option>
+                                <option value="0" <c:if test="${product.pstatus eq '0'}"> selected="selected"</c:if>>판매중지</option>
+                            </select>                    
+                        </div>
 
-								</div>
 
-
-								<button type="submit" data-oper='modify' class="btn btn-default">Modify</button>
-								<button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>
-								<button type="submit" data-oper='list' class="btn btn-info">List</button>
+								<button type="submit" data-oper='modify' class="btn btn-default btn_pp btn_product_update">수정</button>
+								<button type="submit" data-oper='remove' class="btn btn-default btn_pp btn_product_update">삭제</button>
+								<button type="submit" data-oper='list' class="btn btn-default btn_pp btn_product_update">리스트</button>
 			</form>
 </body>
 </html>
+	<script>
+	$(function() {
+	console.log("테스트 입니다.");
+	
+	$(".products_tab").attr("aria-selected","true");
+	
+})
+</script>
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
