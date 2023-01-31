@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.util.List;
 
 import com.livecommerce.project.vo.LiveVO;
+import com.livecommerce.project.vo.ProductPostVO;
 import com.livecommerce.project.vo.ProductVO;
 
 /**
@@ -24,6 +25,7 @@ import com.livecommerce.project.vo.ProductVO;
  * 2023.01.26	    신기원		    스케줄러로 라이브 상태 변경, 라이브 영상 저장하기
  * 2023.01.27	    신기원		    라이브 최신순, 인기순 목록
  * 2023.01.30	    신기원		    라이브 예고
+ * 2023.01.31	    김나형		   라이브 레시피
  * </pre>
  */
 public interface LiveService {
@@ -36,6 +38,7 @@ public interface LiveService {
 	public void setLiveView(LiveVO liveVo);
 	public int getLiveView(LiveVO liveVo);
 	public List<ProductVO> getLiveProductList(int ps_index);
+	public ProductPostVO getRecipe(int ps_index) throws Exception;
 	public int createLive(LiveVO liveVO) throws ParseException;
 	public int updateLive(LiveVO liveVO) throws ParseException;
 	public List<LiveVO> myLiveList(String mId);

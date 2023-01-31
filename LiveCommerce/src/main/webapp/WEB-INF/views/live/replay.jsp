@@ -99,7 +99,7 @@
                                 <div class="TagItem_current">
                                     <a class="TagItem_link">
                                         <div class="TagItem_thumbnail">
-                                        	<img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/live/livecoupon.png">
+                                        	<img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/free-icon-coupon-6713699.png">
                                         </div>
                                         <div class="TagItem_title">
                                            <%--  ${replay.livePdVo.getPsTitle()} --%>
@@ -107,6 +107,19 @@
                                         <span class="TagItem_price">
                                             <%-- <span class="TagItem_rate">${sale.psDiscount}%</span> --%>
                                             <%-- <strong><fmt:formatNumber value="${replay.livePdVo.getPsPrice()}" pattern="#,###" /></strong>원 --%>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="TagItem_wrap3" >
+                                <div class="TagItem_current">
+                                    <a class="TagItem_link">
+                                        <div class="TagItem_thumbnail">
+                                            <img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/free-icon-recipe-book-1021460.png">
+                                        </div>
+                                        <div class="TagItem_title">
+                                        </div>
+                                        <span class="TagItem_price">
                                         </span>
                                     </a>
                                 </div>
@@ -135,7 +148,17 @@
                                     <iframe class="TagItemIframe_iframe2" src="/coupon/couponpage?ps_index=${replay.psIndex}" scrolling="no"></iframe>
                                 </div>
                             </section>
-                            
+                            <section class="ItemModal_section3" style="display: none;">
+                                <div class="ItemModal_content ItemModal_content_iframe">
+                                    <div class="ModelTitle_wrap">
+                                        <%-- <h3 class="ModelTitle_title">${replay.livePdVo.getPsTitle()}</h3> --%>
+                                        <button type="button" class="ModelTitle_btn3">
+                                            <i class="ModelTitle_icon"></i>
+                                        </button>
+                                    </div>
+                                    <iframe class="TagItemIframe_iframe3" src="/live/recipe?ps_index=${replay.psIndex}"></iframe>
+                                </div>
+                            </section>
                             <div class="CommentWrite_wrap">
                                 <textarea class="CommentWrite_text" id="wa_textarea" placeholder="실시간 채팅에 참여하세요" cols="1" ></textarea>
                                 <button type="submit" class="CommentWrite_btn" id="send_btn" disabled>전송</button>

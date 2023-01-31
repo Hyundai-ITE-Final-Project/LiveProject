@@ -285,8 +285,8 @@ to {
         </div>
                 <div>
             <button  class="chatbot" title="chatbot"
-			style="position: fixed; bottom: 30px; right: 30px;" rel="nofollow" onfocus='this.blur()'>
-				<img src="/resources/img/free-icon-chatbot-2068998.png" style="width: 50px; height: 50px; border-radius: 15px; z-index:10000;"/>
+			style="position: fixed; bottom: 30px; right: 30px; z-index:10000;" rel="nofollow" onfocus='this.blur()'>
+				<img src="/resources/img/free-icon-chatbot-2068998.png" style="width: 50px; height: 50px; border-radius: 15px;"/>
 			</button>   
         </div>
     </div>
