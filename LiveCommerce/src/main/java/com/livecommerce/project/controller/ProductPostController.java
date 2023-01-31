@@ -73,6 +73,8 @@ public class ProductPostController {
 	// post 등록
 	@PostMapping("/productpostadd")
 	public String PostAddPOST(HttpServletRequest request, Model model, Principal prin, ProductPostVO post, RedirectAttributes rttr) throws Exception{
+		log.info(post.getPs_title());
+		log.info(post.getRecipe());
 		postService.postproductAdd(post);
 		String memid = prin.getName();
 		model.addAttribute("member", memid);
