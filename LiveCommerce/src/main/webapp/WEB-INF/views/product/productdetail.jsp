@@ -73,6 +73,9 @@
 		body, a, button, input, label, ul, li, p, div, span, th, td, textarea{
 			font-family:'Pretendard-Regular';
 		}
+		.vip-content .item_options {
+			border-bottom : 1px solid #d6d7d8;
+		}
     </style>
 </head>
 
@@ -275,7 +278,7 @@
                                             <em class="txt_default">
                                                 새벽배송 / 밤 11시까지 결제 시<br/>
                                                 택배배송 / 밤 6시까지 결제 시<br/>
-                                                배송비 3,500원 (5만원 이상 구매 시 무료)
+                                                I-LIVE의 모든 상품은 배송비가 무료입니다.
                                             </em>
                                         </div>
                                     </div>
