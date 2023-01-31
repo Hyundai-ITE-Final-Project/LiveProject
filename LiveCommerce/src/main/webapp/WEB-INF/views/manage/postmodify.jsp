@@ -32,6 +32,10 @@
                                 <input type="text" id="psTitle" name="ps_title" class="layout_input" value="${post.ps_title}" maxlength='30'>
                             </div>
                             <div class="create_layout">
+                                <div class="layout_subject _asterisk">판매글 정보 및 레시피</div>
+                                <textarea class="layout_input" name="recipe" class="recipe" style="height: 250px; padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px; line-height:1.5;">${post.recipe}</textarea>
+                            </div>
+                            <div class="create_layout">
 						    	<div class="layout_subject _asterisk">판매 상품 추가</div>
 						    	<div class="layout_memo">상품 체크/체크 해제 후 등록하면 상품이 새로 등록됩니다.</div>
 							    <div class="searchBox" style="position: relative; width: 100%;">

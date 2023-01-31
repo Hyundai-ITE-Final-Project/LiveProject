@@ -27,6 +27,10 @@
                                 <input type="text" id="psTitle" name="ps_title" class="layout_input" value="" maxlength='30'>
                             </div>
                             <div class="create_layout">
+                                <div class="layout_subject _asterisk">판매글 정보 및 레시피</div>
+                                <textarea class="layout_input" name="recipe" class="recipe" style="height: 250px; padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px; line-height:1.5;"></textarea>
+                            </div>
+                            <div class="create_layout">
 						    	<div class="layout_subject _asterisk">판매 상품 추가</div>
 						    	<div class="layout_memo">상품 체크/체크 해제 후 등록하면 상품이 새로 등록됩니다.</div>
 						    	<div class="searchBox" style="position: relative; width: 100%;">
@@ -82,8 +86,6 @@
 </div>
 <script>
 	$(function() {
-		console.log("테스트 입니다.");
-		
 		$(".productpost_tab").attr("aria-selected","true");
 		
 	})
@@ -107,7 +109,9 @@
             alert("제목을 입력해주세요");
         } else if(document.formm.ps_post_status.value ==""){
             alert("판매상태를 설정해주세요");
-        } else{
+        } else if(document.formm.recipe.value == ""){
+        	alert("레시피 및 상품의 내용을 입력해주세요");
+        }else{
     		var valueArr = new Array();
     		var list = $("input[name='postlist']");
     		for(var i=0; i<list.length; i++){

@@ -33,6 +33,8 @@ public class ProductPostVO {
 	private Date ps_date;
 	//삭제여부
 	private int ps_delete;
+	//레시피
+	private String recipe;
 	//상품리스트
 	private List<Integer> productlist;
 }
