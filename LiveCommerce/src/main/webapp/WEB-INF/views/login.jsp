@@ -21,7 +21,9 @@
 
 <body>
 <div id="sign_in_container">
-    <div class="img_logo" onclick="location.href='/'" style="cursor:pointer"><img src="/resources/img/logo/.png"></div>
+
+
+    <div class="img_logo" onclick="location.href='/'" style="cursor:pointer"><img src="../../resources/img/logo/logo.png"></div>
     <div id="sign_in_form">      
         <form name="loginForm" action="/loginProcess" method="POST">
             <div class="login_input_area">
