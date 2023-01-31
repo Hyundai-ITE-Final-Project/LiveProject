@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="stylesheet" href="/resources/css/mypage_orderlist.css">
 
 <!-- <link rel="shortcut icon"   href="https://drive.google.com/uc?id=1bbTmb2_R9gb6sEYY5zABHlybxCzhQVWX"> -->
 <title>오늘의쇼핑</title>
@@ -47,8 +47,6 @@
 												<a class='move'>
 												<c:if test="${item.mrole eq 'ROLE_USER'}">일반회원</c:if>
 		                                        <c:if test="${item.mrole eq 'ROLE_ADMIN'}">관리자</c:if>
-		                                        <c:if test="${item.mrole eq 'USER'}">일반회원</c:if>
-		                                        <c:if test="${item.mrole eq 'ADMIN'}">관리자</c:if>
 		                                     <span id="mrole${status.index}" value = "${item.mrole}" style="display:none">${item.mrole}</span> 								
 												</a>
 											</div>

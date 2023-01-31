@@ -55,7 +55,7 @@ let ccode1 = '<sec:authentication property="name"/>' + "_" + year + month + "p20
 
 const form = {
         ccode : ccode1,
-     	cname : "20000원쿠폰",
+     	cname : "신규&웰컴[20000원쿠폰]",
      	cprice : 20000,
      	cstartdate : dateStr,
      	cenddate : EnddateStr

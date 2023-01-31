@@ -17,7 +17,6 @@
 			and member_mid like '%'||#{keyword}||'%'
 		</if>
 		<![CDATA[
-		    
 		    order by odate desc
 		    )
 		where rn > (#{pageNum} -1) * #{amount}
