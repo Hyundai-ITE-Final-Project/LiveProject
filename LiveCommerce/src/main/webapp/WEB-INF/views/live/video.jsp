@@ -117,6 +117,19 @@
                                     </a>
                                 </div>
                             </div>
+                            <div class="TagItem_wrap3" >
+                                <div class="TagItem_current">
+                                    <a class="TagItem_link">
+                                        <div class="TagItem_thumbnail">
+                                            <img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/free-icon-recipe-book-1021460.png">
+                                        </div>
+                                        <div class="TagItem_title">
+                                        </div>
+                                        <span class="TagItem_price">
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
                             
                             <!-- 방송중인 아이템 리스트 -->
                             <section class="ItemModal_section" style="display: none;">
@@ -141,7 +154,17 @@
                                     <iframe class="TagItemIframe_iframe2" src="/coupon/couponpage?ps_index=${replay.psIndex}" scrolling="no"></iframe>
                                 </div>
                             </section>
-                            
+                            <section class="ItemModal_section3" style="display: none;">
+                                <div class="ItemModal_content ItemModal_content_iframe">
+                                    <div class="ModelTitle_wrap">
+                                        <%-- <h3 class="ModelTitle_title">${replay.livePdVo.getPsTitle()}</h3> --%>
+                                        <button type="button" class="ModelTitle_btn3">
+                                            <i class="ModelTitle_icon"></i>
+                                        </button>
+                                    </div>
+                                    <iframe class="TagItemIframe_iframe3" src="/live/recipe?ps_index=${replay.psIndex}"></iframe>
+                                </div>
+                            </section>
                             <button type="button" class="CommentBtn_wrap" aria-hidden="false">
                                 <span class="CommentBtn_inner">
                                     <i class="header_icon CommentBtn_icon"></i>
