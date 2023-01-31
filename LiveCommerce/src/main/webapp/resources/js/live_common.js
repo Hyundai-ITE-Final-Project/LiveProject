@@ -34,4 +34,11 @@ $(document).ready(function() {
         $(".ModelTitle_btn2").click(function(){
         $(".ItemModal_section2").css('display','none');
     })
+    
+   $(".TagItem_wrap3").click(function(){
+        $(".ItemModal_section3").css('display','');
+    })
+        $(".ModelTitle_btn3").click(function(){
+        $(".ItemModal_section3").css('display','none');
+    })
 });

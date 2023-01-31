@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.livecommerce.project.vo.LiveVO;
+import com.livecommerce.project.vo.ProductPostVO;
 import com.livecommerce.project.vo.ProductVO;
 import com.livecommerce.project.vo.VideoVO;
 /**
@@ -26,7 +27,7 @@ import com.livecommerce.project.vo.VideoVO;
  * 2023.01.26	신기원		라이브 상태 변경, 녹화된 영상만 가져오기, 라이브 수정, 라이브 저장하기
  * 2023.01.27	신기원		라이브 최신순, 인기순 목록
  * 2023.01.30	신기원		라이브 예고
- * 
+ * 2023.01.31	김나형		라이브 레시피 노출
  * </pre>
  */
 @Mapper
@@ -38,8 +39,8 @@ public interface LiveMapper {
 	public LiveVO getReplayInfo(String liveId);
 	public void setLiveView(LiveVO liveVO);
 	public int getLiveView(LiveVO liveVO);
-	// 라이브 방송별 상품리스트
 	public List<ProductVO> getLiveProductList(int ps_index);
+	public ProductPostVO getRecipe(int ps_index) throws Exception;
 	public int createLive(LiveVO liveVO);
 	public int updateLive(LiveVO liveVO);
 	public int countLive1Status(Map<String, Object> liveMap);

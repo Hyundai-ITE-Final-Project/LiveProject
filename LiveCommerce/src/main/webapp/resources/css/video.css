@@ -76,13 +76,24 @@ div#Comments_wrap::-webkit-scrollbar {display: none;}
 .Comment_comment_master{display: block;margin-top: 7px;font-weight: 700;}
 .Comments_master{color:#22c3f6;}
 /* video TagItem ---------------------------------------------------------------------- */
-.TagItem_wrap{margin-bottom: env(safe-area-inset-bottom);position: absolute;bottom: 15px;left: 15px;z-index: 40;
+.TagItem_wrap{margin-bottom: env(safe-area-inset-bottom);position: absolute;bottom: 50px;right: 0px;z-index: 40;
     overflow: hidden;width: 64px;height: 64px;border-radius: 10px;box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%);}
 .TagItem_wrap2{
 	margin-bottom: env(safe-area-inset-bottom);
     position: absolute;
-    top: 60px;
-    right: 10px;
+    bottom: 150px;
+    right: 0px;
+    z-index: 40;
+    overflow: hidden;
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%);}
+.TagItem_wrap3{
+	margin-bottom: env(safe-area-inset-bottom);
+    position: absolute;
+    bottom: 100px;
+    right: 0px;
     z-index: 40;
     overflow: hidden;
     width: 64px;
@@ -92,13 +103,12 @@ div#Comments_wrap::-webkit-scrollbar {display: none;}
 .TagItem_current{height: 100%;padding-bottom: 15px;} 
 .TagItem_link{position: relative;box-sizing: border-box;display: flex;flex-direction: column;justify-content: center;
     width: 100%;height: 100%;padding: 0 10px 0 74px;outline-offset: -3px;}
-.TagItem_thumbnail{overflow: hidden;background-color: #f8f8f8;position: absolute;top: 0;left: 0;width: 64px;height: 100%;}
+.TagItem_thumbnail{overflow: hidden;position: absolute;top: 0;left: 0;width: 64px;height: 100%;}
 .TagItem_image{position: absolute;
     top: 0;
     left: 0;
-    width: 90%;
-    height: 90%;
-    background-color: #fff;
+    width: 50%;
+    height: 50%;
     margin: 3px;}
 .TagItem_title{overflow: hidden;text-overflow: ellipsis;display: inline-block;max-height: 32px;line-height: 1.25;
     font-size: 13px;font-weight: 400;color: #303038;letter-spacing: -0.58px;}
@@ -118,6 +128,7 @@ div#Comments_wrap::-webkit-scrollbar {display: none;}
 /* video product pop---------------------------------------------------------------------- */
 .ItemModal_section{position: absolute;top: 0;right: 0;bottom: 0;left: 0;z-index: 90;display: block;overflow: hidden;}
 .ItemModal_section2{position: absolute;top: 0;right: 0;bottom: 0;left: 0;z-index: 90;display: block;overflow: hidden;}
+.ItemModal_section3{position: absolute;top: 0;right: 0;bottom: 0;left: 0;z-index: 90;display: block;overflow: hidden;}
 .ItemModal_content{animation: ItemModal_showAnimation_UfCjp 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) 0s forwards;position: absolute;right: 0;bottom: 0;left: 0;display: flex;
     flex-direction: column;overflow: hidden;max-height: 65%;border-top-left-radius: 16px;border-top-right-radius: 16px;background-color: #fff;box-shadow: 0 -10px 30px 0 rgb(0 0 0 / 15%);}
 .ItemModal_content_iframe{display: block;height: 50%;max-height: none;    z-index: 999;}
@@ -126,6 +137,7 @@ div#Comments_wrap::-webkit-scrollbar {display: none;}
     font-weight: 400;color: #1e1e23;letter-spacing: -0.5px;text-align: center;}
 .ModelTitle_btn{position: absolute;top: 0;right: 0;width: 50px;height: 100%;}
 .ModelTitle_btn2{position: absolute;top: 0;right: 0;width: 50px;height: 100%;}
+.ModelTitle_btn3{position: absolute;top: 0;right: 0;width: 50px;height: 100%;}
 
 .ModelTitle_icon{position: relative;display: inline-block;width: 14px;height: 14px;margin-top: 2px;vertical-align: top;}
 i.ModelTitle_icon:before,i.ModelTitle_icon:after{content: '';position: absolute;top: 50%;left: 50%;width: 18px;height: 2px;background-color: #1e1e23;}
@@ -133,6 +145,7 @@ i.ModelTitle_icon:before{transform: translate(-50%, -50%) rotate(45deg);}
 i.ModelTitle_icon:after{transform: translate(-50%, -50%) rotate(135deg);}
 .TagItemIframe_iframe{display: block;width: 100%;height: calc(100% - 47px);border: 0;}
 .TagItemIframe_iframe2{display: block;width: 100%;height: calc(100% - 47px);border: 0;}
+.TagItemIframe_iframe3{display: block;width: 100%;height: calc(100% - 47px);border: 0;}
 /* video products page */
 .selective{width: 100%;background-color: #ffffff;}
 @media (min-width: 768px){.product_wrap{border: 1px solid rgba(255, 255, 255, 0.08);border-width: 0 1px;}}

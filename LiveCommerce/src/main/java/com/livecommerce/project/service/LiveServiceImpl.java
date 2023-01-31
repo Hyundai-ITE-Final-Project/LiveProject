@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.livecommerce.project.mapper.LiveMapper;
 import com.livecommerce.project.vo.LiveVO;
+import com.livecommerce.project.vo.ProductPostVO;
 import com.livecommerce.project.vo.ProductVO;
 import com.livecommerce.project.vo.VideoVO;
 /**
@@ -39,6 +40,7 @@ import com.livecommerce.project.vo.VideoVO;
  * 2023.01.26	    신기원		    스케줄러로 라이브 상태 변경, 라이브 영상 저장하기, 라이브 수정하기
  * 2023.01.27	    신기원		    라이브 최신순, 인기순 목록
  * 2023.01.30	    신기원		    라이브 예고
+ * 2023.01.31	    김나형		라이브 레시피
  * </pre>
  */
 
@@ -91,6 +93,10 @@ public class LiveServiceImpl implements LiveService{
 		return liveMapper.getLiveProductList(ps_index);
 	}
 	
+	@Override
+	public ProductPostVO getRecipe(int ps_index) throws Exception{
+		return liveMapper.getRecipe(ps_index);
+	}
 	// 라이브 생성과 라이브 ID 생성
 	@Override
 	public int createLive(LiveVO liveVO) throws ParseException {
