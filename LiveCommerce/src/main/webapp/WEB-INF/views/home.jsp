@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/header/main_header.jsp"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -190,6 +190,7 @@ to {
 							</div>
 						</div>
 						<div class="livenow_tab_wrap">
+							<a href="/recipe/api">durldjrkm</a>
 							<c:if test="${empty lives}">
 								<h2 class="live_non_text">현재 라이브 중인 상품이 없습니다.</h2>
 							</c:if>
