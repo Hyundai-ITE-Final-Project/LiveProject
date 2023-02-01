@@ -190,7 +190,6 @@ to {
 							</div>
 						</div>
 						<div class="livenow_tab_wrap">
-							<a href="/recipe/api">durldjrkm</a>
 							<c:if test="${empty lives}">
 								<h2 class="live_non_text">현재 라이브 중인 상품이 없습니다.</h2>
 							</c:if>
