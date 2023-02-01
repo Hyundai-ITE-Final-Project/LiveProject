@@ -69,7 +69,7 @@
 <body>
 	<div id="admin_wrap">
 		<div class="admin_content">
-			<div class="admin_tool_wrap">
+			<div style="background: #ffffff;" class="admin_tool_wrap">
 				<div class="admin_tool_area">
 					<div class="admin_tool_inner">
 						<div class="admin_tool_top">
