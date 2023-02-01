@@ -108,7 +108,7 @@
                                 <div class="TagItem_current">
                                     <a class="TagItem_link">
                                         <div class="TagItem_thumbnail">
-                                        	<img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/live/livecoupon.png">
+                                        	<img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/free-icon-coupon-6713699.png">
                                         </div>
                                         <div class="TagItem_title">
                                         </div>
