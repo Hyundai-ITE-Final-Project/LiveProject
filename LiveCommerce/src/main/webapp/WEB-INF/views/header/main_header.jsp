@@ -18,7 +18,7 @@
 		    background: #fcc;
 		}
 		.one {
-		    width: 600px;
+		    width: 800px;
 		    height: 100%;
 		    margin: 0 auto;
 		}
@@ -141,12 +141,12 @@
 		    			</li>
 		    			<li><a href="#">생선과 해산물, 건어물</a>
 		    				<ul class="three">
-		      					<li><a href="#" onclick="category('생선과 해산물,건어물','');">전체보기 </a></li>
-		                        <li><a href="#" onclick="category('생선과 해산물,건어물','생선*해산물');">생선 · 해산물 </a></li>
-		                        <li><a href="#" onclick="category('생선과 해산물,건어물','새우*조개류*갑각류');">새우 · 조개류 · 갑각류 </a></li>
-		                        <li><a href="#" onclick="category('생선과 해산물,건어물','김*미역*해조류');">김 · 미역 · 해조류 </a></li>
-		                        <li><a href="#" onclick="category('생선과 해산물,건어물','연어*간편수산물');">연어 · 간편수산물 </a></li>
-		                        <li><a href="#" onclick="category('생선과 해산물,건어물','멸치*건어물*Dried-H*어부의밥상 ');">멸치 · 건어물 · Dried-H · 어부의밥상 </a></li>
+		      					<li><a href="#" onclick="category('생선과해산물,건어물','');">전체보기 </a></li>
+		                        <li><a href="#" onclick="category('생선과해산물,건어물','생선*해산물');">생선 · 해산물 </a></li>
+		                        <li><a href="#" onclick="category('생선과해산물,건어물','새우*조개류*갑각류');">새우 · 조개류 · 갑각류 </a></li>
+		                        <li><a href="#" onclick="category('생선과해산물,건어물','김*미역*해조류');">김 · 미역 · 해조류 </a></li>
+		                        <li><a href="#" onclick="category('생선과해산물,건어물','연어*간편수산물');">연어 · 간편수산물 </a></li>
+		                        <li><a href="#" onclick="category('생선과해산물,건어물','멸치*건어물*Dried-H*어부의밥상 ');">멸치 · 건어물 · Dried-H · 어부의밥상 </a></li>
 		    				</ul>
 		    			</li>
 		    			<li><a href="#">육류와 달걀</a>
