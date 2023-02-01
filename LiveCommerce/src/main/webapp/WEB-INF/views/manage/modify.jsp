@@ -196,14 +196,13 @@
 								
 								<div class="create_layout">
                     		<div class="layout_subject _asterisk">판매글 상세 내용</div>
-                    		<textarea class="layout_input" name='detail' style="font-size: 16px; width: 100%; line-height:150%; padding-top: 15px; height: 200px;">${product.detail }</textarea>
+                    		<textarea class="layout_input" name='detail' readonly='readonly' style="font-size: 16px; width: 100%; line-height:150%; padding-top: 15px; height: 200%;">${product.detail }</textarea>
                     		</div>
                         
                         
 
 								<div class="create_layout form-group">
-									<label>이미지</label> <input class="form-control layout_input"
-										name='img1' value='<c:out value="${product.img1 }"/>'>
+									<label>이미지</label><br> <img style='width: 300px;'src="${product.img1 }"/> 
 
 								</div>
 
