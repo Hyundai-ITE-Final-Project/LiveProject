@@ -1,5 +1,5 @@
 <%@page pageEncoding="UTF-8" language="java"%>
-<%@ include file="/WEB-INF/views/header/tool_header.jsp"%>
+<%@ include file="/WEB-INF/views/header/main_header.jsp"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!-- /**
  * @author 박소은
@@ -16,9 +16,6 @@
 <head>
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
-        <link rel="stylesheet" type="text/css" href="/resources/css/common.css" >
-	<link rel="stylesheet" type="text/css" href="/resources/css/login.css" >
-	<link rel="stylesheet" type="text/css" href="/resources/css/admin.css"> 
     
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script type="text/javascript" src="/resources/js/common.js"></script>
@@ -64,12 +61,14 @@
 	                <input type="text" class="input_w_100" name="mtel" value="${userInfo.mtel}" >
 	            </div>
 	          
-	            <div class="signup_input_area">
+	            <div class="userInfo_input_area">
                 <div class="subject">주소</div>
+                <br>
                 <input type="text" name="mzipcode" id="userZipCodeSign" autocomplete="off" maxlength='30' value="${userInfo.mzipcode }">
-                <input type="text" name="maddress1" id="userAddressSign" autocomplete="off" maxlength='30' value="${userInfo.maddress1}">
+                <br>
+                <input style='width: 100%;' type="text" name="maddress1" id="userAddressSign" autocomplete="off" maxlength='30' value="${userInfo.maddress1}">
                 <div id="addr_error" class="regul_div"></div>
-                <input type="text" name="maddress2" id="userAddressDetailSign" autocomplete="off" maxlength='15' value="${userInfo.maddress2}">
+                <input style='width: 100%;' type="text" name="maddress2" id="userAddressDetailSign" autocomplete="off" maxlength='15' value="${userInfo.maddress2}">
                 
                 <div id="addr2_error" class="regul_div"></div>
             </div>

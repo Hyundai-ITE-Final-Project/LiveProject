@@ -99,8 +99,7 @@ tText.style.wordWrap = 'break-word';
 
 							<div class="create_layout">
 								<div class="layout_subject_asterisk">이미지</div>
-								<input class="layout_input" name='img1'
-									value='<c:out value="${product.img1 }"/>' readonly='readonly'>
+								<img style='width: 300px;'src="${product.img1 }"/> 
 							</div>
 
 							<div class="create_layout">
