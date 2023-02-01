@@ -117,6 +117,24 @@ input:focus{ border:none; outline: none; border: 1px solid #54D6FF; box-shadow: 
 	line-height: 1.18;font-size: 17px;
 	color: #767678;vertical-align: top;
 	}
+.memberManage_tab{
+	position: relative;
+	box-sizing: border-box;
+	display: inline-block;
+	height: 39px;padding: 10px 10px 12px 11px;
+	transform: translate3d(0, 0, 0);
+	line-height: 1.18;font-size: 17px;
+	color: #767678;vertical-align: top;
+}
+.statistics_tab {
+	position: relative;
+	box-sizing: border-box;
+	display: inline-block;
+	height: 39px;padding: 10px 10px 12px 11px;
+	transform: translate3d(0, 0, 0);
+	line-height: 1.18;font-size: 17px;
+	color: #767678;vertical-align: top;
+}
 .order_tab[aria-selected='true'] {font-weight: 700;color: #f4361e;}
 .order_tab[aria-selected='true']::after {content: '';position: absolute;right: 10px;bottom: -1px;left: 11px;height: 2px;background-color: #f4361e;}
 
@@ -131,6 +149,12 @@ input:focus{ border:none; outline: none; border: 1px solid #54D6FF; box-shadow: 
 
 .setting_tab[aria-selected='true'] {font-weight: 700;color: #f4361e;}
 .setting_tab[aria-selected='true']::after {content: '';position: absolute;right: 10px;bottom: -1px;left: 11px;height: 2px;background-color: #f4361e;}
+
+.memberManage_tab[aria-selected='true'] {font-weight: 700;color: #f4361e;}
+.memberManage_tab[aria-selected='true']::after {content: '';position: absolute;right: 10px;bottom: -1px;left: 11px;height: 2px;background-color: #f4361e;}
+
+.statistics_tab[aria-selected='true'] {font-weight: 700;color: #f4361e;}
+.statistics_tab[aria-selected='true']::after {content: '';position: absolute;right: 10px;bottom: -1px;left: 11px;height: 2px;background-color: #f4361e;}
 
 /* setting page -----------------------------------------*/
 .setting_area{padding: 200px 0;text-align: center;min-height: 100vh;background: #fff;}
