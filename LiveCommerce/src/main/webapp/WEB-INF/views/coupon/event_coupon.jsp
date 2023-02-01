@@ -18,8 +18,8 @@
 width: 1280px;
 }
 .box {
-  width: 1500px;
-  height: 500px;
+  width: 2500px;
+  height: 1500px;
   margin: 4px;
 }
 
@@ -29,8 +29,8 @@ width: 1280px;
   left: 50px;
 }
 .backbtn {
-  width: 1500px;
-  height: 500px;
+  width: 2500px;
+  height: 1500px;
 }
 </style>
 <body>

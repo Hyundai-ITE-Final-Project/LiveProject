@@ -115,13 +115,14 @@
 					</div>
 				</div>
 			</div>
+</body>
 <script>
-/* $(function() {
+$(function() {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 	console.log("테스트 입니다.");
 	
-	$(".order_tab").attr("aria-selected","true");
+	$(".memberManage_tab").attr("aria-selected","true");
 	
-}) */
+})
 
 
 let searchForm = $('#searchForm');
