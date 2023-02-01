@@ -424,7 +424,7 @@
 	        <a href="/live/recent" role="tab" class="main_tab main3" aria-selected="false">최신라이브</a>
 	        <a href="/product/listDate" role="tab" class="main_tab main4" aria-selected="false">신상품</a>
 	        <a href="/coupon/Eventcouponpage" role="tab" class="main_tab main5" aria-selected="false">이벤트</a>
-	        
+	        <a href="/recipe/api" role="tab" class="main_tab main6" aria-selected="false">레시피</a>
 	        <script>
 	        	function maintab(value){
 	        		if(value == 'one'){
