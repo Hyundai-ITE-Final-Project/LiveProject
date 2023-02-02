@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="join">
 		insert into member values (#{mid}, #{mpassword}, #{mname}, #{mtel},
-		#{mbirth}, #{memail}, #{mgender}, current_date, 0, 'ROLE_USER', #{maddress1},
+		#{mbirth}, #{memail}, #{mgender}, current_date, 1000, 'ROLE_USER', #{maddress1},
 		#{maddress2}, #{mzipcode}, null)
 	</insert>
 

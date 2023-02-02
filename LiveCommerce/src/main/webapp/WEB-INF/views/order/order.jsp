@@ -422,7 +422,7 @@ let oid="${memberInfo.mid}"+"_"+year + month + day + hour + minites + seconds;
 				        merchant_uid: oid,  //주문 아이템 oid값
 				        name : '${orderList[0].pname}', //주문한거 이름
 				        //amount : finalTotalPrice, //가격
-				        amount : finalTotalPrice, //가격
+				        amount : 100, //가격
 				        buyer_email : '${memberInfo.memail}', //산사람 이메일 
 				        buyer_name : '${memberInfo.mname}',//산사람 이름
 				        buyer_tel : '${memberInfo.mtel}',//산사람 번호

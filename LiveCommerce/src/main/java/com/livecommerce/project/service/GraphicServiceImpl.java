@@ -19,4 +19,20 @@ public class GraphicServiceImpl implements GraphicService{
 		return graphicMapper.countOrder();
 	}
 
+	@Override
+	public List<GraphVO> positivenegative(String live_id, String mid) {
+		List<GraphVO> list =  graphicMapper.positivenegative(live_id, mid);
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).getPredict_result() == 1) {
+				list.get(i).setPositive("긍정");
+			}
+			else {
+				list.get(i).setPositive("부정");
+			}
+			 
+		}
+		
+		return list;
+	}
+
 }
