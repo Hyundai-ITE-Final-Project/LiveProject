@@ -15,7 +15,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.livecommerce.project.service.GraphicService;
 import com.livecommerce.project.vo.GraphVO;
-
+/**
+ * @author 신기원
+ * @since 2023.02.02
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일                    수정자                   수정내용
+ * ----------  --------    ---------------------------
+ * 2023.02.02    신기원              긍정/부정 Text 5개씩 추출
+ * </pre>
+ */
 @Controller
 public class GraphicController {
 	
@@ -38,6 +48,9 @@ public class GraphicController {
 	@PostMapping("/manage/chart")
 	public String chartMain(@RequestParam("live_id") String live_id, Model model) {
 		model.addAttribute("live_id", live_id);
+		model.addAttribute("positive", graphicService.selectPositive(live_id));
+		model.addAttribute("negative", graphicService.selectNegative(live_id));
+		
 		return "/manage/chart";
 	}
 	

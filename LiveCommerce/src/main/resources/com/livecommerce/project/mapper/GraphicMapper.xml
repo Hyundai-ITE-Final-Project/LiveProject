@@ -22,5 +22,20 @@
          group by p.result
 	</select>
 	
+	<select id="selectPositive" resultType="com.livecommerce.project.vo.GraphVO">
+		select text, live_id
+		from predict
+		where result = 1
+		and live_id = #{liveId}
+		
+	</select>
+	
+	<select id="selectNegative" resultType="com.livecommerce.project.vo.GraphVO">
+		select text, live_id
+		from predict
+		where result = 0
+		and live_id = #{liveId}
+	</select>
+	
 
   </mapper>
