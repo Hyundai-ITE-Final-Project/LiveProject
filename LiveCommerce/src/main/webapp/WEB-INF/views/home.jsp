@@ -109,6 +109,37 @@ to {
 </style>
 </head>
 <body>
+	<script>
+	let csrfHeaderName ="${_csrf.headerName}";
+	let csrfTokenValue="${_csrf.token}";
+    function alarm(value){
+    	var member_mid = '<sec:authentication property="name"/>';
+    	//alert(member_mid);
+    	//var login_id = document.getElementById("member_id").value;
+    	if(member_mid == 'anonymousUser'){
+    		alert("로그인 후 이용해주세요:)");
+    	}
+    	else{
+        	if(confirm("해당 라이브 알림을 수신하겠습니까?") == true){
+        		var checkArr = new Array();
+        		checkArr.push(value);
+        		$.ajax({
+        			url: "/alarm/live",
+        			type: "post",
+        			data:{
+        				chbox: checkArr
+        			},
+    				beforeSend: function(xhr) { xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);},
+        			success: function(){
+        				//alert("성공");
+        			},error:function(jqXHR) {
+        	            //alert("실패입니다.");
+        	        }
+        		});
+        	}
+    	}
+    }
+	</script>
 	<div id="shop_wrap">
 		<input type="hidden" id="loginid"
 			value="<sec:authentication property="name"/>">
@@ -272,6 +303,18 @@ to {
                                                 
                                             </div>
                                             <span class="LiveContent_seller">${trailer.mname}</span>
+											<div>
+												<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		                        				<input type="hidden" id="mid" name="mid" value="${member}">
+												<input type="hidden" id="live_id" name="live_id" value="${trailer.liveId}"/>
+												<a href="#" class="livealarm0" onclick="alarm('${trailer.liveId}')" style="cursor: pointer">
+													<div class="livealarm1">
+														<div class="livealarm2">
+															<img title="알림받기" class="livealarm_img" draggable="false" src="/resources/img/free-icon-notification-2326147.png" style="width:30px; height:30px; margin-top:90px;">
+														</div>
+													</div>
+												</a>
+											</div>
                                        </div>
                                         
                                 </div>

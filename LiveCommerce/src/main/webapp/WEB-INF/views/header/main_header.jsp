@@ -204,10 +204,6 @@
 		    			</li>
 		    			<li><a href="#">밑반찬과 간식</a>
 		    				<ul class="three">
-		    				</ul>
-		    			</li>
-		    			<li><a href="#">밑반찬과 간식</a>
-		    				<ul class="three">
 		    				    <li>
 		                            <a href="#" onclick="category('밑반찬과간식','');">전체보기 </a>
 		                        </li>

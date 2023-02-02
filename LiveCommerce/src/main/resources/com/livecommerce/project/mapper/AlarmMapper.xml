@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!-- @author 김나형 -->
+<mapper namespace="com.livecommerce.project.mapper.AlarmMapper">
+
+	<insert id="alarmAdd">
+		insert into alarm
+		(alarm_status, member_mid, live_id, alarm_time)
+		values
+		(#{alarm_status}, #{member_mid}, #{live_id}, to_date(#{alarm_time}, 'yy/mm/dd HH24:MI:SS'))
+	</insert>
+	
+	<update id="updateAlarmStatus">
+		UPDATE ALARM
+		SET ALARM_STATUS = CASE
+               <![CDATA[ WHEN TO_CHAR(ALARM_TIME,'YY-MM-DD HH24:MI') = TO_CHAR(current_date,'YY-MM-DD HH24:MI') 
+              THEN 1
+               WHEN TO_CHAR(ALARM_TIME,'YY-MM-DD HH24:MI') < TO_CHAR(current_date,'YY-MM-DD HH24:MI')]]>
+              THEN 2
+              ELSE 0
+           	  END
+	</update>
+	
+	<select id="liveAlarm" resultType="com.livecommerce.project.vo.AlarmTelVO">
+		select m.mid, m.mtel
+		from member m
+		join alarm a
+		on m.mid = a.member_mid
+		where a.alarm_status = 1
+	</select>
+	
+	<select id="alarmTime" resultType="String">
+		select live_start_time
+		from live
+		where live_id like #{liveid}
+	</select>
+</mapper>
