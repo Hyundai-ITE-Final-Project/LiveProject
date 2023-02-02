@@ -25,7 +25,7 @@ public class LiveVO {
     private String streamKey;
     private String videoId;
     private String videoName;
-    private String psTitle;
+    private String pstitle;
     private String mname;
     private VideoVO videoVO;
     private ProductPostVO ProductPostVO;

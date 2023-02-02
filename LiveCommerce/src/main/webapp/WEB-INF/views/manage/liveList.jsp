@@ -81,7 +81,9 @@
 		                                            <div class="live_cell_5_3">${live.liveView}</div>
 		                                    </div>
 		                                    <div class="live_cell_6">
-		                                        <button class="btn_live_delete" value="${status.index}" onClick="sendData(this)">통계</button>
+			                                    <c:if test="${live.liveStatus eq '2'}">
+			                                        <button class="btn_live_delete" value="${status.index}" onClick="sendData(this)">통계</button>
+			                                    </c:if>
 		                                    </div>
 		  
 		                                </div>

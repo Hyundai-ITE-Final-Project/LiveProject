@@ -31,7 +31,7 @@
     <result column="stream_key" property="streamKey"/>
     <result column="video_id" property="videoId"/>
     <result column="video_name" property="videoName"/>
-    <result column="ps_title" property="psTitle"/>
+    <result column="ps_title" property="pstitle"/>
     <result column="mname" property="mname"/>
 	<collection property="videoVO" ofType="com.livecommerce.project.vo.VideoVO" resultMap="VideoMap"/>
 	<collection property="productPostVO" ofType="com.livecommerce.project.vo.ProductPostVO" resultMap="ProductPostMap"/>

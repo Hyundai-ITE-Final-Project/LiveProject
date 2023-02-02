@@ -263,7 +263,7 @@ to {
                                                 </div>
                                                 <div class="LiveContent_info">
                                            			<strong>
-                                                        <span class="LiveContent_product_name">${trailer.psTitle}</span>
+                                                        <span class="LiveContent_product_name">${trailer.pstitle}</span>
                                                     </strong>         
                                                     <div class="LiveContent_price">
                                                         
