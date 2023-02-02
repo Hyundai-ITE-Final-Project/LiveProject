@@ -284,6 +284,7 @@ $(document).ready(function() {
     })
     
     $("#send_btn").click(function(){
+    	flask();
     	send();
     })
     
@@ -305,6 +306,7 @@ $(document).ready(function() {
         } */
        if(e.keyCode==13 || e.keyCode == 10){
     	   e.preventDefault(); //엔터시 줄바꿈 방지(동작중단)
+    	   flask();
            send();
         }
        
@@ -314,6 +316,24 @@ $(document).ready(function() {
         client.send('/pub/chat/message', {}, JSON.stringify({liveId: liveId, ctext: msg, chatMid: nick}));
         $("#wa_textarea").val('');   
         $("#send_btn").attr("disabled",true);
+    }
+    
+    function flask(){
+    	$.ajax({
+    		type:"get",
+    		dataType : "json",
+    		data: {
+    			"ctext" : $("#wa_textarea").val(),
+  				"live" : liveId
+    			},
+    		url: "http://127.0.0.1:5000/predict",
+    		success:function(data){
+    			console.log("전송 성공");
+    		},
+    		error : function(error){
+    			console.log(error);
+    		}
+    	});
     }
     
     $(".LiveFinish").click(function() {
