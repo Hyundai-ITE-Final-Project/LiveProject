@@ -31,6 +31,8 @@
     <result column="stream_key" property="streamKey"/>
     <result column="video_id" property="videoId"/>
     <result column="video_name" property="videoName"/>
+    <result column="ps_title" property="psTitle"/>
+    <result column="mname" property="mname"/>
 	<collection property="videoVO" ofType="com.livecommerce.project.vo.VideoVO" resultMap="VideoMap"/>
 	<collection property="productPostVO" ofType="com.livecommerce.project.vo.ProductPostVO" resultMap="ProductPostMap"/>
   </resultMap>
@@ -58,8 +60,10 @@
     </select>
     
     <select id="trailerList" resultMap="LiveMap">
-    SELECT  LI.*
-		    FROM LIVE LI 
+    SELECT  LI.*, PP.*, M.MNAME
+		    FROM LIVE LI JOIN PRODUCT_POST PP
+		    ON LI.PS_INDEX = PP.PS_INDEX JOIN MEMBER M
+		    ON LI.MEMBER_MID = M.MID
   <![CDATA[WHERE TO_CHAR(LI.LIVE_START_TIME,'YY-MM-DD HH24:MI') > TO_CHAR(CURRENT_DATE,'YY-MM-DD HH24:MI')]]>
            ORDER BY LI.LIVE_STARTDAY,LI.LIVE_START_TIME 
     </select>
@@ -188,6 +192,7 @@
 	    select LI.*, VI.*, m.stream_key
 		FROM LIVE LI LEFT JOIN VIDEO VI
 		ON li.video_id = vi.video_id JOIN MEMBER M ON LI.MEMBER_MID = M.MID
+		WHERE LI.LIVE_STATUS IN ('1','2')
 		ORDER BY LIVE_END_TIME DESC
     </select>
     
@@ -195,6 +200,7 @@
 	    select LI.*, VI.*, m.stream_key
 		FROM LIVE LI LEFT JOIN VIDEO VI
 		ON li.video_id = vi.video_id JOIN MEMBER M ON LI.MEMBER_MID = M.MID
+		WHERE LI.LIVE_STATUS IN ('1','2')
 		ORDER BY LIVE_VIEW DESC
     </select>
     
@@ -212,7 +218,8 @@
     
     <update id="updateLiveVideo">
     	UPDATE LIVE
-	        SET    VIDEO_ID = #{videoId}
+	        SET    VIDEO_ID = #{videoId},
+	        	   LIVE_STATUS = 0
 	        WHERE  LIVE_ID  = #{liveId}
     </update>
     

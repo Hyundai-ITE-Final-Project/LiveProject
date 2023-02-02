@@ -219,14 +219,6 @@ to {
                                                             </c:otherwise>
 																</c:choose>
 														</span>
-														</span> <span class="video_item_wrap"> <!-- 영상 하단 --> <span
-															class="video_item_inner"> <span
-																class="video_item_img"> </span> <span
-																class="video_item_title"> </span> <span
-																class="video_item_price"> <span
-																	class="video_price"> </span>
-															</span>
-														</span>
 														</span>
 													</div>
 												</div> <span class="video_title">${live.liveTitle}</span>
@@ -247,7 +239,6 @@ to {
 										<div class="LiveList_inner">
 											<div class="LiveItem_airtime">
 												<time datetime="">
-
 													<span class="LiveItem_day"> <fmt:parseDate
 															value="${trailer.liveStartTime}" var="startDateTime"
 															pattern="yy-MM-dd HH:mm" /> <fmt:formatDate
@@ -257,23 +248,31 @@ to {
 														pattern="HH:mm" />
 													<span class="LiveItem_time">${starttime}</span>
 												</time>
-												<%-- <span class="LiveItem_day">
-		                                         <fmt:parseDate value="${trailer.liveStartTime}" var="startDate" pattern="yy-mm-dd HH:mm"/>
-		                                         <fmt:formatDate value="${startDate}" var="trailTime" pattern="MM월dd일  HH:mm" />
-		                                         <fmt:formatDate value="${startDate}" pattern="MM월dd일 " />
-		                                         
-											</span>
-	                                        
-	                                        <span class="LiveItem_time">
-	                                        	<fmt:formatDate value="${startDate}" pattern="HH:mm" />
-	                                        </span> --%>
-
                                         </div>
                                         <div class="LiveItem_thumbnail">
                                             <div class="video_container">
                                                 <img class="video_container_img" src="/resources/img/chun.jpg" draggable="false">
                                             </div>
                                         </div>
+                                        
+                                        <div>
+                                            <div class="LiveContent_title">${trailer.liveTitle}</div>
+                                            <div class="LiveContent_product">
+                                            <div class="LiveContent_thumbnail">
+                                                    <img class="LiveContent_img" src="/resources/img/chun.jpg" draggable="false">
+                                                </div>
+                                                <div class="LiveContent_info">
+                                           			<strong>
+                                                        <span class="LiveContent_product_name">${trailer.psTitle}</span>
+                                                    </strong>         
+                                                    <div class="LiveContent_price">
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <span class="LiveContent_seller">${trailer.mname}</span>
+                                       </div>
                                         
                                 </div>
                             </div>
