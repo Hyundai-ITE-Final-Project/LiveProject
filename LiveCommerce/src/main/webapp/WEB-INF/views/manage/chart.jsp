@@ -11,21 +11,87 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>텍스트마이닝 감정분석차트</title>
 <link rel="stylesheet" href="/resources/css/chart.css">
+<style>
+.post_cell_4{width:400px; text-align:center;}
+.pd_content_area{width:655px;}
+</style>
 </head>
 <body>
-			<div class="admin_tool_wrap">
-				<div class="admin_tool_area">
-					<div class="admin_tool_inner">			
-						<div class="admin_tool_content">
-							<div class="admin_list_body">
-								<div class="chart_container">
-									<canvas id="myChart1"></canvas>
-								</div>
-							</div>
+<div class="admin_tool_wrap">
+            <div class="admin_tool_area">
+                <div class="admin_tool_inner">
+                    <div class="admin_tool_top">
+                        <div class="chart_container">
+							<canvas id="myChart1"></canvas>
 						</div>
+                    </div>
+                    <div class="admin_tool_content">
+                        <div class="admin_list_body">
+                            <div class="admin_list_header">
+                                <div class="admin_list_header_viewport">
+                                    <div class="post_cell_1">번호</div>
+                                    <div class="post_cell_4" style="width:400px">긍정적인 채팅</div>
+                                    <div class="post_cell_1">번호</div>
+                                    <div class="post_cell_4">부정적인 채팅</div>
+
+                                </div>
+                                
+                            </div>
+                            <div class="pdPost_content" style="display:flex; flex-direction: row;">
+                            <div>
+                                <c:forEach var="line" items="${positive}" varStatus="Index">
+                                    <div class="pd_content_area" style="width:505px">
+                                        <div class="post_cell_1">
+                                           ${Index.index+1}
+                                        </div>
+                                        <div class="post_cell_4">
+                                        	${line.text}
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                                </div>
+                                <div>
+                                <c:forEach var="line" items="${negative}" varStatus="Index">
+                                    <div class="pd_content_area">
+                                        <div class="post_cell_1">
+                                           ${Index.index+1}
+                                        </div>
+                                        <div class="post_cell_4">
+                                        	${line.text}
+                                        </div>
+
+                                    </div>
+                                </c:forEach>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="height:50px"></div>
+                <div class="paging" style="display: block;">
+                	<div class="paging2">
+						<input type="hidden" class="realEnd" value="${pageMaker.realEnd}">
+						<c:if test="${pageMaker.prev}">
+							<!-- 이전 버튼 -->
+							<a class="arrow prev" href="/manage/productpost?pageNum=${pageMaker.startPage - 1}"></a>
+						</c:if>
+		
+						<!-- 1~10 버튼 -->
+						<span class="num">
+							<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+								<c:if test="${(pageMaker.startPage+i) <= pageMaker.endPage}">
+									<a href="/manage/productpost?pageNum=${num}" class="pageBtn">${num}</a>
+								</c:if>
+							</c:forEach>
+						</span>  
+						<c:if test="${pageMaker.next}">
+							<!-- 다음 버튼 -->
+							<a href="/manage/productpost?pageNum=${pageMaker.endPage +1}" class="arrow next"></a>
+						</c:if>
 					</div>
 				</div>
-			</div>
+            </div>
+        </div>
 <script type="text/javascript">
 
       $(document).ready(function(){ 
@@ -64,8 +130,8 @@
     		    	        label: "주문",
     		    	        backgroundColor: 
     		    	        	[  
-    		    	        	"#7CFC00",
-    		                    "#FF0000"
+    		    	        	"#5199d3",
+    		                    "#ea5c68"
     		                    ],
     		    	        fill: false
     		    	      }
