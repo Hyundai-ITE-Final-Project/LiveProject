@@ -85,7 +85,12 @@
 			<artifactId>spring-security-web</artifactId>
 			<version>5.0.7.RELEASE</version>
 		</dependency>
-
+		<!-- 문자 발송  -->
+		<dependency>
+		    <groupId>net.nurigo</groupId>
+		    <artifactId>javaSDK</artifactId>
+		    <version>2.2</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>

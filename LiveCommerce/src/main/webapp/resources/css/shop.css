@@ -199,18 +199,18 @@ transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 .LiveItem_thumbnail{position: absolute;top: 0;left: 0;width: 120px;height: 100%;}
 @media (min-width: 768px){.LiveItem_thumbnail{width: 160px;}}
 .LiveItem_thumbnail::after{content: '';position: absolute;top: 0;right: 0;bottom: 0;left: 0;z-index: 1;border-radius: 8px;background-color: rgba(34,34,37,0.15);pointer-events: none;}
-.LiveContent_title{overflow: hidden;text-overflow: ellipsis;display: block;max-height: 40px;font-size: 15px;font-weight: 400;color: #303038;letter-spacing: -0.5px;}
+.LiveContent_title{overflow: hidden;text-overflow: ellipsis;display: block;max-height: 40px;font-size: 18px;font-weight: 500;color: #303038;letter-spacing: -0.5px;}
 .LiveContent_additional{overflow: hidden;text-overflow: ellipsis;display: block;white-space: nowrap;word-wrap: normal;line-height: 1.7;font-size: 13px;color: #6563f0;letter-spacing: -0.41px;}
 .LiveContent_product{position: relative;display: flex;flex-direction: column;justify-content: center;overflow: hidden;min-height: 36px;margin-top: 7px;padding-left: 45px;}
-.LiveContent_thumbnail{position: absolute;top: 0;left: 0;width: 36px;height: 36px;border-radius: 2px;overflow: hidden;background-color: #e4e4e4;}
+.LiveContent_thumbnail{position: absolute;top: 0;left: 0;width: 40px;height: 40px;border-radius: 2px;overflow: hidden;background-color: #e4e4e4;}
 .LiveContent_thumbnail .LiveContent_img{position: absolute;top: 0;left: 0;width: 100%;background-color: #fff;}
 .LiveContent_info{display: inline-block;}
-.LiveContent_product_name{overflow: hidden;text-overflow: ellipsis;display: block;white-space: nowrap;word-wrap: normal;margin-top: -2px;line-height: 1.24;font-size: 13px;
+.LiveContent_product_name{overflow: hidden;text-overflow: ellipsis;display: block;white-space: nowrap;word-wrap: normal;margin-top: -2px;line-height: 1.24;font-size: 14px;
     color: #767678;letter-spacing: -0.5px;}
 .LiveContent_price{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;word-wrap: normal;color: #303038;font-size: 13px;}
 .LiveContent_discount{color: #f4361e;}
 .LiveContent_seller{overflow: hidden;text-overflow: ellipsis;display: block;white-space: nowrap;word-wrap: normal;margin-top: 10px;padding-top: 9px;
-    border-top: 1px solid #efeff0;line-height: 1.62;font-size: 13px;color: #767678;}
+    border-top: 1px solid #efeff0;line-height: 1.62;font-size: 15px;color: #767678;}
 .LiveList_itembox::after{content: '';display: inline-block;height: 100%;vertical-align: middle;}
 .Guide_icon{border: 2px solid;border-radius: 50px;width: 15px;font-size: 13px;height: 15px;display: inline-block;text-align: center;vertical-align: middle;
     line-height: 1.3;margin-left: 6px;color: #668679;}
