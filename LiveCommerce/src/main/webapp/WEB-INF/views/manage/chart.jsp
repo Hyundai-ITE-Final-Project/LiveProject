@@ -21,18 +21,12 @@
 								<div class="chart_container">
 									<canvas id="myChart1"></canvas>
 								</div>
-								<div class="chart_container">
-								    <canvas id="myChart2"></canvas>
-								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 <script type="text/javascript">
-
-let csrfHeaderName ="${_csrf.headerName}";
-let csrfTokenValue="${_csrf.token}";
 
       $(document).ready(function(){ 
     	    console.log("페이지실행");
@@ -47,16 +41,16 @@ let csrfTokenValue="${_csrf.token}";
     	  let posList = [];
     	  
     	  $.ajax({
-    		  url:"/chartorder",
+    		  url:"/chart",
     		  type:"get",
-    		  data:{},
+    		  data:{live_id:"${live_id}", mid:'<sec:authentication property="name"/>'},
     		  dataType:"json",
     		  success:function(data){
     			  // console.log(data[0].pos_count);
     			  // 그래프로 나타낼 자료 리스트에 담기
     			  for (let i = 0; i<data.length;i++){    				  
-						timeList.push(data[i].odate);    				  
-						posList.push(data[i].ocount);    				  
+						timeList.push(data[i].positive);    				  
+						posList.push(data[i].predict_count);    				  
     			  }
     			  // console.log(timeList);
     			  // console.log(posList);  	
@@ -68,7 +62,11 @@ let csrfTokenValue="${_csrf.token}";
     		    	    datasets: [{ 
     		    	        data: posList, // 값
     		    	        label: "주문",
-    		    	        borderColor: "#3e95cd",
+    		    	        backgroundColor: 
+    		    	        	[  
+    		    	        	"#7CFC00",
+    		                    "#FF0000"
+    		                    ],
     		    	        fill: false
     		    	      }
     		    	    ]
@@ -77,7 +75,7 @@ let csrfTokenValue="${_csrf.token}";
     		    	    maintainAspectRatio: false,
     		    	    title: {
     		    	      display: true,
-    		    	      text: '날짜별 주문합계'
+    		    	      text: '라이브 채팅분석통계'
     		    	    }
     		    	  }
     		    	}); //그래프
@@ -88,54 +86,6 @@ let csrfTokenValue="${_csrf.token}";
 	     		  
     	  }) // ajax	  
       } // getGraph1
-      
-      function getGraph2(){
-    	  //그래프에 띄워줄 데이터를 담을 배열
-       	  let timeList = [];
-    	  let posList = [];
-    	  
-    	  $.ajax({
-    		  url:"/chartorder",
-    		  type:"get",
-    		  data:{},
-    		  dataType:"json",
-    		  success:function(data){
-    			  // console.log(data[0].pos_count);
-    			  // 그래프로 나타낼 자료 리스트에 담기
-    			  for (let i = 0; i<data.length;i++){    				  
-						timeList.push(data[i].odate);    				  
-						posList.push(data[i].ocount);    				  
-    			  }
-    			  // console.log(timeList);
-    			  // console.log(posList);  	
-				  // 그래프
-    			  new Chart(document.getElementById("myChart2"), {
-    		    	  type: 'line',
-    		    	  data: {
-    		    	    labels: timeList, // X축 
-    		    	    datasets: [{ 
-    		    	        data: posList, // 값
-    		    	        label: "주문",
-    		    	        borderColor: "#3e95cd",
-    		    	        fill: false
-    		    	      }
-    		    	    ]
-    		    	  },
-    		    	  options: {
-    		    	    maintainAspectRatio: false,
-    		    	    title: {
-    		    	      display: true,
-    		    	      text: '날짜별 주문합계'
-    		    	    }
-    		    	  }
-    		    	}); //그래프
-    		  },
-    		  error:function(){
-    			  alert("실패");
-    		  }  
-	     		  
-    	  }) // ajax	  
-      } // getGraph2
       
 </script>
 </body>

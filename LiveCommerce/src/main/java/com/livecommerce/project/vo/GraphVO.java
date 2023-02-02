@@ -4,6 +4,10 @@ import lombok.Data;
 
 @Data
 public class GraphVO {
-	private String odate;
-	private int ocount;
+	
+	private int predict_result;
+	private int predict_count;
+	private String positive;
+	private String live_id;
+	private String mid;
 }

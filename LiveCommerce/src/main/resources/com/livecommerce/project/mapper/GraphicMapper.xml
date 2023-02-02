@@ -11,4 +11,16 @@
  		 group by to_char(odate, 'yyyy-MM-dd')
  		 order by odate
 	</select>
+	
+	<select id="positivenegative" resultType="com.livecommerce.project.vo.GraphVO">
+	    select p.result as predict_result, count(p.result) as predict_count
+   		  from predict p
+       		 , live l
+         where p.live_id = l.live_id
+           and l.live_id = #{live_id}
+           and l.member_mid = #{mid}
+         group by p.result
+	</select>
+	
+
   </mapper>
