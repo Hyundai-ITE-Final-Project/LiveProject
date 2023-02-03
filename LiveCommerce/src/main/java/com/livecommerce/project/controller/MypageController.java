@@ -67,4 +67,15 @@ public class MypageController {
 		mypageService.orderCancelReturnPoint(ov.getOid(), principal.getName());
 		return "redirect:/mypage/orderList";
 	}
+	
+	@PostMapping("/mypage/orderdetail")
+	public String orderDetail(OrderVO ov, Principal principal, Model model) {
+		System.out.println(ov.getOid());
+		List<OrderVO> orderDetail = mypageService.getOrderDetail(ov.getOid(), principal.getName());
+		model.addAttribute("orderdetail", orderDetail);
+		for(int i=0; i<orderDetail.size(); i++) {
+			System.out.println(orderDetail.get(i).getSavepoint());
+		}
+		return "/mypage/orderdetail";
+	}
 }

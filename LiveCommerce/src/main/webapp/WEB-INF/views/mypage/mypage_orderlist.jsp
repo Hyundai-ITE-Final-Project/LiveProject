@@ -17,13 +17,20 @@
                             <c:when test="${!empty listOid}">
                                 <c:forEach var="list3" items="${list3}" varStatus="stay">
                                     <div class="my-box">
-                                        <input type="hidden" value='${list3 }' />
+                                        <input type="hidden" value='${list3}' />
                                         <ul class="orderList_card">
                                             <li class="orderList_card_title">
                                                 <span class="order_day">
                                                     <fmt:formatDate value="${list3[0].odate}" pattern="yyyy.MM.dd" />
                                                 </span> 주문번호 &nbsp;
-                                                ${list3[0].oid}
+                                                <span>${list3[0].oid}</span>
+												<div class="btn_detail_div" style="margin-left:50px;">
+													<button class="btn_detail" id="odetail"
+                                                            value="${list3[0].oid}"
+                                                            onClick="setorderDetail(this)">주문상세
+                                                    </button>
+                                                </div>                                                
+                                                
                                                 <!-- <a class="a_order_detail" href="/orders/주문번호">상세정보</a> -->
                                             </li>
                                             <li class="orderList_card_body">
@@ -89,6 +96,7 @@
                                                             </c:if>
                                                         </c:when>
                                                     </c:choose>
+
                                                 </div>
                                                 <form class="mypageOrderForm" action="/mypage/ordercancel"
                                                     method="post">
@@ -98,6 +106,13 @@
                                                     <input type="hidden" name="ostate" value="${list3[0].ostate}">
                                                     <input type="hidden" name="imp_uid" value="${list3[0].imp_uid}">
                                                 </form>
+                                                
+                                                 <form class="mypageOrderDetail" action="/mypage/orderdetail"
+                                                    method="post">
+                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                        value="${_csrf.token}">
+                                                    <input type="hidden" name="oid" value="">
+                                                </form>   
                                             </li>
                                         </ul>
                                     </div>
@@ -138,5 +153,12 @@
         } else {
             alert("관리자에게 문의주세요.");
         }
+    }
+    
+    function setorderDetail(btn) {
+    	var index = btn.value;
+    	console.log(index);
+    	$("input[name='oid']").val(index);
+    	$(".mypageOrderDetail").submit();
     }
 </script>
