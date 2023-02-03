@@ -53,7 +53,7 @@
         <!-- 배송지 정보 -->
 				<div class="addressInfo_div">
 					<div class="addressInfo_button_div">
-						<button class="address_btn address_btn_1" onclick="showAdress('1')" style="background-color: #668679;">사용자 정보 주소록</button>
+						<button class="address_btn address_btn_1" onclick="showAdress('1')" style="background-color: #668679;">주문자정보/배송지</button>
 						<button class="address_btn address_btn_2" onclick="showAdress('2')" style="background-color: #efdcec; color:black; font-weight:bold;">직접 입력</button>
 					</div>
 					<div class="addressInfo_input_div_wrap">
@@ -65,13 +65,13 @@
 								</colgroup>
 								<tbody>
 									<tr>
-										<th>이름</th>
+										<th>주문자</th>
 										<td>
 											${memberInfo.mname}
 										</td>
 									</tr>
 									<tr>
-										<th>주소</th>
+										<th>배송지</th>
 										<td>
 											${memberInfo.mzipcode} ${memberInfo.maddress1}<br> ${memberInfo.maddress2}
 											<input class="selectAddress" value="T" type="hidden">
@@ -92,13 +92,13 @@
 								</colgroup>
 								<tbody>
 									<tr>
-										<th>이름</th>
+										<th>주문자</th>
 										<td>
 											<input class="addressee_input">
 										</td>
 									</tr>
 									<tr>
-										<th>주소</th>
+										<th>배송지</th>
 										<td>
 											<input class="selectAddress" value="F" type="hidden">
 											<input class="zipcode_input" readonly="readonly"> <a class="address_search_btn" onclick="execution_daum_address()">주소 찾기</a><br>

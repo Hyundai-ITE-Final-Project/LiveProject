@@ -23,4 +23,6 @@ public interface MypageService {
 	/* 주문취소시 포인트회수 */
 	public int orderCancelReturnPoint(@Param("oid") String oid, @Param("mid") String mid);
 	
+	/* 주문상세페이지 */
+	public List<OrderVO> getOrderDetail(@Param("oid") String oid, @Param("mid") String mid);
 }
