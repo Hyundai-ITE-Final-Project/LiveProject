@@ -48,7 +48,6 @@
 					<a href="/manage/orderList" onclick="maintab(four)" class="order_tab" aria-selected="false">판매내역 관리</a> 					
 					<a href="/manage/setting?mid=${user.username}" onclick="maintab(five)" class="setting_tab"aria-selected="false">설정</a>
 					<a href="/manage/role" onclick="maintab(six)" class="memberManage_tab"aria-selected="false">회원관리</a>
-					<a href="/manage/chart" onclick="maintab(seven)" class="statistics_tab"aria-selected="false">통계</a>
 				</div>
 			</div>
 		</div>
