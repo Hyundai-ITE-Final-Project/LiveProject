@@ -34,7 +34,7 @@
                         <div class="coupon-wrap">
                             <div>
                                      <img class="coupon2" 
-                                     src="${pageContext.request.contextPath}/resources/img/coupon/coupon_6400.PNG"></img>
+                                     src="${pageContext.request.contextPath}/resources/img/coupon/coupon_2000.png"></img>
                             </div>
                             <div class="coupon-list">
                                 <div class="coupon coupon01" style="display: none">
@@ -153,7 +153,7 @@
                   <!--               <img
                                         src="http://cdn.thehandsome.com/_ui/desktop/common/images/event/event_7th/evt_main/img_main_evt01_coupon.gif"> -->
                                      <img class="coupon1" 
-                                     src="${pageContext.request.contextPath}/resources/img/coupon/coupon_6400.PNG"></img>
+                                     src="${pageContext.request.contextPath}/resources/img/coupon/coupon_1000.png"></img>
                             </div>
                             <div class="coupon-list">
                                 <div class="coupon coupon01" style="display: none">

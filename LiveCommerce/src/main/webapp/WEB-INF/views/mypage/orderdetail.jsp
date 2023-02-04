@@ -88,7 +88,7 @@
 						<tbody>
 							<tr>
 								<th>포인트 사용</th>
-								<td style="font-size:16px; margin-top:5px;"><div class="order_point_input">${orderdetail[0].usePoint}</div>	
+								<td style="font-size:16px; margin-top:5px;"><span class="order_point_input" style="margin-top:5px;">${orderdetail[0].usePoint}</span> 원
 									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 									&nbsp; &nbsp;					
 								</td>
@@ -100,9 +100,21 @@
 							<!-- 쿠폰 정보 -->
 				<div class="point_div">
 					<div class="point_div_subject">쿠폰 사용</div>
-				        <select title="쿠폰을 선택해 주세요." id="selectVoucher" style="width: 300px;padding: 7px;border: 1px solid #999;border-radius: 3px;" onchange="selectCoupon(this.value)" >
-                              <option value="0">쿠폰을 선택해 주세요.</option>                       
-                        </select>
+					<table class="point_table">
+						<colgroup>
+							<col width="25%">
+							<col width="*">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>포인트 사용</th>
+								<td style="font-size:16px; margin-top:5px;"><span class="" style="margin-top:5px;">0</span> 원
+									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+									&nbsp; &nbsp;					
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>	
 				<hr>	
         <section class="order_total_pay">

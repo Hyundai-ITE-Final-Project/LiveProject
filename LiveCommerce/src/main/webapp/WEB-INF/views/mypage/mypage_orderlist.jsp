@@ -24,12 +24,12 @@
                                                     <fmt:formatDate value="${list3[0].odate}" pattern="yyyy.MM.dd" />
                                                 </span> 주문번호 &nbsp;
                                                 <span>${list3[0].oid}</span>
-												<div class="btn_detail_div" style="margin-left:50px;">
+												<span class="btn_detail_div" style="margin-left:555px;">
 													<button class="btn_detail" id="odetail"
                                                             value="${list3[0].oid}"
                                                             onClick="setorderDetail(this)">주문상세
                                                     </button>
-                                                </div>                                                
+                                                </span>                                                
                                                 
                                                 <!-- <a class="a_order_detail" href="/orders/주문번호">상세정보</a> -->
                                             </li>
@@ -53,9 +53,7 @@
                                                             <div id="ostate${stay.index}${status.index}"
                                                                 value="${item.ostate}" class="goods_seller">
                                                             </div>
-                                                            <input type="hidden" id="ostate${status.index}" value="${list3[0].ostate}">
-                                                            <input type="hidden" id="imp_uid${status.index}" value="${list3[0].imp_uid }">
-                                                            <input type="hidden" id="oid${status.index}" value="${list3[0].oid }">
+
                                                             
                                                             <div class="goods_name">${olist.pname}</div>
                                                             <div class="goods_order_info">
@@ -80,31 +78,33 @@
                                                         <c:when test="${list3[0].ostate ne null}">
                                                             <c:if test="${list3[0].ostate eq '배송준비'}">
                                                                 <button class="btn_cancel"
-                                                                    value="${stay.index}${status.index}"
+                                                                    value="${stay.index}"
                                                                     onClick="setTotalInfo(this)">주문 취소</button>
                                                             </c:if>
                                                             <c:if test="${list3[0].ostate eq '배송중'}">
                                                                 <button class="btn_cancel"
-                                                                    value="${stay.index}${status.index}"
-                                                                    style="display:none" onClick="setTotalInfo(this)">주문
-                                                                    취소</button>
+                                                                    value="${stay.index}" 
+                                                                    style="display:none" onClick="setTotalInfo(this)">배송중</button>
                                                             </c:if>
                                                             <c:if test="${list3[0].ostate eq '주문취소'}">
                                                                 <button class="btn_complete"
-                                                                    value="${stay.index}${status.index}"
+                                                                    value="${stay.index}"
                                                                     onClick="setTotalInfo(this)">취소완료</button>
                                                             </c:if>
                                                         </c:when>
                                                     </c:choose>
-
+                                                    <div style="display:none">
+                                                <span id="oid123${stay.index}">${list3[0].oid}</span>
+												<span id="ostate123${stay.index}">${list3[0].ostate}</span>
+												<span id="imp_uid123${stay.index}">${list3[0].imp_uid}</span>
+                                                    </div>				
                                                 </div>
                                                 <form class="mypageOrderForm" action="/mypage/ordercancel"
                                                     method="post">
                                                     <input type="hidden" name="${_csrf.parameterName}"
                                                         value="${_csrf.token}">
-                                                    <input type="hidden" name="oid" value="${list3[0].oid}">
-                                                    <input type="hidden" name="ostate" value="${list3[0].ostate}">
-                                                    <input type="hidden" name="imp_uid" value="${list3[0].imp_uid}">
+                                                    <input type="hidden" name="oid" value="">                                       
+                                                    <input type="hidden" name="imp_uid" value="">
                                                 </form>
                                                 
                                                  <form class="mypageOrderDetail" action="/mypage/orderdetail"
@@ -136,18 +136,18 @@
     //주문삭제 버튼
     function setTotalInfo(btn) {
         var index = btn.value;
-        console.log("index : " + index);
-        var ostate = document.getElementById('ostate'+index).value;
-        var oimp_uid = document.getElementById('imp_uid'+index).value;
-        var oid1 = document.getElementById('oid'+index).value;
-        console.log("ostate : " + ostate);
-        console.log("oimp_uid : " + oimp_uid);
-        console.log("oid1 : " + oid1);
+        var ostate = $("#ostate123"+index).text();
+    	var oimp_uid = $("#imp_uid123"+index).text();
+    	var oid1 = $("#oid123"+index).text();
+    	console.log(ostate);
+    	console.log(oimp_uid);
+    	console.log(oid1);
+    	
         if (ostate == '배송준비') {
             alert("주문취소 완료되었습니다.");
-            $("input[name='imp_uid']").val(oimp_uid);
-            $("input[name='oid']").val(oid1);
-            $(".mypageOrderForm").submit();
+    		$("input[name='imp_uid']").val(oimp_uid);
+    		$("input[name='oid']").val(oid1);
+        	$(".mypageOrderForm").submit();	
         } else if (ostate == '주문취소') {
             alert("이미 주문이 취소되었습니다.");
         } else {
