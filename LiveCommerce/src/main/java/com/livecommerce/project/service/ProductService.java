@@ -11,6 +11,7 @@ package com.livecommerce.project.service;
  * 2023.01.11	김나형		카테고리별 상품 리스트
  * 2023.01.11	김나형		최근등록순 상품 리스트
  * 230116		박소은		관리자 상품 관리
+ * 2023.02.03	김나형		랜덤상품 추천
 */
 
 import java.util.List;
@@ -21,6 +22,8 @@ import com.livecommerce.project.vo.ProductVO;
 public interface ProductService {
 	// 전체상품
 	public List<ProductVO> getListWithDate(Criteria cri);
+	// 랜덤상품
+	public List<ProductVO> getProductRandom();
 	// 전체상품갯수
 	public int getTotal(Criteria cri);
 	// 상품 상세보기

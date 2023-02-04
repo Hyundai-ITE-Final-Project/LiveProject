@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
 <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
 <meta name="_csrf" content="${_csrf.token}" />
 <meta name="_csrf_header" content="${_csrf.headerName}" />
@@ -13,9 +14,6 @@
 <title>오늘의쇼핑</title>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
-<script type="text/javascript" src="/resources/js/shop.js"></script>
-<script type="text/javascript" src="/resources/js/mypage.js"></script>
-<script type="text/javascript" src="/resources/js/order.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2dbd6c0b5c00df629f26d19c5981c33&libraries=services"></script>
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -106,6 +104,34 @@ to {
 		font-size: 11px
 	}
 }
+/* .swiper-container {
+      width: 100%;
+      height: 100%;
+    } */
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+    .no-scroll {
+	  -ms-overflow-style: none; /* IE, Edge */
+	  scrollbar-width: none; /* Firefox */
+	}
+	.no-scroll::-webkit-scrollbar {
+	  display: none; /* Chrome, Safari, Opera */
+	}
 </style>
 </head>
 <body>
@@ -212,13 +238,7 @@ to {
 				<div id="MainContent">
 					<section id="LiveNow" class="main_section">
 						<div class="section_title">
-							<span class="color_point">⚡NOW⚡</span>
-						</div>
-						<div class="ListBox_wrap">
-							<div class="ListBox_list">
-								<a href="javascript:0;" class="livenow_tab_menu"
-									aria-selected="true">전체</a>
-							</div>
+							<span class="color_point">⚡바로 지금! 라이브 방송⚡</span>
 						</div>
 						<div class="livenow_tab_wrap">
 							<c:if test="${empty lives}">
@@ -261,8 +281,39 @@ to {
 							</div>
 						</div>
 					</section>
+					<section class="main_section swiper-section">
+						<div class="section_title" style="padding-bottom:0;">
+							<span class="color_point">MD's PICK</span>
+						</div>
+						<div class="swiper-container" style="overflow:hidden; padding-left:30px; padding-right:30px;">
+						    <div class="swiper-wrapper" style="height: 400px;">
+						        <c:forEach var="productRand" items="${productRand}">
+						            <div class="swiper-slide">
+						                <a href="/product/productDetail?pid=${productRand.pid}" target="self" class="video_link">
+						                    <div>
+						                        <img src="${productRand.img1}">
+						                    </div>
+						                    <span class="video_title" style="font-size:17px; white-space:normal;">${productRand.pname}</span>
+						                    <span class="video_title" style="font-size:17px;">${productRand.price}원</span>
+						                </a>
+						            </div>
+						        </c:forEach>
+						    </div>
+						  </div>
+						  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+						  <script>
+						    var swiper = new Swiper('.swiper-container', {
+						      slidesPerView: 5,
+						      spaceBetween: 30,
+						      pagination: {
+						        el: '.swiper-pagination',
+						        clickable: true,
+						      },
+						    });
+						  </script>
+					</section>
 					<section id="liveTrailer" class="main_section">
-						<div class="section_title">📆라이브 예고</div>
+						<div class="section_title">라이브 예고</div>
 						<ul class="LiveList_list LiveList_pc_twoColumn">
 							<c:forEach var="trailer" items="${trailers}">
 								<li class="LiveList_item" data-id>
@@ -282,7 +333,7 @@ to {
                                         </div>
                                         <div class="LiveItem_thumbnail">
                                             <div class="video_container">
-                                                <img class="video_container_img" src="/resources/img/chun.jpg" draggable="false">
+                                                <img class="video_container_img" src="/resources/img/logo/trailer_logo.png" draggable="false">
                                             </div>
                                         </div>
                                         
@@ -290,7 +341,7 @@ to {
                                             <div class="LiveContent_title">${trailer.liveTitle}</div>
                                             <div class="LiveContent_product">
                                             <div class="LiveContent_thumbnail">
-                                                    <img class="LiveContent_img" src="/resources/img/chun.jpg" draggable="false">
+                                                    <img class="LiveContent_img" src="/resources/img/product.png" draggable="false">
                                                 </div>
                                                 <div class="LiveContent_info">
                                            			<strong>
@@ -316,7 +367,6 @@ to {
 												</a>
 											</div>
                                        </div>
-                                        
                                 </div>
                             </div>
                         </li>

@@ -17,6 +17,7 @@
  * 2023.01.11		김나형		카테고리별 상품 리스트
  * 2023.01.11		김나형		최근등록순 상품 리스트
  * 2023.01.16		박소은		관리자 상품 관리
+ * 2023.02.03		김나형		랜덤상품 추천
 </pre>
 -->
 <mapper namespace="com.livecommerce.project.mapper.ProductMapper">
@@ -32,7 +33,14 @@
 			WHERE p.rn > (#{pageNum} -1) * #{amount} and p.rn <= #{pageNum} * #{amount}
     	]]>
 	</select>
-
+	<select id="getProductRandom" resultType="com.livecommerce.project.vo.ProductVO">
+		select *
+		from(select *
+		     from product
+		    order by dbms_random.value)
+		    <![CDATA[
+			where rownum <= 12]]>
+	</select>
 	<!-- 전체상품갯수 -->
 	<select id="getTotalCount" resultType="int">
 		select count(*)
