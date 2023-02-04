@@ -66,7 +66,6 @@ public class AlarmController {
 	public void AlarmStatus() {
 		alarmService.updateAlarmStatus();
 		List<AlarmTelVO> alarm = alarmService.liveAlarm();
-		log.info("실행이 되고 있다!");
 		if(alarm.size() > 0) {
 			String api_key = "NCSK8CRZVEXWXQXM";
 			String api_secret = "DDZMV6ZNKHFT8T8QTPPCUTQABBEUCQCM";
@@ -74,7 +73,9 @@ public class AlarmController {
 			String sendtext = "라이브 방송이 시작되었어요!";
 			for(int i=0; i<alarm.size(); i++) {
 				HashMap<String, String> set = new HashMap<String, String>();
-				set.put("to", alarm.get(i).getMtel());
+				String mphone = alarm.get(i).getMtel();
+				mphone = mphone.replaceAll("-", "");
+				set.put("to", mphone);
 				set.put("from", "01020764906");
 				set.put("text", sendtext);
 				set.put("type", "sms");

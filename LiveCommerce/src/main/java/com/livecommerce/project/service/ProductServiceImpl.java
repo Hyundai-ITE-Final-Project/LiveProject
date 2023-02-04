@@ -11,6 +11,7 @@ package com.livecommerce.project.service;
  * 2023.01.11	김나형		카테고리별 상품 리스트
  * 2023.01.11	김나형		최근등록순 상품 리스트
  * 230116		박소은		테이블 변경 (재고, 상태, regdate)
+ * 2023.02.03	김나형		랜덤상품 추천
 */
 
 import java.util.List;
@@ -37,6 +38,10 @@ public class ProductServiceImpl implements ProductService{
     public List<ProductVO> getListWithDate(Criteria cri){
     	log.info("list service 들어옴");
     	return mapper.getListWithDate(cri);
+    }
+    // 랜덤상품추천
+    public List<ProductVO> getProductRandom(){
+    	return mapper.getProductRandom();
     }
     //전체상품갯수
     @Override

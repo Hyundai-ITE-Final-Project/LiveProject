@@ -27,7 +27,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script>
     function go_mypage() {
-    	window.opener.location.href="/mypage/orderList";
+    	window.opener.location.href="/mypage/orderdetail?oid=";
     }
     </script>
 

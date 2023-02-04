@@ -19,7 +19,11 @@
     <!-- <script type="text/javascript" src="/js/live.js" ></script>    -->
     <script type="text/javascript" src="/resources/js/common.js" ></script>  
     <script type="text/javascript" src="/resources/js/live_common.js" ></script>  
-
+	<style>
+		.CommentBtn_icon{
+		 	background-image:url("/resources/img/receipt.png");
+		}
+	</style>
 </head>
 <body>
     <div class="videoLayout_wrap videoLayout_pc">
@@ -162,7 +166,7 @@
                                             <i class="ModelTitle_icon"></i>
                                         </button>
                                     </div>
-                                    <iframe class="TagItemIframe_iframe3" src="/live/recipe?ps_index=${replay.psIndex}"></iframe>
+                                    <iframe class="TagItemIframe_iframe3" src="/live/recipe?ps_index=${live.psIndex}"></iframe>
                                 </div>
                             </section>
                             <button type="button" class="CommentBtn_wrap" aria-hidden="false">
