@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  
 <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
 <meta name="_csrf" content="${_csrf.token}" />
 <meta name="_csrf_header" content="${_csrf.headerName}" />
@@ -17,6 +19,7 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2dbd6c0b5c00df629f26d19c5981c33&libraries=services"></script>
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <style>
 body {
 	margin: 0 auto;
@@ -132,7 +135,31 @@ to {
 	.no-scroll::-webkit-scrollbar {
 	  display: none; /* Chrome, Safari, Opera */
 	}
+	.bx-wrapper{
+		-moz-box-shadow:none;
+		-webkit-box-shadow:none;
+		box-shadow:none;
+		border:0;
+	}
+	.bx-wrapper .bx-controls-direction a{
+		z-index:10;
+	}
 </style>
+  <script>
+    $(document).ready(function(){
+      $('.slider').bxSlider({
+    	  auto:true,
+    	  speed:500,
+    	  pause:3000,
+    	  mode:'horizontal',
+    	  autoControls : false,
+    	  pager:false,
+    	  captions:true,
+    	  preloadImages:'all',
+    	  controls:false
+      });
+    });
+  </script>
 </head>
 <body>
 	<script>
@@ -184,61 +211,18 @@ to {
 		</div>
 		<div class="shop_content">
 			<div class="shop_mainPage">
-				<section id="HomeBanner" style='background: #efdcec;'>
-					<div class="slideshow-container">
-
-						<div class="mySlides fade">
-							<div class="banner_view">
-								<div class="banner_pannel">
-									<div class="HomeBanner_wrap"
-										style="position: absolute; left: 0px;">
-										<a href="#" class="HomeBanner_link link_black"
-											style="background-color: #efdcec;">
-											<div class="HomeBanner_banner">
-												<span class="HomeBanner_txt"> <span
-													class="HomeBanner_label">LIVE 예고</span> <strong
-													class="HomeBanner_title">현대 IT&E 5기<br>최종 프로젝트 발표
-												</strong> <span class="HomeBanner_date">2월 10일 오후 2시<br>신기원, 김나형, 김민석, 박소은</span>
-												</span> <img style='text-align: right;'
-													src="../../resources/img/banner/live_banner3.png"></img>
-											</div>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="mySlides fade">
-							<div class="numbertext">2 / 3</div>
-							<div class="banner_view">
-								<div class="banner_pannel">
-									<div class="HomeBanner_wrap"
-										style="position: absolute; left: 0px;">
-										<a href="#" class="HomeBanner_link link_black"
-											style="background-color: #efdcec;">
-											<div class="HomeBanner_banner">
-												<span class="HomeBanner_txt"> <span
-													class="HomeBanner_label">LIVE 예고</span> <strong class="HomeBanner_title">Valentine's Day🧁<br>인기 초콜릿 선물세트</strong><span class="HomeBanner_date">2월 10일 오후 2시</span>
-												</span> <img style='text-align: right;'
-													src="../../resources/img/banner/live_banner2.png"></img>
-											</div>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-
-					<div style="text-align: center">
-						<span class="dot"></span> <span class="dot"></span></span>
-					</div>
-
+				<section id="HomeBanner" style="text-align:center;">
+					<ul class="slider">
+					    <li><a href="#"><img src="https://tohomeimage.thehyundai.com/DP/DP034/2023/02/01/143747/hwlum.jpg?RS=1204x540" alt="img1"></a></li>
+					    <li><a href="#"><img src="https://tohomeimage.thehyundai.com/DP/DP034/2023/01/30/144928/eeazd.jpg?RS=1204x540" alt="img2"></a></li>
+					    <li><a href="#"><img src="https://tohomeimage.thehyundai.com/DP/DP034/2023/02/02/152843/zsifl.jpg?RS=1204x540" alt="img3"></a></li>
+					    <li><a href="#"><img src="https://tohomeimage.thehyundai.com/DP/DP034/2023/02/02/152843/jydoq.jpg?RS=1204x540" alt="img4"></a></li>
+					</ul>
 				</section>
 				<div id="MainContent">
 					<section id="LiveNow" class="main_section">
 						<div class="section_title">
-							<span class="color_point">⚡바로 지금! 라이브 방송⚡</span>
+ 							<span class="color_point">⚡바로 지금! 라이브 방송⚡</span>
 						</div>
 						<div class="livenow_tab_wrap">
 							<c:if test="${empty lives}">
@@ -373,6 +357,44 @@ to {
                        </c:forEach>
                     </ul>
                 </section>
+                <section class="main_section">
+					<ul class="exhibition-ban">
+						<li style="text-align:center;">
+							<img src="https://tohomeimage.thehyundai.com/DP/DP034/2023/02/01/143747/tkcjl.jpg?RS=1204x160" alt="">
+						</li>
+					</ul>
+				</section>
+                <section class="main_section swiper-section">
+						<div class="section_title" style="padding-bottom:0;">
+							<span class="color_point">품절 임박!</span>
+						</div>
+						<div class="swiper-container" style="overflow:hidden; padding-left:30px; padding-right:30px;">
+						    <div class="swiper-wrapper" style="height: 400px;">
+						        <c:forEach var="productStock" items="${productStock}">
+						            <div class="swiper-slide">
+						                <a href="/product/productDetail?pid=${productStock.pid}" target="self" class="video_link">
+						                    <div>
+						                        <img src="${productStock.img1}">
+						                    </div>
+						                    <span class="video_title" style="font-size:17px; white-space:normal;">${productStock.pname}</span>
+						                    <span class="video_title" style="font-size:17px;">${productStock.price}원</span>
+						                </a>
+						            </div>
+						        </c:forEach>
+						    </div>
+						  </div>
+						  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+						  <script>
+						    var swiper = new Swiper('.swiper-container', {
+						      slidesPerView: 5,
+						      spaceBetween: 30,
+						      pagination: {
+						        el: '.swiper-pagination',
+						        clickable: true,
+						      },
+						    });
+						  </script>
+					</section>
             </div>
         </div>
                 <div>
