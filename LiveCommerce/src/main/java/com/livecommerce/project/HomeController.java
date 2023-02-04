@@ -48,6 +48,9 @@ public class HomeController {
 		
 		List<ProductVO> list = productService.getProductRandom();
 		model.addAttribute("productRand", list);
+		
+		List<ProductVO> list2 = productService.getProductStock();
+		model.addAttribute("productStock",list2);
 		return "home";
 	}
 	
