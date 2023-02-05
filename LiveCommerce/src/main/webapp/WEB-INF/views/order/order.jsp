@@ -400,7 +400,7 @@ minites = minites < 10 ? '0' + minites.toString() : minites.toString();
 var seconds = date.getSeconds();
 seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
 
-let oid="${memberInfo.mid}"+"_"+year + month + day + hour + minites + seconds;
+let oid="oid"+"_"+year + month + day + hour + minites + seconds;
 // 주문 요청 
   $(".btn_payment").on("click", function(){
 	  console.log(totalKind + '종' + totalCount + '개');

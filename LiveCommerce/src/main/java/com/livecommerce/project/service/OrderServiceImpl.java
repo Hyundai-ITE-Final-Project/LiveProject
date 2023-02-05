@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,18 @@ public class OrderServiceImpl implements OrderService{
 	
 	@Autowired
 	private ProductMapper productMapper;
+	
+	Random random = new Random();
+	
+	final char[] digits = {
+	        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
+	        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 
+	        'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 
+	        'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D',
+	        'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 
+	        'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 
+	        'Y', 'Z', '#', '$'
+	    };
 	
 	   //아임포트
 	   private final String imp_key = "0636646546784601";
@@ -131,11 +144,24 @@ public class OrderServiceImpl implements OrderService{
 			ord.getOrderPriceInfo();
 		/*DB 주문,주문상품(,배송정보) 넣기*/
 			
+			int shift = 6;
+		    char[] buf = new char[64];
+		    int charPos = 64;
+		    int radix = 1 << shift;
+		    long mask = radix - 1;
+		    long number = System.nanoTime();
+		    do {
+		        buf[--charPos] = digits[(int) (number & mask)];
+		        number >>>= shift;
+		    } while (number != 0);
+			
+			
+			
 			/* oid만들기 및 OrderVO객체 oid에 저장 */
 			Date date = new Date();
 			SimpleDateFormat format = new SimpleDateFormat("_yyyyMMdd_HH:mm:ss");
 			System.out.println(member.getMid());
-			String orderId = member.getMid() + format.format(date);
+			String orderId = new String(buf, charPos, (64 - charPos)) + format.format(date);
 			
 			ord.setOid(orderId);
 			
