@@ -27,7 +27,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script>
     function go_mypage() {
-    	window.opener.location.href="/mypage/orderdetail?oid=";
+    	window.opener.location.href="/mypage/orderList";
+    	close();
     }
     </script>
 
@@ -136,7 +137,6 @@
                              		<span class="date"><c:out value="${now}"/></span>
                              	</div>`
             	document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
-
 				const list = document.querySelectorAll(".me");
 				const len = list.length - 1;
 				list[len].getElementsByClassName("mine")[0].setAttribute("id", cnt);
@@ -161,13 +161,11 @@
 					txt2.replace(/\r/g, "");
 					txt2.replace(/\n/g, "");
 					console.log("txt2 : " + txt2);
-
                 	var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
                                 		<div class="bubble has-moving in your" style="max-height: 10000px;"></div>
                                 		<div class="date"><c:out value="${now}"/></div>
                             		</div>`
                 	document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
-
 					const list2 = document.querySelectorAll(".you");
 					const len2 = list2.length - 1;
 					list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
@@ -269,8 +267,6 @@
                             	//alert(result[i].oid);
                             	lc++;
 								var listcount = result[i].count -1;
-
-
 								if(listcount > 0){
 									i += listcount;
 	                                html += 
@@ -328,7 +324,6 @@
                     scrollDown();
                 }
             }
-
             if (value == 'couponlist') {
             	var template = `<div class="chat-item is-customer me">
 						          	<div class="bubble has-moving in" style="max-height: 10000px;">
@@ -382,15 +377,7 @@
 			                if(result.length == 0){
 			                    var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
 					              	<div class="bubble has-moving in your" style="max-height: 10000px;">
-			                    		쿠폰이 존재하지 않습니다😓
-					              		<div class="bubble-actions">
-		                        			<button type="button" class="btn-link is-script is-dynamic-script"
-				                        	 onclick="#" style="height:auto;">
-												<span>
-												👉쿠폰 받으러가기👈
-												</span>
-											</button>
-					                	</div>	              		
+			                    		쿠폰이 존재하지 않습니다😓              		
 					              	</div>
 					              	<div class="date"><c:out value="${now}"/></div>
 					          	 </div>`;
@@ -433,14 +420,12 @@
 				                }
 				                $("#"+cnt).html(html);
 			                }
-
 			            }
 			        });
 			        cnt++;
 			        scrollDown();
 		        }
             }
-
             if (value == 'faq') {
             	var template = `<div class="chat-item is-customer me">
 		          	<div class="bubble has-moving in" style="max-height: 10000px;">

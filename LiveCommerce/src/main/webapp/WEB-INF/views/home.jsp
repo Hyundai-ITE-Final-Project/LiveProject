@@ -13,13 +13,14 @@
 <meta name="_csrf" content="${_csrf.token}" />
 <meta name="_csrf_header" content="${_csrf.headerName}" />
 <link rel="shortcut icon" href="/img/logo/logo_header_icon.png">
-<title>오늘의쇼핑</title>
+<title>H-LIVE</title>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="/resources/js/common.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2dbd6c0b5c00df629f26d19c5981c33&libraries=services"></script>
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <style>
 body {
 	margin: 0 auto;
@@ -213,10 +214,10 @@ to {
 			<div class="shop_mainPage">
 				<section id="HomeBanner" style="text-align:center;">
 					<ul class="slider">
-					    <li><a href="#"><img src="https://tohomeimage.thehyundai.com/DP/DP034/2023/02/01/143747/hwlum.jpg?RS=1204x540" alt="img1"></a></li>
-					    <li><a href="#"><img src="https://tohomeimage.thehyundai.com/DP/DP034/2023/01/30/144928/eeazd.jpg?RS=1204x540" alt="img2"></a></li>
-					    <li><a href="#"><img src="https://tohomeimage.thehyundai.com/DP/DP034/2023/02/02/152843/zsifl.jpg?RS=1204x540" alt="img3"></a></li>
-					    <li><a href="#"><img src="https://tohomeimage.thehyundai.com/DP/DP034/2023/02/02/152843/jydoq.jpg?RS=1204x540" alt="img4"></a></li>
+					    <li><a href="#"><img src="/resources/img/banner/1.jpg" alt="img1"></a></li>
+					    <li><a href="#"><img src="/resources/img/banner/2.jpg" alt="img2"></a></li>
+					    <li><a href="#"><img src="/resources/img/banner/3.jpg" alt="img3"></a></li>
+					    <li><a href="#"><img src="/resources/img/banner/4.jpg" alt="img4"></a></li>
 					</ul>
 				</section>
 				<div id="MainContent">
@@ -265,7 +266,7 @@ to {
 							</div>
 						</div>
 					</section>
-					<section class="main_section swiper-section">
+ 					<section class="main_section swiper-section">
 						<div class="section_title" style="padding-bottom:0;">
 							<span class="color_point">MD's PICK</span>
 						</div>
@@ -284,17 +285,6 @@ to {
 						        </c:forEach>
 						    </div>
 						  </div>
-						  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-						  <script>
-						    var swiper = new Swiper('.swiper-container', {
-						      slidesPerView: 5,
-						      spaceBetween: 30,
-						      pagination: {
-						        el: '.swiper-pagination',
-						        clickable: true,
-						      },
-						    });
-						  </script>
 					</section>
 					<section id="liveTrailer" class="main_section">
 						<div class="section_title">라이브 예고</div>
@@ -357,14 +347,14 @@ to {
                        </c:forEach>
                     </ul>
                 </section>
-                <section class="main_section">
+                 <section class="main_section">
 					<ul class="exhibition-ban">
 						<li style="text-align:center;">
 							<img src="https://tohomeimage.thehyundai.com/DP/DP034/2023/02/01/143747/tkcjl.jpg?RS=1204x160" alt="">
 						</li>
 					</ul>
 				</section>
-                <section class="main_section swiper-section">
+                 <section class="main_section swiper-section">
 						<div class="section_title" style="padding-bottom:0;">
 							<span class="color_point">품절 임박!</span>
 						</div>
@@ -383,17 +373,6 @@ to {
 						        </c:forEach>
 						    </div>
 						  </div>
-						  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-						  <script>
-						    var swiper = new Swiper('.swiper-container', {
-						      slidesPerView: 5,
-						      spaceBetween: 30,
-						      pagination: {
-						        el: '.swiper-pagination',
-						        clickable: true,
-						      },
-						    });
-						  </script>
 					</section>
             </div>
         </div>
@@ -459,8 +438,17 @@ $(function() {
 	});
 
 </script>
-
-	<script>
+<script>
+	var swiper = new Swiper('.swiper-container', {
+		slidesPerView: 5,
+		spaceBetween: 30,
+		pagination: {
+						el: '.swiper-pagination',
+						clickable: true,
+					},
+		});
+</script>
+<script>
 let slideIndex = 0;
 showSlides();
 
