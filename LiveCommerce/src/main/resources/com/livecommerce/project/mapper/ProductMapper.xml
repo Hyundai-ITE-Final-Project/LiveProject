@@ -49,6 +49,8 @@
 		from(select *
 		     from product
 		     order by pstock)
+		     <![CDATA[
+			where rownum <= 12]]>
 	</select>
 	<!-- 전체상품갯수 -->
 	<select id="getTotalCount" resultType="int">
