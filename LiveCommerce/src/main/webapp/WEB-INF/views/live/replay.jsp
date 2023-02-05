@@ -47,7 +47,6 @@
                                 </div>
                                 <div class="LiveHeader_title">
                                     <div class="LiveHeader_img_area" >
-                                        <%-- <img class="LiveHeader_image" width="38" height="38" src="https://s3.ap-northeast-2.amazonaws.com/onlshop.shop${replay.liveSellerVo.getSelUploadPath()}/${replay.liveSellerVo.getSelFileId()}"> --%>
                                         <span class="LiveBadge_live blind">LIVE</span>
                                     </div>           
                                     <div class="LiveHeader_text_area">
@@ -66,7 +65,7 @@
                             <div class="LiveVideoPlayer_wrap">
                                 <div class="video_container">
                                     <video id="video" autoplay muted loop controls disablepictureinpicture="true" controlslist="nodownload" width="100%" height="100%" preload="auto" 
-                                        poster="/resources/img/chun.jpg"
+                                        poster="/resources/img/logo/trailer_logo.png"
                                         src="/video/${replay.videoName}.mp4">
                                     </video>  
                                 </div>

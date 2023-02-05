@@ -90,7 +90,7 @@
                             </div>
                             <div class="LiveVideoPlayer_wrap">
                                 <div class="video_container">
-                                    <video id="video" controls muted disablepictureinpicture="true" controlslist="nodownload" width="100%" height="100%" preload="auto" poster="/resources/img/chun.jpg"></video>  
+                                    <video id="video" controls muted disablepictureinpicture="true" controlslist="nodownload" width="100%" height="100%" preload="auto" poster="/resources/img/logo/trailer_logo.png"></video>  
                                 </div>
                             </div>
                             <div class="Comments_wrap" id="Comments_wrap">

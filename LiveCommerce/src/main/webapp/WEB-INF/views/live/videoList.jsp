@@ -40,7 +40,7 @@
 				                                          </video>
 					                        </c:when>
 					                        <c:otherwise>
-					                          <video class="VideoPlayer_video replayVideo" autoplay muted loop poster="/resources/img/chun.jpg">
+					                          <video class="VideoPlayer_video replayVideo" autoplay muted loop poster="/resources/img/logo/trailer_logo.png">
 					                            <source src="/video/${live.videoName}.mp4" type="video/mp4">
 					                          </video>  
 					                        </c:otherwise>
