@@ -33,7 +33,7 @@ public class CartController {
 	
 	@PostMapping("/cart/add")
 	@ResponseBody
-	public String addCartPost(CartVO cart, HttpServletRequest request) {
+	public String addCartPost(CartVO cart, HttpServletRequest request, Principal prin) {
 		//화면을 반환하는 것이 아니라 데이터를 바로 반환하기 때문에 @ResponseBody를 추가
 		//ResponseBody를 사용할 것이라서 반환타입 String\
 		
@@ -45,7 +45,10 @@ public class CartController {
 //		}
 		// 카트 등록
 		
-		int result = cartService.addCart(cart);
+		CartVO a = cart;
+		a.setMember_mid(prin.getName());
+		System.out.println("왜 오류나는걸까요??" + prin.getName());
+		int result = cartService.addCart(a);
 				
 		return result + "";	//addCart 반환타입이 int여서 빈 문자열을 더함
 	}

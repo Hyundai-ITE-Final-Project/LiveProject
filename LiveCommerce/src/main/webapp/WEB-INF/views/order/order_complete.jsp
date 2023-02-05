@@ -50,7 +50,7 @@
 						<button class="address_btn address_btn_1" style="background-color: #668679;">사용자 정보 주소록</button>
 					</div>
 					<div class="addressInfo_input_div_wrap">
-						<div class="addressInfo_input_div addressInfo_input_div_1" style="display: block">
+						<div class="addressInfo_input_div1 addressInfo_input_div_1" style="display: block">
 							<table>
 								<colgroup>
 									<col width="25%">

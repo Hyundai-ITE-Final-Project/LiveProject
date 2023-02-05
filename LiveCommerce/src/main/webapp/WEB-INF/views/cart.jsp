@@ -121,10 +121,6 @@
 										</td>
 									</tr>
 									<tr>
-										<td>배송비</td>
-										<td>
-											<span class="delivery_price">3000</span>원
-										</td>
 									</tr>									
 								</table>
 							</td>
@@ -263,7 +259,7 @@ function setTotalInfo(){
 	}	
 	
 	/* 최종 가격 */
-	finalTotalPrice = totalprice + deliveryPrice;
+	finalTotalPrice = totalprice;
 	
 	/* 값 삽입 */
 	// 총 가격
