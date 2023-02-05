@@ -161,6 +161,7 @@
 	        ,LIVE_START_TIME = to_date(#{liveStartTime},'yy/mm/dd HH24:MI')
 	        ,LIVE_END_TIME = to_date(#{liveEndTime},'yy/mm/dd HH24:MI')
 	        ,LIVE_STATUS = #{liveStatus}
+	        ,PS_INDEX = #{psIndex}
 	        WHERE  LIVE_ID  = #{liveId}
     </update>
     
