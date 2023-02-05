@@ -521,7 +521,7 @@ hr{background-color: #e7e7e7; width: 100%; height: 1px; border: none;}
 
 #order_complate_wrap{background:#fff;}
 .order_cp_container{padding: 170px 0;text-align: center;min-height: 100vh;}
-.order_cp_title {letter-spacing: 2px;}
+.order_cp_title {letter-spacing: 2px; margin-top:50px; margin-left:50px;}
 .order_cp_title span{color: #ff2f97;}
 .order_info_area{margin: 20px 0;font-size: 20px;display: inline-block;width: 350px;}
 .order_cp_li{margin-bottom: 10px;display: flex;align-items: center;color: #424242;}

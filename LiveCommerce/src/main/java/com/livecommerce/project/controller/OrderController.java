@@ -1,4 +1,7 @@
 package com.livecommerce.project.controller;
+import java.security.Principal;
+import java.util.List;
+
 /**
  * @author 김민석
  * @since 2023.01.15
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.livecommerce.project.service.CouponService;
 import com.livecommerce.project.service.MemberService;
+import com.livecommerce.project.service.MypageService;
 import com.livecommerce.project.service.OrderService;
 import com.livecommerce.project.vo.CouponVO;
 import com.livecommerce.project.vo.MemberVO;
@@ -40,6 +44,8 @@ public class OrderController {
 	private MemberService memberService;
 	@Autowired
 	private CouponService couponService;
+	@Autowired
+	private MypageService mypageService;
 	
 	//주문페이지 불러오기
 	@GetMapping("/order/{mid}")
@@ -54,7 +60,7 @@ public class OrderController {
 	
 	//주문하기
 	@PostMapping("/order")
-	public String orderPagePost(OrderVO ov, CouponVO coupon, HttpServletRequest request) {
+	public String orderPagePost(OrderVO ov, CouponVO coupon, HttpServletRequest request, Principal principal, Model model) {
 		
 		System.out.println(ov);		
 		//주문하기
@@ -63,8 +69,9 @@ public class OrderController {
 		//사용한 쿠폰이 있으면 쿠폰유무상태 업데이트
 		if(coupon.getCname() != null) couponService.modifyCoupon(coupon.getCname());
 		
-		MemberVO member = new MemberVO();
-		member.setMid(ov.getMember_mid());
+		//주문상세
+		List<OrderVO> orderDetail = mypageService.getOrderDetail(ov.getOid(), principal.getName());
+		model.addAttribute("orderdetail", orderDetail);
 		
 	    return "/order/order_complete";
 		
