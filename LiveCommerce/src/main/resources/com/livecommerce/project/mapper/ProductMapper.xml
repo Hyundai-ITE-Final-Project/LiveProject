@@ -110,21 +110,17 @@
 
 	<select id="getListWithPagingProduct"
 		resultType="com.livecommerce.project.vo.ProductVO">
-	<![CDATA[
+	
 	select pid, pname, pstatus, price, pstock, pregdate 
 	from
 		(
 		select /*INDEX_DESC(product pid)*/
 			rownum rn, pid, pname, pstatus, price, pstock, pregdate
-		from
-			product
-		where pid <= #{pageNum} * #{amount}
+		from product
 		order by pid
-		
-		
 		)
-		where pid > (#{pageNum} - 1) * #{amount}
-		order by pid
+		<![CDATA[
+		where rn > (#{pageNum} - 1) * #{amount} and rn <= #{pageNum} * #{amount}
 		]]>
 
 	</select>
