@@ -59,23 +59,14 @@
 <body>
 	<div id="admin_wrap">
 		<div class="admin_content">
-			<div class="admin_menulist">
-				<div class="admin_tablist">
-					<a href="/manage/live" class="main_tab" aria-selected="false">라이브
-						관리</a> <a href="/manage/products" class="main_tab" aria-selected="true">상품
-						관리</a> <a href="/manage/productpost" class="main_tab" aria-selected="false">판매글
-						관리</a> <a href="/manage/orderList" class="main_tab" aria-selected="false">판매
-						내역 관리</a> <a href="/manage/setting" class="main_tab"
-						aria-selected="false">설정</a>
-				</div>
-			</div>
+			
 			<form role="form" action="/manage/registerProduct" method="post">
 
 				<div class="product_create_wrap">
 					<div class="product_create_area">
 						<div class="product_create_inner">
 							<div class="_title">
-								<h1>제품 수정</h1>
+								<h1>제품 등록</h1>
 							</div>
 							<div class="product_create_content">
 
@@ -185,18 +176,14 @@
 									<input class="form-control layout_input" name='price'>
 								</div>
 
-								<div class="create_layout">
-                            <div class="layout_subject _asterisk">상품 상세</div>
-	                        <textarea id="psContentText" name="psContentText">${product.detail }</textarea>
-	                        <iframe id="psContentIframe" name="psContentIframe" scrolling=yes border=0 width="100%" height=300 frameborder=0></iframe>                    
-                        </div>
+									<div class="create_layout">
+                    		<div class="layout_subject _asterisk">판매글 상세 내용</div>
+                    		<textarea class="layout_input" name='detail' style="font-size: 16px; width: 100%; line-height:150%; padding-top: 15px; height: 200%;">${product.detail }</textarea>
+                    		</div>
+							
 
 
-								<div class="create_layout form-group">
-									<div class="layout_subject _asterisk">이미지</div>
-									<input class="form-control layout_input" name='img1'>
-								</div>
-
+								
 
 
 								<div class="create_layout form-group">
@@ -235,7 +222,7 @@
 
 								<input type="hidden" name="${_csrf.parameterName}"
 									value="${_csrf.token}" />
-								<button type="submit" class="btn btn-default">Submit</button>
+								<button type="submit" class="btn btn-default btn_pp btn_product_update">Submit</button>
 			</form>
 		</div>
 	</div>
