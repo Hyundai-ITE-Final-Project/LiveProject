@@ -67,8 +67,8 @@ public class AlarmController {
 		alarmService.updateAlarmStatus();
 		List<AlarmTelVO> alarm = alarmService.liveAlarm();
 		if(alarm.size() > 0) {
-			String api_key = "NCSK8CRZVEXWXQXM";
-			String api_secret = "DDZMV6ZNKHFT8T8QTPPCUTQABBEUCQCM";
+			String api_key = "NCSFN2FNZPKPF2JF";
+			String api_secret = "PXJAM4TJFWNKX6FBKVR2NBWIH1GCXMAG";
 			Message coolsms = new Message(api_key, api_secret);
 			String sendtext = "라이브 방송이 시작되었어요!";
 			for(int i=0; i<alarm.size(); i++) {
@@ -76,7 +76,7 @@ public class AlarmController {
 				String mphone = alarm.get(i).getMtel();
 				mphone = mphone.replaceAll("-", "");
 				set.put("to", mphone);
-				set.put("from", "01020764906");
+				set.put("from", "01053865851");
 				set.put("text", sendtext);
 				set.put("type", "sms");
 		        set.put("app_version", "test app 1.2");
