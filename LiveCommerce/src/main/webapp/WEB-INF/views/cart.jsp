@@ -25,11 +25,6 @@
 </style>
 </head>
 <body>
-<%-- 로그인ID : <sec:authentication property="name"/><br>
-로그인 Auth : <sec:authentication property="authorities"/><br>
-로그인 Detail : <sec:authentication property="Details"/><br>
-로그인 Credentials : <sec:authentication property="Credentials"/>
-로그인 Principal : <sec:authentication property="Principal"/><br> --%>
 <div class="wrapper">
 	<div class="wrap">
 		<div class="content_area">
