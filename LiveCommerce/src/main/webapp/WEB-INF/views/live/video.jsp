@@ -21,9 +21,7 @@
     <script type="text/javascript" src="/resources/js/common.js" ></script>  
     <script type="text/javascript" src="/resources/js/live_common.js" ></script>  
 	<style>
-		.CommentBtn_icon{
-		 	background-image:url("/resources/img/receipt.png");
-		}
+		
 	</style>
 </head>
 <body>
@@ -203,7 +201,6 @@ $(document).ready(function() {
     //라이브 연결
     var video = document.getElementById('video');
     var videoSrc =liveUrl+"/"+stream+".m3u8";
-    console.log(videoSrc);
     var hls = new Hls();
     if(status==1){
     	video.pause();

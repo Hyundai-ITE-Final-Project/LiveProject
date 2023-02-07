@@ -220,7 +220,8 @@
     <update id="updateLiveVideo">
     	UPDATE LIVE
 	        SET    VIDEO_ID = #{videoId},
-	        	   LIVE_STATUS = 0
+	        	   LIVE_STATUS = 0,
+	        	   LIVE_END_TIME = current_date
 	        WHERE  LIVE_ID  = #{liveId}
     </update>
     

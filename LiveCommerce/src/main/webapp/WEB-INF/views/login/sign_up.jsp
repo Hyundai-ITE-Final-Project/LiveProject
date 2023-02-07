@@ -85,7 +85,7 @@
        
             <div class="signup_input_area">
                 <div class="subject">이메일</div>
-                <input type="text" name="memail" id="userEmailSign" autocomplete="off" maxlength='15' placeholder="ex) hyundai5@hyundai.com">
+                <input type="text" name="memail" id="userEmailSign" autocomplete="off" maxlength='50' placeholder="ex) hyundai5@hyundai.com">
                 <div id="email_error" class="regul_div"></div>
             </div>
             
