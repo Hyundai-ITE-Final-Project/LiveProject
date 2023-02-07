@@ -107,7 +107,14 @@
 						<tbody>
 							<tr>
 								<th>포인트 사용</th>
-								<td style="font-size:16px; margin-top:5px;"><span class="" style="margin-top:5px;">0</span> 원
+								<td style="font-size:16px; margin-top:5px;"><span class="couponPrice" style="margin-top:5px;">
+									<c:if test="${couponvo.cstate eq 'available'}">
+    									<c:out value="0" />
+									</c:if>
+									<c:if test="${couponvo.cstate eq 'used'}">
+    									<c:out value="${couponvo.cprice}" />
+									</c:if>
+								</span> 원
 									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 									&nbsp; &nbsp;					
 								</td>
@@ -154,7 +161,7 @@
 
 $(document).ready(function(){
 	let finalTotalPrice = 0;		//최종 가격(총 가격 + 배송비)
-	let couponPrice = 0; 
+	let couponPoint = 0; 
 	let totalPrice = 0;				// 총 가격
 let totalPoint = 0;				// 총 마일리지
 let usePoint = 0;				// 사용 포인트(할인가격)
@@ -172,10 +179,11 @@ finalTotalPrice = totalPrice;
 
 /* 사용 포인트 */
 usePoint = $(".order_point_input").text();
+couponPoint = $(".couponPrice").text();
 console.log(usePoint);
 
 /* finalTotalPrice = totalPrice - usePoint - couponPrice; */
-finalTotalPrice = totalPrice - usePoint;
+finalTotalPrice = totalPrice - usePoint - couponPoint;
 
 /* 값 삽입 */
 // 총 가격
@@ -190,7 +198,7 @@ $(".totalPrice").text(finalTotalPrice.toLocaleString()+' 원');
 
 // 할인가(사용 포인트)
 /* $(".totalDelivery").text((parseInt(usePoint)+parseInt(couponPrice)).toLocaleString()+' 원'); */
-$(".totalDelivery").text((parseInt(usePoint)+parseInt(couponPrice)).toLocaleString()+' 원');
+$(".totalDelivery").text((parseInt(usePoint)+parseInt(couponPoint)).toLocaleString()+' 원');
 
 });
 

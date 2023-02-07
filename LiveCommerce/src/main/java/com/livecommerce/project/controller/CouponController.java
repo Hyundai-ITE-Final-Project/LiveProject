@@ -50,7 +50,7 @@ public class CouponController {
 	@ResponseBody
 	public String couponCreate(@RequestBody CouponVO cvo, HttpServletRequest request, Principal principal) throws Exception {
 
-
+		cvo.setMember_mid(principal.getName());
 		int result = couponService.addCoupon(cvo);
 		if(result == 1) {
 			CouponListVO couponList = new CouponListVO();

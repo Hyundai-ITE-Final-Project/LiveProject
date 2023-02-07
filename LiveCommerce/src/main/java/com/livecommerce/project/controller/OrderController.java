@@ -65,14 +65,22 @@ public class OrderController {
 		System.out.println(ov);		
 		//주문하기
 		orderService.order(ov);
+		
+		
 		System.out.println(coupon.getCname());
 		//사용한 쿠폰이 있으면 쿠폰유무상태 업데이트
-		if(coupon.getCname() != null) couponService.modifyCoupon(coupon.getCname());
-		
+		if(coupon.getCname() != null) {
+			couponService.modifyCoupon(coupon.getCname(), principal.getName());
+//			//쿠폰을 사용했으니깐 oid값을 삽입
+			couponService.UpdateCouponOid(principal.getName(), ov.getOid()
+					, coupon.getCname());
+		}
 		//주문상세
 		List<OrderVO> orderDetail = mypageService.getOrderDetail(ov.getOid(), principal.getName());
 		model.addAttribute("orderdetail", orderDetail);
 		
+		CouponVO cvo = couponService.getCcode(principal.getName(), coupon.getCname());
+		model.addAttribute("couponvo", cvo);
 	    return "/order/order_complete";
 		
 	}

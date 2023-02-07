@@ -59,11 +59,17 @@ public class CouponServiceImpl implements CouponService{
 	}
 	//쿠폰사용유무 cstate변경
 	@Override
-	public int modifyCoupon(String cname) {
-		return couponMapper.modifyCoupon(cname);
+	public int modifyCoupon(String cname, String member_mid) {
+		return couponMapper.modifyCoupon(cname, member_mid);
 	}
-
-	
-	
-	
+	@Override
+	public CouponVO getCcode(String member_mid, String cname) {
+		return couponMapper.getCcode(member_mid, cname);
+	}
+	@Override
+	public int UpdateCouponOid(String member_mid, String oid
+			, String cname) {
+		return couponMapper.UpdateCouponOid(member_mid, oid, cname);
+		
+	}
 }

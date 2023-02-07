@@ -33,4 +33,10 @@ public class CouponVO {
 	private Date cstartdate;
 	//쿠폰끝나는날짜
 	private Date cenddate;
+	//멤버id
+	private String member_mid;
+	//쿠폰상태
+	private String cstate;
+	//주문번호
+	private String oid;
 }

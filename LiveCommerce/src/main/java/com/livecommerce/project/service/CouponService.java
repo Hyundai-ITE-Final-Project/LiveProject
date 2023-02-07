@@ -31,6 +31,11 @@ public interface CouponService {
 	/* 쿠폰 정보 리스트 */
 	public List<CouponVO> getCouponList(String member_mid);
 	/* 쿠폰사용유무 */
-	public int modifyCoupon(String cname); 
-
+	public int modifyCoupon(String cname, String member_mid); 
+	/* 선택한 쿠폰코드 가져오기 */
+	public CouponVO getCcode(@Param("member_mid") String member_mid, 
+			@Param("cname") String cname);
+	//쿠폰사용시 주문번호 삽입
+	public int UpdateCouponOid(String member_mid, String oid
+			, String cname);
 }

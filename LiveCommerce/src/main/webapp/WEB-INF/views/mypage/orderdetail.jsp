@@ -87,7 +87,7 @@
 						</colgroup>
 						<tbody>
 							<tr>
-								<th>포인트 사용</th>
+								<th>포인트 금액</th>
 								<td style="font-size:16px; margin-top:5px;"><span class="order_point_input" style="margin-top:5px;">${orderdetail[0].usePoint}</span> 원
 									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 									&nbsp; &nbsp;					
@@ -99,7 +99,7 @@
 				<hr>
 							<!-- 쿠폰 정보 -->
 				<div class="point_div">
-					<div class="point_div_subject">쿠폰 사용</div>
+					<div class="point_div_subject">사용된 쿠폰</div>
 					<table class="point_table">
 						<colgroup>
 							<col width="25%">
@@ -107,8 +107,10 @@
 						</colgroup>
 						<tbody>
 							<tr>
-								<th>포인트 사용</th>
-								<td style="font-size:16px; margin-top:5px;"><span class="" style="margin-top:5px;">0</span> 원
+								<th>쿠폰 금액</th>
+								<td style="font-size:16px; margin-top:5px;"><span class="usedcprice" style="margin-top:5px;">
+									${orderdetail[0].cprice}
+								</span> 원
 									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 									&nbsp; &nbsp;					
 								</td>
@@ -157,8 +159,8 @@ $(document).ready(function(){
 	let finalTotalPrice = 0;		//최종 가격(총 가격 + 배송비)
 	let couponPrice = 0; 
 	let totalPrice = 0;				// 총 가격
-let totalPoint = 0;				// 총 마일리지
-let usePoint = 0;				// 사용 포인트(할인가격)
+	let totalPoint = 0;				// 총 마일리지
+	let usePoint = 0;				// 사용 포인트(할인가격)
 
 $(".order_pd_group_item").each(function(index, element){
 	// 총 가격
@@ -174,9 +176,9 @@ finalTotalPrice = totalPrice;
 /* 사용 포인트 */
 usePoint = $(".order_point_input").text();
 console.log(usePoint);
-
+couponPrice = $(".usedcprice").text()
 /* finalTotalPrice = totalPrice - usePoint - couponPrice; */
-finalTotalPrice = totalPrice - usePoint;
+finalTotalPrice = totalPrice - usePoint - couponPrice;
 
 /* 값 삽입 */
 // 총 가격

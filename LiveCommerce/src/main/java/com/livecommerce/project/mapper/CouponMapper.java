@@ -25,5 +25,12 @@ public interface CouponMapper {
 	/* 쿠폰 목록 */
 	public List<CouponVO> getCouponList(String member_mid);	
 	/* 쿠폰사용유무 */
-	public int modifyCoupon(@Param("cname") String cname); 
+	public int modifyCoupon(@Param("cname") String cname, @Param("member_mid") String member_mid);
+
+	/* 선택한 쿠폰코드 가져오기 */
+	public CouponVO getCcode(@Param("member_mid") String member_mid, 
+			@Param("cname") String cname);
+	//쿠폰사용시 주문번호 삽입
+	public int UpdateCouponOid(@Param("member_mid") String member_mid, @Param("oid") String oid
+			, @Param("cname") String cname);
 }
