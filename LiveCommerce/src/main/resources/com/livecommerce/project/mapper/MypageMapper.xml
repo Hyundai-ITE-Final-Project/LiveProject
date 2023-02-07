@@ -63,7 +63,7 @@
                (select usepoint from orders where oid = #{oid})
      WHERE MID = #{mid}
      </update>
-     <!-- 주문상세페이지 -->
+     <!-- 쿠폰사용_주문상세페이지 -->
     <select id="getOrderDetail" resultType="com.livecommerce.project.vo.OrderVO">
 		select o.oid, o.odate, o.ostate, p.img1, p.pname, ol.olquantity, ol.olprice, o.orderer, o.oaddress1, o.oaddress2
 		     , o.usepoint, c.cprice, m.mtel, ol.savepoint
@@ -78,5 +78,21 @@
            and o.member_mid = #{mid}
            and o.member_mid = m.mid
            and o.oid = c.oid
-	</select>	
+	</select>
+	
+	<!-- 쿠폰사용_주문상세페이지 -->
+	  <select id="NoCouponOrderDetail" resultType="com.livecommerce.project.vo.OrderVO">
+		select o.oid, o.odate, o.ostate, p.img1, p.pname, ol.olquantity, ol.olprice, o.orderer, o.oaddress1, o.oaddress2
+		     , o.usepoint, m.mtel, ol.savepoint
+ 		  from orders o
+    		 , orderlist ol
+    		 , product p
+    		 , member m
+ 		 where o.oid = ol.oid
+  		   and ol.pid = p.pid
+  		   and o.oid = #{oid}
+           and o.member_mid = #{mid}
+           and o.member_mid = m.mid
+	</select>
+		
   </mapper>

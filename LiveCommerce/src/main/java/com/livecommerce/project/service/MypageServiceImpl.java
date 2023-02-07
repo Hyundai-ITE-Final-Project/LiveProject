@@ -2,6 +2,7 @@ package com.livecommerce.project.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,6 +54,11 @@ public class MypageServiceImpl implements MypageService{
 	@Override
 	public List<OrderVO> getOrderDetail(String oid, String mid) {
 		return mypageMapper.getOrderDetail(oid, mid);
+	}
+	
+	/* 쿠폰노사용_주문상세페이지 */
+	public List<OrderVO> NoCouponOrderDetail(String oid, String mid){
+		return mypageMapper.NoCouponOrderDetail(oid, mid);
 	}
 
 }

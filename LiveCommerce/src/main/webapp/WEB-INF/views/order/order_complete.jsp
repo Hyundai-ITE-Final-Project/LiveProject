@@ -114,6 +114,9 @@
 									<c:if test="${couponvo.cstate eq 'used'}">
     									<c:out value="${couponvo.cprice}" />
 									</c:if>
+									<c:if test="${couponvo.cstate eq null}">
+    									<c:out value="0" />
+									</c:if>
 								</span> 원
 									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 									&nbsp; &nbsp;					

@@ -67,24 +67,52 @@ public class OrderController {
 		orderService.order(ov);
 		
 		
-		System.out.println(coupon.getCname());
+		System.out.println("가지고 있는 쿠폰 이름이 뭐임??" + coupon.getCname());
 		//사용한 쿠폰이 있으면 쿠폰유무상태 업데이트
-		if(coupon.getCname() != null) {
-			couponService.modifyCoupon(coupon.getCname(), principal.getName());
+
+
+			if(coupon.getCname().equals("2000원쿠폰")) {
+				couponService.modifyCoupon(coupon.getCname(), principal.getName());
 //			//쿠폰을 사용했으니깐 oid값을 삽입
 			couponService.UpdateCouponOid(principal.getName(), ov.getOid()
 					, coupon.getCname());
-		}
-		//주문상세
-		List<OrderVO> orderDetail = mypageService.getOrderDetail(ov.getOid(), principal.getName());
-		model.addAttribute("orderdetail", orderDetail);
-		
-		CouponVO cvo = couponService.getCcode(principal.getName(), coupon.getCname());
-		model.addAttribute("couponvo", cvo);
-	    return "/order/order_complete";
-		
+			//주문상세
+			List<OrderVO> orderDetail = mypageService.getOrderDetail(ov.getOid(), principal.getName());
+			model.addAttribute("orderdetail", orderDetail);
+			
+			//주문상세_쿠폰
+			CouponVO cvo = couponService.getCcode(principal.getName(), coupon.getCname());
+			model.addAttribute("couponvo", cvo);
+			
+			 return "/order/order_complete";		
+			}
+			
+			if(coupon.getCname().equals("1000원쿠폰")) {
+				couponService.modifyCoupon(coupon.getCname(), principal.getName());
+//			//쿠폰을 사용했으니깐 oid값을 삽입
+			couponService.UpdateCouponOid(principal.getName(), ov.getOid()
+					, coupon.getCname());
+			//주문상세
+			List<OrderVO> orderDetail = mypageService.getOrderDetail(ov.getOid(), principal.getName());
+			model.addAttribute("orderdetail", orderDetail);
+			
+			//주문상세_쿠폰
+			CouponVO cvo = couponService.getCcode(principal.getName(), coupon.getCname());
+			model.addAttribute("couponvo", cvo);
+			
+			 return "/order/order_complete";		
+			}
+	
+			
+			else {
+				List<OrderVO> orderDetail = mypageService.NoCouponOrderDetail(ov.getOid(), principal.getName());
+
+				model.addAttribute("orderdetail", orderDetail);
+				System.out.println("주문디테일 넘어오나?" + orderDetail);
+				
+				return "/order/order_complete";
+			}
+
 	}
-	
-	
-	
+
 }

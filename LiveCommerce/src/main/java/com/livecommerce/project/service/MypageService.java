@@ -25,4 +25,7 @@ public interface MypageService {
 	
 	/* 주문상세페이지 */
 	public List<OrderVO> getOrderDetail(@Param("oid") String oid, @Param("mid") String mid);
+	
+	/* 쿠폰노사용_주문상세페이지 */
+	public List<OrderVO> NoCouponOrderDetail(@Param("oid") String oid, @Param("mid") String mid);
 }

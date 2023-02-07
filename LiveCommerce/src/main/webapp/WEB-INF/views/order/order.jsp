@@ -483,9 +483,15 @@ function selectCoupon(str) {
 	//var index = $("#selectVoucher option").index($("#selectVoucher option:selected"));
 	var a = $("#selectVoucher option:checked").text();
 	var b = a.trimStart();
+	$('select > option:disabled').attr("disabled",false);
+	$('select > option:disabled').removeAttr("disabled");
 	$("input[name='cname']").val(b);
 	//var b = $('#ccode1').val();
 	console.log(b);
+	console.log('------------');
+	var c = $("#selectVoucher option:checked").val();
+	console.log(c);
+	console.log(typeof c);
 }
 
 
