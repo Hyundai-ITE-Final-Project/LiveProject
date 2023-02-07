@@ -11,7 +11,7 @@
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <!-- <link rel="shortcut icon"   href="https://drive.google.com/uc?id=1bbTmb2_R9gb6sEYY5zABHlybxCzhQVWX"> -->
-    <title>오늘의쇼핑</title>
+    <title>H-LIVE</title>
     <link rel="stylesheet" type="text/css" href="/resources/css/common.css" >
     <link rel="stylesheet" type="text/css" href="/resources/css/login.css" >
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

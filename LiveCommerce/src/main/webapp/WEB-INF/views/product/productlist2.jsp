@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>H-LIVE</title>
 	<style>
 	body{
     	margin: 0 auto;

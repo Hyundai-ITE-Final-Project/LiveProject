@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
-    <title>오늘의쇼핑</title>
+    <title>H-LIVE</title>
     <style>
    		 .post_cell_2{width:190px;}
    		 .post_cell_4{width:400px; text-align:center;}

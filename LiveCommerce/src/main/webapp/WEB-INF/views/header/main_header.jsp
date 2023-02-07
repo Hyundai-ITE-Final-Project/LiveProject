@@ -85,7 +85,7 @@
     <div class="shop_logo_wrap">
         <a href="/" class="logo_link">
             <i class="header_icon logo_icon"></i>
-            <span class="blind">오늘의쇼핑</span>
+            <span class="blind">H-LIVE</span>
         </a>
     </div>
 	<form action="/logout" method="POST" id="logoutForm">

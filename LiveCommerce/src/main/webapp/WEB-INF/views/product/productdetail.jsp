@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>상품상세보기</title>
+    <title>H-LIVE</title>
     <link href="http://script.gmarket.co.kr/pc/css/common/kr/swiper.min.css" rel="stylesheet">
     <link href="http://script.gmarket.co.kr/pc/css/ko/common.css" rel="stylesheet">
     <link href="http://script.gmkt.kr/pc/css/ko/vip.css" rel="stylesheet">

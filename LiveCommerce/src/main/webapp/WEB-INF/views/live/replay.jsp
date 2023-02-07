@@ -10,7 +10,7 @@
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/img/logo/logo_header_icon.png">
-    <title>오늘의쇼핑</title>
+    <title>H-LIVE</title>
     <link rel="stylesheet" type="text/css" href="/resources/css/video.css" >
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="/resources/js/common.js" ></script>

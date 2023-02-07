@@ -17,7 +17,7 @@
     <div class="admin_logo_wrap">
         <a href="/" class="logo_link">
             <i class="header_icon logo_icon"></i>
-            <span class="blind">오늘의쇼핑</span>
+            <span class="blind">H-LIVE</span>
         </a>
         <a href="/tool/live" class="logo_link_admin">
             
