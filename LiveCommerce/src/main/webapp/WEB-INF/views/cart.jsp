@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome BookMall</title>
+<title>H-LIVE</title>
 <link rel="stylesheet" href="/resources/css/cart.css">
 
 <script

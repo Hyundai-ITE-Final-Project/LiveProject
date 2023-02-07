@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome BookMall</title>
+<title>H-LIVE</title>
 <link rel="stylesheet" href="/resources/css/goodsDetail.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"

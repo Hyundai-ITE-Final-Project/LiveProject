@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>H-LIVE</title>
 <link rel="stylesheet" href="../resources/css/mypage_orderlist.css">
 
 <script

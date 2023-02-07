@@ -9,7 +9,7 @@
 <meta name="_csrf" content="${_csrf.token}" />
 <meta name="_csrf_header" content="${_csrf.headerName}" />
 <!-- <link rel="shortcut icon"   href="https://drive.google.com/uc?id=1bbTmb2_R9gb6sEYY5zABHlybxCzhQVWX"> -->
-<title>오늘의쇼핑</title>
+<title>H-LIVE</title>
 
 <script type="text/javascript">
 	$(document).ready(
