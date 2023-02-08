@@ -24,7 +24,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.livecommerce.project.service.CartService;
 import com.livecommerce.project.vo.CartListVO;
 import com.livecommerce.project.vo.CartVO;
-
+/**
+ * @author 김민석
+ * @since 2023.01.18
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일                    수정자                   수정내용
+ * ----------  --------    ---------------------------
+ * 2023.0!.18    김민석               장바구니 컨트롤러
+ * </pre>
+ */
 @Controller
 public class CartController {
 
@@ -52,7 +62,7 @@ public class CartController {
 				
 		return result + "";	//addCart 반환타입이 int여서 빈 문자열을 더함
 	}
-	
+	//장바구니 추가
 	@GetMapping("cart/add2")
 	public String addCartList(CartListVO clv, Principal prin) {
 		List<CartVO> list = clv.getCarts();

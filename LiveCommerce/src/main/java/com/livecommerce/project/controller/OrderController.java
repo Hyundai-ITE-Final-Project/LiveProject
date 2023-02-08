@@ -34,7 +34,17 @@ import com.livecommerce.project.vo.OrderPageVO;
 import com.livecommerce.project.vo.OrderVO;
 
 
-
+/**
+ * @author 김민석
+ * @since 2023.01.27
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일                    수정자                   수정내용
+ * ----------  --------    ---------------------------
+ * 2023.01.27    김민석              주문컨트롤러
+ * </pre>
+ */
 @Controller
 public class OrderController {
 	
@@ -103,12 +113,11 @@ public class OrderController {
 			 return "/order/order_complete";		
 			}
 	
-			
+			//쿠폰 사용사용 안했을 시 주문상세
 			else {
 				List<OrderVO> orderDetail = mypageService.NoCouponOrderDetail(ov.getOid(), principal.getName());
 
-				model.addAttribute("orderdetail", orderDetail);
-				System.out.println("주문디테일 넘어오나?" + orderDetail);
+				model.addAttribute("orderdetail", orderDetail); 
 				
 				return "/order/order_complete";
 			}

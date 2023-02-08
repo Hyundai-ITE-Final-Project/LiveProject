@@ -15,9 +15,17 @@ import com.livecommerce.project.service.OrderService;
 import com.livecommerce.project.vo.OrderVO;
 
 import lombok.extern.log4j.Log4j;
-
-
-//
+/**
+ * @author 김민석
+ * @since 2023.01.27
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일                    수정자                   수정내용
+ * ----------  --------    ---------------------------
+ * 2023.01.27    김민석              마이페이지 컨트롤러
+ * </pre>
+ */
 
 @Log4j
 @Controller
@@ -27,7 +35,7 @@ public class MypageController {
 	@Autowired
 	OrderService orderService;
 	
-	
+	//마이페이지 메인이동
 	@GetMapping("/mypage/main")
 	public String mypage() {
 		return "/mypage/main";
@@ -68,6 +76,7 @@ public class MypageController {
 		return "redirect:/mypage/orderList";
 	}
 	
+	//마이페이지-주문상세
 	@PostMapping("/mypage/orderdetail")
 	public String orderDetail(OrderVO ov, Principal principal, Model model) {
 		System.out.println(ov);
