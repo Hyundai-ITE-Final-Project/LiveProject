@@ -98,7 +98,7 @@
                </c:when>
                <c:otherwise>
 	               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-	               <span class="selName_area">${user.username}</span>
+	               <span class="selName_area">${name}님</span>
                    <button class="h_btn_login h_btn_logout asd" type="submit">로그아웃</button>
                </c:otherwise>
            </c:choose>
