@@ -36,7 +36,7 @@
                                 <h1 class="LiveHeader_logo">
 							        <a href="/" class="logo_link">
 							            <i class="header_icon logo_icon"></i>
-							            <span class="blind">오늘의쇼핑</span>
+							            <span class="blind">H-LIVE</span>
 							        </a>
                                 </h1>
                                 <div class="ToolBox_wrap">
