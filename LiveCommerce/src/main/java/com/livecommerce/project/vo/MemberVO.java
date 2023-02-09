@@ -13,6 +13,7 @@ import lombok.Data;
  * <pre>
  * 수정일              	수정자                   수정내용
  * 2023.01.12    신기원                최초 생성
+ * 2023.01.28	 박소은		추가 스트리밍키 생성
 */
 @Data
 public class MemberVO {

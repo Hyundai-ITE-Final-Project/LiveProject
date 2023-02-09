@@ -116,7 +116,7 @@ $(document).ready(function() {
         }
        _ajax.ajaxAlert("/tool/setting/update_info_process","POST",option); 
     })
-    //키 보여주기 숨기기
+    //박소은: 키 보여주기 숨기기
     $('.btn_input_type').click(function(){
         var text = $('.btn_input_type').text();
         if(text == '표시'){
@@ -127,7 +127,7 @@ $(document).ready(function() {
             $('.btn_input_type').text('표시');
         }
     });  
-    //키 복사
+    //박소은: 키 복사
     $('.btn_copy').click(function(){
         console.log($('#stream').attr("type"))
         if($('#stream').attr("type") == "text"){
