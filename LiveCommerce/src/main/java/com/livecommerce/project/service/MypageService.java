@@ -1,5 +1,14 @@
 package com.livecommerce.project.service;
-
+/**
+ * @author 김민석
+ * @since 2023.01.15
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일              	수정자                   수정내용
+ * 2023.01.20       김민석                   마이페이지 최초생성
+ * 
+*/
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -26,6 +35,6 @@ public interface MypageService {
 	/* 주문상세페이지 */
 	public List<OrderVO> getOrderDetail(@Param("oid") String oid, @Param("mid") String mid);
 	
-	/* 쿠폰노사용_주문상세페이지 */
+	/* 쿠폰사용하지않는_주문상세페이지 */
 	public List<OrderVO> NoCouponOrderDetail(@Param("oid") String oid, @Param("mid") String mid);
 }

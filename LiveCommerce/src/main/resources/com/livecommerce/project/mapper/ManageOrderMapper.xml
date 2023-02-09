@@ -2,6 +2,16 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   <!-- **
+ * @author 김민석
+ * @since 2023.01.20
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일              	수정자                   수정내용
+2023.01.20			김민석			   최초생성
+</pre>
+-->
   <mapper namespace="com.livecommerce.project.mapper.ManageOrderMapper">
   <!-- 주문 리스트 -->
 <!-- 주문 리스트 -->

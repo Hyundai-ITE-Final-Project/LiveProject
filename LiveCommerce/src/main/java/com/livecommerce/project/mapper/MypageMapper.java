@@ -1,5 +1,15 @@
 package com.livecommerce.project.mapper;
-
+/**
+ * @author 김민석
+ * @since 2023.01.20
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일             수정자                수정내용
+ * 2023.01.20    김민석                최초 생성
+ * 2023.02.08	 김민석                 주문쿠폰 이슈해결
+ * 
+*/
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;

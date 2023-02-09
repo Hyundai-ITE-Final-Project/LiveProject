@@ -8,6 +8,7 @@ package com.livecommerce.project.controller;
  * 수정일              	수정자                   수정내용
 2023.01.16		박소은		최초생성
 2023.01.29		박소은		스트리밍 키 
+2023.01.30      김민석          회원등급 기능 추가
  * </pre>
  */
 

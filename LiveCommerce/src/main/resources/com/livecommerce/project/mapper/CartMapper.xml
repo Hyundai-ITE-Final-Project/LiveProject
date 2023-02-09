@@ -2,6 +2,16 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- **
+ * @author 김민석
+ * @since 2023.01.19
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일              	수정자                   수정내용
+2023.01.19			김민석			   최초생성
+</pre>
+-->
   <mapper namespace="com.livecommerce.project.mapper.CartMapper">
   	<!-- 카트 추가 -->
 	<insert id="addCart">

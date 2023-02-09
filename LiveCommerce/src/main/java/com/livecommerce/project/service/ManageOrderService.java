@@ -1,5 +1,13 @@
 package com.livecommerce.project.service;
-
+/**
+ * @author 김민석
+ * @since 2023.01.22
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일              	수정자                   수정내용
+ * 2023.01.22       김민석                   주문관리자페이지 생성 주문관리
+*/
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;

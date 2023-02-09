@@ -1,12 +1,14 @@
 package com.livecommerce.project.controller;
 /**
  * @author 김민석
- * @since 2023.01.23
+ * @since 2023.01.25
  * @version 1.0
  * 
  * <pre>
  * 수정일              	수정자                   수정내용
- * 2023.01.23    김민석                최초 생성
+ * 2023.01.25       김민석                   쿠폰생성, 쿠폰발급유무체크, 쿠폰아키텍처생성 - 주문페이지, 결제 쿠폰적용 - 쿠폰적용시 쿠폰상태 변경
+ * 2023.01.31       김민석                   라이브쿠폰UI, 이벤트쿠폰 발급긴으 추가, 이벤트쿠폰UI변경
+ * 2023.02.07       김민석                   쿠폰이슈 해결
 */
 import java.security.Principal;
 

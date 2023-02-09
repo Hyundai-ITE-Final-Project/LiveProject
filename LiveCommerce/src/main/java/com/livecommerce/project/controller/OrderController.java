@@ -75,12 +75,7 @@ public class OrderController {
 		System.out.println(ov);		
 		//주문하기
 		orderService.order(ov);
-		
-		
-		System.out.println("가지고 있는 쿠폰 이름이 뭐임??" + coupon.getCname());
 		//사용한 쿠폰이 있으면 쿠폰유무상태 업데이트
-
-
 			if(coupon.getCname().equals("2000원쿠폰")) {
 				couponService.modifyCoupon(coupon.getCname(), principal.getName());
 //			//쿠폰을 사용했으니깐 oid값을 삽입

@@ -46,8 +46,6 @@ public class MypageController {
 	/* 주문 현황 페이지 */
 	@GetMapping("/mypage/orderList")
 	public String orderListGET(Principal principal, Model model) {
-//		List<OrderVO> list = mypageService.getOrderList(principal.getName());
-//		model.addAttribute("list", list);
 		
 		String member_mid = principal.getName();
 		List<List<OrderVO>> list3 = new ArrayList<>();

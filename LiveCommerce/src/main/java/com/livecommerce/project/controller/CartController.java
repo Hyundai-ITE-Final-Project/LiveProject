@@ -26,13 +26,15 @@ import com.livecommerce.project.vo.CartListVO;
 import com.livecommerce.project.vo.CartVO;
 /**
  * @author 김민석
- * @since 2023.01.18
+ * @since 2023.01.17
  * @version 1.0
  * 
  * <pre>
  * 수정일                    수정자                   수정내용
- * ----------  --------    ---------------------------
- * 2023.0!.18    김민석               장바구니 컨트롤러
+ * ----------      --------    ---------------------------
+ * 2023.01.17          김민석               장바구니 컨트롤러 최초생성
+ * 2023.01.29          김민석               장바구니,구매하기 버튼연결 CartListVO추가, cart.jsp 버그수정
+ * 2023.02.06          김민석               cart배송지 제거 네이버로그_장바구니 이슈해결
  * </pre>
  */
 @Controller
@@ -47,17 +49,9 @@ public class CartController {
 		//화면을 반환하는 것이 아니라 데이터를 바로 반환하기 때문에 @ResponseBody를 추가
 		//ResponseBody를 사용할 것이라서 반환타입 String\
 		
-//		// 로그인 체크
-//		HttpSession session = request.getSession();
-//		MemberVO mvo = (MemberVO)session.getAttribute("member");
-//		if(mvo == null) {
-//			return "5";
-//		}
 		// 카트 등록
-		
 		CartVO a = cart;
 		a.setMember_mid(prin.getName());
-		System.out.println("왜 오류나는걸까요??" + prin.getName());
 		int result = cartService.addCart(a);
 				
 		return result + "";	//addCart 반환타입이 int여서 빈 문자열을 더함

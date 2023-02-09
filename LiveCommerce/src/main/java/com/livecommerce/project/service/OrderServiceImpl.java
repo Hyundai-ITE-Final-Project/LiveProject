@@ -52,7 +52,7 @@ public class OrderServiceImpl implements OrderService{
 	private ProductMapper productMapper;
 	
 	Random random = new Random();
-	
+	//주문번호 랜덤화를 위한 배열
 	final char[] digits = {
 	        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
 	        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 
@@ -63,7 +63,7 @@ public class OrderServiceImpl implements OrderService{
 	        'Y', 'Z', '#', '$'
 	    };
 	
-	   //아임포트
+	   //아임포트 api키값
 	   private final String imp_key = "0636646546784601";
 	   private final String imp_secret = "P9bvL4zTldk4Pj5clPfn2JdZClbxQuFhRQqNVPpiOEaIsY3ViZhDA5G1ZdTufQx4W0GXAxHVn4DYVpCo";
 	   private RestTemplate restTemplate=new RestTemplate();

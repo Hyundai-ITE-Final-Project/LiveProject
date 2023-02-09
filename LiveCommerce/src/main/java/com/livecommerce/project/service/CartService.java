@@ -6,7 +6,7 @@ package com.livecommerce.project.service;
  * 
  * <pre>
  * 수정일              	수정자                   수정내용
- * 2023.01.15    김민석                최초 생성
+ * 2023.01.17       김민석                   최초 생성(장바구니)
 */
 import java.util.List;
 
