@@ -70,7 +70,11 @@ public class AlarmController {
 			String api_key = "NCSFN2FNZPKPF2JF";
 			String api_secret = "PXJAM4TJFWNKX6FBKVR2NBWIH1GCXMAG";
 			Message coolsms = new Message(api_key, api_secret);
-			String sendtext = "라이브 방송이 시작되었어요!";
+			String line = "[H-LIVE]";
+			String line1 = "고객님이 신청하신 라이브 방송이 시작되었습니다:)";
+			String line2 = "지금 바로 H-LIVE에 접속하세요!";
+			String sendtext = line +  System.lineSeparator() + line1 +  System.lineSeparator() + line2;
+			
 			for(int i=0; i<alarm.size(); i++) {
 				HashMap<String, String> set = new HashMap<String, String>();
 				String mphone = alarm.get(i).getMtel();
