@@ -88,7 +88,8 @@
                             </div>
                             <div class="LiveVideoPlayer_wrap">
                                 <div class="video_container">
-                                    <video id="video" controls muted disablepictureinpicture="true" controlslist="nodownload" width="100%" height="100%" preload="auto" poster="/resources/img/logo/trailer_logo.png"></video>  
+                                    <video id="video" controls muted disablepictureinpicture="true" controlslist="nodownload" width="100%" height="100%" 
+                                    preload="auto" poster="/resources/img/logo/trailer_logo.png"></video>  
                                 </div>
                             </div>
                             <div class="Comments_wrap" id="Comments_wrap">
@@ -254,10 +255,8 @@ $(document).ready(function() {
     var sock = new SockJS(chatUrl+"/stomp/chat", null, {transports: ["websocket", "xhr-streaming", "xhr-polling"]});  // 연결 주소
     var client = Stomp.over(sock);
     var header = {request_type:'web'};
-   // client.connected = true;     
     client.debug = null;  //프레임 개발자 도구에서 숨기기
     client.connect({}, function(frame){
-        //subscribe(path, callback)으로 메세지 받기
         client.subscribe("/sub/chat/room/"+liveId,function(chat){   // 서버 연결
             var content = JSON.parse(chat.body);
             var writer = content.chatMid;
@@ -299,13 +298,6 @@ $(document).ready(function() {
         }else{
             $("#send_btn").attr("disabled",false);
         }
-        //textarea 키 값 이벤트
-        /* if((e.ctrlKey || e.metaKey) && (e.keyCode == 13 || e.keyCode == 10)) {
-            //ctrl+enter
-            $("#wa_textarea").val(function(i,val){
-                return val + "\n";
-            });
-        } */
        if(e.keyCode==13 || e.keyCode == 10){
     	   e.preventDefault(); //엔터시 줄바꿈 방지(동작중단)
     	   flask();

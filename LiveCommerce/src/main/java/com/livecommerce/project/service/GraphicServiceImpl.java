@@ -32,6 +32,7 @@ public class GraphicServiceImpl implements GraphicService{
 		return graphicMapper.countOrder();
 	}
 
+	//예측 결과가 0 : 부정, 1 : 긍정으로 
 	@Override
 	public List<GraphVO> positivenegative(String live_id, String mid) {
 		List<GraphVO> list =  graphicMapper.positivenegative(live_id, mid);
@@ -42,12 +43,11 @@ public class GraphicServiceImpl implements GraphicService{
 			else {
 				list.get(i).setPositive("부정");
 			}
-			 
 		}
-		
 		return list;
 	}
 
+	//긍정 결과 5개
 	@Override
 	public List<GraphVO> selectPositive(String liveId) {
 		List<GraphVO> positive = graphicMapper.selectPositive(liveId);
@@ -59,10 +59,10 @@ public class GraphicServiceImpl implements GraphicService{
         	int randomIndex = random.nextInt(positive.size());
         	result.add(positive.get(randomIndex));
         }
-		
 		return result;
 	}
 
+	//부정 결과 5개
 	@Override
 	public List<GraphVO> selectNegative(String liveId) {
 		List<GraphVO> negative = graphicMapper.selectNegative(liveId);
@@ -74,7 +74,6 @@ public class GraphicServiceImpl implements GraphicService{
         	int randomIndex = random.nextInt(negative.size());
         	result.add(negative.get(randomIndex));
         }
-		
 		return result;
 	}
 

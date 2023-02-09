@@ -70,6 +70,7 @@ public class LiveServiceImpl implements LiveService{
 		return liveMapper.getLiveInfo(liveId);
 	}
 	
+	//녹화된 영상 상세정보 받아오기
 	@Override
 	public LiveVO getReplayInfo(String liveId) {
 		return liveMapper.getReplayInfo(liveId);
@@ -81,10 +82,8 @@ public class LiveServiceImpl implements LiveService{
 		liveMapper.setLiveView(liveVO);
 	}
 
-
 	@Override
 	public int getLiveView(LiveVO liveVO) {
-		
 		return liveMapper.getLiveView(liveVO);
 	}
 	
@@ -111,6 +110,7 @@ public class LiveServiceImpl implements LiveService{
 		return liveMapper.createLive(liveVO);
 	}
 	
+	//라이브 수정
 	@Override
 	public int updateLive(LiveVO liveVO) throws ParseException {
 		String status = liveStatus(liveVO);
@@ -118,6 +118,7 @@ public class LiveServiceImpl implements LiveService{
 		return liveMapper.updateLive(liveVO);
 	}
 	
+	//고유 ID 생성
 	private int createName() {
 		LocalDateTime  nowDate = LocalDateTime .now();
         DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("yyMMdd");
@@ -140,8 +141,8 @@ public class LiveServiceImpl implements LiveService{
         
         int start = today.compareTo(startDate);  
         int end = today.compareTo(endDate);
-        //1:크다(1) , 같다(0), 작다(-1)
-        if(start < 0) {  //현재날짜는 시작 이전 날짜인가? 
+        //현재 날짜가 시작 날짜 이전이면
+        if(start < 0) {  
             return "0";
         }else if(start>0 && end<0) { //시작날짜 < 현재날짜 > 종료날짜 => 라이브중 //입력한 날짜가 라이브중인 날짜이면
             Map<String,Object> liveMap = new HashMap<>();
@@ -174,10 +175,10 @@ public class LiveServiceImpl implements LiveService{
 	}
 	
 	//인기순 영상 조회하기
-		@Override
-		public List<LiveVO> viewVideoList() {
-			return liveMapper.viewVideoList();
-		}
+	@Override
+	public List<LiveVO> viewVideoList() {
+		return liveMapper.viewVideoList();
+	}
 
 
 	@Override
@@ -196,18 +197,15 @@ public class LiveServiceImpl implements LiveService{
 				videoName = name;
 			}
 		}
-		System.out.println(videoName);
-		
+		//같은 videoId를 통해 VIDEO와 LIVE 테이블에 저장
 		VideoVO videoVO = new VideoVO();
         String videoId = "video_" + Integer.toString(createName()); 
         videoVO.setVid(videoId);
         videoVO.setVname(videoName);
-//        liveMapper.createVideo(video);
         
         LiveVO live = new LiveVO();
         live.setLiveId(liveId);
         live.setVideoId(videoId);
-//		liveMapper.updateLiveVideo(live);
 		if(liveMapper.createVideo(videoVO) == 0 || liveMapper.updateLiveVideo(live) == 0) {
 			return null;
 		}
@@ -220,13 +218,11 @@ public class LiveServiceImpl implements LiveService{
 	}
 
 
+	//스케줄러 라이브 상태 변경
 	@Override
 	public void updateLiveStatus() {
 		liveMapper.updateLiveStatus();
 	}
-
-
-	
 
 
 }

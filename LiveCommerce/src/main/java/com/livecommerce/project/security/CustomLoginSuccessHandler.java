@@ -50,8 +50,6 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			response.sendRedirect("/");
 			return;
 		}
-		
 		response.sendRedirect("/");
 	}
-
 }

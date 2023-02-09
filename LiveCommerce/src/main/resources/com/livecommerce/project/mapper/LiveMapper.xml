@@ -81,7 +81,6 @@
             ,m.stream_key
 		    ,PP.PS_INDEX
 		    ,PP.PS_TITLE
-		    ,PP.PS_PRICE
 		    ,PP.PS_POST_STATUS
 		FROM LIVE LI LEFT JOIN PRODUCT_POST PP
 		ON li.ps_index = pp.ps_index join member m on li.member_mid = m.mid
@@ -169,10 +168,10 @@
         /*AdminMapper.countLive1Status*/
 	     SELECT COUNT(LIVE_ID)
 		 FROM   LIVE
-<![CDATA[WHERE CONCAT(to_char(LIVE_STARTDAY,'yy-mm-dd'),to_char(LIVE_START_TIME,' HH24:MI')) <=  to_char(current_date,'yy-mm-dd HH24:MI') 
-		AND CONCAT(to_char(LIVE_STARTDAY,'yy-mm-dd'),to_char(LIVE_END_TIME,' HH24:MI')) >=  to_char(current_date,'yy-mm-dd HH24:MI') ]]>
-		AND Member_MID = #{mId, jdbcType=VARCHAR}
-		AND LIVE_ID != #{liveId}
+		<![CDATA[WHERE CONCAT(to_char(LIVE_STARTDAY,'yy-mm-dd'),to_char(LIVE_START_TIME,' HH24:MI')) <=  to_char(current_date,'yy-mm-dd HH24:MI') 
+				AND CONCAT(to_char(LIVE_STARTDAY,'yy-mm-dd'),to_char(LIVE_END_TIME,' HH24:MI')) >=  to_char(current_date,'yy-mm-dd HH24:MI') ]]>
+				AND Member_MID = #{mId, jdbcType=VARCHAR}
+				AND LIVE_ID != #{liveId}
      </select>
      
      
@@ -226,17 +225,17 @@
     </update>
     
     <update id="updateLiveStatus">
-    UPDATE LIVE  
+    	UPDATE LIVE  
             SET LIVE_STATUS = CASE
                <![CDATA[ WHEN TO_CHAR(LIVE_START_TIME,'YY-MM-DD HH24:MI') <=  TO_CHAR(current_date,'YY-MM-DD HH24:MI') 
-               AND TO_CHAR(LIVE_END_TIME,'YY-MM-DD HH24:MI') >=  TO_CHAR(current_date,'YY-MM-DD HH24:MI') 
-              THEN 1
-             WHEN TO_CHAR(LIVE_END_TIME,'YY-MM-DD HH24:MI') <  TO_CHAR(current_date,'YY-MM-DD HH24:MI')]]>
-             THEN 2
-            ELSE 0
-           END 
-         WHERE TO_CHAR(LIVE_STARTDAY,'yy-MM-DD') = TO_CHAR(current_date,'yy-MM-DD') 
-         AND LIVE_STATUS IN (0,1)
+              				AND TO_CHAR(LIVE_END_TIME,'YY-MM-DD HH24:MI') >=  TO_CHAR(current_date,'YY-MM-DD HH24:MI') 
+              			THEN 1
+            				WHEN TO_CHAR(LIVE_END_TIME,'YY-MM-DD HH24:MI') <  TO_CHAR(current_date,'YY-MM-DD HH24:MI')]]>
+             			THEN 2
+            				ELSE 0
+           				END 
+         					WHERE TO_CHAR(LIVE_STARTDAY,'yy-MM-DD') = TO_CHAR(current_date,'yy-MM-DD') 
+         					AND LIVE_STATUS IN (0,1)
     </update>
     
     <select id="onlyVideoList" resultType="String">

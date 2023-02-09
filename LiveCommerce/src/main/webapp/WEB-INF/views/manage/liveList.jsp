@@ -37,9 +37,6 @@
 		                        <div class="admin_list_body">
 		                            <div class="admin_list_header">
 		                                <div class="admin_list_header_viewport">
-		  <!--                                   <div class="pd_h_check">
-		                                      <input type="checkbox" class="isChek">
-		                                    </div> -->
 		                                    <div class="live_cell_2">상태</div>
 		                                    <div class="live_cell_3">라이브아이디</div>
 		                                    <div class="live_cell_4"></div>
@@ -50,21 +47,11 @@
 		                            <div class="live_content">
 		                              <c:forEach var="live" items="${liveList}" varStatus="status">
 		                                <div class="live_content_area">
-		                                    <%-- <div class="pd_h_check">
-		                                        <div><input type="checkbox" class="iChek" value="${pds.pdId}"></div>
-		                                    </div> --%>
 		                                    <div class="live_cell_2">
 		                                        <c:if test="${live.liveStatus eq '0'}">대기</c:if>
 		                                        <c:if test="${live.liveStatus eq '1'}">라이브중</c:if>
 		                                        <c:if test="${live.liveStatus eq '2'}">종료</c:if>
 		                                        <c:if test="${live.liveStatus eq '3'}">라이브불가</c:if>
-		<%-- 	                                    <jsp:useBean id="now" class="java.util.Date" />
-			                                    <fmt:formatDate var="todayFormat" value="${now}" pattern="yyyy.MM.dd HH:mm" />
-			                                    <c:set var="liveStartDate" value="${live.liveStartDay} ${live.liveStartTime}" />
-			                                    <c:set var="liveEndDate" value="${live.liveStartDay} ${live.liveEndTime}" />
-		                                        <c:if test = "${todayFormat < liveStartDate}">대기</c:if>
-		                                        <c:if test = "${todayFormat >= liveStartDate && todayFormat <= liveEndDate}">라이브중</c:if>
-		                                        <c:if test = "${todayFormat > liveEndDate}">종료</c:if> --%>
 		                                    </div>
 		                                    <div class="live_cell_3">
 		                                       <a href="/manage/live/create?live=${live.liveId}" id="liveid${status.index}" class="text_blue">${live.liveId}</a>

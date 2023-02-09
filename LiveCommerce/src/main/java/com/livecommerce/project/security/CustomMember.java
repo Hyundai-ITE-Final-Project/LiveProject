@@ -21,17 +21,9 @@ import org.springframework.security.core.userdetails.User;
 //UserDetails 객체를 구현하는 User 구현체를 상속하는 클래스(사용자 정보를 담는 역할)
 public class CustomMember extends User{
 	
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public CustomMember(String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
-		
-		
 	}
-
-
 }

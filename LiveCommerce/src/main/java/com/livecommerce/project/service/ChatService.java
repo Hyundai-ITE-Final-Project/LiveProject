@@ -14,6 +14,7 @@ import com.livecommerce.project.vo.ChatMessageVO;
  */
 public interface ChatService {
 
+	//채팅 내역 저장
 	public void saveChat(ChatMessageVO message);
 
 }

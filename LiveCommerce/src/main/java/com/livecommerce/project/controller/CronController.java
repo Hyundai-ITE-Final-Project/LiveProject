@@ -23,6 +23,7 @@ public class CronController {
 	@Autowired
 	private LiveService liveService;
 	
+	//1초마다 조건에 따른 라이브 상태 변경
 	@Scheduled(fixedDelay = 1000)
 	public void liveStatus() {
 		liveService.updateLiveStatus();

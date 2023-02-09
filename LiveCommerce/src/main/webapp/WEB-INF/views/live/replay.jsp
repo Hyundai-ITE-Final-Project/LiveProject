@@ -64,7 +64,8 @@
                             <div class="NoticeContent_area blind"></div>
                             <div class="LiveVideoPlayer_wrap">
                                 <div class="video_container">
-                                    <video id="video" autoplay muted loop controls disablepictureinpicture="true" controlslist="nodownload" width="100%" height="100%" preload="auto" 
+                                    <video id="video" autoplay muted loop controls disablepictureinpicture="true" 
+                                    controlslist="nodownload" width="100%" height="100%" preload="auto" 
                                         poster="/resources/img/logo/trailer_logo.png"
                                         src="/video/${replay.videoName}.mp4">
                                     </video>  
@@ -84,11 +85,8 @@
                                             <img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/live/shopstore.png">
                                         </div>
                                         <div class="TagItem_title">
-                                           <%--  ${replay.livePdVo.getPsTitle()} --%>
                                         </div>
                                         <span class="TagItem_price">
-                                            <%-- <span class="TagItem_rate">${sale.psDiscount}%</span> --%>
-                                            <%-- <strong><fmt:formatNumber value="${replay.livePdVo.getPsPrice()}" pattern="#,###" /></strong>원 --%>
                                         </span>
                                     </a>
                                 </div>
@@ -101,11 +99,8 @@
                                         	<img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/free-icon-coupon-6713699.png">
                                         </div>
                                         <div class="TagItem_title">
-                                           <%--  ${replay.livePdVo.getPsTitle()} --%>
                                         </div>
                                         <span class="TagItem_price">
-                                            <%-- <span class="TagItem_rate">${sale.psDiscount}%</span> --%>
-                                            <%-- <strong><fmt:formatNumber value="${replay.livePdVo.getPsPrice()}" pattern="#,###" /></strong>원 --%>
                                         </span>
                                     </a>
                                 </div>
@@ -127,7 +122,6 @@
                             <section class="ItemModal_section" style="display: none;">
                                 <div class="ItemModal_content ItemModal_content_iframe">
                                     <div class="ModelTitle_wrap">
-                                        <%-- <h3 class="ModelTitle_title">${replay.livePdVo.getPsTitle()}</h3> --%>
                                         <button type="button" class="ModelTitle_btn">
                                             <i class="ModelTitle_icon"></i>
                                         </button>

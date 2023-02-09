@@ -35,9 +35,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		log.info("Load User" + username);
-		
-		
 		MemberVO vo = mapper.findById(username);
 		CustomMember user = new CustomMember(vo.getMid(), vo.getMpassword(), authorities(vo));
 		return user;
@@ -53,5 +50,4 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
         return authorities;
     }
-
 }

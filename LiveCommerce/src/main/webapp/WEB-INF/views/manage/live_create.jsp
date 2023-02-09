@@ -40,38 +40,12 @@
 			                        </c:choose>
 			                    </div>
 			                    <div class="product_create_content">
-			                        <!-- <form name="LiveCreateForm" id=" " autocomplete="off" action="/manage/live/create_process" method="post"> -->
 			                        <form id="LiveCreateForm" method="post">
 				                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				                        <div class="create_layout">
 				                            <div class="layout_subject _asterisk">라이브 제목</div>
 				                            <input type="text" name="liveTitle" id="liveTitle" class="layout_input" value="${live.liveTitle}" maxlength='30' >                       
 				                        </div>
-				                        <%-- <div class="create_layout">
-				                            <div class="layout_subject _asterisk">라이브 메인 이미지</div>
-				                            <div class="layout_live_upload">
-				                                <span class="live_img_upload">
-				                                    <c:choose>
-				                                        <c:when test="${empty live}">
-				                                            <img src="" class="title_img">
-				                                        </c:when>
-				                                        <c:otherwise>
-				                                            <img src="https://s3.ap-northeast-2.amazonaws.com/onlshop.shop${live.uploadPath}/${live.fileId}" class="title_img">
-				                                        </c:otherwise>
-				                                    </c:choose>
-				                                    
-				                                    <label for="" class="btn_img">이미지</label> 
-				                                </span>                                
-				                                <span class="live_img_text">
-				                                    <label for="fileName" class="btn_up">업로드</label> 
-				                                    <input type="file" id="fileName" class="layout_input_file btn_title_img" multiple> 
-				                                    <p class="p_red">- 최대 용량 : 20MB</p>
-				                                    <p class="p_red">- 권장 크기 : 720 X 1280</p>
-				                                    <p class="p_gray">- 라이브의 대표 이미지를 등록해주세요.</p>
-				                                    <p class="p_gray">- 글자가 포함되지 않은 이미지를 사용해주세요.</p>
-				                                </span>
-				                            </div>                    
-				                        </div> --%>
 				                        <div class="create_layout">
 				                            <div class="layout_subject _asterisk">라이브 예정 일시</div>
 				                            <div>

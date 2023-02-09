@@ -23,6 +23,7 @@ public class ChatServiceImpl implements ChatService{
 	@Autowired
 	private ChatMapper chatMapper; 
 	
+	//채팅 내역 저장
 	@Transactional
 	@Override
 	public void saveChat(ChatMessageVO chat) {

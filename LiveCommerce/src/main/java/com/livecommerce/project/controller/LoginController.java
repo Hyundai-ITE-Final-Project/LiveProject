@@ -64,8 +64,6 @@ public class LoginController {
 	public void login(HttpSession session, Model model) {
 		SNSLogin snsLogin = new SNSLogin(naverSns);
 		model.addAttribute("naver_url", snsLogin.getNaverAuthURL());
-		System.out.println("Session is " + session);
-		log.info("Welcome login! {}");
 
 	}
 //	작성자: 박소은

@@ -29,10 +29,8 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler{@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response,
 			AccessDeniedException accessDeniedException) throws IOException, ServletException {
 		log.error("Access Denied Handler");
-		
 		log.error("해당 페이지의 권한이 없는 오류");
 		
 		response.sendRedirect("/login");
 	}
-	
 }

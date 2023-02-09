@@ -63,8 +63,6 @@ public class LiveController {
 	@GetMapping("/live/{liveId}")
 	public String livePage(Authentication  member, @PathVariable("liveId") String liveId, Model model ) {
 		LiveVO liveVO = LiveService.getLiveInfo(liveId);
-		
-		
 		if(member !=null) {
 			model.addAttribute("nick", member.getName());
         }
@@ -72,35 +70,33 @@ public class LiveController {
 		model.addAttribute("host",liveVO.getMId());
 		model.addAttribute("live",liveVO);
 		model.addAttribute("liveUrl",liveUrl);
-		
-//		model.addAttribute("liveStatus",liveVO.getLiveStatus());
 		return "/live/video";
 	}
 	
 	//녹화된 영상의 정보를 가져온다. 
-		@GetMapping("/replay/{liveId}")
-		public String videoPage(Authentication  member, @PathVariable("liveId") String liveId, Model model ) {
-			LiveVO liveVO = LiveService.getReplayInfo(liveId);
-			
-			if(member !=null) {
-				model.addAttribute("nick", member.getName());
-	        }
-			log.info(liveVO.getMId());
-			model.addAttribute("host",liveVO.getMId());
-			model.addAttribute("replay",liveVO);
-			
-			model.addAttribute("url",liveUrl);
-			
-			return "/live/replay";
-		}
+	@GetMapping("/replay/{liveId}")
+	public String videoPage(Authentication  member, @PathVariable("liveId") String liveId, Model model ) {
+		LiveVO liveVO = LiveService.getReplayInfo(liveId);
 		
+		if(member !=null) {
+			model.addAttribute("nick", member.getName());
+        }
+		log.info(liveVO.getMId());
+		model.addAttribute("host",liveVO.getMId());
+		model.addAttribute("replay",liveVO);
+		model.addAttribute("url",liveUrl);
+		
+		return "/live/replay";
+	}
+	
+	//라이브 관리
 	@GetMapping("/manage/live")
 	public String LiveList(Authentication member, Model model) {
 		model.addAttribute("liveList", LiveService.myLiveList(member.getName()));
 		return "/manage/liveList";
 		
 	}
-	
+	//라이브 등록 페이지
 	@GetMapping("/manage/live/create")
 	public String createLivePage(Authentication member, String live, Model model) {
 		if(live != null) {
@@ -111,9 +107,7 @@ public class LiveController {
 		}
 		model.addAttribute("pdPostList",postService.getLivePostList(member.getName()));
 		return "manage/live_create";
-		
 	}
-	
 	//라이브 등록 후 목록 페이지로 이동
 	@PostMapping("/manage/live/create_process")
 	public String createLive(Authentication member, LiveVO liveVO) throws ParseException {
@@ -150,6 +144,7 @@ public class LiveController {
 		model.addAttribute("recipe", LiveService.getRecipe(ps_index));
 	}
 	
+	//라이브 최신순
 	@GetMapping("/live/recent")
 	public String recentVideoList(Model model) {
 		model.addAttribute("lives", LiveService.recentVideoList());
@@ -157,6 +152,7 @@ public class LiveController {
 		return "/live/videoList2";
 	}
 	
+	//라이브 인기순
 	@GetMapping("/live/view")
 	public String viewVideoList(Model model) {
 		model.addAttribute("lives", LiveService.viewVideoList());
