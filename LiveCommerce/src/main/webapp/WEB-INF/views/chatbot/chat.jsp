@@ -129,6 +129,23 @@
 			if(txt.indexOf("주문") != -1){
 				menulist('orderlist');
 			}
+			else if(txt.indexOf("토마토") != -1){
+            	var template = `<div class="chat-item is-customer me">
+                                    	<div class="bubble has-moving in" style="max-height: 10000px;">
+                                        	<div class="inner mine"></div>
+                                		</div>
+                             		<span class="date"><c:out value="${now}"/></span>
+                             	</div>`
+            	document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+				const list = document.querySelectorAll(".me");
+				const len = list.length - 1;
+				list[len].getElementsByClassName("mine")[0].setAttribute("id", cnt);
+				document.getElementById(cnt).innerHTML = txt;		
+				cnt++;
+				setTimeout(function(){
+					menulist('tomato');
+				}, 3000);
+			}
 			else{
             	var template = `<div class="chat-item is-customer me">
                                     	<div class="bubble has-moving in" style="max-height: 10000px;">
@@ -196,7 +213,23 @@
         function menulist(value) {
             var login_id = opener.document.getElementById("loginid").value;
             console.log("로그인된 아이디 : " + login_id);
-            
+            if (value == 'tomato'){
+                    var template = `<div class="chat-item is-ktalk you" style="visibility: visible;">
+		              	<div class="bubble has-moving in your" style="max-height: 10000px;">
+		              			방울토마토의 칼로리는 100g당 29칼로리입니다.
+		              		<div class="bubble-actions">
+		                	</div>	              		
+		              	</div>
+		              	<div class="date"><c:out value="${now}"/></div>
+		          	 </div>`;
+				    document.querySelector('.chat-list').insertAdjacentHTML('beforeend', template);
+			        const list2 = document.querySelectorAll(".you");
+			        const len2 = list2.length - 1;
+			        list2[len2].getElementsByClassName("your")[0].setAttribute("id", cnt);
+			        cnt++;
+			        list2[len2].getElementsByClassName("bubble-actions")[0].setAttribute("id", cnt);
+			        scrollDown();
+            }
 			// 주문목록 조회하기 버튼을 클릭했을 경우
             if (value == 'orderlist') {
                 var template = `<div class="chat-item is-customer me">
