@@ -1,5 +1,6 @@
 package com.livecommerce.project.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.livecommerce.project.mapper.MemberMapper;
+import com.livecommerce.project.vo.Criteria;
 import com.livecommerce.project.vo.MemberVO;
 
 /**
@@ -108,6 +110,23 @@ public class MemberServiceImpl implements MemberService {
 		memberVO.setStreamKey(stream);
 		memberMapper.updateStreamKey(memberVO);
 		return stream;
+	}
+
+	/* 멤버 리스트 */
+	@Override
+	public List<MemberVO> getMemberListAll(Criteria cri) {
+		return memberMapper.getMemberListAll(cri);
+		
+	}
+	/* 멤버 총 카운트 */
+	@Override
+	public int getMemberTotal(Criteria cri) {
+		return memberMapper.getMemberTotal(cri);
+	}
+
+	@Override
+	public int updateRole(String mid) {
+		return memberMapper.updateRole(mid);
 	}
 
 }

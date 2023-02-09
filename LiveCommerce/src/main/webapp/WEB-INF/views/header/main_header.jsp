@@ -18,7 +18,7 @@
 		    background: #fcc;
 		}
 		.one {
-		    width: 600px;
+		    width: 800px;
 		    height: 100%;
 		    margin: 0 auto;
 		}
@@ -85,7 +85,7 @@
     <div class="shop_logo_wrap">
         <a href="/" class="logo_link">
             <i class="header_icon logo_icon"></i>
-            <span class="blind">오늘의쇼핑</span>
+            <span class="blind">H-LIVE</span>
         </a>
     </div>
 	<form action="/logout" method="POST" id="logoutForm">
@@ -97,7 +97,8 @@
                    </a>
                </c:when>
                <c:otherwise>
-               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	               <span class="selName_area">${name}님</span>
                    <button class="h_btn_login h_btn_logout asd" type="submit">로그아웃</button>
                </c:otherwise>
            </c:choose>
@@ -141,12 +142,12 @@
 		    			</li>
 		    			<li><a href="#">생선과 해산물, 건어물</a>
 		    				<ul class="three">
-		      					<li><a href="#" onclick="category('생선과 해산물,건어물','');">전체보기 </a></li>
-		                        <li><a href="#" onclick="category('생선과 해산물,건어물','생선*해산물');">생선 · 해산물 </a></li>
-		                        <li><a href="#" onclick="category('생선과 해산물,건어물','새우*조개류*갑각류');">새우 · 조개류 · 갑각류 </a></li>
-		                        <li><a href="#" onclick="category('생선과 해산물,건어물','김*미역*해조류');">김 · 미역 · 해조류 </a></li>
-		                        <li><a href="#" onclick="category('생선과 해산물,건어물','연어*간편수산물');">연어 · 간편수산물 </a></li>
-		                        <li><a href="#" onclick="category('생선과 해산물,건어물','멸치*건어물*Dried-H*어부의밥상 ');">멸치 · 건어물 · Dried-H · 어부의밥상 </a></li>
+		      					<li><a href="#" onclick="category('생선과해산물,건어물','');">전체보기 </a></li>
+		                        <li><a href="#" onclick="category('생선과해산물,건어물','생선*해산물');">생선 · 해산물 </a></li>
+		                        <li><a href="#" onclick="category('생선과해산물,건어물','새우*조개류*갑각류');">새우 · 조개류 · 갑각류 </a></li>
+		                        <li><a href="#" onclick="category('생선과해산물,건어물','김*미역*해조류');">김 · 미역 · 해조류 </a></li>
+		                        <li><a href="#" onclick="category('생선과해산물,건어물','연어*간편수산물');">연어 · 간편수산물 </a></li>
+		                        <li><a href="#" onclick="category('생선과해산물,건어물','멸치*건어물*Dried-H*어부의밥상 ');">멸치 · 건어물 · Dried-H · 어부의밥상 </a></li>
 		    				</ul>
 		    			</li>
 		    			<li><a href="#">육류와 달걀</a>
@@ -201,10 +202,6 @@
 		                            <a href="#" onclick="category('밥과국,면','샐러드*저칼로리식');">샐러드 · 저칼로리식 </a>
 		                        </li>		    				
                         	</ul>
-		    			</li>
-		    			<li><a href="#">밑반찬과 간식</a>
-		    				<ul class="three">
-		    				</ul>
 		    			</li>
 		    			<li><a href="#">밑반찬과 간식</a>
 		    				<ul class="three">
@@ -423,8 +420,8 @@
 	        <a href="/live/view" role="tab" class="main_tab main2" aria-selected="false">인기라이브</a>
 	        <a href="/live/recent" role="tab" class="main_tab main3" aria-selected="false">최신라이브</a>
 	        <a href="/product/listDate" role="tab" class="main_tab main4" aria-selected="false">신상품</a>
-	        <a href="/coupon/couponpage" role="tab" class="main_tab main5" aria-selected="false">이벤트</a>
-	        
+	        <a href="/coupon/Eventcouponpage" role="tab" class="main_tab main5" aria-selected="false">이벤트</a>
+	        <a href="/recipe/api" role="tab" class="main_tab main6" aria-selected="false">레시피</a>
 	        <script>
 	        	function maintab(value){
 	        		if(value == 'one'){

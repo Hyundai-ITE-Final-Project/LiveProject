@@ -10,7 +10,7 @@
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/img/logo/logo_header_icon.png">
-    <title>오늘의쇼핑</title>
+    <title>H-LIVE</title>
     <link rel="stylesheet" type="text/css" href="/resources/css/video.css" >
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="/resources/js/common.js" ></script>
@@ -28,7 +28,7 @@
                                 <h1 class="LiveHeader_logo">
 							        <a href="/" class="logo_link">
 							            <i class="header_icon logo_icon"></i>
-							            <span class="blind">오늘의쇼핑</span>
+							            <span class="blind">H-LIVE</span>
 							        </a>
                                 </h1>
                                 <div class="ToolBox_wrap">
@@ -47,7 +47,6 @@
                                 </div>
                                 <div class="LiveHeader_title">
                                     <div class="LiveHeader_img_area" >
-                                        <%-- <img class="LiveHeader_image" width="38" height="38" src="https://s3.ap-northeast-2.amazonaws.com/onlshop.shop${replay.liveSellerVo.getSelUploadPath()}/${replay.liveSellerVo.getSelFileId()}"> --%>
                                         <span class="LiveBadge_live blind">LIVE</span>
                                     </div>           
                                     <div class="LiveHeader_text_area">
@@ -66,13 +65,13 @@
                             <div class="LiveVideoPlayer_wrap">
                                 <div class="video_container">
                                     <video id="video" autoplay muted loop controls disablepictureinpicture="true" controlslist="nodownload" width="100%" height="100%" preload="auto" 
-                                        poster="/resources/img/chun.jpg"
+                                        poster="/resources/img/logo/trailer_logo.png"
                                         src="/video/${replay.videoName}.mp4">
                                     </video>  
                                 </div>
                             </div>
                             <div class="Comments_wrap" id="Comments_wrap">
-                                <div class="Comments_inner">
+                                <div clas="Comments_inner">
                                     <div class="Comments_animation_area"></div>
                                     <div class="Comments_animation_area bottom_ani"></div>
                                 </div>
@@ -82,6 +81,7 @@
                                 <div class="TagItem_current">
                                     <a class="TagItem_link">
                                         <div class="TagItem_thumbnail">
+                                            <img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/live/shopstore.png">
                                         </div>
                                         <div class="TagItem_title">
                                            <%--  ${replay.livePdVo.getPsTitle()} --%>
@@ -98,6 +98,7 @@
                                 <div class="TagItem_current">
                                     <a class="TagItem_link">
                                         <div class="TagItem_thumbnail">
+                                        	<img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/free-icon-coupon-6713699.png">
                                         </div>
                                         <div class="TagItem_title">
                                            <%--  ${replay.livePdVo.getPsTitle()} --%>
@@ -105,6 +106,19 @@
                                         <span class="TagItem_price">
                                             <%-- <span class="TagItem_rate">${sale.psDiscount}%</span> --%>
                                             <%-- <strong><fmt:formatNumber value="${replay.livePdVo.getPsPrice()}" pattern="#,###" /></strong>원 --%>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="TagItem_wrap3" >
+                                <div class="TagItem_current">
+                                    <a class="TagItem_link">
+                                        <div class="TagItem_thumbnail">
+                                            <img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/free-icon-recipe-book-1021460.png">
+                                        </div>
+                                        <div class="TagItem_title">
+                                        </div>
+                                        <span class="TagItem_price">
                                         </span>
                                     </a>
                                 </div>
@@ -122,7 +136,7 @@
                                 </div>
                             </section>
                             <!-- 쿠폰페이지iframe영역 -->
-                            <section class="ItemModal_section2" style="display: none; z-index:999;">
+                            <section class="ItemModal_section2" style="display: none;">
                                 <div class="ItemModal_content ItemModal_content_iframe">
                                     <div class="ModelTitle_wrap">
                                         <%-- <h3 class="ModelTitle_title">${replay.livePdVo.getPsTitle()}</h3> --%>
@@ -130,10 +144,20 @@
                                             <i class="ModelTitle_icon"></i>
                                         </button>
                                     </div>
-                                    <iframe class="TagItemIframe_iframe2" src="/coupon/couponpage?ps_index=${replay.psIndex}"></iframe>
+                                    <iframe class="TagItemIframe_iframe2" src="/coupon/couponpage?ps_index=${replay.psIndex}" scrolling="no"></iframe>
                                 </div>
                             </section>
-                            
+                            <section class="ItemModal_section3" style="display: none;">
+                                <div class="ItemModal_content ItemModal_content_iframe">
+                                    <div class="ModelTitle_wrap">
+                                        <%-- <h3 class="ModelTitle_title">${replay.livePdVo.getPsTitle()}</h3> --%>
+                                        <button type="button" class="ModelTitle_btn3">
+                                            <i class="ModelTitle_icon"></i>
+                                        </button>
+                                    </div>
+                                    <iframe class="TagItemIframe_iframe3" src="/live/recipe?ps_index=${replay.psIndex}"></iframe>
+                                </div>
+                            </section>
                             <div class="CommentWrite_wrap">
                                 <textarea class="CommentWrite_text" id="wa_textarea" placeholder="실시간 채팅에 참여하세요" cols="1" ></textarea>
                                 <button type="submit" class="CommentWrite_btn" id="send_btn" disabled>전송</button>

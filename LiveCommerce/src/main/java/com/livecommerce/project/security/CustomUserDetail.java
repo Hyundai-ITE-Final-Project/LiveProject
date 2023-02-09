@@ -19,6 +19,7 @@ public class CustomUserDetail implements UserDetails{
 	private MemberVO memberVO;
 	
 	public CustomUserDetail(MemberVO memberVO) {
+	
 		this.memberVO = memberVO;
 	}
 
@@ -28,6 +29,7 @@ public class CustomUserDetail implements UserDetails{
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
+
 		Collection<GrantedAuthority> collet = new ArrayList<GrantedAuthority>();
 	      collet.add(()->{ return memberVO.getMrole();});
 	      return collet;

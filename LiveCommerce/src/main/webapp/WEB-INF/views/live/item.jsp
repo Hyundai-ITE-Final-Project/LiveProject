@@ -12,7 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
-    <title>오늘의쇼핑</title>
+    <title>H-LIVE</title>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="/js/common.js" ></script>
     <script type="text/javascript" src="/js/item.js" ></script>
@@ -185,11 +185,11 @@
 				                        </div>
 				                    </li>
 				                    <li>
-				                        <a href="/product/productDetail?pid=${pd.pid}" target='_blank'><img src="${pd.img1}" height="100px"></a>
-				                        <div class="item_name">${pd.pname}</div>
+				                        <a href="/product/productDetail?pid=${pd.pid}" target='_blank' style="float: left; margin-right: 30px;"><img src="${pd.img1}" height="100px"></a>
+				                        <div class="item_name" style="padding-top: 20px;">${pd.pname}</div>
 				                    </li>
 				                    <li>
-				                    	<div class="item_num_box">
+				                    	<div class="item_num_box" style="margin-top:15px;">
 				                        	<div class="item_num_left">
 				                                <div class="item_num_btn_area pd_15871">
 				                                    <a class="count_btn count_minus" onclick="change_qty('${pd.pid}','left');"></a>
@@ -197,7 +197,7 @@
 				                                    <a class="count_btn count_plus" onclick="change_qty('${pd.pid}','right');"></a>
 				                                </div>
 				                            </div>
-				                            <div class="item_num_right">
+				                            <div class="item_num_right" style="margin-right: 10px;">
 				                            	<span class="item_amount${pd.pid}">
 				                                    <fmt:formatNumber value="${pd.price}" pattern="#,###" />
 				                                </span>원</div>
@@ -230,7 +230,7 @@
 	            <button type="button" class="btn_buy fix_btn">구매하기</button>
 	        </div>
 	        <div class="fix_a_btn_area" style="">
-	            <button type="button" class="btn_bk fix_btn" onClick="addCart()">장바구니</button>
+	            <button type="button" class="btn_bk fix_btn" onClick="addCart()" style="background: #668679;color: white;">장바구니</button>
 	        </div>
 	        <div class="fix_a_btn_area" style="">
 	            <button type="button" class="btn_buyPage btn_buy fix_btn" onClick="direct_buy()">바로구매</button>

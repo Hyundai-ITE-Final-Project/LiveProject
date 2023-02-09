@@ -3,9 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/login.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/admin.css">
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <div id="admin_wrap">
@@ -35,12 +32,15 @@
                                 <input type="text" id="psTitle" name="ps_title" class="layout_input" value="${post.ps_title}" maxlength='30'>
                             </div>
                             <div class="create_layout">
-                                <div class="layout_subject _asterisk">게시물 판매가(최소 금액)</div>
-                                <input type="text" id="psPrice" class="layout_input" name="ps_price" value="${post.ps_price }" maxlength='11' oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1');">
+                                <div class="layout_subject _asterisk">판매글 정보 및 레시피</div>
+                                <textarea class="layout_input" name="recipe" class="recipe" style="height: 250px; padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px; line-height:1.5;">${post.recipe}</textarea>
                             </div>
                             <div class="create_layout">
 						    	<div class="layout_subject _asterisk">판매 상품 추가</div>
 						    	<div class="layout_memo">상품 체크/체크 해제 후 등록하면 상품이 새로 등록됩니다.</div>
+							    <div class="searchBox" style="position: relative; width: 100%;">
+						        	<input type="text" id="search" onkeyup="filter()" placeholder="검색하실 상품을 입력해주세요." name="keyword" style="width: 100%; border: 1px solid #bbb; border-radius: 8px; padding: 10px 12px; font-size: 14px; margin-bottom: 10px;">
+						        </div>
 							    <div>
 							        <div class="pdAddList_area">
 							            <div class="pdAddList_header">
@@ -93,28 +93,29 @@
     </div>
 </div>
 <script>
-$(function() {
-	console.log("테스트 입니다.");
-	
-	$(".productpost_tab").attr("aria-selected","true");
-	
-})
-    var ifrContent = $('#psContentText').text();
-    //iframe 디자인모드
-    var iframe = document.getElementById("psContentIframe").contentWindow;
-    //var lodeContent=document.getElementById("psContentIframe").innerHTML;
-    var iframeD = iframe.document;
-    if (ifrContent != '') {
-        iframeD.write("<!DOCTYPE html><html><body>" + ifrContent + "</body></html>");
-    }
-    iframeD.designMode = 'on';
-    //iframe.focus(); 
+	$(function() {
+		console.log("테스트 입니다.");
+		
+		$(".productpost_tab").attr("aria-selected","true");
+		
+	})
     
+    function filter(){
+		var search = document.getElementById("search").value;
+		var listInner = document.getElementsByClassName("pdAddList_content_area");
+		for(let i=0; i<listInner.length; i++){
+			pname = listInner[i].getElementsByClassName("pdAddList_cell_1");
+			if(pname[0].innerHTML.toLowerCase().indexOf(search) != -1){
+				listInner[i].style.display = "flex";
+			}
+			else{
+				listInner[i].style.display = "none";
+			}
+		}
+	}
 	function go_modify(){
         if(document.formm.ps_title.value ==""){
             alert("제목을 입력해주세요");
-        } else if(document.formm.ps_price.value == ""){
-            alert("가격을 설정해주세요");
         } else if(document.formm.ps_post_status.value ==""){
             alert("판매상태를 설정해주세요");
         } else{

@@ -35,7 +35,14 @@ public class CouponController {
 	@GetMapping("/coupon/couponpage")
 	public String couponPageGet(Model model) {
 		
-		return "/coupon";
+		return "/coupon/coupon";
+	}
+	
+	//이벤트쿠폰페이지 이동
+		@GetMapping("/coupon/Eventcouponpage")
+		public String EventcouponPageGet() {
+			
+			return "/coupon/event_coupon";
 	}
 	
 	//쿠폰 발급
@@ -43,7 +50,7 @@ public class CouponController {
 	@ResponseBody
 	public String couponCreate(@RequestBody CouponVO cvo, HttpServletRequest request, Principal principal) throws Exception {
 
-
+		cvo.setMember_mid(principal.getName());
 		int result = couponService.addCoupon(cvo);
 		if(result == 1) {
 			CouponListVO couponList = new CouponListVO();

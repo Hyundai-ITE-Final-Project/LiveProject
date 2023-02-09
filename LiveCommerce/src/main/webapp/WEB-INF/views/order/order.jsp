@@ -53,7 +53,7 @@
         <!-- 배송지 정보 -->
 				<div class="addressInfo_div">
 					<div class="addressInfo_button_div">
-						<button class="address_btn address_btn_1" onclick="showAdress('1')" style="background-color: #668679;">사용자 정보 주소록</button>
+						<button class="address_btn address_btn_1" onclick="showAdress('1')" style="background-color: #668679;">주문자정보/배송지</button>
 						<button class="address_btn address_btn_2" onclick="showAdress('2')" style="background-color: #efdcec; color:black; font-weight:bold;">직접 입력</button>
 					</div>
 					<div class="addressInfo_input_div_wrap">
@@ -65,13 +65,13 @@
 								</colgroup>
 								<tbody>
 									<tr>
-										<th>이름</th>
+										<th>주문자</th>
 										<td>
 											${memberInfo.mname}
 										</td>
 									</tr>
 									<tr>
-										<th>주소</th>
+										<th>배송지</th>
 										<td>
 											${memberInfo.mzipcode} ${memberInfo.maddress1}<br> ${memberInfo.maddress2}
 											<input class="selectAddress" value="T" type="hidden">
@@ -92,13 +92,13 @@
 								</colgroup>
 								<tbody>
 									<tr>
-										<th>이름</th>
+										<th>주문자</th>
 										<td>
 											<input class="addressee_input">
 										</td>
 									</tr>
 									<tr>
-										<th>주소</th>
+										<th>배송지</th>
 										<td>
 											<input class="selectAddress" value="F" type="hidden">
 											<input class="zipcode_input" readonly="readonly"> <a class="address_search_btn" onclick="execution_daum_address()">주소 찾기</a><br>
@@ -110,7 +110,7 @@
 						</div>
 					</div>
 				</div>		
-		
+				<hr>
 						<!-- 포인트 정보 -->
 				<div class="point_div">
 					<div class="point_div_subject">포인트 사용</div>
@@ -122,27 +122,30 @@
 						<tbody>
 							<tr>
 								<th>포인트 사용</th>
-								<td>
-									${memberInfo.mpoint} | <input class="order_point_input" value="0">원 
-									<a class="order_point_input_btn order_point_input_btn_N" data-state="N">모두사용</a>
-									<a class="order_point_input_btn order_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
+								<td style="font-size:16px;">
+									${memberInfo.mpoint}원 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+									<input class="order_point_input" value="0" style="height: 25px; width: 200px; text-align: right; padding: 12px;"> &nbsp; &nbsp;원 
+									 &nbsp; &nbsp;<a class="order_point_input_btn order_point_input_btn_N" data-state="N">모두사용</a>
+									 &nbsp; &nbsp;<a class="order_point_input_btn order_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
 									
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
+				<hr>
 							<!-- 쿠폰 정보 -->
 				<div class="point_div">
 					<div class="point_div_subject">쿠폰 사용</div>
-				        <select title="쿠폰을 선택해 주세요." id="selectVoucher" style="width: 190px;" onchange="selectCoupon(this.value)" >
+				        <select title="쿠폰을 선택해 주세요." id="selectVoucher" style="width: 300px;padding: 7px;border: 1px solid #999;border-radius: 3px;" onchange="selectCoupon(this.value)" >
                               <option value="0">쿠폰을 선택해 주세요.</option>
                             <c:forEach items="${couponList}" var="coupon">
                               <option value="<c:out value="${coupon.cprice}"></c:out>">
                               <c:out value="${coupon.cname}"></c:out></option>
                             </c:forEach>                           
                         </select>
-				</div>		
+				</div>	
+				<hr>	
         <section class="order_total_pay">
             <div class="order_payment_header">
                 <div class="section_order_title">결제금액</div>
@@ -397,7 +400,7 @@ minites = minites < 10 ? '0' + minites.toString() : minites.toString();
 var seconds = date.getSeconds();
 seconds = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
 
-let oid="${memberInfo.mid}"+"_"+year + month + day + hour + minites + seconds;
+let oid="oid"+"_"+year + month + day + hour + minites + seconds;
 // 주문 요청 
   $(".btn_payment").on("click", function(){
 	  console.log(totalKind + '종' + totalCount + '개');
@@ -406,66 +409,69 @@ let oid="${memberInfo.mid}"+"_"+year + month + day + hour + minites + seconds;
 		var IMP = window.IMP;
 		IMP.init("imp71146844");
 		console.log(oid);
-		
+		console.log(typeof finalTotalPrice);
 		//주문총금액이 쿠폰금액보다 작다면 예외처리
-		if(finalTotalPrice <= couponPrice) {
-			alert("주문금액을 확인해주세요.");
+		if(finalTotalPrice < 0) {
+			alert("최종결제금액을 확인해주세요.");
 		}
-	 	//결제 부분 시작
-	  IMP.request_pay({
-		        pg : 'html5_inicis',//이니시스 결제 시스템을 하기 위한 부분 고정시켜야합니다
-		        pay_method : 'card',
-		        merchant_uid: oid,  //주문 아이템 oid값
-		        name : '${orderList[0].pname}', //주문한거 이름
-		        //amount : finalTotalPrice, //가격
-		        amount : 100, //가격
-		        buyer_email : '${memberInfo.memail}', //산사람 이메일 
-		        buyer_name : '${memberInfo.mname}',//산사람 이름
-		        buyer_tel : '${memberInfo.mtel}',//산사람 번호
-		        buyer_addr : '${memberInfo.maddress1}',//산사람 주소
-		        buyer_postcode : '${memberInfo.mzipcode}'//산사람 주소코드
-		
-		    }, function (rsp) { // callback
-		        if (rsp.success) {
-		        	//db에 컬럼만들어서 넣어줘야됨 이게 service에 들어가면됨
-		        	let imp_uid = rsp.imp_uid;
-		        	//결제 성공에 대한 부분
-		            console.log(rsp);
-		        	// 주소 정보 & 받는이
-		        	$(".addressInfo_input_div").each(function(i, obj){
-		        		if($(obj).find(".selectAddress").val() === 'T'){
-		        			$("input[name='member_mid']").val("${memberInfo.mid}");
-		        			$("input[name='orderer']").val($(obj).find(".addressee_input").val());
-		        			$("input[name='ozipcode']").val($(obj).find(".zipcode_input").val());
-		        			$("input[name='oaddress1']").val($(obj).find(".address1_input").val());
-		        			$("input[name='oaddress2']").val($(obj).find(".address2_input").val());	
-		        		}
-		        	});	
-		        	
-		        	// 사용 포인트 
-		        	$("input[name='usePoint']").val($(".order_point_input").val());	
-		        	// 주문한 imp_uid
-		        	$("input[name='imp_uid']").val(imp_uid);
-		        	// 상품정보 
-		        	let form_contents = ''; 
-		        	$(".order_pd_group_item").each(function(index, element){
-		        		let pid = $(element).find(".individual_pid_input").val();
-		        		let pcount = $(element).find(".individual_pcount_input").val();
-		        		let pid_input = "<input name='orders[" + index + "].pid' type='hidden' value='" + pid + "'>";
-		        		form_contents += pid_input;
-		        		let pcount_input = "<input name='orders[" + index + "].olquantity' type='hidden' value='" + pcount + "'>";
-		        		form_contents += pcount_input;
-		        	});	
-		        	$(".order_form").append(form_contents);	
-		        	
-		        	// 서버 전송 
-		        	$(".order_form").submit();	
-	  	
-		    } else {
-		    	//결제 실패에 대한 부분
-		        console.log(rsp);
-		    }
-		}); 
+		else {
+		 	//결제 부분 시작
+			  IMP.request_pay({
+				        pg : 'html5_inicis',//이니시스 결제 시스템을 하기 위한 부분 고정시켜야합니다
+				        pay_method : 'card',
+				        merchant_uid: oid,  //주문 아이템 oid값
+				        name : '${orderList[0].pname}', //주문한거 이름
+				        //amount : finalTotalPrice, //가격
+				        amount : 100, //가격
+				        buyer_email : '${memberInfo.memail}', //산사람 이메일 
+				        buyer_name : '${memberInfo.mname}',//산사람 이름
+				        buyer_tel : '${memberInfo.mtel}',//산사람 번호
+				        buyer_addr : '${memberInfo.maddress1}',//산사람 주소
+				        buyer_postcode : '${memberInfo.mzipcode}'//산사람 주소코드
+				
+				    }, function (rsp) { // callback
+				        if (rsp.success) {
+				        	//db에 컬럼만들어서 넣어줘야됨 이게 service에 들어가면됨
+				        	let imp_uid = rsp.imp_uid;
+				        	//결제 성공에 대한 부분
+				            console.log(rsp);
+				        	// 주소 정보 & 받는이
+				        	$(".addressInfo_input_div").each(function(i, obj){
+				        		if($(obj).find(".selectAddress").val() === 'T'){
+				        			$("input[name='member_mid']").val("${memberInfo.mid}");
+				        			$("input[name='orderer']").val($(obj).find(".addressee_input").val());
+				        			$("input[name='ozipcode']").val($(obj).find(".zipcode_input").val());
+				        			$("input[name='oaddress1']").val($(obj).find(".address1_input").val());
+				        			$("input[name='oaddress2']").val($(obj).find(".address2_input").val());	
+				        		}
+				        	});	
+				        	
+				        	// 사용 포인트 
+				        	$("input[name='usePoint']").val($(".order_point_input").val());	
+				        	// 주문한 imp_uid
+				        	$("input[name='imp_uid']").val(imp_uid);
+				        	// 상품정보 
+				        	let form_contents = ''; 
+				        	$(".order_pd_group_item").each(function(index, element){
+				        		let pid = $(element).find(".individual_pid_input").val();
+				        		let pcount = $(element).find(".individual_pcount_input").val();
+				        		let pid_input = "<input name='orders[" + index + "].pid' type='hidden' value='" + pid + "'>";
+				        		form_contents += pid_input;
+				        		let pcount_input = "<input name='orders[" + index + "].olquantity' type='hidden' value='" + pcount + "'>";
+				        		form_contents += pcount_input;
+				        	});	
+				        	$(".order_form").append(form_contents);	
+				        	
+				        	// 서버 전송 
+				        	$(".order_form").submit();	
+			  	
+				    } else {
+				    	//결제 실패에 대한 부분
+				        console.log(rsp);
+				    }
+				}); 
+		}
+
 }); 
 
 
@@ -477,9 +483,15 @@ function selectCoupon(str) {
 	//var index = $("#selectVoucher option").index($("#selectVoucher option:selected"));
 	var a = $("#selectVoucher option:checked").text();
 	var b = a.trimStart();
+	$('select > option:disabled').attr("disabled",false);
+	$('select > option:disabled').removeAttr("disabled");
 	$("input[name='cname']").val(b);
 	//var b = $('#ccode1').val();
 	console.log(b);
+	console.log('------------');
+	var c = $("#selectVoucher option:checked").val();
+	console.log(c);
+	console.log(typeof c);
 }
 
 

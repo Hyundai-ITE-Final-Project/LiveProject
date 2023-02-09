@@ -17,6 +17,15 @@ public interface MypageService {
 	public int ordercancelState(String ostate, String oid);
 	/*-- 멤버아이디별 중복처리한 oid값들 */
 	public List<String> getOid(String member_mid);
-	
+	//전체주문목록
 	public List<OrderVO> getOidorderList(@Param("oid") String oid, @Param("member_mid") String member_mid);
+
+	/* 주문취소시 포인트회수 */
+	public int orderCancelReturnPoint(@Param("oid") String oid, @Param("mid") String mid);
+	
+	/* 주문상세페이지 */
+	public List<OrderVO> getOrderDetail(@Param("oid") String oid, @Param("mid") String mid);
+	
+	/* 쿠폰노사용_주문상세페이지 */
+	public List<OrderVO> NoCouponOrderDetail(@Param("oid") String oid, @Param("mid") String mid);
 }

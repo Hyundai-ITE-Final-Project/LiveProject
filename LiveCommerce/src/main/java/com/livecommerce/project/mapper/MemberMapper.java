@@ -1,8 +1,11 @@
 package com.livecommerce.project.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.livecommerce.project.vo.Criteria;
 import com.livecommerce.project.vo.MemberVO;
 /**
  * @author 신기원
@@ -43,4 +46,13 @@ public interface MemberMapper {
 	
 	/* 스트리밍 키 변경 */
 	public int updateStreamKey(MemberVO memberVO); 
+	
+	/* 전체 멤버 리스트 */
+	public List<MemberVO> getMemberListAll(Criteria cri);
+	
+	/* 멤버 총 인원 */
+	public int getMemberTotal(Criteria cri);
+	
+	/* 멤버 권한변경 */
+	public int updateRole(@Param("mid")String mid);
 }

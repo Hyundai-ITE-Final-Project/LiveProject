@@ -5,6 +5,22 @@
 <!-- @author 김나형 * @since 2023.01.10 * @version 1.0
 	2023.01.10 김나형 최초 생성
 	230116 박소은 관리자 상품 관리-->
+<!-- **
+ * @author 김나형
+ * @since 2023.01.11
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일              		수정자                   수정내용
+ * 2023.01.11		김나형		최초생성
+ * 2023.01.11		김나형		사용자 상품리스트, 상세페이지
+ * 2023.01.11		김나형		카테고리별 상품 리스트
+ * 2023.01.11		김나형		최근등록순 상품 리스트
+ * 2023.01.16		박소은		관리자 상품 관리
+ * 2023.02.03		김나형		랜덤상품 추천
+ * 2023.02.04		김나형		재고순 상품 정렬
+</pre>
+-->
 <mapper namespace="com.livecommerce.project.mapper.ProductMapper">
 
 	<!-- 전체상품리스트 -->
@@ -18,7 +34,24 @@
 			WHERE p.rn > (#{pageNum} -1) * #{amount} and p.rn <= #{pageNum} * #{amount}
     	]]>
 	</select>
-
+	<!-- 상품 랜덤 추천 -->
+	<select id="getProductRandom" resultType="com.livecommerce.project.vo.ProductVO">
+		select *
+		from(select *
+		     from product
+		    order by dbms_random.value)
+		    <![CDATA[
+			where rownum <= 12]]>
+	</select>
+	<!-- 상품 재고순 정렬 -->
+	<select id="getProductStock" resultType="com.livecommerce.project.vo.ProductVO">
+		select *
+		from(select *
+		     from product
+		     order by pstock)
+		     <![CDATA[
+			where rownum <= 12]]>
+	</select>
 	<!-- 전체상품갯수 -->
 	<select id="getTotalCount" resultType="int">
 		select count(*)
@@ -77,21 +110,17 @@
 
 	<select id="getListWithPagingProduct"
 		resultType="com.livecommerce.project.vo.ProductVO">
-	<![CDATA[
+	
 	select pid, pname, pstatus, price, pstock, pregdate 
 	from
 		(
 		select /*INDEX_DESC(product pid)*/
 			rownum rn, pid, pname, pstatus, price, pstock, pregdate
-		from
-			product
-		where pid <= #{pageNum} * #{amount}
+		from product
 		order by pid
-		
-		
 		)
-		where pid > (#{pageNum} - 1) * #{amount}
-		order by pid
+		<![CDATA[
+		where rn > (#{pageNum} - 1) * #{amount} and rn <= #{pageNum} * #{amount}
 		]]>
 
 	</select>

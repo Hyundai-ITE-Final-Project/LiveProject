@@ -1,6 +1,6 @@
 <%@page pageEncoding="UTF-8" language="java"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ include file="/WEB-INF/views/header/tool_header.jsp"%>
+<%@ include file="/WEB-INF/views/header/main_header.jsp"%>
 <!-- 박소은 작성 -->
 <div id="mypage_wrap" class="mypage_wrap">
     <div id="mypage_area" class="mypage_area">      

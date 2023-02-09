@@ -1,5 +1,16 @@
 package com.livecommerce.project.controller;
-
+/**
+ * @author 김민석
+ * @since 2023.01.27
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일                    수정자                   수정내용
+ * ----------  --------    ---------------------------
+ * 2023.01.27    김민석              관리자 판매내역관리
+ * </pre>
+ */
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +45,11 @@ public class ManageOrderController {
 	
 	//주문취소
 	@PostMapping("/manage/ordercancel")
-	public String orderCancel(OrderVO ov) {
+	public String orderCancel(OrderVO ov, Principal principal) {
 		System.out.println("테스트" + ov.getImp_uid());
 		orderService.OrderCancel(ov.getImp_uid());
 		ManageOrderService.ordercancelState(ov.getOstate(), ov.getOid());
+		ManageOrderService.orderCancelReturnPoint(ov.getOid(), principal.getName());
 		return "redirect:/manage/orderList";
 	}
 

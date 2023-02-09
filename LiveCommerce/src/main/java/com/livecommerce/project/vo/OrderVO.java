@@ -72,6 +72,13 @@ public class OrderVO {
 	// 주문한 상품 수량
 	private int olquantity;
 	
+	// 회원 전화번호
+	private String mtel;
+	
+	// 적립포인트
+	private int savepoint;
+	//
+	private int cprice;
 	
 	public void getOrderPriceInfo() {
 		/* 상품 비용 & 적립포인트 */

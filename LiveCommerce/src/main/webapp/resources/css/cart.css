@@ -199,9 +199,9 @@ a{
 		 th{
 		text-align: center;
 	    color: #333;
-	    background-color:#668679;
+	    background-color:#efdcec;
 	    border-bottom: 1px solid #e7e7e7;
-	    border-top: 1px solid #668679;
+	    border-top: 1px solid #efdcec;
 /* 	    background: #668679; */
 	    padding: 2px 0;	 
 	    font-size: 18px;
@@ -211,15 +211,15 @@ a{
 			width: 5%;
 		}	 	 	 
 		.td_width_2{
-			width: 10%;
+			width: 8%;
 		}	 	 
 		.td_width_3{
 			text-align: center;
-			width: 25%;
+			width: 35%;
 		}	 
 		.td_width_4{
 			text-align: center;
-			width: 15%;
+			width: 18%;
 		}	
 		.cart_table{
 			font-size: 14px;

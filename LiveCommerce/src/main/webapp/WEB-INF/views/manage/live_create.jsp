@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
+<%@page pageEncoding="UTF-8" language="java"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -9,12 +9,8 @@
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <link rel="shortcut icon" href="/img/logo/logo_header_icon.png">
-    <title>오늘의쇼핑</title>
-    <link rel="stylesheet" type="text/css" href="/resources/css/common.css" >
-    <link rel="stylesheet" type="text/css" href="/resources/css/admin.css" >
+    <title>H-LIVE</title>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
-    <script type="text/javascript" src="/resources/js/common.js"></script>
-    <!-- <script type="text/javascript" src="/resources/js/manage.js"></script> -->
 </head>
 	<body>
     	<%@ include file="/WEB-INF/views/header/tool_header.jsp"%>
@@ -147,7 +143,7 @@
 			    <%-- <input type="hidden" id="file_id" value="${live.fileId}"> --%>
 			</div>
 		</main>
-		   
+		   <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
 	</body>
 	
 	<script type="text/javascript">

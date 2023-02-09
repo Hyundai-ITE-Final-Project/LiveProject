@@ -17,7 +17,7 @@
     <div class="admin_logo_wrap">
         <a href="/" class="logo_link">
             <i class="header_icon logo_icon"></i>
-            <span class="blind">오늘의쇼핑</span>
+            <span class="blind">H-LIVE</span>
         </a>
         <a href="/tool/live" class="logo_link_admin">
             
@@ -47,7 +47,7 @@
 					<a href="/manage/productpost" onclick="maintab(three)" class="productpost_tab" aria-selected="false">판매글관리</a> 
 					<a href="/manage/orderList" onclick="maintab(four)" class="order_tab" aria-selected="false">판매내역 관리</a> 					
 					<a href="/manage/setting?mid=${user.username}" onclick="maintab(five)" class="setting_tab"aria-selected="false">설정</a>
-
+					<a href="/manage/role" onclick="maintab(six)" class="memberManage_tab"aria-selected="false">회원관리</a>
 				</div>
 			</div>
 		</div>

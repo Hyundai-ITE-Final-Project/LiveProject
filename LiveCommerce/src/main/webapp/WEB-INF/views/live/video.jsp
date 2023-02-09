@@ -10,16 +10,19 @@
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="/img/logo/logo_header_icon.png">
-    <title>오늘의쇼핑</title>
+    <title>H-LIVE</title>
     <link rel="stylesheet" type="text/css" href="/resources/css/video.css" >
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <!-- <script type="text/javascript" src="/js/live.js" ></script>    -->
     <script type="text/javascript" src="/resources/js/common.js" ></script>  
     <script type="text/javascript" src="/resources/js/live_common.js" ></script>  
-
+	<style>
+		
+	</style>
 </head>
 <body>
     <div class="videoLayout_wrap videoLayout_pc">
@@ -33,7 +36,7 @@
                                 <h1 class="LiveHeader_logo">
 							        <a href="/" class="logo_link">
 							            <i class="header_icon logo_icon"></i>
-							            <span class="blind">오늘의쇼핑</span>
+							            <span class="blind">H-LIVE</span>
 							        </a>
                                 </h1>
                                 <div class="ToolBox_wrap">
@@ -85,7 +88,7 @@
                             </div>
                             <div class="LiveVideoPlayer_wrap">
                                 <div class="video_container">
-                                    <video id="video" controls muted disablepictureinpicture="true" controlslist="nodownload" width="100%" height="100%" preload="auto" poster="/resources/img/chun.jpg"></video>  
+                                    <video id="video" controls muted disablepictureinpicture="true" controlslist="nodownload" width="100%" height="100%" preload="auto" poster="/resources/img/logo/trailer_logo.png"></video>  
                                 </div>
                             </div>
                             <div class="Comments_wrap" id="Comments_wrap">
@@ -108,11 +111,25 @@
                                 <div class="TagItem_current">
                                     <a class="TagItem_link">
                                         <div class="TagItem_thumbnail">
+                                        	<img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/free-icon-coupon-6713699.png">
                                         </div>
                                         <div class="TagItem_title">
                                         </div>
                                         <span class="TagItem_price">
                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="TagItem_wrap3" >
+                                <div class="TagItem_current">
+                                    <a class="TagItem_link">
+                                        <div class="TagItem_thumbnail">
+                                            <img class="TagItem_image" width="64" height="64" draggable="false" src="/resources/img/free-icon-recipe-book-1021460.png">
+                                        </div>
+                                        <div class="TagItem_title">
+                                        </div>
+                                        <span class="TagItem_price">
+                                        </span>
                                     </a>
                                 </div>
                             </div>
@@ -137,10 +154,20 @@
                                             <i class="ModelTitle_icon"></i>
                                         </button>
                                     </div>
-                                    <iframe class="TagItemIframe_iframe2" src="/coupon/couponpage?ps_index=${replay.psIndex}"></iframe>
+                                    <iframe class="TagItemIframe_iframe2" src="/coupon/couponpage?ps_index=${replay.psIndex}" scrolling="no"></iframe>
                                 </div>
                             </section>
-                            
+                            <section class="ItemModal_section3" style="display: none;">
+                                <div class="ItemModal_content ItemModal_content_iframe">
+                                    <div class="ModelTitle_wrap">
+                                        <%-- <h3 class="ModelTitle_title">${replay.livePdVo.getPsTitle()}</h3> --%>
+                                        <button type="button" class="ModelTitle_btn3">
+                                            <i class="ModelTitle_icon"></i>
+                                        </button>
+                                    </div>
+                                    <iframe class="TagItemIframe_iframe3" src="/live/recipe?ps_index=${live.psIndex}"></iframe>
+                                </div>
+                            </section>
                             <button type="button" class="CommentBtn_wrap" aria-hidden="false">
                                 <span class="CommentBtn_inner">
                                     <i class="header_icon CommentBtn_icon"></i>
@@ -174,7 +201,6 @@ $(document).ready(function() {
     //라이브 연결
     var video = document.getElementById('video');
     var videoSrc =liveUrl+"/"+stream+".m3u8";
-    console.log(videoSrc);
     var hls = new Hls();
     if(status==1){
     	video.pause();
@@ -260,6 +286,7 @@ $(document).ready(function() {
     })
     
     $("#send_btn").click(function(){
+    	flask();
     	send();
     })
     
@@ -281,6 +308,7 @@ $(document).ready(function() {
         } */
        if(e.keyCode==13 || e.keyCode == 10){
     	   e.preventDefault(); //엔터시 줄바꿈 방지(동작중단)
+    	   flask();
            send();
         }
        
@@ -290,6 +318,24 @@ $(document).ready(function() {
         client.send('/pub/chat/message', {}, JSON.stringify({liveId: liveId, ctext: msg, chatMid: nick}));
         $("#wa_textarea").val('');   
         $("#send_btn").attr("disabled",true);
+    }
+    
+    function flask(){
+    	$.ajax({
+    		type:"get",
+    		dataType : "json",
+    		data: {
+    			"ctext" : $("#wa_textarea").val(),
+  				"live" : liveId
+    			},
+    		url: "http://127.0.0.1:5000/predict",
+    		success:function(data){
+    			console.log("전송 성공");
+    		},
+    		error : function(error){
+    			console.log(error);
+    		}
+    	});
     }
     
     $(".LiveFinish").click(function() {

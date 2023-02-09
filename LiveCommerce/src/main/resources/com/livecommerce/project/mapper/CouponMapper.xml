@@ -5,8 +5,8 @@
   <mapper namespace="com.livecommerce.project.mapper.CouponMapper">
   	<!-- 쿠폰 추가 -->
 	<insert id="addCoupon">
-		insert into coupon(ccode, cname, cprice, cstartdate, cenddate)
-		values(#{ccode}, #{cname}, #{cprice}, #{cstartdate}, #{cenddate})
+		insert into coupon(ccode, cname, cprice, cstartdate, cenddate, member_mid)
+		values(#{ccode}, #{cname}, #{cprice}, #{cstartdate}, #{cenddate}, #{member_mid})
 	</insert>
 	<!-- 쿠폰리스트 추가 -->
 	<insert id="addCouponList">
@@ -25,7 +25,7 @@
 	<select id="getCouponList" resultType="com.livecommerce.project.vo.CouponVO">
 		select * from coupon c, couponlist cl
 		where c.ccode = cl.coupon_ccode
-		and member_mid = #{member_mid}
+		and cl.member_mid = #{member_mid}
 		and cstate = 'available'
 	</select>
 	
@@ -33,8 +33,21 @@
 	<update id="modifyCoupon">
 	
 		update coupon set cstate='used' where cname = #{cname}
+		and member_mid = #{member_mid}
 	
 	</update>
 	
+	<select id="getCcode" resultType="com.livecommerce.project.vo.CouponVO">
+          select ccode, cprice, member_mid, cstate
+            from coupon 
+           where member_mid = #{member_mid}
+             and cname = #{cname}
+	</select>
+	
+			<!-- 쿠폰사용시 주문번호 삽입 -->
+	<update id="UpdateCouponOid">
+		update coupon set oid=#{oid} where cname = #{cname}
+		and member_mid = #{member_mid}
+	</update>
 
   </mapper>

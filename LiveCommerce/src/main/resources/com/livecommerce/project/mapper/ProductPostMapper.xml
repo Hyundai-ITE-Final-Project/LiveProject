@@ -2,7 +2,16 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	<!-- @author 김나형 -->
+<!-- **
+ * @author 김나형
+ * @since 2023.01.16
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일              	수정자                   수정내용
+2023.01.16		김나형		최초생성
+</pre>
+-->
 <mapper namespace="com.livecommerce.project.mapper.ProductPostMapper">
 
 	<!-- 아이디당 post 갯수구하기 -->
@@ -30,13 +39,13 @@
 	<!-- post 등록 -->
 	<insert id="postAdd">
 		insert into product_post
-		(mid, ps_title, ps_price, ps_post_status)
+		(mid, ps_title, recipe, ps_post_status)
 		values
-		(#{mid}, #{ps_title}, #{ps_price}, #{ps_post_status})
+		(#{mid}, #{ps_title}, #{recipe}, #{ps_post_status})
 		<selectKey keyProperty="ps_index" order="AFTER" resultType="int">
 			select ps_index
 			from product_post
-			where mid = #{mid} and ps_title = #{ps_title} and ps_price = #{ps_price}
+			where mid = #{mid} and ps_title = #{ps_title} and recipe = #{recipe}
 		</selectKey>
 	</insert>
 	
@@ -59,7 +68,7 @@
 	<!-- post 수정-->
 	<update id="postModify">
 		update product_post
-		set ps_title = #{ps_title}, ps_price = #{ps_price}, ps_post_status = #{ps_post_status}
+		set ps_title = #{ps_title}, recipe = #{recipe}, ps_post_status = #{ps_post_status}
 		where ps_index = #{ps_index}
 	</update>
 	

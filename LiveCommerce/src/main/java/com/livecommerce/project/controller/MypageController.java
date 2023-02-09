@@ -14,9 +14,20 @@ import com.livecommerce.project.service.MypageService;
 import com.livecommerce.project.service.OrderService;
 import com.livecommerce.project.vo.OrderVO;
 
+import lombok.extern.log4j.Log4j;
+/**
+ * @author 김민석
+ * @since 2023.01.27
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일                    수정자                   수정내용
+ * ----------  --------    ---------------------------
+ * 2023.01.27    김민석              마이페이지 컨트롤러
+ * </pre>
+ */
 
-//
-
+@Log4j
 @Controller
 public class MypageController {
 	@Autowired
@@ -24,7 +35,7 @@ public class MypageController {
 	@Autowired
 	OrderService orderService;
 	
-	
+	//마이페이지 메인이동
 	@GetMapping("/mypage/main")
 	public String mypage() {
 		return "/mypage/main";
@@ -41,22 +52,40 @@ public class MypageController {
 		String member_mid = principal.getName();
 		List<List<OrderVO>> list3 = new ArrayList<>();
 		List<String> list = mypageService.getOid(member_mid);
+		log.info("list 출력 " + list);
+		model.addAttribute("listOid", list);
 		for(int i=0; i<list.size(); i++) {
 			String oid1 = list.get(i);
+			log.info(oid1);
 			List<OrderVO> list2 = mypageService.getOidorderList(oid1, member_mid);
 			list3.add(list2);
+			log.info(i + "번째 리스트 : " + list2);
+			log.info(" 주문번호 : " + oid1);
 		}
-		model.addAttribute("list1", list3);
-		
-
+		log.info("list3 출력 " + list3);
+		model.addAttribute("list3", list3);
 		return "/mypage/mypage_orderlist";
 	}
 	//주문취소
 	@PostMapping("/mypage/ordercancel")
-	public String orderCancel(OrderVO ov) {
+	public String orderCancel(OrderVO ov, Principal principal) {
 		System.out.println("테스트" + ov.getImp_uid());
 		orderService.OrderCancel(ov.getImp_uid());
 		mypageService.ordercancelState(ov.getOstate(), ov.getOid());
+		mypageService.orderCancelReturnPoint(ov.getOid(), principal.getName());
 		return "redirect:/mypage/orderList";
+	}
+	
+	//마이페이지-주문상세
+	@PostMapping("/mypage/orderdetail")
+	public String orderDetail(OrderVO ov, Principal principal, Model model) {
+		System.out.println(ov);
+		List<OrderVO> orderDetail = mypageService.getOrderDetail(ov.getOid(), principal.getName());
+		model.addAttribute("orderdetail", orderDetail);
+		System.out.println(orderDetail);
+		for(int i=0; i<orderDetail.size(); i++) {
+			System.out.println(orderDetail.get(i).getSavepoint());
+		}
+		return "/mypage/orderdetail";
 	}
 }

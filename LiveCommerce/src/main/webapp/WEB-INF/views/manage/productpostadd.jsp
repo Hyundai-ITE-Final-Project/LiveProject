@@ -1,9 +1,6 @@
 <%@page pageEncoding="UTF-8" language="java"%>
 <%@ include file="/WEB-INF/views/header/tool_header.jsp"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<link rel="stylesheet" type="text/css" href="/resources/css/login.css" >
-<link rel="stylesheet" type="text/css" href="/resources/css/admin.css"> 
-
 <div id="admin_wrap">
     <div class="admin_content">
         <div class="admin_menulist">
@@ -30,15 +27,18 @@
                                 <input type="text" id="psTitle" name="ps_title" class="layout_input" value="" maxlength='30'>
                             </div>
                             <div class="create_layout">
-                                <div class="layout_subject _asterisk">게시물 판매가(최소 금액)</div>
-                                <input type="text" id="psPrice" class="layout_input" name="ps_price" value="" maxlength='11' oninput="this.value = this.value.replace(/[^0-9.,]/g, '').replace(/(\..*)\./g, '$1');">
+                                <div class="layout_subject _asterisk">판매글 정보 및 레시피</div>
+                                <textarea class="layout_input" name="recipe" class="recipe" style="height: 250px; padding-right: 20px; padding-left: 20px; padding-top: 10px; padding-bottom: 10px; line-height:1.5;"></textarea>
                             </div>
                             <div class="create_layout">
 						    	<div class="layout_subject _asterisk">판매 상품 추가</div>
 						    	<div class="layout_memo">상품 체크/체크 해제 후 등록하면 상품이 새로 등록됩니다.</div>
+						    	<div class="searchBox" style="position: relative; width: 100%;">
+						        	<input type="text" id="search" onkeyup="filter()" placeholder="검색하실 상품을 입력해주세요." name="keyword" style="width: 100%; border: 1px solid #bbb; border-radius: 8px; padding: 10px 12px; font-size: 14px; margin-bottom: 10px;">
+						        </div>
 							    <div>
 							        <div class="pdAddList_area">
-							            <div class="pdAddList_header">
+							            <div class="pdAddList_header"> 
 							                <div class="pdAddList_h_viewport">
 							                    <div class="pdAddList_h_check">
 							                        <input type="checkbox" class="isChek">
@@ -85,20 +85,33 @@
     </div>
 </div>
 <script>
-$(function() {
-	console.log("테스트 입니다.");
+	$(function() {
+		$(".productpost_tab").attr("aria-selected","true");
+		
+	})
 	
-	$(".productpost_tab").attr("aria-selected","true");
+	function filter(){
+		var search = document.getElementById("search").value;
+		var listInner = document.getElementsByClassName("pdAddList_content_area");
+		for(let i=0; i<listInner.length; i++){
+			pname = listInner[i].getElementsByClassName("pdAddList_cell_1");
+			if(pname[0].innerHTML.toLowerCase().indexOf(search) != -1){
+				listInner[i].style.display = "flex";
+			}
+			else{
+				listInner[i].style.display = "none";
+			}
+		}
+	}
 	
-})
     function go_save(){
         if(document.formm.ps_title.value ==""){
             alert("제목을 입력해주세요");
-        } else if(document.formm.ps_price.value == ""){
-            alert("가격을 설정해주세요");
         } else if(document.formm.ps_post_status.value ==""){
             alert("판매상태를 설정해주세요");
-        } else{
+        } else if(document.formm.recipe.value == ""){
+        	alert("레시피 및 상품의 내용을 입력해주세요");
+        }else{
     		var valueArr = new Array();
     		var list = $("input[name='postlist']");
     		for(var i=0; i<list.length; i++){

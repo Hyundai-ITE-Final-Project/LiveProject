@@ -13,10 +13,22 @@ public interface MypageMapper {
 	
 	/* 주문 총 갯수 */
 	public int getOrderTotal(Criteria cri);
+	
 	/* 주문 취소 후 상태변경 */
 	public int ordercancelState(@Param("ostate") String ostate, @Param("oid") String oid);
+	
 	/*-- 멤버아이디별 중복처리한 oid값들 */
 	public List<String> getOid(@Param("member_mid") String member_mid);
+	
 	/* 주문아이디별 주문리스트 */
 	public List<OrderVO> getOidorderList(@Param("oid") String oid, @Param("member_mid") String member_mid);
+	
+	/* 주문취소시 포인트 회수 */
+	public int orderCancelReturnPoint(@Param("oid") String oid, @Param("mid") String mid);
+	
+	/* 주문상세페이지 */
+	public List<OrderVO> getOrderDetail(@Param("oid") String oid, @Param("mid") String mid);
+	
+	/* 쿠폰노사용_주문상세페이지 */
+	public List<OrderVO> NoCouponOrderDetail(@Param("oid") String oid, @Param("mid") String mid);
 }

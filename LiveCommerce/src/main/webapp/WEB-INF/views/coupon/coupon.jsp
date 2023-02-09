@@ -5,13 +5,14 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %> 
 <link rel="stylesheet" href="/resources/css/coupon.css">
 <script type="text/javascript" src="http://script.gmkt.kr/jQuery/1.8.3/jquery-1.8.3.min.js"></script>
+<style>
+</style>
 <body oncontextmenu="return false">
 
 <!-- bodyWrap -->
 <div id="bodyWrap" class="products">
     <!--title-->
     <h3 class="cnts_title">
-        <span> 이벤트 </span>
     </h3>
     <!--//title-->
     <div class="sub_container">
@@ -33,7 +34,7 @@
                         <div class="coupon-wrap">
                             <div>
                                      <img class="coupon2" 
-                                     src="${pageContext.request.contextPath}/resources/img/coupon_2000.png"></img>
+                                     src="${pageContext.request.contextPath}/resources/img/coupon/coupon_2000.png"></img>
                             </div>
                             <div class="coupon-list">
                                 <div class="coupon coupon01" style="display: none">
@@ -48,9 +49,13 @@
 
 
                         <div class="btn-coupon-wrap ready">
-                            <a href="javascript:;" class="btn-coupon" id = "coupon2000Btn"> 
-                            <img src="http://cdn.thehandsome.com/_ui/desktop/common/images/event/event_7th/evt_main/img_btn_coupon.jpg">
-                            </a>
+       <!--                      <a href="javascript:;" class="btn-coupon" id = "coupon2000Btn"> 
+                            <img class ="btn1" src="http://cdn.thehandsome.com/_ui/desktop/common/images/event/event_7th/evt_main/img_btn_coupon.jpg">
+                            </a> -->
+                              <button class="btn-coupon" 
+                                id="coupon2000Btn" onclick="">
+                                <p>쿠폰 발급</p>
+                            </button>
 
                         </div>
                         <script>
@@ -109,23 +114,21 @@
             </div>
         </div>
         <div class="btn_list_wrap">
-            <a href="/ko/magazine/events" class="btn_list">목록</a>
         </div>
     </div>
 </div>
 <!-- //bodyWrap -->
-<script src="https://static.addtoany.com/menu/locale/ko-KR.js"></script>
-<%-- <%@ include file="/WEB-INF/views/common/footer.jsp" %><%@ page contentType="text/html; charset=UTF-8" %>
+<%-- <script src="https://static.addtoany.com/menu/locale/ko-KR.js"></script>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %><%@ page contentType="text/html; charset=UTF-8" %>
 
-<%@ include file="/WEB-INF/views/common/header.jsp" %> --%>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link rel="stylesheet" href="/resources/css/coupon.css">
-<body oncontextmenu="return false">
+<body oncontextmenu="return false" style=”overflow-x:auto;overflow-y:hidden”> --%>
 <!-- bodyWrap -->
 <div id="bodyWrap" class="products">
     <!--title-->
     <h3 class="cnts_title">
-        <span> 이벤트 </span>
     </h3>
     <!--//title-->
     <div class="sub_container">
@@ -150,7 +153,7 @@
                   <!--               <img
                                         src="http://cdn.thehandsome.com/_ui/desktop/common/images/event/event_7th/evt_main/img_main_evt01_coupon.gif"> -->
                                      <img class="coupon1" 
-                                     src="${pageContext.request.contextPath}/resources/img/coupon_1000.png"></img>
+                                     src="${pageContext.request.contextPath}/resources/img/coupon/coupon_1000.png"></img>
                             </div>
                             <div class="coupon-list">
                                 <div class="coupon coupon01" style="display: none">
@@ -165,10 +168,10 @@
 
 
                         <div class="btn-coupon-wrap ready">
-         				    <a href="javascript:;" class="btn-coupon" id = "coupon1000Btn"> 
-                            <img src="http://cdn.thehandsome.com/_ui/desktop/common/images/event/event_7th/evt_main/img_btn_coupon.jpg">
-                            </a>
-
+         				    <button class="btn-coupon" 
+                                id="coupon1000Btn" onclick="">
+                                <p>쿠폰 발급</p>
+                            </button>
                         </div>
                      <script>      
                         let ccode2 = '<sec:authentication property="name"/>' + "_" + year + month + "p1000";
@@ -217,7 +220,6 @@
             </div>
         </div>
         <div class="btn_list_wrap">
-            <a href="/ko/magazine/events" class="btn_list">목록</a>
         </div>
     </div>
 </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
-    <title>오늘의쇼핑</title>
+    <title>H-LIVE</title>
     <link rel="stylesheet" type="text/css" href="/resources/css/common.css" >
     <link rel="stylesheet" type="text/css" href="/resources/css/login.css" >
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -85,7 +85,7 @@
        
             <div class="signup_input_area">
                 <div class="subject">이메일</div>
-                <input type="text" name="memail" id="userEmailSign" autocomplete="off" maxlength='15' placeholder="ex) hyundai5@hyundai.com">
+                <input type="text" name="memail" id="userEmailSign" autocomplete="off" maxlength='50' placeholder="ex) hyundai5@hyundai.com">
                 <div id="email_error" class="regul_div"></div>
             </div>
             
@@ -106,16 +106,6 @@
            <div>
             	<input type="radio" name="mgender" autocomplete="off" value="남자" checked>남자    
                 <input type="radio" name="mgender" autocomplete="off" value="여자">여자
-            </div>
-            
-            
-            <div class="signup_input_area">
-                <div class="subject">회원유형</div>
-            </div>
-            
-            <div>
-            	<input type="radio" name="mrole" id="userRoleSign" autocomplete="off" value="USER" checked>일반유저 
-                <input type="radio" name="mrole" id="userRoleSign" autocomplete="off" value="ADMIN">관리자
             </div>
            
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

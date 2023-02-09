@@ -8,20 +8,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome BookMall</title>
+<title>H-LIVE</title>
 <link rel="stylesheet" href="/resources/css/cart.css">
 
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
+<style>
+	.table_text_align_center {position: relative;padding: 0 38px;border: 1px solid #ddd;overflow: hidden; height:30px;}
+	.table_text_align_center > button {border: 0;background: #ddd;color: #000;width: 30px;height: 30px;position: absolute;top: 0;font-size: 12px;}
+	.table_text_align_center > button.minus_btn {left: 0; z-index:1;}
+	.table_text_align_center > button.plus_btn {right: 0;}
+	.table_text_align_center .quantity_input {border: 0;height: 30px;text-align: center;display: block;width: 100%;}
+	.quantity_modify_btn{width: 50px; height: 15px; padding-top: 6px; background: #efefef; border-radius: 5%;}
+</style>
 </head>
 <body>
-<%-- 로그인ID : <sec:authentication property="name"/><br>
-로그인 Auth : <sec:authentication property="authorities"/><br>
-로그인 Detail : <sec:authentication property="Details"/><br>
-로그인 Credentials : <sec:authentication property="Credentials"/>
-로그인 Principal : <sec:authentication property="Principal"/><br> --%>
 <div class="wrapper">
 	<div class="wrap">
 		<div class="content_area">
@@ -42,7 +45,7 @@
 					<caption>표 제목 부분</caption>
 					<tbody>
 
-						<tr>
+						<tr style="height:40;">
 							<th class="td_width_1"></th>
 							<th class="td_width_2">상품이미지</th>
 							<th class="td_width_3">상품명</th>
@@ -81,9 +84,9 @@
 								</td>
 								<td class="td_width_4 table_text_align_center">
 									<div class="table_text_align_center quantity_div">
+										<button class="quantity_btn minus_btn">-</button>
 										<input type="text" value="${ci.p_quantity}" class="quantity_input">	
 										<button class="quantity_btn plus_btn">+</button>
-										<button class="quantity_btn minus_btn">-</button>
 									</div>
 									<a class="quantity_modify_btn" data-cartid="${ci.cart_id}">변경</a>
 								</td>
@@ -113,10 +116,6 @@
 										</td>
 									</tr>
 									<tr>
-										<td>배송비</td>
-										<td>
-											<span class="delivery_price">3000</span>원
-										</td>
 									</tr>									
 								</table>
 							</td>
@@ -176,7 +175,7 @@
  				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<input type="hidden" name="cart_id" class="update_cart_id">
 				<input type="hidden" name="p_quantity" class="update_p_quantity">
-				<input type="hidden" name="member_mid" value="gd">
+				<input type="hidden" name="member_mid" value="<sec:authentication property="name"/>">
 			</form>	
 			
 			<!-- 삭제 form -->
@@ -255,7 +254,7 @@ function setTotalInfo(){
 	}	
 	
 	/* 최종 가격 */
-	finalTotalPrice = totalprice + deliveryPrice;
+	finalTotalPrice = totalprice;
 	
 	/* 값 삽입 */
 	// 총 가격

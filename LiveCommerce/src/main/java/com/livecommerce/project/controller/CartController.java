@@ -24,7 +24,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.livecommerce.project.service.CartService;
 import com.livecommerce.project.vo.CartListVO;
 import com.livecommerce.project.vo.CartVO;
-
+/**
+ * @author 김민석
+ * @since 2023.01.18
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일                    수정자                   수정내용
+ * ----------  --------    ---------------------------
+ * 2023.0!.18    김민석               장바구니 컨트롤러
+ * </pre>
+ */
 @Controller
 public class CartController {
 
@@ -33,7 +43,7 @@ public class CartController {
 	
 	@PostMapping("/cart/add")
 	@ResponseBody
-	public String addCartPost(CartVO cart, HttpServletRequest request) {
+	public String addCartPost(CartVO cart, HttpServletRequest request, Principal prin) {
 		//화면을 반환하는 것이 아니라 데이터를 바로 반환하기 때문에 @ResponseBody를 추가
 		//ResponseBody를 사용할 것이라서 반환타입 String\
 		
@@ -45,11 +55,14 @@ public class CartController {
 //		}
 		// 카트 등록
 		
-		int result = cartService.addCart(cart);
+		CartVO a = cart;
+		a.setMember_mid(prin.getName());
+		System.out.println("왜 오류나는걸까요??" + prin.getName());
+		int result = cartService.addCart(a);
 				
 		return result + "";	//addCart 반환타입이 int여서 빈 문자열을 더함
 	}
-	
+	//장바구니 추가
 	@GetMapping("cart/add2")
 	public String addCartList(CartListVO clv, Principal prin) {
 		List<CartVO> list = clv.getCarts();

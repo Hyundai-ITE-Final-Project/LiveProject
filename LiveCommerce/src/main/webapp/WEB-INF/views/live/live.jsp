@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="resources/css/video.css" >
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-<title>Insert title here</title>
+<title>H-LIVE</title>
 </head>
 <body class="prevent_overscroll">
 <div id="root">

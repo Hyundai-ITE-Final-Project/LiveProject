@@ -8,6 +8,7 @@
  * 수정일                		수정자                   수정내용
  * 2023.01.17		신기원		최초생성
  * 2023.01.19		신기원		getLiveInfo 생성
+ * 2023.01.22		김나형		live 상품 조회
  * </pre>
  */ -->
 <!DOCTYPE mapper
@@ -30,6 +31,8 @@
     <result column="stream_key" property="streamKey"/>
     <result column="video_id" property="videoId"/>
     <result column="video_name" property="videoName"/>
+    <result column="ps_title" property="pstitle"/>
+    <result column="mname" property="mname"/>
 	<collection property="videoVO" ofType="com.livecommerce.project.vo.VideoVO" resultMap="VideoMap"/>
 	<collection property="productPostVO" ofType="com.livecommerce.project.vo.ProductPostVO" resultMap="ProductPostMap"/>
   </resultMap>
@@ -54,6 +57,15 @@
 		<![CDATA[ where TO_CHAR(LIVE_START_TIME,'YY-MM-DD HH24:MI') <=  to_char(CURRENT_DATE,'yy-mm-dd HH24:MI') 
 		and TO_CHAR(LIVE_END_TIME,'YY-MM-DD HH24:MI') >=  to_char(CURRENT_DATE,'yy-mm-dd HH24:MI')]]>
 		and li.live_status = '1'
+    </select>
+    
+    <select id="trailerList" resultMap="LiveMap">
+    SELECT  LI.*, PP.*, M.MNAME
+		    FROM LIVE LI JOIN PRODUCT_POST PP
+		    ON LI.PS_INDEX = PP.PS_INDEX JOIN MEMBER M
+		    ON LI.MEMBER_MID = M.MID
+  <![CDATA[WHERE TO_CHAR(LI.LIVE_START_TIME,'YY-MM-DD HH24:MI') > TO_CHAR(CURRENT_DATE,'YY-MM-DD HH24:MI')]]>
+           ORDER BY LI.LIVE_STARTDAY,LI.LIVE_START_TIME 
     </select>
     
     <select id="getLiveInfo" parameterType="String" resultMap="LiveMap">
@@ -117,6 +129,9 @@
   					  where ps_index = #{ps_index})
   	</select>
   	
+	<select id="getRecipe" resultType="com.livecommerce.project.vo.ProductPostVO">
+		select * from product_post where ps_index = #{ps_index}
+	</select>
   	<insert id="createLive">
     	INSERT INTO LIVE(
             MEMBER_MID
@@ -146,6 +161,7 @@
 	        ,LIVE_START_TIME = to_date(#{liveStartTime},'yy/mm/dd HH24:MI')
 	        ,LIVE_END_TIME = to_date(#{liveEndTime},'yy/mm/dd HH24:MI')
 	        ,LIVE_STATUS = #{liveStatus}
+	        ,PS_INDEX = #{psIndex}
 	        WHERE  LIVE_ID  = #{liveId}
     </update>
     
@@ -177,6 +193,7 @@
 	    select LI.*, VI.*, m.stream_key
 		FROM LIVE LI LEFT JOIN VIDEO VI
 		ON li.video_id = vi.video_id JOIN MEMBER M ON LI.MEMBER_MID = M.MID
+		WHERE LI.LIVE_STATUS IN ('1','2')
 		ORDER BY LIVE_END_TIME DESC
     </select>
     
@@ -184,6 +201,7 @@
 	    select LI.*, VI.*, m.stream_key
 		FROM LIVE LI LEFT JOIN VIDEO VI
 		ON li.video_id = vi.video_id JOIN MEMBER M ON LI.MEMBER_MID = M.MID
+		WHERE LI.LIVE_STATUS IN ('1','2')
 		ORDER BY LIVE_VIEW DESC
     </select>
     
@@ -201,7 +219,9 @@
     
     <update id="updateLiveVideo">
     	UPDATE LIVE
-	        SET    VIDEO_ID = #{videoId}
+	        SET    VIDEO_ID = #{videoId},
+	        	   LIVE_STATUS = 0,
+	        	   LIVE_END_TIME = current_date
 	        WHERE  LIVE_ID  = #{liveId}
     </update>
     

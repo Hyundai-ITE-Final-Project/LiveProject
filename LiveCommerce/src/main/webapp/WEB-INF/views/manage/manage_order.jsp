@@ -7,10 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="stylesheet" href="/resources/css/mypage_orderlist.css">
 
 <!-- <link rel="shortcut icon"   href="https://drive.google.com/uc?id=1bbTmb2_R9gb6sEYY5zABHlybxCzhQVWX"> -->
-<title>오늘의쇼핑</title>
+<title>H-LIVE</title>
 </head>
 
 <body>
@@ -31,11 +31,13 @@
 								</div>
 
 								<div class="pd_content">
-									<c:forEach var="item" items="${list}">
+									<c:forEach var="item" items="${list}" varStatus="status">
 										<div class="pd_content_area">
 
 											<div class="pd_cell_2">
-												<a  class="text_blue">${item.oid}</a>
+												<a  class="text_blue">
+													<span id="oid${status.index}" value = "${item.oid}">${item.oid}</span> 
+												</a>
 											</div>
 											<div class="pd_cell_3">
 												<a class='move'>
@@ -45,21 +47,27 @@
 											</div>
 											<div class="pd_cell_4">
 												<a class='move'>
-													<c:out value="${item.odate}" />
+													<%-- <c:out value="${item.odate}" /> --%>
+													<fmt:formatDate value="${item.odate}" pattern="yyyy-MM-dd HH:mm:ss" />
 												</a>
 											</div>
 											<div class="pd_cell_5">
 												<a class='move'>
-													<c:out value="${item.ostate}" />
+													<span id="ostate${status.index}" value="${item.ostate}">${item.ostate}</span>
 												</a>
 											</div>
 											<div class="pd_cell_6">
-												<div>${item.imp_uid}</div>
+												<div><span id="imp_uid${status.index}" value="${item.imp_uid}">${item.imp_uid}</span></div>
 											</div>
 											<div class="pd_cell_7">
 												<button id="cancelbtn" class="btn_orderCancel" value="${status.index}" onClick="setTotalInfo(this)">주문취소</button>
 											</div>
 										</div>
+									<form class="manageOrderForm" action="/manage/ordercancel" method="post">
+	              					  	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+										<input type="hidden" name="oid" value="">
+										<input type="hidden" name="imp_uid" value="">
+									</form>        
 									</c:forEach>
 	
 								        <!-- 검색 영역 -->
@@ -160,13 +168,16 @@ $(".pageMaker_btn a").on("click", function(e){
 	
 });
 
-//주문삭제 버튼
+//주문취소 버튼
 function setTotalInfo(btn){
 	var index = btn.value;
 	var ostate = $("#ostate"+index).text();
 	var oimp_uid = $("#imp_uid"+index).text();
 	var oid1 = $("#oid"+index).text();
 	//console.log("index: " + index + " , oid : " + oid);
+	console.log(index);
+	console.log(ostate);
+	console.log(oid1);
 	console.log(oimp_uid);
 	if(ostate == '배송준비') {
 		alert("주문취소 완료되었습니다.");

@@ -32,6 +32,15 @@
 	});
 	//# sourceURL=pen.js
 </script>
+<script>
+window.onload=function() {
+
+var tText = document.getElementsByTagName('textarea')[0];
+tText.style.wordWrap = 'break-word';
+
+
+}
+</script>
 <style>
 .select_img img {
 	margin: 20px 0;
@@ -41,17 +50,7 @@
 <body>
 	<div id="admin_wrap">
 		<div class="admin_content">
-			<div class="admin_menulist">
-				<div class="admin_tablist">
-					<a href="/manage/live" class="main_tab" aria-selected="false">라이브
-						관리</a> <a href="/manage/products" class="main_tab"
-						aria-selected="true">상품 관리</a> <a href="/manage/productpost"
-						class="main_tab" aria-selected="false">판매글 관리</a> <a
-						href="/manage/orderList" class="main_tab" aria-selected="false">판매
-						내역 관리</a> <a href="/manage/setting" class="main_tab"
-						aria-selected="false">설정</a>
-				</div>
-			</div>
+			
 			<div class="product_create_wrap">
 				<div class="product_create_area">
 					<div class="product_create_inner">
@@ -83,13 +82,13 @@
 								<div class="layout_subject_asterisk">상품명</div>
 								<input class="layout_input" name='pname'
 									value='<c:out value="${product.pname }"/>' readonly='readonly'>
-							</div>
-							<div class="create_layout">
-								<div class="layout_subject _asterisk">상품 상세</div>
-								<textarea id="psContentText" name="psContentText" readonly='readonly'>${product.detail }</textarea>
-								<iframe id="psContentIframe" name="psContentIframe"
-									scrolling=yes border=0 width="100%" height=300 frameborder=0></iframe>
-							</div>
+							
+                    		
+                    		<div class="create_layout">
+                    		<div class="layout_subject _asterisk">판매글 상세 내용</div>
+                    		<textarea class="layout_input" name='detail' readonly='readonly' style="font-size: 16px; width: 100%; line-height:150%; padding-top: 15px; height: 200%;">${product.detail }</textarea>
+                    		</div>
+							
 
 
 							<div class="create_layout">
@@ -100,8 +99,7 @@
 
 							<div class="create_layout">
 								<div class="layout_subject_asterisk">이미지</div>
-								<input class="layout_input" name='img1'
-									value='<c:out value="${product.img1 }"/>' readonly='readonly'>
+								<img style='width: 300px;'src="${product.img1 }"/> 
 							</div>
 
 							<div class="create_layout">
@@ -113,9 +111,9 @@
 
 							<div class="create_layout">
 								<div class="layout_subject_asterisk">전시상태</div>
-								<input class="layout_input" name='pstatus'
-									value='<c:out value="${product.pstatus }"/>'
-									readonly='readonly'>
+								<input class="layout_input" name='pstatus' value='<c:if test="${product.pstatus eq '1'}">판매중</c:if>
+		                                        <c:if test="${product.pstatus eq '0'}">판매중지</c:if>'
+									readonly='readonly'> 
 							</div>
 						</div>
 
@@ -124,13 +122,20 @@
 
 							<button data-oper='modify'
 								class="btn_pp btn_product_update btn btn-default" type="button"
-								onclick="location.href='/manage/modify?pid=<c:out value="${product.pid }"/>'">Modify</button>
+								onclick="location.href='/manage/modify?pid=<c:out value="${product.pid }"/>'">수정</button>
 							<button data-oper='list'
 								class="btn_pp btn_product_update btn btn-default" type="button"
-								onclick="location.href='/manage/products'">list</button>
+								onclick="location.href='/manage/products'">리스트</button>
 
 						</form>
 </body>
 </html>
-
+	<script>
+	$(function() {
+	console.log("테스트 입니다.");
+	
+	$(".products_tab").attr("aria-selected","true");
+	
+})
+</script>
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>

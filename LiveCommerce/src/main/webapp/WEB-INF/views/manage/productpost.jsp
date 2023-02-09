@@ -7,7 +7,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
-    <title>오늘의쇼핑</title>
+    <title>H-LIVE</title>
+    <style>
+   		 .post_cell_2{width:190px;}
+   		 .post_cell_4{width:400px; text-align:center;}
+   		 .post_cell_6{width:230px;}
+   		 .post_cell_8{width:230px;}
+   		 	.paging {
+		margin-top:50px;
+		margin-bottom:30px;
+		text-align:center;
+		font-size:0;
+	}
+	.paging2 {
+		display:inline-block;
+	}
+	.paging .none {
+		display:none;
+	}
+	.paging .pageBtn {
+		display:block;
+		margin:0 3px;
+		float:left;
+		border:1px solid #e6e6e6;
+		width:28px;
+		height:28px;
+		line-height:28px;
+		text-align:center;
+		background-color:#fff;
+		font-size:13px;
+		color:#999999;
+		text-decoration:none;
+	}
+	.paging .arrow {
+		border:1px solid #ccc;
+		display:block;
+		margin:0 3px;
+		float:left;
+		width:28px;
+		height:28px;
+		line-height:28px;
+		text-align:center;
+		background-color:#fff;
+		font-size:13px;
+		color:#999999;
+		text-decoration:none;
+	}
+
+	.paging .prev {
+		background:#f8f8f8 url('/resources/img/page_prev.png') no-repeat center center;
+		margin-right:7px;
+	}
+	.paging .arrow.next {
+		background:#f8f8f8 url('/resources/img/page_next.png') no-repeat center center;
+		margin-left:7px;
+	}
+ 	.paging .pageBtn.active {
+		background-color:#42454c;
+		color:#fff;
+		border:1px solid #42454c;
+	}
+    </style>
 </head>
 
 <div id="admin_wrap">
@@ -36,11 +96,8 @@
                                         <input type="checkbox" class="isChek" name="allCheck">
                                     </div>
                                     <div class="post_cell_2">판매글 번호</div>
-                                    <div class="post_cell_3"></div>
                                     <div class="post_cell_4">제목</div>
-                                    <div class="post_cell_5">판매가</div>
                                     <div class="post_cell_6">배송방법</div>
-                                    <div class="post_cell_7">배송비</div>
                                     <div class="post_cell_8">전시 상태</div>
                                 </div>
                             </div>
@@ -56,14 +113,10 @@
                                             <a href="/manage/postmodify?ps_index=${list.ps_index}"
                                                 class="text_blue">${list.ps_index}</a>
                                         </div>
-                                        <div class="post_cell_3">
-                                        </div>
                                         <div class="post_cell_4">
                                             ${list.ps_title}
                                         </div>
-                                        <div class="post_cell_5">
-                                            <fmt:formatNumber value="${list.ps_price}" pattern="#,###" />
-                                        </div>
+
                                         <div class="post_cell_6">
    <%--                                          <c:choose>
                                                 <c:when test="${pds.psDeliveryOpt eq 0}">
@@ -74,11 +127,6 @@
                                                 </c:otherwise>
                                             </c:choose> --%>
                                             	무료배송
-                                        </div>
-                                        <div class="post_cell_7">
-                                            <div>
-                                                <fmt:formatNumber value="0" pattern="#,###" />
-                                            </div>
                                         </div>
                                         <div class="post_cell_8">
 											${list.ps_post_status}
@@ -91,27 +139,26 @@
                 </div>
                 <div style="height:50px"></div>
                 <div class="paging" style="display: block;">
-					<input type="hidden" class="realEnd" value="${pageMaker.realEnd}">
-					<a class="prev2" href="#"></a>
-					<c:if test="${pageMaker.prev}">
-						<!-- 이전 버튼 -->
-						<a class="prev" href="/manage/productpost?pageNum=${pageMaker.startPage - 1}">Previous</a>
-					</c:if>
-	
-					<!-- 1~10 버튼 -->
-					<span class="num">
-						<c:forEach var="num"
-							begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-							<c:if test="${(pageMaker.startPage+i) <= pageMaker.endPage}">
-								<a href="/manage/productpost?pageNum=${num}" class="pageBtn">${num}</a>
-							</c:if>
-						</c:forEach>
-					</span>  
-					<c:if test="${pageMaker.next}">
-						<!-- 다음 버튼 -->
-						<a href="/manage/productpost?pageNum=${pageMaker.endPage +1}" class="next">Next</a>
-					</c:if>
-					<a class="next2" href="#"></a>
+                	<div class="paging2">
+						<input type="hidden" class="realEnd" value="${pageMaker.realEnd}">
+						<c:if test="${pageMaker.prev}">
+							<!-- 이전 버튼 -->
+							<a class="arrow prev" href="/manage/productpost?pageNum=${pageMaker.startPage - 1}"></a>
+						</c:if>
+		
+						<!-- 1~10 버튼 -->
+						<span class="num">
+							<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+								<c:if test="${(pageMaker.startPage+i) <= pageMaker.endPage}">
+									<a href="/manage/productpost?pageNum=${num}" class="pageBtn">${num}</a>
+								</c:if>
+							</c:forEach>
+						</span>  
+						<c:if test="${pageMaker.next}">
+							<!-- 다음 버튼 -->
+							<a href="/manage/productpost?pageNum=${pageMaker.endPage +1}" class="arrow next"></a>
+						</c:if>
+					</div>
 				</div>
             </div>
         </div>

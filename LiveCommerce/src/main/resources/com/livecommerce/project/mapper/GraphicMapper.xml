@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.livecommerce.project.mapper.GraphicMapper">
+	
+	<!-- 날짜별 주문합계 테스트용 -->
+	<select id="countOrder" resultType="com.livecommerce.project.vo.GraphVO">
+		select to_char(odate, 'yyyy-MM-dd') as odate, count(oid) as ocount
+ 		  from orders
+ 		 group by to_char(odate, 'yyyy-MM-dd')
+ 		 order by odate
+	</select>
+	
+	<select id="positivenegative" resultType="com.livecommerce.project.vo.GraphVO">
+	    select p.result as predict_result, count(p.result) as predict_count
+   		  from predict p
+       		 , live l
+         where p.live_id = l.live_id
+           and l.live_id = #{live_id}
+           and l.member_mid = #{mid}
+         group by p.result
+	</select>
+	
+	<select id="selectPositive" resultType="com.livecommerce.project.vo.GraphVO">
+		select text, live_id
+		from predict
+		where result = 1
+		and live_id = #{liveId}
+		
+	</select>
+	
+	<select id="selectNegative" resultType="com.livecommerce.project.vo.GraphVO">
+		select text, live_id
+		from predict
+		where result = 0
+		and live_id = #{liveId}
+	</select>
+	
+
+  </mapper>

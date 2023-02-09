@@ -1,6 +1,7 @@
-<%@page   contentType="text/html" pageEncoding="UTF-8" language="java"%>
+<%@page   pageEncoding="UTF-8" language="java"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,12 +10,8 @@
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <link rel="shortcut icon" href="/img/logo/logo_header_icon.png">
-    <title>오늘의쇼핑</title>
-    <link rel="stylesheet" type="text/css" href="/css/common.css" >
-    <link rel="stylesheet" type="text/css" href="/css/admin.css" >
+    <title>H-LIVE</title>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
-    <script type="text/javascript" src="/js/common.js"></script>
-    <script type="text/javascript" src="/js/admin.js"></script>
 </head>
 <body>
     <%@ include file="/WEB-INF/views/header/tool_header.jsp"%>
@@ -51,7 +48,7 @@
 		                                </div>
 		                            </div>
 		                            <div class="live_content">
-		                              <c:forEach var="live" items="${liveList}">
+		                              <c:forEach var="live" items="${liveList}" varStatus="status">
 		                                <div class="live_content_area">
 		                                    <%-- <div class="pd_h_check">
 		                                        <div><input type="checkbox" class="iChek" value="${pds.pdId}"></div>
@@ -70,7 +67,7 @@
 		                                        <c:if test = "${todayFormat > liveEndDate}">종료</c:if> --%>
 		                                    </div>
 		                                    <div class="live_cell_3">
-		                                       <a href="/manage/live/create?live=${live.liveId}" class="text_blue">${live.liveId}</a>
+		                                       <a href="/manage/live/create?live=${live.liveId}" id="liveid${status.index}" class="text_blue">${live.liveId}</a>
 		                                    </div>
 		                                    <div class="live_cell_4">
 		                                    </div>
@@ -80,10 +77,17 @@
 		                                            <div class="live_cell_5_3">${live.liveView}</div>
 		                                    </div>
 		                                    <div class="live_cell_6">
-		                                        <button class="btn_live_delete ${live.liveId}">삭제</button>
+			                                    <c:if test="${live.liveStatus eq '2'}">
+			                                        <button class="btn_live_delete" value="${status.index}" onClick="sendData(this)">통계</button>
+			                                    </c:if>
 		                                    </div>
 		  
-		                                </div>  
+		                                </div>
+		                                
+		                            <form class="statistics" action="/manage/chart" method="post">
+	              					  	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+	              					  	<input type="hidden" name="live_id" value="">
+									</form>    
 		                                </c:forEach>
 		                            </div>
 		                        </div>
@@ -95,5 +99,16 @@
 		</div>
 
     </main>
+    <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
+<script>
+	function sendData(btn) {
+		var index = btn.value;
+		console.log(index);
+		var live_id = $("#liveid"+index).text();
+		console.log(live_id);
+		var a = $("input[name='live_id']").val(live_id);
+    	$(".statistics").submit();	
+	}
+</script>
 </body>
 </html>

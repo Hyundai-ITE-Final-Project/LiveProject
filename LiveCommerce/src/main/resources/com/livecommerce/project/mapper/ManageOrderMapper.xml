@@ -17,7 +17,6 @@
 			and member_mid like '%'||#{keyword}||'%'
 		</if>
 		<![CDATA[
-		    
 		    order by odate desc
 		    )
 		where rn > (#{pageNum} -1) * #{amount}
@@ -39,4 +38,16 @@
 	<update id="ordercancelState">
 		  update orders set ostate = '주문취소' where oid = #{oid}
 	</update>
+  
+  	<!-- 주문취소에 따른 포인트회수 -->
+	<update id="orderCancelReturnPoint">
+	UPDATE MEMBER 
+       SET MPOINT = 
+               (select mpoint from member where mid=#{mid}) -  
+               (select sum(olquantity * savepoint)
+                  from orderlist
+                 where oid = #{oid}) 
+     WHERE MID = #{mid}
+     </update>	
+	
   </mapper>

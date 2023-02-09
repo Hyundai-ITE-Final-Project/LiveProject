@@ -36,6 +36,7 @@
 		select distinct(oid) 
  	      from orders
          where member_mid = #{member_mid}
+         order by oid desc
 	</select>
 	
 	<!-- 주문아이디별 주문리스트 -->
@@ -49,5 +50,49 @@
        and o.oid = #{oid}
        and ol.pid = p.pid
      order by odate desc
-	</select>	
+	</select>
+	
+	<!-- 주문취소에 따른 포인트회수 -->
+	<update id="orderCancelReturnPoint">
+	UPDATE MEMBER 
+       SET MPOINT = 
+               (select mpoint from member where mid=#{mid}) -  
+               (select sum(olquantity * savepoint)
+                  from orderlist
+                 where oid = #{oid}) +
+               (select usepoint from orders where oid = #{oid})
+     WHERE MID = #{mid}
+     </update>
+     <!-- 쿠폰사용_주문상세페이지 -->
+    <select id="getOrderDetail" resultType="com.livecommerce.project.vo.OrderVO">
+		select o.oid, o.odate, o.ostate, p.img1, p.pname, ol.olquantity, ol.olprice, o.orderer, o.oaddress1, o.oaddress2
+		     , o.usepoint, c.cprice, m.mtel, ol.savepoint
+ 		  from orders o
+    		 , orderlist ol
+    		 , product p
+    		 , member m
+    		 , coupon c
+ 		 where o.oid = ol.oid
+  		   and ol.pid = p.pid
+  		   and o.oid = #{oid}
+           and o.member_mid = #{mid}
+           and o.member_mid = m.mid
+           and o.oid = c.oid
+	</select>
+	
+	<!-- 쿠폰사용_주문상세페이지 -->
+	  <select id="NoCouponOrderDetail" resultType="com.livecommerce.project.vo.OrderVO">
+		select o.oid, o.odate, o.ostate, p.img1, p.pname, ol.olquantity, ol.olprice, o.orderer, o.oaddress1, o.oaddress2
+		     , o.usepoint, m.mtel, ol.savepoint
+ 		  from orders o
+    		 , orderlist ol
+    		 , product p
+    		 , member m
+ 		 where o.oid = ol.oid
+  		   and ol.pid = p.pid
+  		   and o.oid = #{oid}
+           and o.member_mid = #{mid}
+           and o.member_mid = m.mid
+	</select>
+		
   </mapper>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>H-LIVE</title>
 	<style>
 	body{
     	margin: 0 auto;
@@ -88,7 +88,7 @@
                                         </a>
                                         <span class="video_title">${product.pname}</span>
                                         <a rel="opener" href="javascript:0;" class="video_link_creator">
-                                            ${product.price}
+                                            ${product.price}원
                                         </a>
                                     </div>
                             </c:forEach>

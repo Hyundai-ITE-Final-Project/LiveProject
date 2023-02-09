@@ -9,7 +9,7 @@
 <meta name="_csrf" content="${_csrf.token}" />
 <meta name="_csrf_header" content="${_csrf.headerName}" />
 <!-- <link rel="shortcut icon"   href="https://drive.google.com/uc?id=1bbTmb2_R9gb6sEYY5zABHlybxCzhQVWX"> -->
-<title>오늘의쇼핑</title>
+<title>H-LIVE</title>
 
 <script type="text/javascript">
 	$(document).ready(
@@ -69,7 +69,7 @@
 <body>
 	<div id="admin_wrap">
 		<div class="admin_content">
-			<div class="admin_tool_wrap">
+			<div style="background: #ffffff;" class="admin_tool_wrap">
 				<div class="admin_tool_area">
 					<div class="admin_tool_inner">
 						<div class="admin_tool_top">
@@ -85,7 +85,7 @@
 											<input type="checkbox" class="isChek">
 										</div>
 										<div class="pd_cell_2">제품번호</div>
-										<div class="pd_cell_3">제품명</div>
+										<div class="pd_cell_3" style='width: 200px;'>제품명</div>
 										<div class="pd_cell_4">판매상태</div>
 										<div class="pd_cell_5">판매가격</div>
 										<div class="pd_cell_6">재고수량</div>
@@ -104,20 +104,17 @@
 											<div class="pd_cell_2">
 												<a href="/manage/get?pid=${products.pid}" class="text_blue">${products.pid}</a>
 											</div>
-											<div class="pd_cell_3">
-												<a class='move' href='<c:out value="${products.pid }"/>'>
+											<div class="pd_cell_3" style='width: 200px;'>
+												<a class='move' href='<c:out value="${products.pname }"/>'>
 													<c:out value="${products.pname }" />
 												</a>
 
 											</div>
 											<div class="pd_cell_4">
 												<c:choose>
-													<c:when test="${products.pstatus eq '0'}">
-		                                      판매중지
-		                                  </c:when>
-													<c:otherwise>
-		                                      판매중
-		                                  </c:otherwise>
+													<c:when test="${products.pstatus eq '0'}">판매중지
+													</c:when>
+													<c:otherwise>판매중</c:otherwise>
 												</c:choose>
 											</div>
 											<div class="pd_cell_5">
@@ -170,4 +167,12 @@
 
 		</div>
 	</div>
+	<script>
+	$(function() {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+	console.log("테스트 입니다.");
+	
+	$(".products_tab").attr("aria-selected","true");
+	
+})
+</script>
 <%@ include file="/WEB-INF/views/footer/footer.jsp"%>
