@@ -3,6 +3,8 @@ package com.livecommerce.project;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -24,8 +26,9 @@ import com.livecommerce.project.vo.ProductVO;
  * <pre>
  * 수정일                    수정자                   수정내용
  * ----------  --------    ---------------------------
- * 2023.01.17    신기원                	 스트리밍 연결
- * 2023.02.03  김나형			상품 랜덤으로 추천
+ * 2023.01.17    신기원               	스트리밍 연결
+ * 2023.02.03    김나형			상품 랜덤으로 추천
+ * 2023.02.08    신기원			로그인 시 ID가 아닌 이름으로 세션에 유지
  * </pre>
  */
 @Controller
@@ -46,14 +49,14 @@ public class HomeController {
 	
 	//메인 페이지로 스트리밍 영상 리스트 전달
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, Authentication member) {
+	public String home(Locale locale, Model model, Authentication member, HttpSession session) {
 		
 		model.addAttribute("url", url);
 		model.addAttribute("lives", liveService.liveList());
 		model.addAttribute("trailers", liveService.trailerList());
 		
 		if(member !=null) {
-			model.addAttribute("name", memberService.getMemberInfo(member.getName()).getMname());
+			session.setAttribute("name", memberService.getMemberInfo(member.getName()).getMname());
         }
 //		
 		

@@ -31,7 +31,8 @@
                 </a>
             </c:when>
             <c:otherwise>
-                <span class="selName_area">${user.username}</span>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	            <span class="selName_area">${name}님</span>
                 <button class="h_btn_login h_btn_logout">로그아웃</button>
             </c:otherwise>
         </c:choose>
