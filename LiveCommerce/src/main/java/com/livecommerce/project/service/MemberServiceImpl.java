@@ -104,7 +104,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String updateStreamKey(MemberVO memberVO) {
-		System.out.println("우레레레레레렐레레");
 		UUID uuid = UUID.randomUUID();
 		String stream = "live_" + uuid.toString();
 		memberVO.setStreamKey(stream);
