@@ -1,5 +1,14 @@
 package com.livecommerce.project.controller;
-
+/**
+ * @author 박소은
+ * @since 2023.01.12
+ * @version 1.0
+ * 
+ * <pre>
+ * 수정일              	수정자                   수정내용
+2023.01.12		박소은		최초생성 및 관련 테스트
+ * </pre>
+ */ 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
